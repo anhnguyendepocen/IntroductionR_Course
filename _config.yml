@@ -1,21 +1,5 @@
-# Site settings
-title: StatisticsWithR
-description: Course Page
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
-
-# User settings
-username: ndphillips
-user_description: Nathaniel Phillips.
-user_title: Introduction to Statistics with R
-email: nathaniel.phillips@unibas.ch
-twitter_username: YaRrrBook
-github_username:  ndphillips
-theme: jekyll-theme-minimal
-
-include: ['_slides', '_tutorials','_materials']
-
-
-exclude: ['package.json', 'src' , 'node_modules']
-
+title: Minimal theme
+description: Minimal is a theme for GitHub Pages.
+show_downloads: true
+google_analytics:
 theme: jekyll-theme-minimal
