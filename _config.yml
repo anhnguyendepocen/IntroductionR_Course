@@ -11,6 +11,7 @@ user_title: Introduction to Statistics with R
 email: nathaniel.phillips@unibas.ch
 twitter_username: YaRrrBook
 github_username:  ndphillips
+theme: jekyll-theme-minimal
 
 include: ['_slides', '_tutorials','_materials']
 
