@@ -1,0 +1,438 @@
+---
+title             : "My Final Paper"
+shorttitle        : "The end..."
+
+author: 
+  - name          : "Captain Jack"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Missionsstrasse 62A, Basel, Switzerland"
+    email         : "jack@rpirates.com"
+
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Basel"
+
+author_note: >
+  R is awesome
+
+abstract: >
+  Does the growth rate of chickens depend on their diet?
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["references.bib"]
+
+figsintext        : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+
+lang              : "english"
+class             : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r include = FALSE, echo = FALSE, message = FALSE}
+# Load Libraries
+
+library("papaja")
+library("yarrr")
+library("dplyr")
+```
+
+
+# Dataset Description
+
+I obtained the data from the international chicken data repository. I don't know how the data were originally collected. The main columns in the data were as follows: *weight*, the weight of chickens in grams, *Time* the age in weeks of the chick at the time of measurement, *Chick* a unique number for each chicken, and *Diet* the diet given to the chick.
+
+# Questions
+
+I will answer the following questions in my paper.
+
+1. How did the chicken weights generally change over time?
+2. Was there a difference in the the average chicken weights as a result of the different diets?
+3. Were the chicken weights at time 1 normally distributed?
+4. Was there a difference in weights between time 2 and time 4?
+5. Did more chickens die in one diet than another?
+
+# Analyses
+
+```{r, echo = TRUE}
+# Task 1: Load data
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 1: Load data
+
+ChickWeight <- read.table("data/ChickWeight.txt", 
+                          sep = "\t", 
+                          header = TRUE)
+```
+
+Summary statistics from the data are presented in the following table.
+
+```{r, echo = TRUE}
+# Task 2: Summary statistics from a dataframe
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 2: Summary statistics from a dataframe
+summary(ChickWeight)
+```
+
+The data had 4 columns: weight, Time, Chick, and Diet:
+
+```{r, echo = TRUE}
+# Task 3: Printing variable names
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 3: Printing variable names
+
+names(ChickWeight)
+```
+
+The data for Diet were originally coded as numbers, I recoded the Diet data as string variables
+
+```{r, echo = TRUE}
+# Task 4: Recoding a variable
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 4: Recoding a variable
+
+ChickWeight$Diet.s <- NA
+
+ChickWeight$Diet.s[ChickWeight$Diet == 1] <- "bacon"
+ChickWeight$Diet.s[ChickWeight$Diet == 2] <- "cheese"
+ChickWeight$Diet.s[ChickWeight$Diet == 3] <- "tofu"
+```
+
+
+```{r, echo = TRUE}
+# Task 5: Calculate simple summary statistics
+# INSERT CODE HERE
+```
+
+The mean weight of chickens across all data was `r round(mean(ChickWeight$weight), 2)`, the median weight was `r round(median(ChickWeight$weight), 2)` and the standard deviation was `r round(sd(ChickWeight$weight), 2)`.
+
+A table of frequencies showing how many observations there were for each diet is displayed in the following table:
+
+```{r, echo = TRUE}
+# Task 6: Print a table
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE, results = 'asis'}
+# Task 6: Print a table
+
+chick.table <- data.frame(table(ChickWeight$Diet))
+names(chick.table) <- c("Diet", "Frequency")
+papaja::apa_table(chick.table, caption = "Number of chicks on each diet")
+```
+
+
+```{r, echo = TRUE}
+# Task 7: Count outliers
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 7: Count outliers
+
+# Logical vector of outliers
+outlier.log <- with(ChickWeight, 
+                      (weight > mean(weight) + 3 * sd(weight)) | 
+                      (weight < mean(weight) - 3 * sd(weight))) 
+
+# How many are there?
+outlier.sum <- sum(outlier.log)
+```
+
+To see if there were any outliers in the weight data, I counted how many chicks had weights greater than 3 standard deviations above the mean, or less than 3 standard deviations below the mean. Using this procedure, I counted `r outlier.sum` outliers.
+
+A scatterplot showing the relationship between time and weight is shown in the following figure
+
+
+```{r, echo = TRUE}
+# Task 8: Scatterplot with regression line.
+# INSERT CODE HERE
+```
+
+```{r ,fig.cap="Scatterplot of chicken weights over time.", echo = FALSE}
+# Task 8: Scatterplot with regression line.
+
+plot(x = ChickWeight$Time,
+     y = ChickWeight$weight,
+     xlab = "Time (in weeks)",
+     ylab = "Weight (in grams)")
+
+grid()
+
+mod <- lm(weight ~ Time, 
+          data = ChickWeight)
+
+abline(mod, col = "blue", lty = 2)
+```
+
+
+A histogram of the weight data are presented in the next figure
+
+```{r, echo = TRUE}
+# Task 9: Histogram
+# INSERT CODE HERE
+
+
+# Task 20: Custom Function: my.hist()
+# Insert code here
+```
+
+```{r, echo = FALSE, fig.cap = "Distribution of weights across all data points."}
+# Task 9: Histogram
+hist(ChickWeight$weight, 
+     main = paste0("Chicken Weights (mean = ", round(mean(ChickWeight$weight), 2), ")"), 
+     xlab = "Weight (in grams)",
+     col = "papayawhip")
+
+abline(v = mean(ChickWeight$weight))
+```
+
+Histograms separately for each diet are displayed in the next figure
+
+
+```{r, echo = TRUE}
+# Task 20: Loop
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE, fig.cap = "Histograms of the distribution of weights across time for each diet. Vertical lines are means."}
+par(mfrow = c(2, 2))
+
+for(Diet.i in 1:4) {
+  
+  hist(ChickWeight$weight[ChickWeight$Diet == Diet.i], 
+       main = paste("Diet =", Diet.i), xlim = c(0, 400), xlab = "weight")
+  
+  abline(v = mean(ChickWeight$weight[ChickWeight$Diet == Diet.i]), lty = 2)
+  
+}
+```
+
+
+
+A pirateplot showing the relationship between diet and weight is shown here:
+
+```{r, echo = TRUE}
+# Task 10: pirateplot
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE, fig.cap= "Pirateplot showing the distribution of chicken weights by diet. Horizontal lines show means while white boxes show Bayesian 95\\% highest density intervals."}
+# Task 10: pirateplot
+
+yarrr::pirateplot(weight ~ Diet,
+                  data = ChickWeight)
+```
+
+The mean weight of chicks on each diet is shown in the following table:
+
+
+```{r, echo = TRUE}
+# Task 11: Descriptive statistics across groups
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE, results = 'asis'}
+# Task 11: Descriptive statistics across groups
+
+diet.agg <- aggregate(weight ~ Diet, 
+                      data = ChickWeight, 
+                      FUN = mean)
+
+names(diet.agg) <- c("Diet", "Mean Weight")
+
+papaja::apa_table(diet.agg, 
+                  caption = "Mean weights of chickens on each diet")
+```
+
+
+
+```{r, echo = TRUE}
+# Task 12: 1 sample t-test
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 12: 1 sample t-test
+
+weight.ttest <- t.test(ChickWeight$weight, 
+                       mu = 100)
+
+# Print the result
+weight.ttest
+```
+
+A one sample t-test comparing the weights of chickens to a null hypothesis of 100 was significant `r papaja::apa_print(weight.ttest)$full_result`. The mean weight of chickens was significantly larger than 100 grams.
+
+
+```{r, echo = TRUE}
+# Task 13: t-test with subset
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 13: t-test with subset
+
+weight.subset.ttest <- t.test(weight ~ Diet,
+                              data = ChickWeight,
+                              subset = Diet %in% c(1, 2))
+
+# Print the result
+weight.subset.ttest
+```
+
+A two sample t-test comparing the weights of chickens between diets 1 and 2 was significant `r papaja::apa_print(weight.subset.ttest)$full_result`, the weights of chickens was significantly higher in diet 2 compared to diet 1.
+
+
+```{r, echo = TRUE}
+# Task 14: correlation test
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 14: correlation test
+
+weight.time.cortest <- cor.test(~ Time + weight,
+                              data = ChickWeight)
+
+# Print the result
+weight.time.cortest
+```
+
+
+A correlation test detecting a relationship between time and weight was significant `r papaja::apa_print(weight.time.cortest)$full_result`, as time increased, the weight of chickens increased.
+
+```{r, echo = TRUE}
+# Task 15: correlation test with subset
+# INSERT CODE HERE
+```
+
+
+```{r, echo = FALSE}
+# Task 15: correlation test with subset
+
+weight.time.diet2.cortest <- cor.test(~ Time + weight,
+                              data = ChickWeight,
+                              subset = Diet == 2)
+
+# Print the result
+weight.time.diet2.cortest
+```
+
+A correlation test detecting a relationship between time and weight only for chickens on diet 2 was significant `r papaja::apa_print(weight.time.diet2.cortest)$full_result`, as time increased, the weight of chickens on diet 2 increased.
+
+```{r, echo = TRUE}
+# Task 16: Chi-Square test
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 16: Chi-Square test
+
+diet.csqtest <- chisq.test(table(ChickWeight$Diet))
+
+# Print the result
+diet.csqtest
+```
+
+To see if there was a significant difference in the number of chickes on each diet. I performed a chi-square test. The test was significant `r papaja::apa_print(diet.csqtest, n = nrow(ChickWeight))$statistic`, indicating that chickens were not equally distributed amongst the diets.
+
+
+
+```{r, echo = TRUE}
+# Task 17: ONE-WAY ANOVA
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 17: ONE-WAY ANOVA
+
+diet.anova <- aov(weight ~ factor(Diet), 
+                  data = ChickWeight)
+
+# Print the result
+diet.anova
+summary(diet.anova)
+
+# Post hoc tests
+diet.tukey <- TukeyHSD(diet.anova)
+```
+
+To see if there was a significant difference in weights between diets, I performed a one-way ANOVA. The test was significant `r papaja::apa_print(diet.anova)$full_result$Diet`, indicating that there was a significant difference between diets. Post-hoc tests showed significant differences between Diets 1 and 3 (diff = 40.30, p < .01), and Diets 1 and 4 (diff = 32.62, p < .01).
+
+
+
+```{r, echo = TRUE}
+# Task 18: TWO-WAY ANOVA
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 18: TWO-WAY ANOVA
+
+diet.2anova <- aov(weight ~ factor(Diet) + factor(Time), 
+                  data = ChickWeight)
+
+# Print the result
+diet.2anova
+summary(diet.2anova)
+
+# Post hoc tests
+diet.2tukey <- TukeyHSD(diet.2anova)
+```
+
+To see if there was a significant difference in weights between diets and time points, I performed a two-way ANOVA. The effect of both diet `r papaja::apa_print(diet.2anova)$full_result$factorDiet` and time `r papaja::apa_print(diet.2anova)$full_result$factorTime` were significant. Post-hoc tests showed significant differences between all Diets except for 4 and 3 (diff = -7.69, p = 0.34). There were significant differences between almost all pairs of time periods. 
+
+
+```{r, echo = TRUE}
+# Task 19: REGRESSION
+# INSERT CODE HERE
+```
+
+```{r, echo = FALSE}
+# Task 19: REGRESSION
+
+weight.lm <- lm(weight ~ Time, 
+                  data = ChickWeight)
+
+# Print the result
+weight.lm
+summary(weight.lm)
+```
+
+To see if time was related to weight, I regressed weight on time. Results showed a significant positive effect of time `r papaja::apa_print(weight.lm)$full_result$Time`, `r papaja::apa_print(weight.lm)$full_result$modelfit$r2`
+
+
+# Conclusion
+
+The two most important results were that chickens gain weight over time, and Diet 3 lead to the highest weights while Diet 1 lead to the lowest weights.
+
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}

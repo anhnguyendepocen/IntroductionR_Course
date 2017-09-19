@@ -1,0 +1,13 @@
+---
+title: "5 Great R Questions"
+output: pdf_document
+---
+
+
+| Level| Problem | Question|
+|----|:---------------------------------|:--------------------------------|
+| 1 |     I don't understand the problem and I have absolutely no idea how to get started.|   **Can you please help explain what the problem is and what I am supposed to do??**     |
+|     2|    I understand the problem but I'm not sure what a solution would look like. | **Can you please help me get started?**     |
+|     3|    I understand the problem and I (think I) know a solution, but my code is not working the way I want it to. | **Can you please help me figure out what's wrong with my code?**     |
+|     4|    I understand the problem, and I have a solution that works, but I don't know *why* and *how* it works.|**Can you please explain how and why this code works?**     |
+|     5|    I understand the problem, I have a solution, and I know why it works, but I don't know if it is the best way to solve the problem.|  **Can you please help me figure out a better way to solve this problem?**     |

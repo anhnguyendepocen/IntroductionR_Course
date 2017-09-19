@@ -1,0 +1,575 @@
+---
+title: "WPA #5 -- Plotting"
+output:
+  prettydoc::html_pretty:
+    theme: lumen
+    highlight: github
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE)
+```
+
+
+## It's personal: : The effect of personal value on utilitarian moral judgments
+
+```{r, echo = FALSE, eval = TRUE}
+knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/millarscreen.png")
+```
+
+
+In this WPA, we will analyze data from Millar et al. (2016): It's personal: : The effect of personal value on utilitarian moral judgments. 
+
+Here is the abstract (You can find the full paper at http://journal.sjdm.org/16/16428/jdm16428.pdf):
+
+**We investigated whether the personal importance of objects influences utilitarian decision-making in which damaging property is necessary to produce an overall positive outcome. In Experiment 1, participants judged saving five objects by destroying a sixth object to be less acceptable when the action required destroying the sixth object directly (rather than as a side-effect) and the objects were personally important (rather than unimportant). In Experiment 2, we demonstrated that utilitarian judgments were not influenced by the objects’ monetary worth. Together these findings suggest that personal importance underlies people’s sensitivity to damaging property as a means for utilitarian gains.**
+
+# Data
+
+The original data are stored as csv viles at sjdm.org. However, the data needed some cleaning. The cleaned versions contain the original data, but with better labels and some minor corrections.
+
+### Study 1
+
+- Original: [http://journal.sjdm.org/16/16428/expt1.csv](http://journal.sjdm.org/16/16428/expt1.csv)
+- Cleaned [https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt](https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt)
+
+Variable | Description 
+------------  | ------------------------------------------------------- 
+acceptability             | How acceptable is the action? 
+important             | Were the objects important to the owner or not?
+direct             | Was the destruction of an object a means of saving the others or a side-effect?
+cover             | Was the object a poster or a clock?
+gender             | Participant gender
+age             | Participant Age
+storycomp             | Comprehension question 1
+itemcomp             | Comprehension question 2
+ownercomp             | Comprehension question 3 
+failed | Did participant fail an attention check?
+
+### Study 2
+
+- Original: [http://journal.sjdm.org/16/16428/expt2.csv](http://journal.sjdm.org/16/16428/expt2.csv)
+- Cleaned [https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt](https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt)
+
+Variable | Description 
+------------  | ------------------------------------------------------- 
+acceptability             | How acceptable is the action? 
+important             | Were the objects important to the owner or not?
+direct             | Was the destruction of an object a means of saving the others or a side-effect?
+expensive             | Was the object expensive or not?
+previoustrolley             | Did participants complete a trolley problem in the past?
+gender             | Participant gender
+age             | Participant Age
+topiccomp             | Comprehension question 1
+expensivecomp             | Comprehension question 2
+importancecomp             | Comprehension question 3 
+failed | Did participant fail an attention check?
+
+```{r eval = TRUE, echo = FALSE}
+library(yarrr)
+```
+
+0. For this assignment, you'll need both the `yarrr` package and the `dplyr` package. Install (if you don't have them already) and load the packages using the following code:
+
+```{r, eval = FALSE}
+# Install the dplyr and yarrr packages (if you don't have them already)
+install.packages("dplyr")
+install.packages("yarrr")
+
+# Load the libraries for the the assignment
+library("dplyr")
+library("yarrr")
+```
+
+1. Open your R project from last week (I recommended calling it `RCourse` or something similar). There should be at least two folders in this working directory: `data` and `R`.
+
+2. Open a new R script and save it as `wpa5.R` in the `R` folder in your project directory
+
+3. The data are stored in two separate .csv files. Study 1 is at https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt and Study 2 is at https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt. Load the data into R by using `read.table()` (or the `Import Dataset` button in RStudio) into new objects called `study1` and `study2`. Note: You can either read the tables directly from the web, or download the files to your computer, and then load them (Hint: Make sure to use the arguments `sep = "\t"` and `header = TRUE`)
+
+```{r, echo = FALSE, eval = TRUE}
+study1 <- read.table(file = "https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt", 
+                     sep = "\t",
+                     header = TRUE, 
+                     stringsAsFactors = FALSE)
+
+study2 <- read.table(file = "https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt", 
+                     sep = "\t",
+                     header = TRUE, 
+                     stringsAsFactors = FALSE)
+```
+
+4. Look at the structure of each data frame using `str()` and `head()` to make sure they were loaded correctly.
+
+## Histograms
+
+10. Create a histogram of the acceptability scores from study 1. Add appropriate labels and colors as you see fit!
+
+```{r eval = FALSE, echo = TRUE}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+hist(x = ZZZ
+     main = "ZZZ",
+     xlab = "ZZZ",
+     col = "ZZZ")
+```
+
+
+```{r eval = FALSE, echo = FALSE}
+hist(study1$acceptability,
+     main = "Study 1 (Millar et al., 2016)",
+     xlab = "Acceptability Score")
+```
+
+11. Now do the same for study 2. And for this plot, add a vertical line at the mean of the distribution with `abline()` (or `segments()`)
+
+```{r eval = FALSE, echo = TRUE}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+
+hist(x = ZZZ
+     main = "ZZZ",
+     xlab = "ZZZ",
+     col = "ZZZ")
+
+# Add vertical line at mean of the distribution
+abline(v = ZZZ,
+       lty = 2)
+```
+
+```{r eval = FALSE, echo = FALSE}
+hist(study2$acceptability,
+     main = "Study 2 (Millar et al., 2016)",
+     xlab = "Acceptability Score")
+```
+
+## Scatterplots
+
+12. Create a scatterplot showing the relationship between age and acceptability score in study 1. Add appropriate labels!
+
+
+```{r, echo = FALSE, eval = FALSE}
+plot(x = study1$age,
+     y = study1$acceptability,
+     xlab = "Age",
+     ylab = "Acceptability Score",
+     main = "Study 1 (Millar et al. 2016)")
+```
+
+
+```{r, echo = TRUE, eval = FALSE}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+
+plot(x = ZZZ,
+     y = ZZZ,
+     xlab = "ZZZ",
+     ylab = "ZZZ",
+     main = "ZZZ")
+```
+
+13. Now, make the plot look a bit nicer! Try changing the point types (e.g.; `pch = 16`), point colors (e.g.; `col = gray(.0, .2)`, or `col = transparent("blue", .5)`)
+
+```{r, echo = FALSE, eval = FALSE}
+plot(x = study1$age,
+     y = study1$acceptability,
+     xlab = "Age",
+     ylab = "Acceptability Score",
+     main = "Study 1 (Millar et al. 2016)",
+     pch = 16,
+     col = gray(0, .2))
+```
+
+14. Now add grid lines with `grid()` (Hint: Just evaluate `grid()` after your plot!)
+
+```{r, echo = FALSE, eval = FALSE}
+plot(x = study1$age,
+     y = study1$acceptability,
+     xlab = "Age",
+     ylab = "Acceptability Score",
+     main = "Study 1 (Millar et al. 2016)",
+     pch = 16,
+     col = gray(0, .2))
+
+grid()
+```
+
+15. Now let's add a regression line to the plot. Adding a regression line is easy. First, create a linear model object created with `lm()`. Then add the model to the plot with `abline()`:
+
+```{r, eval = FALSE, echo = TRUE}
+# JUST COPY, PASTE, AND RUN!
+
+# Create a regression model
+model <- lm(acceptability ~ age, 
+            data = study1)
+
+# Add the model to the plot!
+abline(model,
+       lwd = 2, 
+       col = "red")
+```
+
+
+```{r, echo = FALSE, eval = FALSE}
+plot(x = study1$age,
+     y = study1$acceptability,
+     xlab = "Age",
+     ylab = "Acceptability Score",
+     main = "Study 1 (Millar et al. 2016)",
+     pch = 16,
+     col = gray(0, .2))
+
+grid()
+
+abline(lm(acceptability ~ age, data = study1), lwd = 2, col = "red")
+```
+
+16. Now create the same scatterplot for the study 2 data. Be sure to include the gridlines and regression line
+
+```{r, echo = FALSE, eval = FALSE}
+plot(x = study2$age,
+     y = study2$acceptability,
+     xlab = "Age",
+     ylab = "Acceptability Score",
+     main = "Study 2 (Millar et al. 2016)",
+     pch = 16,
+     col = gray(0, .2))
+
+grid()
+
+abline(lm(acceptability ~ age, data = study2), lwd = 2, col = "red")
+```
+
+## Barplot
+
+The authors present the following barplot on page 328, let's try to represent the same data with a barplot in R:
+<img src="https://dl.dropboxusercontent.com/u/7618380/millarss.png" height="600" />
+
+17. In order to create a stacked barplot with the `barplot()` function, we first need to create a matrix of values. Run the following code to calculate a matrix of mean acceptability scores as a function of Important and Direct with `aggregate()` and `cbind()`:
+
+```{r eval = FALSE, echo = TRUE}
+# JUST COPY, PASTE, AND RUN!
+
+# Create a matrix of group means
+s1.as.means <- aggregate(acceptability ~ important + direct,
+                      FUN = mean, 
+                      data = study1)
+
+s1.as.means.mtx <- cbind(s1.as.means[1:2, 3], s1.as.means[3:4, 3])
+colnames(s1.as.means.mtx) <- c("Means", "Side Effect")
+rownames(s1.as.means.mtx) <- c("Important", "Unimportant")
+```
+
+18. Now create a barplot from the study 1 data by entering the correct arguments in the following code
+
+```{r echo = TRUE, eval = FALSE}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+
+barplot(height = s1.as.means.mtx,
+        beside = TRUE, 
+        legend.text = TRUE, 
+        ylim = c(ZZZ, ZZZ),
+        ylab = "ZZZ")
+```
+
+
+```{r echo = FALSE, eval = FALSE}
+barplot(height = s1.as.means.mtx, 
+        beside = TRUE, 
+        legend.text = TRUE, 
+        ylim = c(0, 9),
+        ylab = "Acceptability")
+```
+
+19. Now, repeat the process to get the same plot from study 2:
+
+
+<!-- Extra! I just realized that you can make a clustered barplot in fewer steps using `tapply()`. `tapply()` is like `aggregate()`, but its output is easier to use with `barplot()`. Here's how it works: -->
+
+<!-- ```{r} -->
+<!-- s1.as.means <- with(study1, tapply(X = acceptability, -->
+<!--                                    INDEX = list(Important, Direct), -->
+<!--                                    FUN = mean, -->
+<!--                                    na.rm = TRUE)) -->
+
+<!-- # As you can see, the output is  -->
+<!-- s1.as.means -->
+
+<!-- barplot(height = s1.as.means, -->
+<!--         beside = TRUE, -->
+<!--         legend.text = TRUE) -->
+<!-- ``` -->
+
+
+
+## pirateplot
+
+20. Now create a pirateplot of the same data from study 1 (see the help menu by running `?pirateplot`). Add appropriate labels and feel free to use your favorite theme (1, 2, or 3), and palette from the `piratepal()` function like `"evildead"` or `"pony"`! (run `piratepal("all")` to see all of the palettes!
+
+```{r echo = TRUE, eval = FALSE}
+pirateplot(formula = ZZZ ~ ZZZ,
+           data = ZZZ,
+           pal = ZZZ,
+           theme = ZZZ)
+```
+
+
+```{r echo = FALSE}
+pirateplot(formula = acceptability ~ important + direct, 
+           data = study1)
+```
+
+21. Now do the same from study 2. Again, add appropriate labels and feel free to use your favorite palette or theme.
+
+```{r echo = FALSE}
+pirateplot(formula = acceptability ~ important + direct, 
+           data = study2)
+```
+
+
+21b. Turn your pirateplot from question 21 into a boring barplot by setting `theme = 4, point.o = 0`
+
+```{r, echo = FALSE, eval = FALSE}
+pirateplot(formula = acceptability ~ important + direct, 
+           theme = 4, 
+           point.o = 0,
+           data = study2)
+```
+
+
+# CHECKPOINT!
+*If you got this far you're doing great!*
+
+
+## 2 variable histogram
+
+22. Create the following overlapping histogram showing the distribution of acceptability scores between the two studies:
+
+```{r echo = TRUE, eval = FALSE}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+
+# study1 acceptability scores
+hist(x = ZZZ, 
+     col = transparent("blue", .5),
+     border = "white", 
+     xlab = "ZZZ", 
+     main = "ZZZ")
+
+# study2 acceptability scores
+hist(x = ZZZ, 
+     col = transparent("red", .5),
+     border = "white", 
+     add = TRUE)
+
+legend(x = 1,
+       y = 100, 
+       legend = c("ZZZ", "ZZZ"), 
+       col = c("blue", "red"), 
+       pch = c(15, 15), 
+       bty = "n")
+
+```
+
+
+```{r eval = TRUE, echo = FALSE}
+hist(study1$acceptability, 
+     col = transparent("red", .5),
+     border = "white", 
+     xlab = "Acceptability Score", 
+     main = "Acceptability Score by Study",
+     probability = FALSE)
+
+
+hist(study2$acceptability, 
+     col = transparent("blue", .5),
+     border = "white", add = TRUE, probability = FALSE)
+
+legend(x = 1, y = 100, 
+       legend = c("Study1", "Study2"), 
+       col = c("red", "blue"), 
+       pch = c(15, 15), bty = "n")
+
+```
+
+
+## Scatterplot with reference lines
+
+23. Add a new column to `study2$income` that shows income as a function of Age as follows:
+
+```{r eval = T, echo = T}
+# JUST COPY, PASTE, AND RUN!
+
+# Add a new column to study 1 called Income
+study1$income <- study1$age + rnorm(n = nrow(study1), mean = 10, sd = 15)
+
+# Add a new column to study 1 called Income
+study2$income <- 40 + rnorm(n = nrow(study2), mean = 10, sd = 15)
+```
+
+24. Now, create the following scatterplot using the following template:
+
+```{r echo = F, eval = T}
+#  Create a blank plot with labels
+plot(x = 1, 
+     y = 1,
+     xlim = c(18, 80),
+     ylim = c(0, 100),
+     xlab = "Age", 
+     ylab = "Income",
+     main = "Age and Income",
+     type = "n")
+
+points(x = study1$age, 
+       y = study1$income, 
+       pch = 16, 
+       col = transparent("red", .8))
+
+abline(lm(income ~ age, data = study1), 
+       col = "red", lty = 2, lwd = 2)
+
+points(x = study2$age, 
+       study2$income, 
+       pch = 16, 
+       col = transparent("blue", .8))
+
+abline(lm(income ~ age, data = study2), 
+       col = "blue", lty = 2, lwd = 2)
+
+legend(x = 70,
+       y = 40,
+       legend = c("Study 1", "Study 2"), 
+       pch = 16, 
+       col = c("red", "blue"),
+       bty = "n")
+
+grid()
+```
+
+
+```{r echo = T, eval = F}
+# FIX THE CODE BY REPLACING ZZZ WITH THE CORRECT ARGUMENTS
+
+
+#  Create a blank plot with labels
+plot(x = 1, 
+     y = 1,
+     xlim = c(ZZZ, ZZZ),
+     ylim = c(ZZZ, ZZZ),
+     xlab = "ZZZ", 
+     ylab = "ZZZ",
+     main = "ZZZ",
+     type = "n")
+
+# Add points for study1
+points(x = ZZZ, 
+       y = ZZZ, 
+       pch = 16, 
+       col = transparent("red", .8))
+
+# Add regression line for study 1
+abline(lm(income ~ age, data = study1), 
+       col = "red", lty = 2, lwd = 2)
+
+# Add points for study2
+points(x = ZZZ, 
+       y = zzz, 
+       pch = 16, 
+       col = transparent("blue", .8))
+
+# Add regression line for study2
+abline(lm(income ~ age, data = study2), 
+       col = "blue", lty = 2, lwd = 2)
+
+# Add legend
+
+legend(x = 70,
+       y = 40,
+       legend = c("ZZZ", "ZZZ"), 
+       pch = 16, 
+       col = c("blue", "red"),
+       bty = "n")
+
+grid()
+```
+
+
+## Balloon plots
+
+24. You can have a lot of fun with plots. Let’s make a new type of plot called a balloon plot. A balloon plot will be a customized scatterplot where points are shown as balloons. In the code below, I'll create a new custom function (we'll get to this later in the course) called `balloonplot()`. Look at the code to see how it generally works. Then, copy, paste, and run the code in your script.
+
+```{r eval = FALSE, echo = TRUE}
+# JUST COPY, PASTE, AND RUN!
+
+# Create balloonplot(), a wrapper function for plot() that turns points into balloons!
+
+balloonplot <- function(
+                  x, y,    # x and y vectors
+                  cex = 1, # point sizes
+                  col = piratepal("basel"), # color 
+                  ... # Other arguments passed to plot()
+                  ) {
+  
+# Set up the plotting space
+plot(1, 
+     bty = "n",
+     xlim = c(min(x), max(x)),
+     ylim = c(min(y), max(y)),
+     type = "n",
+     ...
+)
+
+# Add Strings with segments()
+segments(x0 = x + rnorm(length(x), mean = 0, sd = .3), 
+         y0 = y - cex * diff(range(y)) / 25, 
+         x1 = x, 
+         y1 = y, 
+         col = gray(.5, .5),
+         lwd = cex / 4
+         )
+
+# Add balloons
+points(x, 
+       y, 
+       cex = cex, # Size of the balloons
+       pch = 21, 
+       col = "white", # white border
+       bg = col)
+
+# Add gridlines
+grid()
+}
+```
+
+25. Now let's try our new `balloonplot()` function on some data! Run the following to create a balloon plot of the relationship between pirate's height and weight:
+
+```{r echo = TRUE, eval = FALSE}
+# JUST COPY, PASTE, AND RUN!
+
+balloonplot(x = pirates$height, 
+             y = pirates$weight, 
+             cex = 1.5,
+             col = piratepal("xmen", .3),
+             xlab = "Height", 
+             ylab = "Weight", 
+             main = "Balloon plot of pirate data")
+```
+
+26. Now, create a balloon plot of the age and income data from study 1! Play around with `col` and the `cex` arguments to see how the plot changes. 
+
+## You pick the plot
+
+For the following exercises, make a plot that you think represents the data bast.
+
+The `movies` dataframe in the `yarrr` package contains data about the top 5000 grossing movies of all time. You can learn more about the data using the help menu `?movies`
+
+27. Create a plot that shows the relationship between a movie's release year and its running time. Customise it and make it look nice!
+
+28. Create a plot that shows the relationship between a movie's budget and its revenue. Customise it and make it look nice!
+
+29. Create a plot that shows the relationship between `genre` and `time`. Customise it and make it look nice! (Hint: You may notice that many of the times are equal to 0, try creating the plot after excluding these values using `subset`.)
+
+
+
+## Submit!
+
+Save and email your `wpa_4_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/UblvQ6dvA76veEWu1](https://goo.gl/forms/UblvQ6dvA76veEWu1) to complete the WPA submission form.
+

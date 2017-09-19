@@ -1,0 +1,197 @@
+---
+title: "Basics of R Markdown"
+author: "Nathaniel Phillips"
+output: html_document
+---
+
+This template will show you the basics of an R Markdown document. R Markdown is a simple markup language that allows you to easily construct all kinds of documents, from reports, to web pages, to APA style documents. R Markdown documents have the .Rmd suffix. The Markdown file that generated this webpage is available at You can create a new R Markdown document in RStudio by clicking File -- New File -- R Markdown...
+
+# What is Markdown?
+
+Markdown is a combination of regular text (like this), combined with *tags* that change the way the text is formatted. For example, to make text *italic* you surround it with one asterix. To make text **bold**, you surround it with two asterices. To create section headings, you use hashtags \#.
+
+# Font formats: Italic, bold, and headers
+
+To make headers in Markdown, use the \# pound symbol at the beginning of a line
+
+To make text *italic*, use a single * before and after the text.
+
+To make text **bold**, use a double ** before and after the text.
+
+# This is a 1st header
+
+## This is a 2nd header
+
+### This is a 3rd level header
+
+# Bullets
+
+To make a numbered bullet list, just use numbers
+
+1. First element
+
+2. Second element
+
+3. Third element
+
+To make a non-numbered bullet list, use dashes
+
+- First element
+
+- Second element
+
+- Third element
+
+# R Code Chunks
+
+
+# Markdown text vs. R Code
+
+Markdown separates regular text from R code. Unless you use a *code chunk*, Markdown will treat all your text as regular text. For example, when I write the following lines:
+
+1 + 1
+hist(ChickWeight$weight)
+
+Markdown just thinks that I'm writing text, not R code.
+
+To evaluate R code in a Markdown document, you need to put the R code in a *code chunk*. Here's how a code chunklooks
+
+```{r}
+# This is a code chunk. Everything here will be interpreted as R code
+#  R will evalaluate the code in this chunk and print the result
+
+1 + 1
+```
+
+As you can see, code chunks in RStudio are highlighed with a gray background. Everything you put in this chunk will be evaluated by R Markdown as R code when you *Knit* the document.
+
+You can insert a new code chunk in one of three ways
+
+1. Use the Command-Alt-I shortcut on Mac.
+
+2. Click the "insert new code chunk" button on the top right hand of this panel. It looks like a green square with an arrow.
+
+## R Code Chunk options
+
+You can add arguments at the start of code chunks to change the code is evaluated and presented. Here are the most common:
+
+### echo = FALSE
+
+By default, Markdown will repeat (aka, echo) your R code in your final output. However, if you don't wnat it to do this, add the echo = F argument.
+
+In the following code, I will write some comments and calculate the mean weight of chickens in the ChickWeight dataset. Because I include the echo = F argument at the top of the chunk, the chunk will only print the result in the final output, not the original R code:
+
+```{r, echo = F}
+# R will not repeat this code in the output because I wrote echo = F.
+#  It will only print the result of the code
+
+# What is the mean weight of chickens?
+
+mean(ChickWeight$weight)
+```
+
+If I do not include the echo = F argument, R will print the original code AND the result
+
+```{r}
+# Now R will copy the code and give the result because I did not include echo = F
+
+# What is the mean weight of chickens?
+
+mean(ChickWeight$weight)
+```
+
+### eval = FALSE
+
+If you include the eval = FALSE argument, R will NOT evaluate code in a chunk.
+
+```{r, eval = FALSE}
+# Because I included eval = FALSE at the beginning of this chunk, R will NOT evaluate the code
+#  However, because I did not include echo = F, it will still copy the code
+
+1 + 1
+sd(ChickWeight$weight)
+```
+
+If I include BOTH echo = FALSE, and eval = FALSE, R will neither copy nor evaluate the code:
+
+```{r, eval = F, echo = F}
+# This chunk won't show up in the final document at all
+3 + 58
+```
+
+## fig.width, fig.height 
+
+If you generate a plot in a chunk, you can change its size with fig.width and fig.height
+
+The following chunk will print a small figure as I set fig.width = 2 and fig.height = 2
+
+```{r, fig.width = 2, fig.height = 2}
+hist(ChickWeight$weight)
+```
+
+The following chunk will print a large figure as I set fig.width = 7, fig.height = 7
+
+```{r, fig.width = 7, fig.height = 7}
+hist(ChickWeight$weight)
+```
+
+
+# Minichunks
+
+In addition to creating regular code chunks, you can create 'mini-chunks' that go directly into your text. You will create minichunks by using tildes like this one: `
+
+A mini-chunk looks like this `r 1+1` (in the final document, you'll only see the result of the minichunk):
+
+For example, I can write: "The mean weight of chickens was `r round(mean(ChickWeight$weight), 0)`." When the document is created, R will replace the r code in the mini-chunk with the result of the R command.
+
+You can refer to objects you create in regular chunks in minichunks. For example, I'll create a chunk that defines several objects (specifically diet.1.mean, diet.4.mean, etc.) which calculate descriptive statistics of Chickens on different diets from the ChickWeight dataframe:
+
+```{r}
+diet.1.mean <- round(mean(ChickWeight$weight[ChickWeight$Diet == 1]), 2)
+diet.4.mean <- round(mean(ChickWeight$weight[ChickWeight$Diet == 4]), 2)
+
+diet.1.sd <- round(sd(ChickWeight$weight[ChickWeight$Diet == 1]), 2)
+diet.4.sd <- round(sd(ChickWeight$weight[ChickWeight$Diet == 4]), 2)
+```
+
+Now that the objects are defined, I can use them in a mini-chunk:
+
+
+- I measured the weight of several chickens on different dients. The chickens in diet 1 had a mean weight of `r diet.1.mean` (standard deviation = `r diet.1.sd`). In contrast, chickens on diet 4 had a mean weight of `r diet.4.mean` (standard deviation = `r diet.4.sd`).
+
+# Knitting a document
+
+To create an HTML (or Word or Latex) document from RMarkdown, you need to *Knit* the document. Knitting a document simply means taking all the text and code and creating a nicely formatted document. 
+
+To Knit a document (html, word, or latex) from your markdown file, do one of the following
+
+1. Mac: Command-Shift-K shortcut
+
+2. Click the "Knit" button at the top of this window. It will have a picture of a ball of yarn.
+
+## Loading libraries
+
+If you use a package in your code, you *must* explicitly load the package in your Markdown document using library() before using the package. If you don't, Markdown won't know which packages you're using and the code won't work.
+
+```{r}
+# ALWAYS load packages explicitly at the beginning of any markdown document
+
+library("yarrr")
+```
+
+
+## Warning! If your R code has ANY errors, the document will not knit!
+
+-If your R code (in any standard chunks or mini-chunks) contains R errors, the document will not knit! 
+
+For example, the following chunk has a syntax error. If I tried to knit this document with eval = T, I would get an error
+
+```{r, eval = F}
+# This text is commented, it is fine
+
+This text is NOT commented, R thinks it is R code and will freak out if I try to knit the document.
+Thanksfully, I included the eval = F argument for this chunk, so R will just ignore it.
+```
+
+If your document does not knit, you need to go through your code chunk by chunk and find the error!
+

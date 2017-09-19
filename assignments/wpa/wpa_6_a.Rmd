@@ -1,0 +1,457 @@
+---
+title: "WPA #6 -- YaRrr! Chapter 11"
+output:
+  prettydoc::html_pretty:
+    theme: lumen
+    highlight: github
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE)
+```
+
+# Hypothesis tests from a student survey
+
+```{r, echo = F, eval = F}
+
+set.seed(100)
+# Study 1
+N <- 100
+
+df <- data.frame(sex = sample(c("m", "f"), size = N, replace = TRUE),
+                 age = round(rnorm(N, mean = 23, sd = 2), 0),
+                 major = sample(c("psychology", "economics", "biology", "chemistry"), 
+                                size = N, replace = TRUE, 
+                                prob = c(.7, .2, .05, .05)),
+                 haircolor = sample(c("brown", "black", "red", "blonde"), size = N, replace = TRUE, prob = c(.4, .2, .05, .35)),
+                 iq = round(rnorm(N, mean = 110, sd = 5), 0),
+                 country = sample(c("switzerland", "germany", "austria", "italy"), size = N, replace = TRUE, prob = c(.6, .3, .05, .05)),
+                 logic = round(rnorm(N, mean = 10, sd = 2), 2),
+                 stringsAsFactors = FALSE
+                 )
+
+# siblings
+#  ~ major
+
+df$siblings[df$major == "psychology"] <- round(rnorm(sum(df$major == "psychology"), 
+                                                      mean = 2.5, 
+                                                      sd = 1), 0)
+
+df$siblings[df$major != "psychology"] <- round(rnorm(sum(df$major != "psychology"), 
+                                                      mean = 1.5, 
+                                                      sd = 1), 0)
+
+df$siblings[df$siblings < 0] <- 0
+
+# multitasking
+# ~ haircolor
+
+df$multitasking <- NA
+df$multitasking[df$haircolor == "blonde"] <- rnorm(n = sum(df$haircolor == "blonde"),
+                                                   mean = 50, sd = 10)
+
+df$multitasking[df$haircolor != "blonde"] <- rnorm(n = sum(df$haircolor != "blonde"),
+                                                   mean = 45, sd = 10)
+
+df$multitasking <- round(df$multitasking, 0)
+
+# Parterns
+#  ~ major
+df$partners <- NA
+df$partners <- df$age + df$iq / 5 + rnorm(N, mean = -38, sd = 2)
+
+df$partners[df$major == "chemistry"] <- df$partners[df$major == "chemistry"] + 1
+df$partners[df$major == "economics"] <- df$partners[df$major == "economics"] - .5
+
+df$partners <- round(df$partners, 0)
+df$partners[df$partners < 0] <- 0
+
+
+
+# marijuana
+# ~ major
+
+df$marijuana <- NA
+df$marijuana[df$major %in% c("biology", "chemistry")] <- sample(c(0, 1), size = sum(df$major %in% c("biology", "chemistry")), prob = c(.2, .8), replace = TRUE)
+df$marijuana[df$major %in% c("psychology", "economics")] <- sample(c(0, 1), size = sum(df$major %in% c("psychology", "economics")), prob = c(.5, .5), replace = TRUE)
+
+
+# risk
+#  ~ age + iq
+
+risk.prob <- 1 / (1 + exp(-(df$iq / 10 + df$age / 10 - 12)))
+
+df$risk <- sapply(1:nrow(df), FUN = function(x) {sample(c(0, 1), 1, replace = TRUE, prob = c(risk.prob[x], 1 - risk.prob[x]))})
+df$risk <- round(df$risk, 1)
+
+
+write.table(df, file = "/Users/nphillips/Dropbox/Public/wpa6.txt", sep = "\t", row.names = FALSE)
+
+```
+
+In this WPA, you'll analyze data from a *fictional* survey of 100 students. In fact, you can even see the code I used to generate the data here ([code to generate wpa6 data](https://dl.dropboxusercontent.com/u/7618380/wpa6_datagen.R)). 
+
+The data are located in a tab-delimited text file at http://nathanieldphillips.com/wp-content/uploads/2016/11/wpa6.txt
+
+
+## Datafile description
+
+The data file has 100 rows and 12 columns. Here are the columns
+
+- `sex`: string. A string indicting the sex of the participant. "m" = male, "f" = female.
+
+- `age`: integer.  An integer indicating the age of the participant.
+
+- `major`: string. A string indicating the participant's major
+
+- `haircolor`: string. Hair color
+
+- `iq`: integer. P's score on an IQ test.
+
+- `country`: string. P's country of origin
+
+- `logic`: numeric. Amount of time it took for a participant to complete a logic problem. Smaller is better.
+
+- `siblings`: integer. How many siblings does the P have?
+
+- `multitasking`: integer. Participant's score on a multitasking task. Higher is better.
+
+- `partners`: integer. How many sexual partners has the participant had?
+
+- `marijuana`: binary. Has the participant ever tried marijuana? 0 = "no", 1 = "yes"
+
+- `risk`: binary. Would the person play a gamble with a 50\% chance of losing 20CHF and a 50% chance of earning 20CHF? 0 means the participant would *not* play the gamble, 1 means they would
+
+
+# Data loading and preparation
+
+1. Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_6_LASTFIRST.R`, where LAST and FIRST are your last and first names. 
+
+2. The data are stored in a tab--delimited text file located at http://nathanieldphillips.com/wp-content/uploads/2016/11/wpa6.txt. Using `read.table()` load this data into R as a new object called `wpa6.df` as follows.
+
+```{r eval = TRUE, echo = TRUE}
+# Read data into a new object called wpa6.df
+wpa6.df <- read.table(file = "http://nathanieldphillips.com/wp-content/uploads/2016/11/wpa6.txt",
+                      header = TRUE,         # There is a header row
+                      sep = "\t")            # Data are tab-delimited
+```
+
+3. Using `write.table()`, write the data as a text file titled `wpa6.txt` into the data folder in your project working directory as follows.
+
+```{r eval = FALSE, echo = TRUE}
+# Write wpa6.df to a tab-delimited text file in my data folder.
+write.table(wpa6.df,                        # Object to be written
+            file = "data/wpa6.txt",         # Put file wpa6.txt in the data folder of my working directory
+            sep = "\t")                     # Make data tab-delimited
+```
+
+4. Using `head()`, `str()`, and `View()` look at the dataset and make sure that it was loaded correctly. If the data don't look correct (i.e; if there isn't a header row and 100 rows and 12 columns), you didn't load it correctly! 
+
+
+**Please write your answers to all hypothesis test questions in proper American Pirate Association (APA) style! If your p-value is less than .01, just write p < .01**
+
+**Chi-square: X(df) = XXX, p = YYY**
+
+**t-test: t(df) = XXX, p = YYY**
+
+**correlation test: r = XXX, t(df) = YYY, p = ZZZZ**
+
+For example, here is some output with the appropriate apa conclusion:
+
+```{r eval = TRUE, echo = TRUE}
+library(yarrr)
+
+# Do pirates with headbands have different numbers of tattoos than those
+#  who do not wear headbands?
+t.test(tattoos ~ headband, 
+       data = pirates)
+```
+
+*Answer: Pirates with headbands have significantly more tattoos on average than those who do not wear headbands: t(146.73) = -19.31, p < .01*
+
+# t-test(s)
+
+5. Average IQ in the general population is 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.
+
+```{r}
+t.test(x = wpa6.df$iq,
+       mu = 100)
+```
+
+*Answer: Yes, the participants have significantly higher IQ than the general population t(99) = 20.847, p < .01*
+
+
+6. A friend of your's claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
+
+```{r}
+t.test(x = wpa6.df$siblings,
+       mu = 2.5)
+```
+
+*Answer: The data do not reject the person's claims -- that is, the mean number of siblings students have is not significantly different from 2.5: t(99) = -0.91, p = 0.36*
+
+
+7. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
+
+```{r}
+t.test(iq ~ marijuana, 
+       data = wpa6.df)
+```
+
+*Answer: We do not have evidence to show that iq changes as a function of marijuana use: t(96) = -0.72, p = 0.47*
+
+# Correlation test(s)
+
+8. Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:
+
+```{r}
+cor.test(formula = ~ multitasking + partners,
+         data = wpa6.df,
+         alternative = "greater")
+```
+
+*Answer: We do not have evidence that people with higher multitasking skills tend to have more romantic partners than those with lower skills: t(98) = -0.79, p = 0.79*
+
+9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
+
+```{r}
+cor.test(formula = ~ iq + logic,
+         data = wpa6.df,
+         alternative = "less")
+```
+
+*Answer: We do not have evidence that people with higher IQs perform faster on the logic test: t(98) = 1.21, p = 0.88*
+
+# chi-square test(s)
+
+9. Are some majors more popular than others? Answer this question with a one-sample chi-square test.
+
+```{r}
+chisq.test(table(wpa6.df$major))
+```
+
+*Answer: We do find significant evidence that some majors are more popular than others: X2(3) = 130.96, p < .01*
+
+10. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
+
+```{r}
+chisq.test(table(wpa6.df$risk))
+
+# But look at the direction!!!
+table(wpa6.df$risk)
+```
+
+*Answer: No! We do find significant evidence that people are more likely to take a risk than not, in fact, we find evidence that they are significantly less likely to take a risk than not : X2(1) = 17.64, p < .01*
+
+
+11. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
+
+```{r}
+chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
+```
+
+*Answer: We do not find significant evidence for a relationship between hair color and major: X2(9) = 5.92, p = 0.74*
+
+## CHECKPOINT!
+
+# Anscombe's Famous data quartet
+
+In the next few questions, we'll explore Anscombe's famous data quartet. This famous dataset will show you the dangers of interpreting statistical tests (like a correlation test), without first plotting the data!
+
+12. Run the following code to create the `anscombe.df` dataframe. This dataframe contains 4 datasets x1 and y1, x2 and y2, x3 and y3 and x4 and y4:
+
+```{r echo = TRUE}
+# JUST COPY, PASTE, AND RUN!
+
+anscombe.df <- data.frame(x1 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
+                          y1 = c(8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 4.68),
+                          x2 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
+                          y2 = c(9.14, 8.14, 8.74, 8.77, 9.26, 8.1, 6.13, 3.1, 9.13, 7.26, 4.74),
+                          x3 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
+                          y3 = c(7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73),
+                          x4 = c(8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8),
+                          y4 = c(6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.5, 5.56, 7.91, 6.89))
+```
+
+13. Calculate the correlation between x1 and y1, x2 and y2, x3 and y3, and x4 and y4 separately (that is, what is the correlation between x1 and y? Now, what is the correlation between x2 and y2?, ...). What do you notice about the correlation values for each test?
+
+```{r}
+cor.test(~x1 + y1, data = anscombe.df)
+
+cor.test(~x2 + y2, data = anscombe.df)
+
+cor.test(~x3 + y3, data = anscombe.df)
+
+cor.test(~x4 + y4, data = anscombe.df)
+```
+
+*Answer: The correlation are all almost the same!*
+
+14. Now run the following code to generate a scatterplot of each data pair, what do you find?
+
+```{r eval = TRUE, echo = TRUE}
+# JUST COPY, PASTE, AND RUN!
+
+# Plot the famous Anscombe quartet
+par(mfrow = c(2, 2)) # Create 2 x 2 plotting grid
+
+for (i in 1:4) {   # Loop over datasets
+ 
+  # Assign x and y for current value of i
+  
+  if (i == 1) {x <- anscombe.df$x1
+               y <- anscombe.df$y1} 
+  
+  if (i == 2) {x <- anscombe.df$x2
+               y <- anscombe.df$y2} 
+  
+  if (i == 3) {x <- anscombe.df$x3
+               y <- anscombe.df$y3} 
+  
+  if (i == 4) {x <- anscombe.df$x4
+               y <- anscombe.df$y4} 
+
+  # Create plot
+plot(x = x, y = y, pch = 21, main = "Anscombe 1", 
+     bg = "orange", col = "red", 
+     xlim = c(0, 20), ylim = c(0, 15))
+
+ # Add regression line
+abline(lm(y ~ x, 
+          data = data.frame(y, x)),
+       col = "blue", lty = 2)
+
+# Add correlation test text
+text(x = 3, y = 12, 
+     labels = paste0("cor = ", round(cor(x, y), 2)))
+  
+}
+
+par(mfrow = c(1, 1)) # Reset plotting grid
+```
+
+What you have just seen is the famous **Anscombe's quartet** a dataset designed to show you how important is to *always* plot your data before running a statistical test!!! You can see more at the wikipedia page here: https://en.wikipedia.org/wiki/Anscombe%27s_quartet
+
+
+# You pick the test!
+
+15. Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?
+
+```{r}
+chisq.test(table(wpa6.df$marijuana, wpa6.df$risk))
+```
+
+*Answer: We do not find significant evidence that marijuana is related to selecting the risky gamble: X2(1) = 0.57, p = 0.45*
+
+16. Do males and females have different numbers of sexual partners on average?
+
+```{r}
+t.test(partners ~ sex, 
+       data = wpa6.df)
+```
+
+*Answer: We do not find signifciant evidence that males and females have a different number of sexual partners on average: t(93.77) = 0.92, p = 0.36*
+
+17. Do males and females differ in how likely they are to have smoked marijuana?
+
+```{r}
+chisq.test(table(wpa6.df$marijuana, wpa6.df$sex))
+```
+
+*Answer: We do not find signifcant evidence that males and females differ in how likely they are to have smoked marijuana: X2(1) = 0.16, p = 0.69*
+
+18. Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?
+
+```{r}
+t.test(logic ~ marijuana, data = wpa6.df)
+```
+
+*Answer: We do not find significant evidence that those who have smoked marijuana have different logic scores on average than those who have not smoked marijuana: t(90.88) = 0.96, p = 0.34*
+
+
+19. Do people with higher iq scores tend to perform better on the logic test than those with lower iq scores?
+
+```{r}
+cor.test(~ iq + logic, 
+         data = wpa6.df,
+         alternative = "less")
+```
+
+*Answer: We do not find significant evidence that people with higher iq scores tend to perform better on the logic test than those with lower iq scores: t(98) = 1.21, p = 0.88.*
+
+
+# More complicated tests
+
+20. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
+
+```{r}
+mar.ger <- wpa6.df$marijuana[wpa6.df$country == "germany"]
+chisq.test(mar.ger)
+
+# Look at the frequencies
+table(mar.ger)
+```
+
+*Answer: We do not find evidence that German students were more likely than not to have tried marijuana: X2(28) = 15, p = 0.98*
+
+21. Does the relationship between iq and multitasking differ between males and females? Test this by conducting two separate tests -- one for males and one for females. Do your conclusions differ?
+
+```{r}
+# For males
+
+cor.test(formula = ~ iq + multitasking,
+         data = subset(wpa6.df, sex == "m"))
+
+# For females
+
+cor.test(formula = ~ iq + multitasking,
+         data = subset(wpa6.df, sex == "f"))
+```
+
+*Answer: While the raw correlations are different, we do not find a significant correlation between iq and multitasking for either males or females: t(48) = -1.45, p = 0.15.*
+
+
+22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
+
+```{r}
+t.test(iq ~ haircolor,
+       data = subset(wpa6.df, haircolor %in% c("brown", "blonde")))
+```
+
+*Answer: We do not find a significant difference in IQ between blondes and brown haired people: t(59.05) = 0.51, p = 0.61.*
+
+23. Only for men from Switzerland, is there a relationship between age and IQ?
+
+```{r}
+cor.test(formula = ~ age + iq,
+         data = subset(wpa6.df, country == "switzerland"))
+```
+
+*Answer: We do not find sufficient evidence to show that men from Switzerland have a significant relationship between age and IQ: t(58) = 1.15, p = 0.25.*
+
+24. Only for people who chose the risky gamble, do people that have smoked marijuana have more sexual partners than those who have never smoked marijuana? is there a relationship between smoking marijuana and number of sexual partners?
+
+```{r}
+t.test(formula = partners ~ marijuana,
+       data = subset(wpa6.df, risk == 1))
+```
+
+*Answer: No, for those people who did choose the risky gamble, we did not find evidence for a relationship between marijuana use and sexual partners: t(25.53) = 0.88, p = 0.39*
+
+25. Only for people who chose the risky gamble *and* have never tried marijuana, is there a relationship between iq and performance on the logic test?
+
+```{r}
+cor.test(formula = ~ iq + logic,
+         data = subset(wpa6.df, risk == 1 & marijuana == 0))
+```
+
+*Answer: We do not find evidence for a relationship between iq and logic performance for those who chose the risky gamble and who tried marijuana: t(10) = 1.42, p = 0.18*
+
+
+# Submit!
+
+Save and email your `wpa_X_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/UblvQ6dvA76veEWu1](https://goo.gl/forms/UblvQ6dvA76veEWu1) to complete the WPA submission form.
+
+

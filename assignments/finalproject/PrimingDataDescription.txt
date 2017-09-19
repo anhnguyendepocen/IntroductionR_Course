@@ -1,0 +1,49 @@
+ These data represent the result of an experiment on subliminal priming. A subliminal prime is a stimulus, like a word,
+ that is displayed so quickly that it is not consciously perceived. The goal of the study is to see if and how subliminal primes affect behavior in a performance task.
+
+  Here are the instructions participants were given.
+  
+  "In your task, you will briefly see X boxes on your screen displayed for 2 seconds. You need to remember the locations of these boxes. When the boxes disappear, 
+  your goal is to click on the screen X times in the location of the boxes. If all of your clicks are within the locations of the boxes that 
+  were presented, you will earn a bonus. If any of your clicks are not within the boxes, you will not earn a bonus."
+  
+  After reading the instructions, participants were given a subliminal prime. That is, a word was briefly displayed on their screen for 100ms. 
+  This was fast enough that participants could not consciously see the word, but slow enough that they could be unconsciously perceived.
+  
+  After the subliminal prime was displayed, participants were asked to rate how confident they would be that they would click on all of the 
+  boxes on a scale from 1 to 100 with 1 being not confident at all, and 100 being extremely confident.
+
+  When participants were ready, they clicked a button called "Show the boxes". After clicking this button, participants were shown the locations 
+  of the X boxes for 2 seconds. The boxes then disappeared, and participants could then click on the screen to indicate where they thought the boxes 
+  were. When they were finished, they completed a brief survey.
+
+  There were 3 main manipulations in the experiment. 
+  
+  IV 1: The number of boxes presented to the participant. The more boxes presented, the more difficult the task was.
+  IV 2: The word that participants were primed with. The most important word was "accurate" as this was expected to increase performance. Other words were used as controls.
+  IV 3: The color of the subliminal word that was presented. While there is prior research showing that subliminal primes can affect behavior, no research has tested if
+        the color of subliminal primes has an effect on their influence.
+
+  Here are the main dependent variables in the experiment.
+  
+  DV 1: Did the participant accurately click on all of the box locations? 
+  DV 2: How confident was the participant that they would click on all of the box locations?
+  DV 3: How long did it take for the participant to complete the task?
+  DV 4: How interested was the participant in the task?
+ 
+ 
+  ## DATA
+  The final dataset is in priming.txt. Here is a description of the columns of the data:
+  
+  id: A random id for the participants given in the order in which they completed the study.
+  sex: The sex of the participant (0 = male, 1 = female)
+  age: The age of the participant
+  race: The race of the participant
+  color: The color of the word presented to the part
+  word: The subliminal word presented to the participant
+  education: The participants highest level of education
+  boxes: How many boxes were presented to the participant? 
+  accuracy: Did the participant correctly click on each box? 0 = no, 1 = yes
+  confidence: How confident was the participant that they would click on all of the boxes? 1 = not confident at all, 100 = very confident.
+  rt: How long did it take the participant to click the boxes? Measured in milliseconds.
+  interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.

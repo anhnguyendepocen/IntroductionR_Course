@@ -1,0 +1,365 @@
+---
+title: ""
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+This template will show you the basics of an R Markdown document. R Markdown is a special file type with the `.Rmd` suffix. It is combination of text, Markdown, and R code. Once you've written an R Markdown document, you can "knit" the document to construct all kinds of nicely formatted documents, from reports in PDF (including APA style with the `papaja` package), to web pages in HTML, or Word documents.
+
+```{r, out.width = "1000px", echo = FALSE}
+knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/knitdiagram.png")
+```
+
+Let's go through the steps of creating your first R Markdown document. The main steps are as follows
+
+1. Create a new R Markdown (.Rmd) document.
+2. Write text with Markdown tags for formatting.
+3. Add R chunks, inline code, and tables
+4. Knit the R Markdown document to a final document in HTML, PDF, or Word format
+
+# Create new Markdown document
+
+An R Markdown document is a special document with the .Rmd suffix -- unlike R documents which have the .R suffix. 
+
+### Open a new blank R Markdown (.Rmd) document
+
+To create a new R Markdown document in RStudio, click File -- New File -- R Markdown.
+
+```{r, out.width = "400px", echo = FALSE}
+knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/markdownopen_ss.png")
+```
+
+You'll see the following window show up. You can change the title or author of your document here, as well as the output format. However, you can also change all of these later. Just click ok.
+
+```{r, out.width = "400px", echo = FALSE}
+knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/markdownopen_ss1.png")
+```
+
+Now, you should see a new blank markdown document open like this one:
+
+```{r, out.width = "700px", echo = FALSE}
+knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/markdownss.png")
+```
+
+As you can see, the new document will already have some text in it to help you get started.
+
+### Open a template
+
+Another good way to get started with R Markdown is to look at an example. Here are two example documents. Open them in your browser, then copy and paste all of the text into an R
+
+- Markdown basics (this page!): https://dl.dropboxusercontent.com/u/7618380/markdown_basics.Rmd
+- Facebook study: https://dl.dropboxusercontent.com/u/7618380/facebook_example.Rmd
+- Facebook study in APA format using the `papaja` R package: https://dl.dropboxusercontent.com/u/7618380/phillips2017apa.Rmd
+
+# Download the cheatsheet!
+
+Before you do anything, you should open this very helpful cheatsheet written by RStudio available at https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf.
+
+# What is Markdown?
+
+Markdown is a combination of regular text (like this), combined with *tags* that change the way the text is formatted. For example, to make text *italic* you surround it with one asterix. To make text **bold**, you surround it with two asterices. To create section headings, you use hashtags \#.
+
+Here are the most common formatting tags:
+
+### Font tags: Italic, bold, and headers
+
+To make headers in Markdown, use the \# pound symbol at the beginning of a line
+
+To make text *italic*, use a single * before and after the text.
+
+To make text **bold**, use a double ** before and after the text.
+
+### Section tags: #, ##, ###, ...
+
+To create section headings (aka, sections), use the \# hashtag symbol. The number of \#'s you use will dictate the level of the header.
+
+```{r, eval = FALSE}
+# Method(level 1)
+## Participants (level 2)
+### Statistics (level 3)
+```
+
+For example, the following two lines indicate level 1 and level 2 sections:
+
+# Method (level 1)
+
+## Participants (level 2)
+
+### Bullet tags: 1, 2, 3, -, -, -
+
+To make a numbered bullet list, just use numbers
+
+1. First element
+
+2. Second element
+
+3. Third element
+
+To make a non-numbered bullet list, use dashes -
+
+- First element
+
+- Second element
+
+- Third element
+
+# R Code Chunks
+
+The coolest part of R Markdown is that it allows you to incorporate R code, and the results of R code (like statistics and plots), directly into your document. To incorporate R code, you need to tell Markdown when you are writing code and when you are writing regular text. Unless you tell it otherwise Markdown will treat all your text as regular text. 
+
+For example, if I write 1 + 1, R thinks I am writing regular text and won't interpret it as R code. To tell Markdown that you are writing R code, you need to put the R code in a *code chunk*. A code chunk starts with \```{r} on one line and ends with \``` on one line. Everything you put in this chunk will be evaluated by R Markdown as R code when you *Knit* the document (we'll get to Knitting a bit later). Here's how a code chunk looks
+
+```{r}
+# This is a code chunk. It starts with ```{r} and ends with ```
+#  Everything here will be interpreted as R code.
+#  Because this is R code, R will evalaluate the code and print the result
+
+1 + 1
+```
+
+As you can see, code chunks in RStudio are highlighted with a gray background. You can insert a new code chunk in one of three ways
+
+1. Type the starting code \`\`\`{r}` on one line, and \``` on the next line. Now everything between these lines will be interpreted as R code.
+
+2. Use the Command-Alt-I shortcut on Mac. This will automatically create a new code chunk.
+
+3. Click the "Insert new code chunk" button on the top right hand of this panel. It looks like a green square with an arrow.
+
+## R Code Chunk options
+
+You can add arguments at the start of code chunks to change how the code is evaluated and presented. These arguments go in the first line \`\`\`{r, ARGUMENTS}. For example, you can tell R to echo (that is repeat) the code in the document by including the `echo = TRUE` argument, or change the size of figures created in the chunk with the `fig.width` and `fig.height` arguments. Here are the most common:
+
+### echo = FALSE, echo = TRUE
+
+By default, Markdown will repeat (aka, echo) your R code in your final output. However, if you don't want it to do this, add the `echo = FALSE` argument.
+
+In the following code, I will write some comments and calculate the mean weight of chickens in the `ChickWeight` dataset. Because I include the `echo = FALSE` argument at the top of the chunk, the chunk will only print the result in the final output, not the original R code:
+
+```{r, echo = FALSE}
+# R will not repeat this code in the output because I wrote echo = FALSE.
+#  It will only print the result of the code
+
+# What is the mean weight of chickens?
+
+mean(ChickWeight$weight)
+```
+
+If I do not include the `echo = TRUE` argument, R will print the original code AND the result
+
+```{r, echo = TRUE}
+# Now R will copy the code and give the result because I did not include echo = F
+
+# What is the mean weight of chickens?
+mean(ChickWeight$weight)
+```
+
+### eval = FALSE, eval = TRUE
+
+If you include the `eval = FALSE` argument, R will NOT evaluate code in a chunk. This can be helpful for storing code that you may want to evaluate later.
+
+```{r, eval = FALSE, echo = TRUE}
+# Because I included eval = FALSE at the beginning of this chunk, R will NOT evaluate the code
+#  However, because I did not include echo = FALSE, it will still copy the code
+
+1 + 1
+sd(ChickWeight$weight)
+```
+
+If I include BOTH `echo = FALSE`, and `eval = FALSE`, R will neither copy nor evaluate the code. That is, it will completely ignore it.
+
+```{r, eval = FALSE, echo = FALSE}
+# This chunk won't show up in the final document at all
+3 + 58
+```
+
+## fig.width, fig.height
+
+To add a plot to a markdown document, just insert the plotting code (like `hist()`, `plot()`, or `pirateplot()`) in a chunk. Markdown will place the resulting plot just below the chunk you used to create the plot. Here's a pirateplot of the weight of chickens:
+
+```{r}
+# A pirateplot with no chunk arguments
+yarrr::pirateplot(formula = weight ~ Diet, 
+                  data = ChickWeight)
+```
+
+You can used chunk arguments to change the size of a plot. The `fig.width` and `fig.height` chunk options will change its size. For example, the following chunk will print a small plot as I set `fig.width = 3` and `fig.height = 3`
+
+```{r, fig.width = 3, fig.height = 3}
+# fig.width = 3, fig.height = 3
+yarrr::pirateplot(formula = weight ~ Diet, 
+                  data = ChickWeight)
+```
+
+## fig.align, fig.cap
+
+You can also change the alignment of a plot with `fig.align`, and add a caption with `fig.cap`:
+
+```{r, fig.width = 10, fig.height = 4, fig.align = "center", fig.cap = "A centered, wide pirateplot with this caption"}
+# fig.width = 10, fig.height = 4
+# fig.align = "center", fig.cap = "A centered, wide pirateplot with this caption"
+yarrr::pirateplot(formula = weight ~ Diet, 
+                  data = ChickWeight)
+```
+
+## message
+
+Some R code will return messages to the console that you don't want in your document. For example, when you load the `yarrr` package with `library(yarrr)`, a message will be printed.
+
+```{r, echo = TRUE}
+# Annoying message will be printed
+library(yarrr)
+```
+
+To prevent messages like these from showing up in your document, include the `message = FALSE` argument.
+
+```{r, echo = TRUE, message = FALSE}
+# Include message = FALSE to turn off message
+library(yarrr)
+```
+
+
+## Tables
+
+There are three main ways to create tables in Markdown. You can either write them by hand, copy examples from other documents, or use R functions like `kable()` from the `knitr` package to create them automatically from dataframes.
+
+1. The hard way to create tables in Markdown is to write them by hand using dashes and pipes. Here is an example (I'm putting it in an R chunk just so you can see the code in the final document)
+
+```{r, eval = FALSE}
+| weight| Time|Chick |Diet |
+|------:|----:|:-----|:----|
+|     42|    0|1     |1    |
+|     51|    2|1     |1    |
+|     59|    4|1     |1    |
+|     64|    6|1     |1    |
+|     76|    8|1     |1    |
+|     93|   10|1     |1    |
+```
+
+And here is the resulting table
+
+| weight| Time|Chick |Diet |
+|------:|----:|:-----|:----|
+|     42|    0|1     |1    |
+|     51|    2|1     |1    |
+|     59|    4|1     |1    |
+|     64|    6|1     |1    |
+|     76|    8|1     |1    |
+|     93|   10|1     |1    |
+
+2. Use a Markdown table generator like the one here: http://www.tablesgenerator.com/markdown_tables. This generator allows you to create tables visually using a point and click interface (like you would use in Word) and then convert the table into Markdown code that you can then paste into your Markdown document.
+
+3. Use the `kable()` function in the knitr package. The `kable()` function will convert any dataframe into a Markdown table. For example, in the following chunk, I'll create a dataframe called `my.table`, and then use `kable()` to create a table in markdown format.
+
+```{r echo = TRUE, eval = TRUE, message = FALSE}
+
+# Create a table of some chicken weight summary statistics using dplyr
+library(dplyr)
+my.table <- ChickWeight %>% group_by(Diet) %>%
+  summarise(
+    mean = mean(weight),
+    sd = sd(weight),
+    n = n()
+  )
+
+# Export the dataframe as a markdown table using kable!
+knitr::kable(x = my.table, 
+             digits = 2)
+
+# Here is what the function prints
+
+# |Diet |   mean|    sd|   n|
+# |:----|------:|-----:|---:|
+# |1    | 102.65| 56.66| 220|
+# |2    | 122.62| 71.61| 120|
+# |3    | 142.95| 86.54| 120|
+# |4    | 135.26| 68.83| 118|
+```
+
+
+For more tips on customizing tables, check out the R markdown cheatsheet and the help menu for `kable()` with `?kable()`
+
+## Setting default chunk options
+
+You can set default options for all of your R chunks by running `knitr::opts_chunk$set` in a chunk in the beginning of your document. For example, if I include the following chunk, all future chunks will not echo by default, and all figures will have a width and height of 4.
+
+```{r setup, include=FALSE, eval = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 4, fig.height = 4)
+```
+
+This can be very helpful as it prevents you from having to type the same arguments over and over again for all chunks. Of course, you can always override the default options in future chunks by specifying new arguments.
+
+## Inline code
+
+In addition to creating regular code chunks, you can create inline that go directly into your text. This allows you to directly incorporate R output (such as sample statistics) into your text without having to type it directly. For example, let's say I conducted a t-test and wanted to report the result. To do this in Word, you'd have to conduct the test, visually look up the result, and then manually type something like: "The p-value of the test was .02". However, this can lead to serious problems: you might type the p-value incorrectly, or you might type in the value from the wrong test. Inline code solve both of these problems by allowing you to print statistical results directly with R. Using inline code, I can write something like "The p-value of the test was `test$p.value`". When you knit the document, Markdown will replace the code `test$p.value` with the actual p-value from the test!
+
+You will create inline codes by using tildes in one of two ways:
+
+```{r, eval = FALSE}
+`r code` # evaluate the inline code and print the result
+`code` # Just print the code without evaluating the code
+```
+
+For example, when I write: "The mean weight of chickens was `round(mean(ChickWeight$weight), 0)`", you'll see the actual code in the output because I didn't include r at the beginning of the inline code
+
+However, when I write `r round(mean(ChickWeight$weight), 0)`, you'll see the result of the code because I did include r at the beginning.
+
+## Combining chunks with inline code
+
+You can use inline code to refer to objects you create in regular chunks. For example, in the following chunk, I'll defines define a vector `scores`:
+
+```{r}
+scores <- c(5, 3, 5, 4, 2, 4)
+```
+
+Now that the objects are defined, I can use them in a inline code as in the following sentence:
+
+I collected scores from `r length(scores)` participants. The mean was `r round(mean(scores), 2)` and the standard deviation was `r round(sd(scores), 2)`.
+
+If you haven't noticed this already...inline code is a *huge* deal! They allow you to make your analysis completely replicable and free of typing errors. When you are writing documents, you should write *all* of your statistical results in your text as inline codes!
+
+# Knitting (creating) a document
+
+To create a document (usually HTML, or PDF) from RMarkdown, you need to *Knit* the document. Knitting a document simply means taking all the text and code and creating a nicely formatted document. 
+
+To Knit a document from your markdown file, do one of the following
+
+1. Click the "Knit" button at the top of this window. It will have a picture of a ball of yarn.
+
+2. Mac: Command-Shift-K shortcut
+
+## You must define ALL objects and load all libraries in your markdown
+
+When you knit a markdown document, R will create it using an entirely new, blank workspace independently of the workspace you are using when you write the document. This means that in order for your document to knit, you need to explicitly define all objects in R chunks within the document. For this reason, if you are conducting any analyses in your markdown document, you should always begin your markdown documents with an R chunk that loads in any datasets (e.g.; using `read.table()`, or `load()`). If you don't do this, any analyses you define in the document will return errors because they won't be able to find the data!
+
+If you use functions from a package in your code, you *must* explicitly load the package in your Markdown document using `library()` before using the package. If you don't, Markdown won't know which packages you're using and the code won't work.
+
+```{r, message = FALSE}
+# ALWAYS load packages explicitly at the beginning of any markdown document
+library("yarrr")
+library("dplyr")
+library("knitr")
+```
+
+## If your R code has ANY errors, the document will not knit!
+
+If your R code (in any standard chunks or inline codes) contains R errors, the document will not knit and the resulting document will not be created! Instead, you will see a series of errors and warnings, which may or may not help you diagnose the error. If your document does not knit, you need to go through your code chunk by chunk and find the error!

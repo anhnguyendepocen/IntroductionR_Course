@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/271007/ff48539e805e4288a3a3dfa7ae03308e
+bundleId: https://api.rpubs.com/api/v1/document/271007/ff48539e805e4288a3a3dfa7ae03308e
+url: http://rpubs.com/YaRrr/271007
+when: 1493211038.38

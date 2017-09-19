@@ -1,0 +1,152 @@
+---
+title: "WPA #10: Markdown and papaja"
+author: "Nathaniel Phillips"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(papaja)
+library(knitr)
+```
+
+
+## Play around with Markdown
+
+A. Let's start by playing around with plain vanilla R Markdown. Create a new R Markdown file with File -- New File -- R Markdown... Click "OK". Save the file as `facebook.Rmd`.
+
+B. You'll notice that when you start a a new markdown document, there is some text and code already there. Delete *all* of this text.
+
+C. Now, go to the following link [https://raw.githubusercontent.com/ndphillips/RCourse/master/facebookmarkdown](https://raw.githubusercontent.com/ndphillips/RCourse/master/facebookmarkdown) (you may have to right-click it and open in a new window or tab to see the text). Copy and paste *all* of the text in this link and paste it into your (blank) `facebook.Rmd` file.
+
+D. Knit the document into an HTML file by either clicking the Knit button or using the Command + Shift + K shortcut. This should create an HTML output of your document. If you have TeX installed, try creating a PDF file by clicking "Knit to PDF" under the "Knit" button. This should create a PDF output of your document.
+
+E. You'll notice that most of the code is not evaluated in this file. This is because most of the chunks have the chunk option `eval = FALSE`. Play around with the document by changing `eval = FALSE` to `eval = TRUE` in each chunk. Knit the document after you change each chunk to see the output.
+
+F. Complete some of the empty chunks at the bottom of the document. Play around for a bit. Add a plot, add a statistical test. Knit to see the results as you go along.
+
+When you feel you are comfortable with Markdown, move on to creating an APA style paper with papaja in the next section.
+
+### Create an APA style paper with papaja
+
+Your goal is to create an APA style document using the `papaja` package and R Markdown. In order for this to work, you need to install both papaja and LaTeX
+
+### Install papaja
+Make sure you have installed the `papaja` package with the following code:
+
+```{r eval = FALSE}
+install.packages("devtools")             # Only if you don't already have it
+devtools::install_github("crsh/papaja")  # Install papaja from GitHub
+```
+
+### Install TeX
+
+Make sure you have TeX installed on your computer or you won't be able to create a PDF document. For Windows, install it from https://miktex.org/. For Mac, install it from http://www.tug.org/mactex/. Once you install TeX, make sure to restart RStudio (or RStudio won't know it's there).
+
+
+1. Create a new R project called `studentAPA.RProj` somewhere on your computer with File -- New Project .... If you don't know where to put it, put it on your desktop. Open this project!
+
+2. Navigate to the project directory (the one you just put `studentAPA.RProj` in). You should see a file called `studentAPA.Rproj` there. Now, create two new folders `R` and `data` in this directory.
+
+```{r, echo = FALSE, eval = TRUE}
+student.math <- read.table("https://raw.githubusercontent.com/ndphillips/RCourse/master/studentmath.txt",
+                      sep = "\t",
+                      header = T)
+
+student.por <- read.table("https://raw.githubusercontent.com/ndphillips/RCourse/master/studentpor.txt",
+                      sep = "\t",
+                      header = T)
+```
+
+3. In this WPA, you will analyze data from a study on student performance in two classes: math and Portuguese The data are located in two tab-delimited text files at the following locations:
+
+- `studentmath.txt`: https://raw.githubusercontent.com/ndphillips/RCourse/master/studentmath.txt (the Math data)
+
+- `studentpor.txt`: https://raw.githubusercontent.com/ndphillips/RCourse/master/studentpor.txt (the Portuguese data). 
+Load these data into R, then save them as text files in your data folder by running the following code:
+
+```{r, eval = FALSE}
+# Step 1: Load the two data files into your R session
+
+student.math <- read.table("https://raw.githubusercontent.com/ndphillips/RCourse/master/studentmath.txt",
+                      sep = "\t",
+                      header = TRUE)
+
+student.por <- read.table("https://raw.githubusercontent.com/ndphillips/RCourse/master/studentpor.txt",
+                      sep = "\t",
+                      header = TRUE)
+
+# Step 2: Save the data as text files in your data folder. 
+
+write.table(student.math, file = "data/studentmath.txt", sep = "\t")
+write.table(student.por, file = "data/studentpor.txt", sep = "\t")
+```
+
+
+4. Open a new blank Markdown (.Rmd) file using the papaja template: File -- New File -- R Markdown -- From Template -- APA Article (6th Edition). Save the file as `studentAPA.Rmd` in your project working directory (that is, next to the `studentAPA.Rproj` file).
+
+5. Using a web-browser, open the following link https://raw.githubusercontent.com/ndphillips/RCourse/master/studentAPA.Rmd. Copy all of the text in this file, and paste it into your `studentAPA.Rmd` file (replace *all* of the text that was in your `studentAPA.Rmd` file with this text).
+
+
+6. Open a new blank text file (File -- New File -- Text File). Save the file as `studentAPA.bib` in your project working directory. 
+
+
+7. Using a web-browser, open the following link  https://raw.githubusercontent.com/ndphillips/RCourse/master/studentAPA.bib. Copy all of the text in this file, and paste it into your `studentAPA.bib` file (replace *all* of the text that was in your `studentAPA.bib` file with this text).
+
+
+### STOP!!!
+
+By now you should have a file structure on your computer that looks like the following screenshot
+
+![](https://dl.dropboxusercontent.com/u/7618380/Screen%20Shot%202016-12-07%20at%2010.48.56.png)
+
+Here is how your RStudio screen should look when you are in the appropriate project. Note that the file structure matches the one on your computer.
+
+![](https://dl.dropboxusercontent.com/u/7618380/Screen%20Shot%202016-12-07%20at%2011.05.44.png)
+
+If you don't have this folder structure and/or you don't have the appropriate project open in RStudio, the rest of the document won't work!
+
+8. Your goal is to create this APA document (https://dl.dropboxusercontent.com/u/7618380/studentAPA_comp.pdf) by adding elements to the `studentAPA.Rmd` document. 
+
+9. Open `studentAPA.Rmd` and `studentAPA.bib`. In `studentAPA.Rmd`, replace the X values in the main fields at the top of the document (name, paper title, short-title, affiliation) with the appropriate names and titles.
+
+10. Know *Knit* your document to see the current version of the PDF output! You can do this by clicking the "Knit" button at the top of your window.
+
+11. Now it's time to add some references to your `studentAPA.bib` file! You will be referencing three papers in this document. Using scholar.google.com, find the BibTeX references for the following paper(s) and add them to your `studentAPA.bib` file. Make sure to save the file!
+
+- Horwitz, Elaine K., Michael B. Horwitz, and Joann Cope. "Foreign language classroom anxiety." The modern language journal 70.2 (1986): 125-132.
+
+- Collier, V. P. (1992). A synthesis of studies examining long-term language minority student data on academic achievement. Bilingual Research Journal, 16(1-2), 187-212.
+
+- Abedi, J., & Lord, C. (2001). The language factor in mathematics tests. Applied Measurement in Education, 14(3), 219-234.
+
+12. Now it's time to cite your new references. I've included one citation already in the `studentAPA.Rmd` document in the format \@abedi2001language. Now cite the additional papers in your `studentAPA.bib` file by replacing the XXX values with the appropriate citations. **Knit your document to see the result**
+
+13. You need to load your data in a separate chunk. I've already created a chunk with all the code you need. Of course, This code assumes that your data are stored in `studentmath.txt` and `studentpor.txt` in a folder called `data` in your project directory!. To make sure the chunk is evaluated, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** If you don't see any errors, then the data should have been correctly loaded!
+
+14. In the Participants section, there are inline code chunks that should indicate the number of participants in each data set. Replace the `1+1` values with `nrow(student.por)` and `nrow(student.math)` to get the number of students in each data set. **Knit your document to see the result**
+
+15. In the Results section, I've included a chunk that creates Figure 1, a series of histograms. Update the caption to the plot in the chunk options. Then change `eval = FALSE` to `eval = TRUE` to tell Markdown to run the chunk. **Knit your document to see the result** You should now see the histograms in your document.
+
+16. Below the Figure 1 chunk, there are some inline chunks that calculate the mean grades for exam 1 and exam 3 of the Portuguese data. Update these chunks with `round(mean(student.por$G1), 2)` and `round(mean(student.por$G3), 2)` to calculate the correct values. **Knit your document to see the result**
+
+17. The next two chunks create tables of summary statistics for the Math and Portuguese data. Update the captions in these chunks. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** You should now see the tables in your document.
+
+18. The next chunk conducts and saves t-tests for both the math and Portuguese data. The code for the Portuguese test is already completed. Fix the code for the math test. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options.
+
+19. The next lines use inline code to refer to the results of your t-test objects. Replace the `1+1` values with values from your t-test!. (Hint: use `sex.por.ttest$parameter` to get the degrees of freedom, `sex.por.ttest$statistic` to get the test statistic, and `sex.por.ttest$p.value` to get the p-value for the Portuguese test).  **Knit your document to see the result**
+
+## Add new analyses!
+
+20. Add a scatterplot showing the relationship between G1 and G3 for the math data as a new Figure. **Knit your document to see the result**
+
+21. In addition to your scatterplot, conduct the appropriate correlation test using `cor.test()` in a separate chunk. Save the result as `math.cor.test`
+
+22. Now report the results of your correlation test in your text. You can easily do this using the `apa_print()` function from `papaja`. Look at the help menu for `apa_print()`. Then use the function to report the results of the correlation test by running `apa_print(math.cor.test)`. **Knit your document to see the result**
+
+# Finished!
+
+Save and email your `wpa_9_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/3VxYkN](https://goo.gl/3VxYkN) to complete the WPA submission form.
+
+
+

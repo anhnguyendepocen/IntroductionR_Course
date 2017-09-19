@@ -1,0 +1,293 @@
+---
+title: "WPA #9 -- Loops and Functions"
+output:
+  prettydoc::html_pretty:
+    theme: lumen
+    highlight: github
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE)
+```
+
+
+
+<img src="http://2.bp.blogspot.com/_MJBBFCOksCY/S_jHGyMkoUI/AAAAAAAAAA0/-DnFV_1bu1Y/s1600/Douche.jpg" style="height:400px;" />
+
+
+In this WPA, you will analyze data from a (again...fake) study on attraction. In the study, 1000 heterosexual University students viewed the Facebook profile of another student (the "target") of the opposite sex. Based on a target's profile, each participant made three judgments about the target - intelligence, attractiveness, and dateability. The primary judgement was a *dateability* rating indicating how dateable the person was on a scale of 0 to 100.
+
+```{r echo = FALSE, eval = TRUE}
+facebook <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt", sep = "\t", header = TRUE)
+```
+
+
+The data are located in a tab-delimited text file at http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt. Here is how the first few rows of the data should look:
+
+```{r, echo = FALSE, eval = FALSE}
+head(facebook)
+```
+
+## Datafile description
+
+The data file has 1000 rows and 10 columns. Here are the columns
+
+- `session`: The experiment session in which the study was run. There were 50 total sessions.
+
+- `sex`: The sex of the target
+
+- `age`: The age of the target
+
+- `haircolor`: The haircolor of the target
+
+- `university`: The university that the target attended.
+
+- `education`: The highest level of education obtained by the target.
+
+- `shirtless`: Did the target have a shirtless profile picture? 1.No v 2.Yes
+
+- `intelligence`: How intelligent do you find this target? 1.Low, 2.Medium, 3.High
+
+- `attractiveness`: How physically attractive do you find this target? 1.Low, 2.Medium, 3.High
+
+- `dateability`: How dateable is this target? 0 to 100.
+
+## Data loading and preparation
+
+1. Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_9_LASTFIRST.R`, where LAST and FIRST are your last and first names. 
+
+2. The data are stored in a tab--delimited text file located at http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt. Using `read.table()` load this data into R as a new object called `facebook`
+
+## Understand the data
+
+3. Look at the first few rows of the dataframe with the `head()` function to make sure it loaded correctly.
+
+```{r, eval = FALSE, echo = FALSE}
+head(facebook)
+```
+
+4. Using the `str()` function, look at the structure of the dataframe to make sure everything looks ok
+
+```{r, eval = FALSE, echo = FALSE}
+str(facebook)
+```
+
+## Custom Functions
+
+5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat ___". Try your function by running `feed.me("apples")`.
+
+```{r, eval = FALSE, echo = TRUE}
+feed.me <- function(___) {
+  
+  output <- paste0("I love to eat ", ___)
+  
+  return(___)
+}
+```
+
+6. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
+
+```{r, eval = FALSE, echo = TRUE}
+my.mean <- function(___) {
+  
+  result <- sum(___) / length(___)
+  
+  return(result)
+  
+}
+```
+
+7. Try your `my.mean()` function to calculate the mean dateability rating of participants in the `facebook` dataset and compare the result to the built-in `mean()` function to make sure you get the same result!
+
+8. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector:
+
+```{r eval = FALSE, echo = TRUE}
+how.many.na <- function(x) {
+  
+  output <- sum(is.na(___))
+  
+  return(___)
+}
+```
+
+9. Test your `how.many.na()` function on the age of participants in the `facebook` dataframe and then on the vector `x = c(4, 7, 3, NA, NA, 1)`
+
+
+10. Create a function called `my.plot()` that takes arguments `x` and `y` and returns a customised scatterplot with gridlines and a regression line:
+
+```{r eval = FALSE, echo = TRUE}
+my.plot <- function(x, y) {
+  
+  plot(x = ___, 
+       y = ___, 
+       pch = ___,     # look at ?points to see the values of pch!
+       col = ___)
+  
+  grid()   # Add gridlines
+  
+  # Add a regression line
+  abline(lm(___ ~ ___), 
+         col = ___)
+}
+```
+
+11. Now test your `my.plot()` function on the age and dateability of participants in the `facebook` dataset
+
+
+## Loops
+
+12. Create a loop that prints the squares of integers from 1 to 10:
+
+```{r echo = TRUE, eval = FALSE}
+for(i in ___) {
+  
+  square.i <- ___
+  
+  print(square.i)
+  
+}
+```
+
+
+13. Using the following template, create a loop that calculates (and prints) the mean dateability rating of students from each university in the `facebook` dataset
+
+```{r, eval = FALSE, echo = TRUE}
+for(university.i in c("1.Basel", "2.Zurich", "3.Geneva")) {
+  
+  data.i <- facebook$dateability[facebook$university == ___]
+  
+  output <- paste0("The mean dateability of university ", ___, " is ", ___)
+  
+  print(___)
+  
+}
+```
+
+
+14. Now create a histogram of dateability ratings from each level of intelligence using the following structure
+
+```{r, eval = FALSE, echo = TRUE}
+par(mfrow = c(1, 3)) # Set up 1 x 3 plotting grid
+
+for(intelligence.i in c("1.low", "2.medium", "3.high")) {
+  
+  hist(facebook$dateability[facebook$intelligence == ___],
+       main = ___,
+       xlab = ___,
+       col = ___
+       )
+  
+}
+
+par(mfrow = c(1, 1)) # Reset plotting grid
+```
+
+# CHECKPOINT!
+
+# More functions!
+
+15. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
+
+```{r eval = FALSE}
+ttest.apa <- function(x, mu) {
+  
+   # Store the one-sample ttest in object a
+  
+  a <- t.test(x = ___, 
+              mu = ___) 
+  
+  df <- a$parameter  # Get the degrees of freedom
+  test.stat <- ___      # Get the test statistic
+  p.value <- ___        # Get the p-value
+  
+  
+  # If the test is significant...
+  if(p.value <= ___) {
+    
+    output <- paste0("The test is significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")")
+  }
+  
+  # If the test is not significant...
+    if(p.value > ___) {
+    
+    output <- ___
+    
+  }
+  
+  print(___)  
+}
+```
+
+16. Test your `ttest.apa()` function on the the dateability of participants in the facebook study. Specifically, test if their mean dateability rating is different from 50
+
+
+# More loops!
+
+
+17. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+
+```{r}
+survey <- data.frame("p" = c(1, 2, 3, 4, 5),
+                     "q1" = c(5, 3, 6, 3, 5),
+                     "q2" = c(-1, 4, 3, 6, 11),
+                     "q3" = c(6, 22, 4, 6, -5),
+                     "q4" = c(6, 3, 4, -2, 4),
+                     "q5" = c(1, 1, 900, 1, 2))
+```
+
+```{r eval = FALSE}
+survey.corrected <- survey   # COPY SURVEY
+
+for(column.i in ____ ) {  # LOOP OVER COLUMNS
+ 
+  x <- ____   # COPY THE ORIGINAL COLUMN as x
+  x[(x %in% ___) == FALSE] <- ___  # REPLACE
+  
+  survey.corrected[,___] <- ___ # ASSIGN x back to survey.correced
+  
+}
+```
+
+
+
+# Simulation!
+
+18. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
+
+  - Create a vector called `p.values` with 100 NA values. 
+  - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
+  - Do a one-sample t-test testing if the mean of the distribution is different from 0. Save the p-value from this test in the 1st position of `p.values`.
+  - Repeat these steps with a loop to fill `p.values` with 100 p-values.
+  - Create a histogram of `p.values` and calculate the proportion of `p-values` that are significant at the .05 level.
+  
+```{r eval = FALSE}
+p.values <- rep(NA, ___)
+
+for(i in ___) {
+
+x <- rnorm(n = ___, mean = ___, sd = ___)
+
+result <- t.test(___)$___
+
+p.values[___] <- ___
+
+}
+```
+  
+  
+19. Create a function called `psimulation` with 4 arguments: `sim`: the number of simulations, `samplesize`: the sample size, `mu.true`: the true mean, and `sd.true`: the true standard deviation. Your function should repeat the simulation from the previous question with the given arguments. That is, it should calculate `sim` p-values testing whether `samplesize` samples from a normal distribution with mean = `mu.true` and standard deviation = `sd.true` is significantly different from 0. The function should return a vector of p-values. 
+
+
+
+
+# Submit!
+
+Save and email your `wpa_9_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/3VxYkN](https://goo.gl/3VxYkN) to complete the WPA submission form.
+
+
+

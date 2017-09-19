@@ -1,0 +1,106 @@
+---
+title: "WPA #10: Creating an APA document with papaja"
+author: "Nathaniel Phillips"
+date: "6 December 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(papaja)
+library(knitr)
+```
+
+Your goal is this WPA is to create an APA style document using papaja and R Markdown. Make sure you have installed the papaja package with the following code:
+
+```{r eval = FALSE}
+# Install papaja from GitHub
+devtools::install_github("crsh/papaja")
+```
+
+
+1. Create a new R project called `studentAPA.RProj` somewhere on your computer with File -- New Project .... If you don't know where to put it, put it on your desktop. Open this project!
+
+2. Navigate to the project directory (the one you just put `studentAPA.RProj` in). You should see a file called `studentAPA.Rproj` there. Now, create two new folders `R` and `data` in this directory.
+
+```{r, echo = FALSE, eval = TRUE}
+student.math <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/11/studentmath.txt",
+                      sep = "\t",
+                      header = T)
+
+student.por <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/11/studentpor.txt",
+                      sep = "\t",
+                      header = T)
+```
+
+3. In this WPA, you will analyze data from a study on student performance in two classes: math and Portuguese. These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#Download. The data are located in two tab-delimited text files at the following locations:
+
+- `studentmath.txt`: http://nathanieldphillips.com/wp-content/uploads/2016/11/studentmath.txt
+
+- `studentpor.txt`: http://nathanieldphillips.com/wp-content/uploads/2016/11/studentpor.txt (the Portuguese data). 
+
+Download the two data files using a web browser and save them as two separate text files called `studentmath.txt` and `studentpor.txt`. Save them to the `data` folder of your project directory! (or you can do it within R using a combination of with `read.table()` and `write.table()`).
+
+
+4. Using a web-browser, download the following two files and save them to your project working directory -- that is, next to the `studentAPA.Rproj` file. **Not** in the `data` or `R` folders.
+
+- `studentAPA.Rmd`: https://dl.dropboxusercontent.com/u/7618380/studentAPA.Rmd
+
+- `studentAPA.bib`: https://dl.dropboxusercontent.com/u/7618380/studentAPA.bib
+
+
+### STOP!!!
+
+By now you should have a file structure on your computer that looks like the following screenshot
+
+![](https://dl.dropboxusercontent.com/u/7618380/Screen%20Shot%202016-12-07%20at%2010.48.56.png)
+
+Here is how your RStudio screen should look when you are in the appropriate project. Note that the file structure matches the one on your computer.
+
+![](https://dl.dropboxusercontent.com/u/7618380/Screen%20Shot%202016-12-07%20at%2011.05.44.png)
+
+If you don't have this folder structure and/or you don't have the appropriate project open in RStudio, the rest of the document won't work!
+
+5. Your goal is to create this APA document (https://dl.dropboxusercontent.com/u/7618380/studentAPA_comp.pdf) by adding elements to the `studentAPA.Rmd` document. 
+
+6. Open `studentAPA.Rmd` and `studentAPA.bib`. In `studentAPA.Rmd`, replace the X values in the main fields at the top of the document (name, paper title, short-title, affiliation) with the appropriate names and titles.
+
+7. Know *Knit* your document to see the current version of the PDF output! You can do this by clicking the "Knit" button at the top of your window.
+
+8. Now it's time to add some references to your `studentAPA.bib` file! You will be referencing three papers in this document. Using scholar.google.com, find the BibTeX references for the following paper(s) and add them to your `studentAPA.bib` file. Make sure to save the file!
+
+- Horwitz, Elaine K., Michael B. Horwitz, and Joann Cope. "Foreign language classroom anxiety." The modern language journal 70.2 (1986): 125-132.
+
+- Collier, V. P. (1992). A synthesis of studies examining long-term language minority student data on academic achievement. Bilingual Research Journal, 16(1-2), 187-212.
+
+- Abedi, J., & Lord, C. (2001). The language factor in mathematics tests. Applied Measurement in Education, 14(3), 219-234.
+
+9. Now it's time to cite your new references. I've included one citation already in the `studentAPA.Rmd` document in the format \@abedi2001language. Now cite the additional papers in your `studentAPA.bib` file by replacing the XXX values with the appropriate citations. **Knit your document to see the result**
+
+10. You need to load your data in a separate chunk. I've already created a chunk with all the code you need. Of course, This code assumes that your data are stored in `studentmath.txt` and `studentpor.txt` in a folder called `data` in your project directory!. To make sure the chunk is evaluated, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** If you don't see any errors, then the data should have been correctly loaded!
+
+11. In the Participants section, there are inline code chunks that should indicate the number of participants in each data set. Replace the `1+1` values with `nrow(student.por)` and `nrow(student.math)` to get the number of students in each data set. **Knit your document to see the result**
+
+12. In the Results section, I've included a chunk that creates Figure 1, a series of histograms. Update the caption to the plot in the chunk options. Then change `eval = FALSE` to `eval = TRUE` to tell Markdown to run the chunk. **Knit your document to see the result** You should now see the histograms in your document.
+
+13. Below the Figure 1 chunk, there are some inline chunks that calculate the mean grades for exam 1 and exam 3 of the Portuguese data. Update these chunks with `round(mean(student.por$G1), 2)` and `round(mean(student.por$G3), 2)` to calculate the correct values. **Knit your document to see the result**
+
+14. The next two chunks create tables of summary statistics for the Math and Portuguese data. Update the captions in these chunks. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** You should now see the tables in your document.
+
+15. The next chunk conducts and saves t-tests for both the math and Portuguese data. The code for the Portuguese test is already completed. Fix the code for the math test. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options.
+
+16. The next lines use inline code to refer to the results of your t-test objects. Replace the `1+1` values with values from your t-test!. (Hint: use `sex.por.ttest$parameter` to get the degrees of freedom, `sex.por.ttest$statistic` to get the test statistic, and `sex.por.ttest$p.value` to get the p-value for the Portuguese test).  **Knit your document to see the result**
+
+## Add new analyses!
+
+17. Add a scatterplot showing the relationship between G1 and G3 for the math data as a new Figure. **Knit your document to see the result**
+
+18. In addition to your scatterplot, conduct the appropriate correlation test using `cor.test()` in a separate chunk. Save the result as `math.cor.test`
+
+19. Now report the results of your correlation test in your text. You can easily do this using the `apa_print()` function from `papaja`. Look at the help menu for `apa_print()`. Then use the function to report the results of the correlation test by running `apa_print(math.cor.test)`. **Knit your document to see the result**
+
+# Finished!
+
+Save and email your `studentAPA.Rmd` and `studentAPA.pdf` files to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/UblvQ6dvA76veEWu1](https://goo.gl/forms/UblvQ6dvA76veEWu1) to complete the WPA submission form.
+
+

@@ -1,0 +1,391 @@
+---
+title: "WPA #7 -- ANOVA"
+output:
+  prettydoc::html_pretty:
+    theme: lumen
+    highlight: github
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
+```
+
+## Facebook Attraction
+
+<img src="http://2.bp.blogspot.com/_MJBBFCOksCY/S_jHGyMkoUI/AAAAAAAAAA0/-DnFV_1bu1Y/s1600/Douche.jpg" style="height:400px;" />
+
+
+In this WPA, you will analyze data from a (again...fake) study on attraction. In the study, 1000 heterosexual University students viewed the Facebook profile of another student (the "target") of the opposite sex. Based on a target's profile, each participant made three judgments about the target - intelligence, attractiveness, and dateability. The primary judgement was a *dateability* rating indicating how dateable the person was on a scale of 0 to 100.
+
+
+```{r, echo = FALSE, eval = FALSE, results = 'hide'}
+library(yarrr)
+
+set.seed(101)
+recode.fun <- function(x, old, new) {
+
+  
+  for(i in 1:length(old)) {
+    
+    
+    x[x == old[i]] <- new[i]
+    
+  }
+  
+  return(x)
+  
+}
+
+# Study 1
+
+N <- 1000
+
+facebook <- data.frame("sex" = sample(c("m", "f"), size = N, replace = T))
+
+facebook$intelligence <- sample(c("1.low", "2.medium", "3.high"), size = N, replace = T)
+# facebook$attractiveness <- sample(c("1.low", "2.medium", "3.high"), size = N, replace = T)
+facebook$education <- sample(c("1.HighSchool", "2.Bachelors", "3.Masters", "4.PhD"), size = N, replace = T, prob = c(.2, .5, .2, .1))
+
+facebook$age[facebook$education == "1.HighSchool"] <- rnorm(sum(facebook$education == "1.HighSchool"), mean = 19, sd = .5)
+facebook$age[facebook$education == "2.Bachelors"] <- rnorm(sum(facebook$education == "2.Bachelors"), mean = 22, sd = .5)
+facebook$age[facebook$education == "3.Masters"] <- rnorm(sum(facebook$education == "3.Masters"), mean = 24, sd = 1)
+facebook$age[facebook$education == "4.PhD"] <- rnorm(sum(facebook$education == "4.PhD"), mean = 28.5, sd = 1)
+
+facebook$age <- round(facebook$age, 0)
+
+facebook$university <- sample(c("1.Basel", "2.Zurich", "3.Geneva"), size = N, replace = T)
+
+facebook$attractiveness[facebook$university == "1.Basel"] <-  sample(c("1.low", "2.medium", "3.high"), size = sum(facebook$university == "1.Basel"), prob = c(.1, .1, .8), replace = T)
+facebook$attractiveness[facebook$university == "2.Zurich"] <-  sample(c("1.low", "2.medium", "3.high"), size = sum(facebook$university == "2.Zurich"), prob = c(.33, .33, .33), replace = T)
+facebook$attractiveness[facebook$university == "3.Geneva"] <-  sample(c("1.low", "2.medium", "3.high"), size = sum(facebook$university == "3.Geneva"), prob = c(.2, .5, .3), replace = T)
+
+
+facebook$intelligence.num <- as.numeric(recode.fun(facebook$intelligence, c("1.low", "2.medium", "3.high"), c(-1, 0, 1)))
+facebook$attractiveness.num <- as.numeric(recode.fun(facebook$attractiveness, c("1.low", "2.medium", "3.high"), c(-2, 0, 4)))
+facebook$education.num <- as.numeric(recode.fun(facebook$education, c("1.HighSchool", "2.Bachelors", "3.Masters", "4.PhD"), c(-1, 0, 1, 2)))
+
+# dateability.men
+
+facebook$dateability.mean[facebook$sex == "f"] <- with(facebook[facebook$sex == "f",], intelligence.num * .1 + attractiveness.num * 4 + education.num)
+facebook$dateability.mean[facebook$sex == "m"] <- with(facebook[facebook$sex == "m",], intelligence.num * 4 + attractiveness.num * 1 + education.num)
+
+facebook$dateability.mean[facebook$sex == "f" & facebook$intelligence.num == 1] <- -3
+
+
+facebook$dateability <- round(rnorm(N, mean = facebook$dateability.mean * 3 + 50, sd = 18), 0)
+
+facebook$session <- rep(1:50, each = N / 50)
+
+
+facebook$haircolor <- sample(c("blonde", "brown", "black", "red"), prob = c(.4, .5, .15, .05), replace = T)
+
+facebook$shirtless[facebook$sex == "m"] <- sample(c("1.No", "2.Yes"), size = sum(facebook$sex == "m"), prob = c(.7, .3), replace = T)
+facebook$shirtless[facebook$sex == "f"] <- sample(c("1.No", "2.Yes"), size = sum(facebook$sex == "f"), prob = c(.8, .2), replace = T)
+
+facebook$dateability[facebook$shirtless == "2.Yes" & facebook$sex == "m"] <- facebook$dateability[facebook$shirtless == "2.Yes" & facebook$sex == "m"] - 20
+facebook$dateability[facebook$shirtless == "2.Yes" & facebook$sex == "f"] <- facebook$dateability[facebook$shirtless == "2.Yes" & facebook$sex == "f"] + 30
+
+
+
+facebook$dateability[facebook$dateability < 0] <- 0
+facebook$dateability[facebook$dateability > 100] <- 100
+
+
+facebook <- facebook[c("session", "sex", "age", "haircolor", "university", "education", "shirtless", "intelligence", "attractiveness", "dateability")]
+
+# 
+
+with(facebook, tapply(dateability, university, mean))
+
+summary(aov(formula = dateability ~ university,
+            data = facebook
+            ))
+
+summary(aov(formula = dateability ~ attractiveness,
+            data = facebook
+            ))
+
+summary(aov(formula = dateability ~ attractiveness + university,
+            data = facebook
+            ))
+
+summary(aov(formula = dateability ~ university + attractiveness,
+            data = facebook
+            ))
+
+
+
+# head(facebook)
+
+# stats
+
+#hist(facebook$dateability)
+
+#summary(aov(formula = dateability ~ intelligence + sex, data = facebook))
+
+#summary(aov(formula = dateability ~ intelligence * sex, data = facebook))
+
+#summary(aov(formula = dateability ~., data = facebook))
+
+
+write.table(facebook, file = "/Users/nphillips/Dropbox/Temp/facebook.txt", sep = "\t", row.names = F)
+
+
+
+```
+
+
+```{r echo = FALSE, eval = TRUE}
+facebook <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt", sep = "\t", header = TRUE)
+```
+
+
+The data are located in a tab-delimited text file at http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt. Here is how the first few rows of the data should look:
+
+```{r, echo = FALSE, eval = FALSE}
+head(facebook)
+```
+
+## Datafile description
+
+The data file has 1000 rows and 10 columns. Here are the columns
+
+- `session`: The experiment session in which the study was run. There were 50 total sessions.
+
+- `sex`: The sex of the target
+
+- `age`: The age of the target
+
+- `haircolor`: The haircolor of the target
+
+- `university`: The university that the target attended.
+
+- `education`: The highest level of education obtained by the target.
+
+- `shirtless`: Did the target have a shirtless profile picture? 1.No v 2.Yes
+
+- `intelligence`: How intelligent do you find this target? 1.Low, 2.Medium, 3.High
+
+- `attractiveness`: How physically attractive do you find this target? 1.Low, 2.Medium, 3.High
+
+- `dateability`: How dateable is this target? 0 to 100.
+
+## Data loading and preparation
+
+1. Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_7_LASTFIRST.R`, where LAST and FIRST are your last and first names. 
+
+2. The data are stored in a tab--delimited text file located at http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt. Using `read.table()` load this data into R as a new object called `facebook`
+
+```{r, echo = TRUE, eval = FALSE}
+facebook <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt", 
+                       sep = "\t", 
+                       header = TRUE)
+```
+
+
+## Understand the data
+
+3. Look at the first few rows of the dataframe with the `head()` function to make sure it loaded correctly.
+
+```{r, eval = FALSE, echo = FALSE}
+head(facebook)
+```
+
+4. Using the `str()` function, look at the structure of the dataframe to make sure everything looks ok
+
+```{r, eval = FALSE, echo = FALSE}
+str(facebook)
+```
+
+## Answer guidelines Read carefully to save yourself time!
+
+- For each question, conduct the appropriate ANOVA. Write the conclusion in APA style. To summarize an effect in an ANOVA, use the format F(XXX, YYY) = FFF, p = PPP, where XXX is the degrees of freedom of the variable you are testing, YYY is the degrees of freedom of the residuals, FFF is the F value for the variable you are testing, and PPP is the p-value. If the p-value is less than .01, just write p < .01.
+
+- If the p-value of the ANOVA is less than .05, conduct post-hoc tests. If you are only testing one independent variable, write APA conclusions for the post-hoc test. **If you are testing more than one independent variable in your ANOVA, you do not need to write APA style conclusions for post-hoc tests -- just print the result.**
+
+For example, here is how I would analyze and answer the question: "Was there an effect of diets on Chicken Weights?""
+
+```{r, eval = TRUE, echo = TRUE}
+# ANOVA on Chicken Weights
+#   IV = Diet, DV = weight
+
+# ANOVA
+p0.aov <- aov(formula = weight ~ Diet,
+            data = ChickWeight)
+
+summary(p0.aov)
+
+# ANOVA was significant (p < .01), so I'll conduct post-hoc tests
+
+# Tukey post-hoc tests
+TukeyHSD(p0.aov)
+```
+
+*Answer: There was a significant main effect of diets on chicken weights (F(3, 574) = 10.81, p < .01). Pairwise Tukey HSD tests showed significant differences between diets 1 and 3 (diff = 40.30, p < .01) and diets 1 and 4 (diff = 32.62, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+
+
+## One-way ANOVAS
+
+5. Was there a main effect of the university on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests
+
+```{r, eval = FALSE, echo = FALSE}
+p5.aov <- aov(formula = dateability ~ university,
+            data = facebook)
+
+summary(p5.aov)
+
+TukeyHSD(p5.aov)
+
+#Answer: There was a significant main effect of university on dateability (F(2, 997) = 13.99, p < .01). Pairwise Tukey HSD tests showed significant differences between Zurich and Basel (diff = -10.27, p < .01) and Geneva and Basel (diff = -8.64, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+```
+
+
+
+6. Was there a main effect of intelligence on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests
+
+```{r, eval = FALSE, echo = FALSE}
+p6.aov <- aov(formula = dateability ~ intelligence,
+            data = facebook)
+
+summary(p6.aov)
+
+TukeyHSD(p6.aov)
+
+# *Answer: There was a significant main effect of intelligence on dateability (F(2, 997) = 4.97, p < .01). Pairwise Tukey HSD tests showed significant differences between Medium and Low intelligence (diff = 6.53, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+```
+
+
+
+7. Was there a main effect of haircolor on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests
+
+```{r, eval = FALSE, echo = FALSE}
+p7.aov <- aov(formula = dateability ~ haircolor,
+            data = facebook)
+
+summary(p7.aov)
+
+# *Answer: There was no significant main effect of haircolor on dateability (F(2, 997) = 1.23, p = 0.29).*
+```
+
+
+
+## Multi-independent ANOVAs
+
+8. Conduct a three-way ANOVA on dateability with both intelligence, university and haircolor as IVs. Do your results for each variable change compared to your previous one-way ANOVAs on these variables? (You do not need to give APA results or conduct post-hoc tests, just answer the question verbally).
+
+```{r, eval = FALSE, echo = FALSE}
+p8.aov <- aov(formula = dateability ~ intelligence + university + haircolor,
+            data = facebook)
+
+summary(p8.aov)
+
+# *Answer: Yes the results are the same!*
+```
+
+
+
+9. Conduct a multi-way anova including sex, haircolor, university, education, shirtless, intelligence and attractiveness as independent variables predicting dateability. WHich variables are significantly related to dateability? (*Do* write APA results for each variable but do *not* conduct post-hoc tests).
+
+```{r, eval = FALSE, echo = FALSE}
+p9.aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
+            data = facebook)
+
+summary(p9.aov)
+
+# *Answer: There were significant effects of sex (F(1, 986) = 66.10, p < .01), university (F(2, 986) = 17.35, p < .01), intelligence (F(2, 986) = 5.34, p < .01) and attractiveness (F(2, 986) = 101.87, p < .01).*
+```
+
+
+
+### ANOVAs on subsets of data
+
+10. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions 31 through 50. Do your conclusions change compared to when you analyzed the data from all sessions?
+
+```{r, eval = FALSE, echo = FALSE}
+p10.aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
+            data = subset(facebook, session > 30))
+
+summary(p10.aov)
+
+# The results look the same
+```
+
+
+## Interactions
+
+11. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: sex and shirtless. Based on what you see in the plot, do you expect there to be an interaction between sex and shirtless? Why or why not?
+
+```{r, echo = FALSE, eval = FALSE}
+library(yarrr)
+pirateplot(dateability ~ sex + shirtless, 
+           data = facebook)
+
+# Yes there looks like an intereaction!
+```
+
+
+12.  Test your prediction with the appropriate ANOVA
+```{r, echo = FALSE, eval = FALSE}
+p12.aov <- aov(dateability ~ sex * shirtless, 
+            data = facebook)
+            
+summary(p12.aov)
+
+# Yep I was right!
+```
+
+
+# CHECKPOINT!
+
+### More interactions
+
+13. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: university and education Based on what you see in the plot, do you expect there to be an interaction between university and education? Why or why not?
+
+```{r}
+pirateplot(dateability ~ shirtless + sex, 
+           data = facebook)
+
+# Yes there looks like an interaction!
+```
+
+14. Test your prediction with the appropriate ANOVA
+
+```{r}
+p14.aov <- aov(dateability ~ shirtless * sex, 
+               data = facebook)
+
+summary(p14.aov)
+
+# I was right again!
+```
+    
+    
+15. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: university and haircolor. Based on what you see in the plot, do you expect there to be an interaction between university and intelligence? Why or why not?
+
+```{r, eval = FALSE, echo = FALSE}
+pirateplot(dateability ~ university + haircolor, 
+           data = facebook)
+
+# There does not look like an interaction
+```
+
+16. Test your prediction with the appropriate ANOVA
+
+```{r}
+p22.aov <- aov(dateability ~ university * haircolor, 
+           data = facebook)
+
+summary(p22.aov)
+
+# Yep! no significant interaction!
+```
+
+
+
+# Submit!
+
+Save and email your `wpa_7_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/3VxYkN](https://goo.gl/3VxYkN) to complete the WPA submission form.
+
+
