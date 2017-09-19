@@ -1,98 +1,117 @@
 ---
 title: "WPA #0 -- Seeing what R can do!"
-output:
-  rmdformats::html_clean:
-    highlight: kate
 ---
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=TRUE, warning=FALSE, message=FALSE, eval = FALSE)
+                      echo=TRUE, warning=FALSE, message=FALSE, eval = FALSE, fig.align = 'center')
 ```
 
 # Your first WPA!
 
 Here is your first WPA! Open a new R script in R and save it as `wpa_0_LastFirst` (where Last and First is your last and first name). At the top of your script, make sure to put the following info (make sure to put the hashtag at the beginning so R knows that it's a comment, not real R code)
 
-```{r, eval = F}
-# Assignment: WPA 0
-# Name: Walter White
-# Date: 28 September 2016
+```{r, echo = FALSE, eval = TRUE, out.width="80%", fig.cap = "<i>Here is how the start of your first programming assignment should look</i>"}
+knitr::include_graphics("images/wpa_0_ss.png")
 ```
-
-
-![](images/wpa0ss.png)
-
 
 Copy and paste each of the following code chunks into your assignment
 
-## 1. Install and load the yarrr package
+## 0. Install the yarrr package
 
-First we'll install and load the `yarrr` package. The `yarrr` package contains many datasets and functions that we'll use in this course.
+First we'll install and load the `yarrr` package. The `yarrr` package contains many datasets and functions that we'll use in this course. Note that you only need to install a package once on your machine. 
+
+```{r}
+## 0: # Install and load the yarrr package
+install.packages('yarrr')
+```
+
+## 1. Load the yarrr package
+
+Now it's time to load the yarrr package. You can do this with the `library()` function.
 
 ```{r, eval = F}
-## 1A: # Install and load the yarrr package
-install.packages('yarrr')
+## 1A: # Load the yarrr package
 library(yarrr)
 ```
 
 ## 2. Explore the pirates dataset
 
-The pirates dataset contains data from a survey of 1,000 pirates.
+The pirates dataset contains data from a survey of 1,000 pirates. The following lines of code will help you to get an idea of what's in the dataset.
 
 ```{r, eval = F}
-## 2A: Get help for pirates data
+## 2A: What class is the pirates object?
+class(pirates)
+```
+
+```{r, eval = F}
+## 2B: Get help for pirates data
 ?pirates
 ```
 
 ```{r}
-## 2B: Print the first few rows of the dataset
+## 2C: Print the first few rows of the dataset
 head(pirates)
 ```
 
 ```{r}
-## 2C: Show the structure of the dataset
+## 2D: Show the structure of the dataset
 str(pirates)
 ```
 
 ```{r}
-## 2D: Show the entire dataset in a new window
+## 2E: Show the entire dataset in a new window
 View(pirates)
 ```
 
-
 ## 3. Basic descriptive statistics for vectors
 
-Descriptives for numeric data
+You can access columns in a dataframe with `$`. When you do this, R will return a *vector* of values. A vector is just a combination of values of the same type.
+
+```{r}
+## 3A: Print the values of the age column
+pirates$age
+```
+
+To calculate simple descriptive statistics from a vector of values, just use one of the basic descriptive statistics *functions* like `mean()`, `median()`, and `sd()`:
+
 ```{r, eval = F}
-## 3A: What is the mean age?
+## 3B: What is the mean age?
 mean(pirates$age)
 ```
 
+```{r, eval = F}
+## 3C: What is the median age?
+median(pirates$age)
+```
+
 ```{r}
-## 3B: What was the height of the tallest pirate?
+## 3D: What was the maximum height?
 max(pirates$height)
 ```
 
 ```{r}
-## 3C (YOUR TURN!): What was the mean weight of the pirates?
+## 3E (YOUR TURN!): What was the mean weight of the pirates?
 
 
 ```
 
-Descriptives for non-numeric data
+If you have non-numeric data, you can calculate tables of frequencies with the `table()` function:
+
 ```{r}
-## 3D: How many pirates are there of each sex?
+## 3F: How many pirates are there of each sex?
 table(pirates$sex)
 ```
 
 ```{r}
-## 3E (YOUR TURN!): # How many pirates were there of each age?
+## 3G (YOUR TURN!): # How many pirates were there of each age?
 
 ```
 
 
-## 4. Descriptive statistics for non-numeric data
+## 4. Aggregated statistics by groups
+
+To calculate descriptive statistics for different groups of data, you can use the `aggregate()` function.
 
 ```{r, eval = F}
 ## 4A: What was the mean age for each sex?
@@ -102,24 +121,20 @@ aggregate(formula = age ~ sex,
 ```
 
 
-
-```{r, eval = F}
-## 4B (YOUR TURN!): What was the mean beard length for each sex?
-# (Hint: The beard length column is called beard.length)
-
-
-
-```
-
-
 ```{r}
-## 4C: What is the median age of pirates for each combination of sex and headband?
+## 4B: What is the median age of pirates for each combination of sex and headband?
 aggregate(formula = age ~ sex + headband, 
           data = pirates,
           FUN = median)
 ```
 
+```{r, eval = F}
+## 4C (YOUR TURN!): What was the mean beard length for each sex?
+# (Hint: The beard length column is called beard.length)
 
+
+
+```
 
 
 ## 5. Histograms
@@ -190,9 +205,7 @@ legend(x = 40,
 ```
 
 
-
 ## 6. Scatterplots
-
 
 ```{r, eval = F}
 ## 6A: A simple scatterplot of pirate height and weight
@@ -236,7 +249,8 @@ piratepal()
 
 ```{r}
 ## 7B: Look at the basel palette in detail
-piratepal(palette = "basel", plot.result = TRUE)
+piratepal(palette = "basel", 
+          plot.result = TRUE)
 ```
 
 ```{r}
@@ -268,16 +282,15 @@ grid()
 ```
 
 
-
 ### 8. Barplots
 
 ```{r, eval = F}
 ## 8A: Barpot of mean height by favorite.pirate
 
 # Calculate mean height for each favorite.pirate
-pirate.heights <- aggregate(height ~ favorite.pirate,
-                     data = pirates,
-                     FUN = mean)
+pirate_heights <- aggregate(height ~ favorite.pirate,
+                            data = pirates,
+                            FUN = mean)
 
 barplot(pirate.heights$height, 
         main = "Barplot of mean height by favorite pirate",
@@ -315,12 +328,19 @@ pirateplot(formula = height ~ sex + eyepatch,
            main = "Pirateplot of height by favorite pirate")
 ```
 
-## 10. Two sample hypothesis tests
+## 10. One and two-sample sample hypothesis tests
 
 ### t-test
 
 ```{r, eval = F}
-## 10A: Do pirates with eyepatches have longer beards than those without eyepatches?
+## 10A: Is the average age of pirates different from 28?
+t.test(x = pirates$age, 
+       mu = 28,
+       alternative = 'two.sided')
+```
+
+```{r, eval = F}
+## 10B: Do pirates with eyepatches have longer beards than those without eyepatches?
 t.test(formula = beard.length ~ eyepatch, 
        data = pirates,
        alternative = 'two.sided')
@@ -329,48 +349,86 @@ t.test(formula = beard.length ~ eyepatch,
 ### correlation test
 
 ```{r, eval = F}
-## 10B: Is there a correlation between a pirate's age and the number of parrots (s)he has?
+## 10C: Is there a correlation between a pirate's age and the number of parrots (s)he has?
 cor.test(formula = ~ age + parrots,
          data = pirates)
 ```
 
 ```{r}
-# 10C (YOUR TURN!): Is there a correlation between weight and tattoos?
+# 10D (YOUR TURN!): Is there a correlation between weight and tattoos?
 ```
 
 
 ## 11. ANOVA
 
 ```{r, eval = F}
-## 11A: ANOVA on beard.length as a function of sex and college
+## 11A: ANOVA on beard.length as a function of college
 
 # Run the ANOVA
-beard.aov <- aov(formula = beard.length ~ sex + college, 
+beard_aov <- aov(formula = beard.length ~ college, 
                    data = pirates)
 
 # Print summary results
-summary(beard.aov)
+summary(beard_aov)
 ```
 
 
 ```{r}
 ## 11B: Post-hoc tests on the previous ANOVA
-TukeyHSD(beard.aov)
+TukeyHSD(beard_aov)
 ```
 
 
+```{r}
+## 11C: Two way ANOVA predicting tattoos as a function of sex and fav.pixar
+
+# Run the ANOVA
+tattoos_aov <- aov(formula = tattoos ~ sex + fav.pixar, 
+                   data = pirates)
+
+# Print summary results
+summary(beard_aov)
+```
+
+
+```{r}
+## 11D: YOUR TURN!: Using an ANOVA, see if there is an effect of favorite.pirate and sword.type on age.
+
+
+
+
+
+```
+
+
+
 ## 12. Regression
+
 ```{r, eval = F}
 ## 12A: regression analysis showing if age, weight, and tattoos predict how many treasure chests a pirate has found
 
 # Run the regression
-chests.lm <- lm(formula = tchests ~ age + weight + tattoos, 
+chests_lm <- lm(formula = tchests ~ age + weight + tattoos, 
                 data = pirates)
 
 # Print summary results
-summary(chests.lm)
+summary(chests_lm)
 ```
 
 
-That's it! Now it's time to submit your assignment! Save and email your `wpa0LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [http://www.rpubs.com/YaRrr/syllabus_Spring2017](http://www.rpubs.com/YaRrr/syllabus_Spring2017) to find the link for the WPA submission form.
+```{r, eval = FALSE}
+## 12B: Logistic regression analysis showing chich variables predict whether or not a pirate wears an eyepatch
+
+# Run the regression
+eyepatch_lm <- glm(formula = eyepatch ~ ., # Consider ALL variables in pirates
+                  data = pirates,
+                  family = "binomial")     # Logistic regression
+
+# Print summary results
+summary(eyepatch_lm)
+```
+
+## Submit!
+
+Save and email your `wpa_0_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 
