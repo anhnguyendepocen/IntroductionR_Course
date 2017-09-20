@@ -1,6 +1,5 @@
 ---
 title: "Introduction to Statistics with R"
-subtitle: "Basel, Fall, 2017/2018"
 output:
   rmdformats::html_clean:
     highlight: kate
@@ -23,10 +22,18 @@ opts_chunk$set(echo=FALSE,
 opts_knit$set(width=75)
 ```
 
+## Main Information
 
-Course meeting times: Wednesdays, 14:15 - 15:45 (Session I) and 16:15 - 17:45 (Session II), Missionsstrasse 64a, Computerraum 00.010
+Semester: Basel, Fall, 2017/2018
 
-Syllabus (you're looking at it) webpage: [https://ndphillips.github.io/IntroductionR_Course/](https://ndphillips.github.io/IntroductionR_Course/)
+Location: Missionsstrasse 64a, Computerraum 00.010
+
+Course meeting times: 
+
+- Session 1: Wednesdays, 14:15 - 15:45
+- Session 2: Wednesdays, 16:15 - 17:45 
+
+Syllabus (you're looking at it): [https://ndphillips.github.io/IntroductionR_Course/](https://ndphillips.github.io/IntroductionR_Course/)
 
 Instructor: Nathaniel Phillips, nathaniel.phillips@unibas.ch
 
@@ -65,6 +72,13 @@ Week - Date |  Topic | Reading (at home) | Assignment (in class)
 End - 9 June | Final Project Due!!! | -| - 
 
 
+
+# R Installation
+
+You need to install two pieces of software for this course: R, and RStudio.
+
+- Install R version 3.4.0 "You Stupid Darkness" (or higher) here: [https://cloud.r-project.org/](https://cloud.r-project.org/)
+- Install RStudio for Desktop (the free version) here: [https://www.rstudio.com/products/rstudio/download/#download](https://www.rstudio.com/products/rstudio/download/#download)
 
 ## Important Links
 
