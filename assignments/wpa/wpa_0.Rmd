@@ -9,13 +9,30 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
 
 # Your first WPA!
 
-Here is your first WPA! Open a new R script in R and save it as `wpa_0_LastFirst` (where Last and First is your last and first name). At the top of your script, make sure to put the following info (make sure to put the hashtag at the beginning so R knows that it's a comment, not real R code)
+Open the RStudio application. Then, open a new R script with File -- New File -- R Script
 
-```{r, echo = FALSE, eval = TRUE, out.width="80%", fig.cap = "<i>Here is how the start of your first programming assignment should look</i>"}
-knitr::include_graphics("images/wpa_0_ss.png")
+```{r, echo = FALSE, eval = TRUE, out.width="60%"}
+knitr::include_graphics("images/gettingstarted_ss_A.png")
 ```
 
-Copy and paste each of the following code chunks into your assignment
+Now you'll see a new untitled document open. At the top of the document, include the assignment, your name, and the date as follows. Be sure to include the hash tag at the beginning of each line! This tells R that you're writing a comment, not R code.
+
+```{r, echo = FALSE, eval = TRUE, out.width="60%"}
+knitr::include_graphics("images/gettingstarted_ss_B.png")
+```
+
+Now, save the file under the name `wpa_0_LastFirst`, where `Last` is your last name, and `First` is your first name:
+
+```{r, echo = FALSE, eval = TRUE, out.width="60%"}
+knitr::include_graphics("images/gettingstarted_ss_C.png")
+```
+
+Start working on your tasks by adding code.
+
+```{r, echo = FALSE, eval = TRUE, out.width="60%"}
+knitr::include_graphics("images/gettingstarted_ss_D.png")
+```
+
 
 ## 0. Install the yarrr package
 
@@ -383,16 +400,18 @@ TukeyHSD(beard_aov)
 ## 11C: Two way ANOVA predicting tattoos as a function of sex and fav.pixar
 
 # Run the ANOVA
-tattoos_aov <- aov(formula = tattoos ~ sex + fav.pixar, 
+tattoos_aov <- aov(formula = tattoos ~ sex + fav.pixar,  
                    data = pirates)
 
 # Print summary results
-summary(beard_aov)
+summary(tattoos_aov)
+
+# Results are not signifciant, so no post-hoc tests
 ```
 
 
 ```{r}
-## 11D: YOUR TURN!: Using an ANOVA, see if there is an effect of favorite.pirate and sword.type on age.
+## 11D: YOUR TURN!: Conduct a two-way ANVOA see if there is an effect of favorite.pirate and sword.type on age.
 
 
 
@@ -428,7 +447,53 @@ eyepatch_lm <- glm(formula = eyepatch ~ ., # Consider ALL variables in pirates
 summary(eyepatch_lm)
 ```
 
+
+## 13. Simulate random data
+
+In the following code, we'll randomly generate three vectors of data `group_A`, `group_B`, and `group_c`. These data could reprent the result of a psychology study with three different groups. We'll make the population of group A the same as group B (mean = 10, sd = 5), but we'll make the population of group C a little larger with a mean of 12
+
+```{r}
+# group_A: 20 random samples from a normal distribution with mean = 10 and sd = 5
+group_A <- rnorm(n = 20, mean = 10, sd = 5)  
+
+# group_B: 20 random samples from the same normal distribution as group_A
+group_B <- rnorm(n = 20, mean = 10, sd = 5)  
+
+# group_C: 20 random samples from a normal distribution with mean = 12 and sd = 5
+group_C <- rnorm(n = 20, mean = 12, sd = 5)
+
+# Put into a dataframe
+
+group_df <- data.frame(group = c(rep("A", times = 20),
+                                  rep("B", times = 20),
+                                  rep("C", times = 20)),
+                        data = c(group_A, group_B, group_C), 
+                        stringsAsFactors = FALSE)
+
+# Print the results
+group_df
+
+# Plot the results as a pirateplot
+
+pirateplot(formula = data ~ group,
+           data = group_df,
+           main = "Randomly sampled data")
+
+# ANOVA
+group_aov <- aov(formula = data ~ group, data = group_df)
+
+# Summary table of ANOVA
+summary(group_aov)
+
+# Post hoc tests
+TukeyHSD(group_aov)
+```
+
+
+
+
+
 ## Submit!
 
-Save and email your `wpa_0_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
-
+- Save and email your `wpa_0_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
