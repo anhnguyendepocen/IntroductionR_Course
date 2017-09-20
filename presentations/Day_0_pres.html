@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Statistics with R</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Nathaniel Phillips" />
+    <link href="libs/remark-css/example.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Statistics with R
+### Nathaniel Phillips
+### 2017/09/19
+
+---
+
+
+
+
+
+## Course Sesssions
+
+.pull-left3[
+
+&lt;br&gt;
+
+
+| Session| Time| Students
+|----|:-------|:----|
+| 1 |     14:15 - 15:45|47
+|     2| 16:15 - 17:45| 31
+
+&lt;br&gt;
+
+There is extraordinary demand for this course.
+
+To accomodate this demand, we opened a second session.
+
+Now Session 1 is way overbooked!
+
+
+If you would like to switch sessions, go to the Doodle Link on the right and include your contact information.
+
+If a Session 1 and Session 2 student agree to switch, write me and I'll make the change.
+
+
+
+
+
+
+
+
+
+
+]
+
+
+.pull-right3[
+
+### https://doodle.com/poll/g26anuhxqw4rr6mv
+
+&lt;img src="images/doodle_ss.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+]
+
+
+---
+
+## Introduction to Statistics with R
+
+
+.pull-left2[
+
+### Course Page
+
+https://ndphillips.github.io/IntroductionR_Course/
+
+### Who is this guy?
+
+Dr. Nathaniel D. Phillips, American
+
+
+Post-doctoral researcher at Economic Psychology. 
+
+Research: Judgment and decision making, risky choice, machine learning.
+
+6 years ago I had never used R. Since then I use it almost every day. 
+
+Sometimes all day.
+
+...
+
+I love it.
+
+]
+
+.pull-right2[
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="images/Rlogo.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+
+
+---
+## What can you do with R?
+
+.pull-left3[
+
+&lt;br&gt;
+&lt;br&gt;
+
+1. Statistics (obviously)
+
+2. Plotting
+
+3. Machine Learning
+
+4. Presentations (like this one)
+
+5. Write complete APA style manuscripts with `papaja`
+
+6. Create interactive websites with `Shiny` (even psychology experiments!)
+
+]
+
+
+.pull-right3[
+
+&lt;img src="images/whatyoucando_collage.png" width="1184" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+## R is crazy popular
+
+
+&lt;img src="images/R_googletrends.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;font size=2&gt;Source: Google Trends&lt;/font&gt;
+
+
+
+---
+class: center, middle
+
+
+# Shiny
+
+Interactive websites. Programmed in R!
+
+
+---
+## TweetAnalyzer
+
+&lt;iframe src="https://longhowlam.shinyapps.io/TweetAnalyzer/", width=1000, height=600&gt;&lt;/iframe&gt;
+
+---
+## BART -- Balloon Analogue Risk Task
+
+&lt;iframe src="https://econpsychbasel.shinyapps.io/shinypsych_bart/", width=1000, height=600&gt;&lt;/iframe&gt;
+
+
+---
+class: center, middle
+
+
+# About this course
+
+
+
+---
+## Many of you are nervous...
+
+.pull-left3[
+
+
+&gt;&lt;font size = 5&gt;Programming is hard and I don't know how to do it!!!"&lt;br&gt;
+&gt;--- The guy to your left &lt;/font&gt;
+
+&lt;br&gt;
+
+&gt;&lt;font size = 5&gt;R is for programmers. I am just a psychologist, I am not a programmer and it will be too hard for me to learn."&lt;br&gt;
+&gt;--- The girl behind you &lt;/font&gt;
+
+&lt;br&gt;
+
+&gt;&lt;font size = 5&gt;"I'm used to SPSS and clicking with my mouse. R is just plain scary and I'll never get it or like it."&lt;br&gt;
+&gt;--- Me (6 years ago) &lt;/font&gt;
+
+]
+
+
+
+.pull-right3[
+&lt;img src="images/nervous_homer.gif" style="display: block; margin: auto;" /&gt;
+
+
+
+]
+
+
+---
+class: center, middle
+
+#Bullshit!
+
+
+---
+## Programming is awesome
+
+.pull-left3[
+&lt;br&gt;
+
+&lt;font size = 1&gt;Anyone can learn to program.&lt;/font&gt;
+
+&lt;br&gt;
+
+&lt;font size = 3&gt;Anyone can learn to program!&lt;/font&gt;
+
+&lt;br&gt;
+
+&lt;font size = 5, col = "red"&gt;Anyone can learn to program!&lt;/font&gt;
+
+&lt;br&gt;
+
+&lt;font size = 8&gt;Anyone can learn to program!&lt;/font&gt;
+
+
+]
+
+.pull-right3[
+&lt;img src="images/spongebob_programmingfun.jpg" width="827" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+
+---
+## Two Mindsets
+
+.pull-left3[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/mindset_collage.png" alt="&amp;lt;a href='https://goo.gl/DTdfh2'&amp;gt;Source: Mindset (Carol Dweck)&amp;lt;/a&amp;gt;" width="100%" /&gt;
+&lt;p class="caption"&gt;&lt;a href='https://goo.gl/DTdfh2'&gt;Source: Mindset (Carol Dweck)&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+]
+
+.pull-right3[
+
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;font size = 5&gt;Adopt the Growth mindset!&lt;/font&gt;
+&lt;br&gt;
+
+| | **Fixed**|*Growth*|
+|:------|:----|:-----|
+|     Challenges|    Avoid|Embrace!     |
+|     Obstacles|    Give up early|Persist!     |
+|     Effort|    Worthless|Path to mastery     |
+|     Criticism|    Ignore|Learn     |
+|     Success of Others|    Feel threatened|Feel inspired     |
+
+]
+
+
+
+
+
+---
+## Flipped Classroom
+
+.pull-left3[
+&lt;br&gt;
+&lt;font size=5&gt;This is a "Flipped Classroom"&lt;/font&gt;
+
+At home: Read book chapters, watch YouTube videos, and do practice problems.
+
+In class: Work *together* on Weekly Programming Assignments (WPAs)
+
+]
+
+
+.pull-right3[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/flippedclassroom.png" alt="&amp;lt;a href='https://ctl.boisestate.edu/flipping/files/2015/05/flippedflowmodel.png'&amp;gt;Source: https://ctl.boisestate.edu&amp;lt;/a&amp;gt;" width="827" /&gt;
+&lt;p class="caption"&gt;&lt;a href='https://ctl.boisestate.edu/flipping/files/2015/05/flippedflowmodel.png'&gt;Source: https://ctl.boisestate.edu&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+]
+
+
+---
+## Learn at home
+
+&lt;img src="images/homework_collage_wide.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+## WPAs
+
+.pull-left4[
+
+Several programming tasks. Both simple and challenging.
+
+Work together. Ask for help. Do as much as you can.
+
+Try to reach the **Checkpoint** to make sure you aren't falling behind.
+
+After 1.5 hours, submit *whatever* you have completed. You'll get 100% credit. Every time. No questions asked.
+
+]
+
+.pull-right4[
+
+&lt;img src="images/class_collage.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+## Work together!
+
+.pull-left3[
+
+The best way to learn programming is to work together!
+
+Ask for help, teach each other.
+
+Write your own code, submit your own assignment.
+
+&lt;img src="images/simpsons_group.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+.pull-right3[
+
+### 5 Great question to ask when you get stuck
+
+
+| Level| Question|
+|----|:---------------------------------|
+| 1 |      I have **absolutely no** idea what I'm supposed to do! Help!   |
+|     2| I know what I'm supposed to do but I don't know how to get started. Help!     |
+|     3|    My code should be working but it's not! R must be broken! Help!     |
+|     4|    My code works but I don't know why...Help!     |
+|     5|    I think I got it, but is there a better way to solve this task? Help!    |
+
+]
+
+
+---
+## There is a rumor...
+
+--
+
+&lt;img src="images/quiet_timberlake.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+## There is a rumor...
+
+&lt;img src="images/quiet_bieber.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+## Final Project
+
+&lt;br&gt;
+&lt;br&gt;
+
+At the end of the course, you'll complete a final analysis project.
+
+Use **any** dataset you want (or I'll give you one).
+
+Show off your R skills, discover new techniques for your data.
+
+Last two weeks of class are for in-class project work. Get help!
+
+(More details later in the semester)
+
+---
+## Questions?
+
+
+.pull-left3[
+
+# Course Webpage
+
+### https://ndphillips.github.io/IntroductionR_Course/
+
+]
+
+
+.pull-right3[
+
+
+&lt;img src="images/course_website.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+## Top 10 reasons that people take this course:
+
+--
+
+1. To analyse thesis data.
+
+--
+
+2. To analyse thesis data.
+
+--
+
+3. To analyse thesis data.
+
+--
+
+4. To analyse thesis data.
+
+5. To analyse thesis data.
+
+6. To analyse thesis data.
+
+7. To analyse thesis data.
+
+8. To analyse thesis data.
+
+9. To analyse thesis data.
+
+--
+
+&lt;font color="red"&gt;10. I think R could be a great skill to develop for my long-term career &lt;/font&gt; &lt;font color="gray"&gt;(and to analyse my thesis data)&lt;/font&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

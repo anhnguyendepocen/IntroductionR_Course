@@ -1,5 +1,6 @@
 ---
-title: "Introduction to Statistics with R Course Syllabus"
+title: "Introduction to Statistics with R"
+subtitle: "Basel, Fall, 2017/2018"
 output:
   rmdformats::html_clean:
     highlight: kate
@@ -30,8 +31,16 @@ Syllabus (you're looking at it) webpage: [https://ndphillips.github.io/Introduct
 Instructor: Nathaniel Phillips, nathaniel.phillips@unibas.ch
 
 
+## Course Session Doodle
 
-# Schedule and assignments
+- If you would like to switch course sessions, please go to the following Doodle linke: [https://doodle.com/poll/g26anuhxqw4rr6mv](https://doodle.com/poll/g26anuhxqw4rr6mv). Enter your name and email address, and indicate which course you are in and if you're available to switch sessions.
+
+- If you match with someone else, contact them and ask if they would like to switch with you. If you both agree, email me, and delete your information from the Doodle.
+
+- On 2 October, we will finalize the the session assignments. Those in session II will need to de-register from session 1 (23496-01) and register for session 2 (23496-02)
+
+
+# Schedule
 
 Your homework for each class period is to actively read the readings for that week. The videos are optional.  All of the work you turn in will be done in class as WPAs (Weekly Programming Assignments).
 
@@ -39,31 +48,40 @@ Your homework for each class period is to actively read the readings for that we
 
 Week - Date |  Topic | Reading (at home) | Assignment (in class)
 ------ | ----------- | --------- | --------- 
-1 - 22 Feb  | Introduction | [Day 0 Presentation](http://rpubs.com/YaRrr/Pres0_S17)    | [WPA #0](https://ndphillips.github.io/IntroductionR_Course/wpa/wpa_0.html)
-2- 1 March | R basics, scalers and vectors | YaRrr Ch: [1](https://bookdown.org/ndphillips/YaRrr/), [2](https://bookdown.org/ndphillips/YaRrr/started.html), [3](https://bookdown.org/ndphillips/YaRrr/jumpin.html), [4](https://bookdown.org/ndphillips/YaRrr/basics.html), [5](https://bookdown.org/ndphillips/YaRrr/scalersvectors.html), [6](https://bookdown.org/ndphillips/YaRrr/vectorfunctions.html) <br> Videos: [A](https://www.youtube.com/watch?v=Vkv7-nw3wwU&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=1), [B](https://www.youtube.com/watch?v=4Dr0o3g8h3Y&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=2), [C](https://www.youtube.com/watch?v=yNVDA0Noejk&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=3) | [WPA #1](http://rpubs.com/YaRrr/WPA1_S17) - [Answers](http://rpubs.com/YaRrr/WPA1_Answers_S17)
-3 - 15 March | Indexing Vectors | YaRrr Ch: [7](https://bookdown.org/ndphillips/YaRrr/vectorindexing.html) <br> Videos: [D](https://goo.gl/IsrBWO)| [WPA #2](http://rpubs.com/YaRrr/WPA2_S17) - [Answers](http://rpubs.com/YaRrr/WPA2_Answers_S17)
-4 - 22 March | Matrices and Dataframes, Managing data | YaRrr Ch: [8](https://bookdown.org/ndphillips/YaRrr/matricesdataframes.html) <br> Videos: [E](https://goo.gl/w86DM6), [F](https://goo.gl/yEiJ1R)| [WPA #3](http://rpubs.com/ndphillips/WPA3_S17) - [Answers](http://rpubs.com/YaRrr/WPA3_A_S17) | 
-5 - 29 March| Dataframe manipulation | YaRrr Ch: [9](https://bookdown.org/ndphillips/YaRrr/importingdata.html), [10](https://bookdown.org/ndphillips/YaRrr/advanceddataframe.html) <br> Videos: [G](https://goo.gl/UY2AE1) | [WPA #4](http://rpubs.com/YaRrr/WPA4_S17) - [Answers](http://rpubs.com/YaRrr/WPA4_Answers_S17)
-6 - 5 April | Plotting | YaRrr Ch: [11](https://bookdown.org/ndphillips/YaRrr/plotting1.html), [12](https://bookdown.org/ndphillips/YaRrr/plotting2.html) <br> [IDRE ggplot2 intro](http://stats.idre.ucla.edu/r/seminars/ggplot2_intro/)| [WPA #5](http://rpubs.com/YaRrr/WPA5_S17)  - [Answers](http://rpubs.com/YaRrr/WPA5_Answers_S17)
-7 - 12 April | 1 and 2 sample Hypothesis tests |YaRrr Ch: [13](https://bookdown.org/ndphillips/YaRrr/htests.html)| [WPA #6](http://rpubs.com/YaRrr/WPA6_S17) - [Answers](http://rpubs.com/YaRrr/WPA6_AnswersS17)
-8 - 19 April | ANOVA with `aov()` and `anova()`|YaRrr Ch: [14](https://bookdown.org/ndphillips/YaRrr/anova.html)| [WPA #7](http://rpubs.com/YaRrr/WPA7_S17) - [Answers](http://rpubs.com/YaRrr/WPA7_AnswersS17)
-9 - 26 April | Linear regression with `lm()`, `glm()` | YaRrr Ch: [15](https://bookdown.org/ndphillips/YaRrr/regression.html) | [WPA #8](http://rpubs.com/YaRrr/WPA8_S17) - [Answers](http://rpubs.com/YaRrr/WPA8_Answers_S17) 
-10 - 3 May | Writing Functions and Loops | YaRrr Ch: [16](https://bookdown.org/ndphillips/YaRrr/functions.html), [17](https://bookdown.org/ndphillips/YaRrr/loops.html) | [WPA #9](http://rpubs.com/YaRrr/WPA9_S17) 
-11 - 10 May | R Markdown and papaja | [Markdown Video](https://www.youtube.com/watch?v=7qTvOZfK6Cw)<br>[Markdown Guide](http://www.rpubs.com/YaRrr/markdownbasics)<br>[RStudio Lessons](http://rmarkdown.rstudio.com/lesson-1.html)<br>[papaja Guide](http://www.rpubs.com/YaRrr/papaja_guide) | -
-12 - 17 May | Final project work | - | - 
-13 - 24 May | Final project work | - | - 
-14 - 31 May | Final project work | -| - 
+1 - 20 Sep  | Introduction | [Day 0 Presentation](http://rpubs.com/YaRrr/Pres0_S17)    | [WPA #0](https://ndphillips.github.io/IntroductionR_Course/wpa/wpa_0.html)
+2 - 27 Sep | R basics, scalers and vectors | YaRrr Ch: [1](https://bookdown.org/ndphillips/YaRrr/), [2](https://bookdown.org/ndphillips/YaRrr/started.html), [3](https://bookdown.org/ndphillips/YaRrr/jumpin.html), [4](https://bookdown.org/ndphillips/YaRrr/basics.html), [5](https://bookdown.org/ndphillips/YaRrr/scalersvectors.html), [6](https://bookdown.org/ndphillips/YaRrr/vectorfunctions.html) <br> Videos: [A](https://www.youtube.com/watch?v=Vkv7-nw3wwU&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=1), [B](https://www.youtube.com/watch?v=4Dr0o3g8h3Y&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=2), [C](https://www.youtube.com/watch?v=yNVDA0Noejk&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=3) | 
+3 - 4 Oct | Indexing Vectors | YaRrr Ch: [7](https://bookdown.org/ndphillips/YaRrr/vectorindexing.html) <br> Videos: [D](https://goo.gl/IsrBWO)| 
+4 - 11 Oct | Matrices and Dataframes, Managing data | YaRrr Ch: [8](https://bookdown.org/ndphillips/YaRrr/matricesdataframes.html) <br> Videos: [E](https://goo.gl/w86DM6), [F](https://goo.gl/yEiJ1R)|  | 
+5 - 18 Oct| Dataframe manipulation | YaRrr Ch: [9](https://bookdown.org/ndphillips/YaRrr/importingdata.html), [10](https://bookdown.org/ndphillips/YaRrr/advanceddataframe.html) <br> Videos: [G](https://goo.gl/UY2AE1) | 
+6 - 25 Oct | Plotting | YaRrr Ch: [11](https://bookdown.org/ndphillips/YaRrr/plotting1.html), [12](https://bookdown.org/ndphillips/YaRrr/plotting2.html) <br> [IDRE ggplot2 intro](http://stats.idre.ucla.edu/r/seminars/ggplot2_intro/)| 
+7 - 1 Nov | 1 and 2 sample Hypothesis tests |YaRrr Ch: [13](https://bookdown.org/ndphillips/YaRrr/htests.html)| 
+8 - 8 Nov | ANOVA with `aov()` and `anova()`|YaRrr Ch: [14](https://bookdown.org/ndphillips/YaRrr/anova.html)|
+9 - 15 Nov | Linear regression with `lm()`, `glm()` | YaRrr Ch: [15](https://bookdown.org/ndphillips/YaRrr/regression.html) | 
+10 - 22 Nov | Writing Functions and Loops | YaRrr Ch: [16](https://bookdown.org/ndphillips/YaRrr/functions.html), [17](https://bookdown.org/ndphillips/YaRrr/loops.html) | 
+11 - 29 Nov | R Markdown and papaja | [Markdown Video](https://www.youtube.com/watch?v=7qTvOZfK6Cw)<br>[Markdown Guide](http://www.rpubs.com/YaRrr/markdownbasics)<br>[RStudio Lessons](http://rmarkdown.rstudio.com/lesson-1.html)<br>[papaja Guide](http://www.rpubs.com/YaRrr/papaja_guide) | -
+12 - 6 Dec | Final project work | - | - 
+13 - 13 Dec | Final project work | - | - 
+14 - 20 Dec | Final project work | -| - 
 End - 9 June | Final Project Due!!! | -| - 
 
 
 
-# Important Links
+## Important Links
 
 Link  | Description 
------- | ------- 
-[WPA Submission Page](https://goo.gl/forms/dTVlSdtHtqiNuHSw1) | Submit your assignments here
-[YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/) | Your Readings
-[R Reference Card](http://nathanieldphillips.com/wp-content/uploads/2016/03/RReferenceCard.pdf) | A handy R guide
+------ | ----------------- 
+[WPA Submission Page](https://goo.gl/forms/dTVlSdtHtqiNuHSw1) | After you have emailed your WPA to me, submit your assignments here
+[R Reference Card](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) | A handy R cheat sheet. I recommend you print this out and have it handy.
+[RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) | R Studio provides many very helpful R cheat sheets here.
+
+
+## Helpful sites
+
+Link  | Description 
+------ | ----------------- 
+[http://r-bloggers.com](http://r-bloggers.com)| The #1 place to hear the latest and greatest R news. Tons of great new R content every day. I encourage you to sign up for their email list!
+[http://rseek.org/](http://rseek.org/) | Use it like Google -- it only returns R related topics.
+
 
 
 # 5 Great question to ask when you get stuck
@@ -98,11 +116,6 @@ If you are interested in additional, non-piratey materials, there are numerous b
 2. [Data Visualisation for Social Sciences (online)](http://socviz.co/index.html#preface) by Healy.
 3. [The R Booky](http://goo.gl/sYB5rs) by Crawly.
 4. [Discovering Statistics Using R](http://goo.gl/WNKxjb) by Field and Miles
-
-
-## Helpful sites
-
-1. [r-bloggers.com](http://r-bloggers.com). The #1 place to hear the latest and greatest R news. Tons of great new R content every day. I encourage you to sign up for their email list!
 
 
 ## Weekly Programming Assignments (WPAs)
