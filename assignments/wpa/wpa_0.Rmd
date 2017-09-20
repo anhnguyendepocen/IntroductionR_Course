@@ -464,11 +464,9 @@ group_C <- rnorm(n = 20, mean = 12, sd = 5)
 
 # Put into a dataframe
 
-group_df <- data.frame(group = c(rep("A", times = 20),
-                                  rep("B", times = 20),
-                                  rep("C", times = 20)),
-                        data = c(group_A, group_B, group_C), 
-                        stringsAsFactors = FALSE)
+group_df <- data.frame(group = rep(c("A", "B", "C"), each = 20),
+                       data = c(group_A, group_B, group_C), 
+                       stringsAsFactors = FALSE)
 
 # Print the results
 group_df

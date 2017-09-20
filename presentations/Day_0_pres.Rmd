@@ -1,8 +1,8 @@
 ---
 title: "Introduction to Statistics with R"
 subtitle: ""
-author: "Nathaniel Phillips"
-date: "2017/09/19"
+author: "Dr. Nathaniel Phillips - nathaniel.phillips@unibas.ch"
+date: "2017/09/20"
 output:
   xaringan::moon_reader:
     css: ["default", "my-theme.css"]
@@ -48,9 +48,6 @@ library(knitr)
 There is extraordinary demand for this course.
 
 To accomodate this demand, we opened a second session.
-
-Now Session 1 is way overbooked!
-
 
 If you would like to switch sessions, go to the Doodle Link on the right (also on the webpage) and include your contact information.
 
@@ -173,29 +170,50 @@ knitr::include_graphics("images/R_googletrends.png")
 class: center, middle
 
 
-# Shiny
-
-Interactive websites. Programmed in R!
-
-
----
-## TweetAnalyzer
-
-<iframe src="https://longhowlam.shinyapps.io/TweetAnalyzer/", width=1000, height=600></iframe>
-
----
-## BART -- Balloon Analogue Risk Task
-
-<iframe src="https://econpsychbasel.shinyapps.io/shinypsych_bart/", width=1000, height=600></iframe>
-
-
----
-class: center, middle
-
-
 # About this course
 
 
+
+---
+## Course topics
+
+.pull-left3[
+
+### Key Topics
+
+1. Understanding the R language
+2. Calculating descriptive statistics.
+3. Importing, managing and accessing data.
+4. Plotting
+5. Simple hypothesis tests
+6. ANOVAs
+7. Regression
+8. Programming with functions and loops.
+9. Writing APA style documents with `papaja`
+
+### Bonus Topics (if time allows)
+
+B1. Bayesian statistics
+
+B2. Mixed-Effects regression
+
+B3. Code management with GitHub
+
+B4. Writing presentations (like this one)
+
+]
+
+
+.pull-right3[
+
+### Course Schedule
+
+On the course website
+
+```{r, out.width = "80%"}
+knitr::include_graphics("images/schedule_ss.png")
+```
+]
 
 ---
 ## Many of you are nervous...
@@ -344,7 +362,7 @@ knitr::include_graphics("images/homework_collage_wide.png")
 
 ---
 
-## WPAs
+## In-class WPAs
 
 .pull-left4[
 
@@ -405,16 +423,27 @@ knitr::include_graphics("images/simpsons_group.jpg")
 ---
 ## There is a rumor...
 
---
 
 ```{r, out.width = "80%"}
-knitr::include_graphics("images/quiet_timberlake.png")
+knitr::include_graphics("images/quiet.png")
 ```
 
 
 
 ---
 ## There is a rumor...
+
+
+```{r, out.width = "80%"}
+knitr::include_graphics("images/quiet_timberlake.png")
+```
+
+
+---
+## That's not true
+
+---
+## This is true
 
 ```{r, out.width = "80%"}
 knitr::include_graphics("images/quiet_bieber.png")
@@ -434,33 +463,66 @@ Use **any** dataset you want (or I'll give you one).
 
 Show off your R skills, discover new techniques for your data.
 
-Last two weeks of class are for in-class project work. Get help!
+Last 2 / 3 weeks of class are for in-class project work. Get help!
 
-(More details later in the semester)
+...More details later in the semester
+
 
 ---
-## Questions?
-
+## Grading
 
 .pull-left3[
 
-# Course Webpage
+Pass / Fail course
 
-### https://ndphillips.github.io/IntroductionR_Course/
+If you miss a class, email me, do the WPA at home and submit as soon as you can.
+
+If you adopt a growth mindset, ask questions, challenge yourself, do your WPAs, and submit a final project, you'll pass.
+
+This will be a fun class. Don't worry about your grade, focus on learning R!
 
 ]
 
 
 .pull-right3[
 
-
 ```{r, out.width = "100%"}
-knitr::include_graphics("images/course_website.png")
+knitr::include_graphics("images/passfail.jpg")
 ```
 
 ]
 
 
+---
+## Questions?
+
+### Course Webpage
+
+### https://ndphillips.github.io/IntroductionR_Course/
+
+
+
+```{r, out.width = "60%"}
+knitr::include_graphics("images/course_website.png")
+```
+
+
+---
+## Let's get started
+
+
+# Open the course webpage in a web browser
+
+- ### https://ndphillips.github.io/IntroductionR_Course/
+
+# Open RStudio
+
+# We'll play around a bit together then work on WPA 0
+
+# Stop 10 minutes before class ends and submit your assignment
+
+---
+# Extra slides
 
 ---
 ## Top 10 reasons that people take this course:
@@ -494,4 +556,26 @@ knitr::include_graphics("images/course_website.png")
 --
 
 <font color="red">10. I think R could be a great skill to develop for my long-term career </font> <font color="gray">(and to analyse my thesis data)</font>
+
+
+
+---
+class: center, middle
+
+
+# Shiny
+
+Interactive websites. Programmed in R!
+
+
+---
+## TweetAnalyzer
+
+<iframe src="https://longhowlam.shinyapps.io/TweetAnalyzer/", width=1000, height=600></iframe>
+
+---
+## BART -- Balloon Analogue Risk Task
+
+<iframe src="https://econpsychbasel.shinyapps.io/shinypsych_bart/", width=1000, height=600></iframe>
+
 
