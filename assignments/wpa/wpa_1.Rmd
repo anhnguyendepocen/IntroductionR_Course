@@ -1,9 +1,5 @@
 ---
 title: "WPA #1 -- Creating and using vectors"
-output:
-  prettydoc::html_pretty:
-    theme: lumen
-    highlight: github
 ---
 
 
@@ -12,7 +8,31 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=TRUE, warning=FALSE, message=FALSE)
 ```
 
-Open RStudio. Open a new R script (File -- New File -- R Script), and save it as `wpaXLastFirst.R` (where X is the WPA number, and Last and First is your last and first name). At the top of your script, write the assignment number, your name and date in comments. When you answer a task, indicate which task you are answering with appopriate comments.
+# Does drinking non-alcoholic beer affect cognitive performance?
+
+<img src="http://i.telegraph.co.uk/multimedia/archive/02326/obama_2326627b.jpg" width="400" />
+
+A psychologist has a theory that some of the negative cognitive effects of alcohol are the result of psychological rather than physiological processes. To test this, she has 12 participants perform a cognitive test before and after drinking non-alcoholic beer which was labelled to contain 5\% alcohol. Results from the study, including some demographic data, are presented in the following table. Note that higher scores on the test indicate better performance.
+
+participant | before  | after | age | sex | eye_color
+----| ------ | ------- | ---- | ---- | ----
+1 | 45 | 43 | 20 | male | blue
+2 | 49 | 50 | 19 | female | blue
+3 | 40 | 61 | 22 | male | brown
+4 | 48 | 44 | 20 | female | brown
+5 | 44 | 45 | 27 | male | blue
+6 | 70 | 20 | 22 | female | blue
+7 | 90 | 85 | 22 | male | brown
+8 | 75 | 65 | 20 | female | brown
+9 | 80 | 72 | 25 | male | blue
+10| 65 | 65 | 22 | female | blue
+11 | 80 | 70 | 24 | male | brown
+12 | 52 | 75 | 22 | female | brown
+
+
+## Get started
+
+0. Open RStudio. Open a new R script (File -- New File -- R Script), and save it as `wpa_1_LastFirst.R` (where Last and First is your last and first name). At the top of your script, and using comments, write the assignment number, your name and date in comments. When you answer a task, indicate which task you are answering with appropriate comments.
 
 *Here is an example of how your `wpaXLastFirst.R` file could look*
 ```{r, eval = F}
@@ -31,29 +51,6 @@ Open RStudio. Open a new R script (File -- New File -- R Script), and save it as
 ```
 
 
-
-# Does drinking non-alcoholic beer affect cognitive performance?
-
-<img src="http://i.telegraph.co.uk/multimedia/archive/02326/obama_2326627b.jpg" width="400" />
-
-A psychologist has a theory that some of the negative cognitive effects of alcohol are the result of psychological rather than physiological processes. To test this, she has 12 participants perform a cognitive test before and after drinking non-alcoholic beer which was labelled to contain 5\% alcohol. Results from the study, including some demographic data, are presented in the following table. Note that higher scores on the test indicate better performance.
-
-participant | before  | after | age | sex | eye.color
-----| ------ | ------- | ---- | ---- | ----
-1 | 45 | 43 | 20 | male | blue
-2 | 49 | 50 | 19 | female | blue
-3 | 40 | 61 | 22 | male | brown
-4 | 48 | 44 | 20 | female | brown
-5 | 44 | 45 | 27 | male | blue
-6 | 70 | 20 | 22 | female | blue
-7 | 90 | 85 | 22 | male | brown
-8 | 75 | 65 | 20 | female | brown
-9 | 80 | 72 | 25 | male | blue
-10| 65 | 65 | 22 | female | blue
-11 | 80 | 70 | 24 | male | brown
-12 | 52 | 75 | 22 | female | brown
-
-
 ## Creating vectors from scratch
 
 1. Create a vector of the participant data called `participant` using the `c()` function.
@@ -70,15 +67,15 @@ participant | before  | after | age | sex | eye.color
 
 7. Create a vector of the sex data called `sex` but don't use `c()`. Instead, use the `rep()` function by looking for a pattern in the data.
 
-8. Create a vector of the eye color data called `eye.color` but don't use `c()`. Instead, use the `rep()` function by looking for the pattern in the data.
+8. Create a vector of the eye color data called `eye_color` but don't use `c()`. Instead, use the `rep()` function by looking for the pattern in the data.
 
 ## Combining and changing vectors
 
-9. Create a new vector called `age.months` that shows the participants' age in months instead of years. (Hint: use basic vector arithmetic)
+9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: use basic vector arithmetic)
 
 10. Create a new vector called `change` that shows the change in participants' scores from before to after (Hint: use basic vector arithmetic)
 
-11. Create a new vector called `average` that shows the participants' *average* score across both tests. That is, the first element of `average` should be the average of the first participant's two scores, and the second element should be the average of the second participant's two scores...(Hint: Don't use `mean()`! Use basic vector arithmetic)
+11. Create a new vector called `average` that shows the participants' *average* score across both tests. That is, the first element of `average` should be the average of the first participant's two scores, and the second element should be the average of the second participant's two scores...(Hint: Don't use `mean()`! Use basic vector arithmetic.)
 
 12. Oops! It turns out that the watch used to measure time was off. All the before times are 1 second too fast, and all the after times are 1 second too slow. Correct them! Make sure you also update the `change` vector!
 
@@ -86,9 +83,9 @@ participant | before  | after | age | sex | eye.color
 
 13. How many elements are in *each* of the original data vectors? (Hint: use `length()`). If the number of elements in each is not the same, you typed something in wrong!
 
-14. What was the standard deviation of ages? Assign the result to a scaler object called `age.sd`.
+14. What was the standard deviation of ages? Assign the result to a scaler object called `age_sd`.
 
-15. What is the median age? Assign the result to a scaler object called `age.median`.
+15. What is the median age? Assign the result to a scaler object called `age)median`.
 
 16. How many people were there of each sex? (Hint: use `table()`)
 
@@ -96,11 +93,11 @@ participant | before  | after | age | sex | eye.color
 
 18. Calculate the mean of the `sex` column. What happens and why?
 
-19. What was the mean `before` time? Assign the result to a scaler object called `before.mean`.
+19. What was the mean `before` time? Assign the result to a scaler object called `before_mean`.
 
-20. What was the mean `after` time? Assign the result to a scaler object called `after.mean`.
+20. What was the mean `after` time? Assign the result to a scaler object called `after_mean`.
 
-21. What was the difference in the mean `before` times and the mean `after` times? Calculate this in two ways: once using the `change` vector, and once using the `before.mean` and `after.mean` objects. You should get the same answer for both! (If you don't get the same answer for both, it's probably because you didn't update the `change` vector in Question 12!)
+21. What was the difference in the mean `before` times and the mean `after` times? Calculate this in two ways: once using the `change` vector, and once using the `before_mean` and `after_mean` objects. You should get the same answer for both! (If you don't get the same answer for both, it's probably because you didn't update the `change` vector in Question 12!)
 
 
 # CHECKPOINT!
@@ -109,15 +106,15 @@ participant | before  | after | age | sex | eye.color
 
 ## Standardizing (z-scores) vectors
 
-22. Create a vector called `before.z` showing a standardized version of `before`.
+22. Create a vector called `before_z` showing a standardized version of `before`. (Hint: Standardizing a variable means subtracting the mean, and then dividing by the standard deviation.).
 
-23. Create a vector called `after.z` showing a standardized version of `after`.
+23. Create a vector called `after_z` showing a standardized version of `after`.
 
 24. What was the largest `before` score? What was its corresponding z-score?
 
 25. What was the smallest `after` score? What was its corresponding z-score?
 
-26. What should the mean and standard deviation of `before.z` and `after.z` be? Test your predictions by making the appropriate calculations.
+26. What should the mean and standard deviation of `before_z` and `after_z` be? Test your predictions by making the appropriate calculations.
 
 ## Random samples from distributions
 
@@ -138,13 +135,13 @@ You can create random samples of values from a Normal distribution using the `rn
 x <- rnorm(n = 50, mean = 20, sd = 10)
 ```
 
-27. Create a vector called `samp.10` that contains 10 samples from a Normal distribution with a mean of 100 and a standard deviation of 10.
+27. Create a vector called `samp_10` that contains 10 samples from a Normal distribution with a mean of 100 and a standard deviation of 10.
 
-28. Create a vector called `samp.100000` that contains 100,000 samples from the same Normal distribution as above (that is, also with a mean of 100 and standard deviation of 10).
+28. Create a vector called `samp_10000` that contains 100,000 samples from the same Normal distribution as above (that is, also with a mean of 100 and standard deviation of 10).
 
-29. Before making any calculations, what would you guess the mean and standard deviations of `samp.10` and `samp.100000` are? Which prediction are you more confident in?
+29. Before making any calculations, what would you guess the mean and standard deviations of `samp_10` and `samp_10000` are? Which prediction are you more confident in?
 
-30. Calculate the mean and standard deviations of `samp.10` and `samp.100000` separately. Was your prediction correct?
+30. Calculate the mean and standard deviations of `samp_10` and `samp_10000` separately. Was your prediction correct?
 
 ## The Room with 100 Boxes
 
@@ -152,26 +149,36 @@ Imagine the following. There is a room with 100 boxes. 99 of the 100 boxes each 
 
 Here's the question...if you walked into the room with 100 boxes, how many would you want to open?
 
-```{r fig.width = 7, fig.height = 7, echo = FALSE}
+The code below will create a plot of the boxes game. If you'd like to, you could try running it in your R session to see the result.
+
+```{r fig.width = 7, fig.height = 7, echo = TRUE}
 # Plot of the Boxes Game
 
 # Plotting space
-plot(1, xlim = c(0, 11), ylim = c(0, 11),
+plot(1, 
+     xlim = c(0, 11), 
+     ylim = c(0, 11),
      xlab = "", ylab = "", main = "The 100 Boxes Game!", 
      type = "n", xaxt = "n", yaxt = "n")
 
-text(x = 5.5, y = 11, labels = "There are 100 boxes\n99 / 100 contain 10,000 EUR (each) and 1 / 100 contains a bomb! How many will you open?", font = 3, cex = .8)
+text(x = 5.5,
+     y = 11, 
+     labels = "There are 100 boxes\n99 / 100 contain 10,000 EUR (each) and 1 / 100 contains a bomb! How many will you open?", 
+     font = 3,    # Italic font
+     cex = .8)    # Slightly smaller font size
 
 # Boxes
-points(x = rep(1:10, times = 10), y = rep(1:10, each = 10), 
-    pch = 22, cex = 4, 
-     bg = sample(c(rep("green", 99), "red")))
+points(x = rep(1:10, times = 10), 
+       y = rep(1:10, each = 10), 
+       pch = 22, 
+       cex = 4, 
+       bg = sample(c(rep("green", 99), "red")))
 
 # Labels
-points(x = rep(1:10, times = 10), y = rep(1:10, each = 10), pch = "?")
-
+points(x = rep(1:10, times = 10), 
+       y = rep(1:10, each = 10), 
+       pch = "?")
 ```
-
 
 You can easily play the Room with 100 Boxes game using the `sample` function in R.
 
@@ -186,8 +193,8 @@ Now run the following code to see what you get!
 ```{r eval = F}
 # Play the Room with 100 Boxes Game!
 
-boxes.result <- sample(x = c(rep(100000, 99), -Inf),  # Sample from the box...
-                 size = i.will.open)
+boxes.result <- sample(x = c(rep(10000, 99), -Inf),  # Sample from the box...
+                       size = i.will.open)
 
 # Print what you got!
 
@@ -210,7 +217,7 @@ if(i.will.open == 0) {
   
 if(i.will.open > 0) {
   
-  boxes.result <- sample(x = c(rep(100000, 99), -Inf),
+  boxes.result <- sample(x = c(rep(10000, 99), -Inf),
                    size = i.will.open)
 
 if(-Inf %in% boxes.result) {
@@ -234,7 +241,8 @@ Now play the game just by running the function with the number of boxes you want
 play.boxes.game(0)  # Play with 0 boxes
 ```
 
+## Submit!
 
-
-That's it! Now it's time to submit your assignment! Save and email your `wpaXLastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/rheaASgVwAGXesze2](https://goo.gl/forms/rheaASgVwAGXesze2) to complete the WPA submission form.
+- Save and email your `wpa_1_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 
