@@ -71,7 +71,7 @@ You need to install two pieces of software for this course: R, and RStudio.
 - Install R version 3.4.0 "You Stupid Darkness" (or higher) here: [https://cloud.r-project.org/](https://cloud.r-project.org/)
 - Install RStudio for Desktop (the free version) here: [https://www.rstudio.com/products/rstudio/download/#download](https://www.rstudio.com/products/rstudio/download/#download)
 
-## WPA Submission Page
+### WPA Submission Page
 
 Link  | Description 
 ------ | ----------------- 
@@ -87,6 +87,13 @@ Link  | Description
 [Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf) | A cheatsheet for the RStudio environment
 [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) | A cheatsheet for writing documents with RMarkdown
 [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) | R Studio provides the above cheat sheets, as well as many more, here
+
+
+### Other
+Link  | Description 
+------ | ----------------- 
+[Google R Style guide](https://google.github.io/styleguide/Rguide.xml) | Google provides a nice style guide for progamming in R
+
 
 
 ## Helpful sites
