@@ -22,7 +22,7 @@ This assignment is based on the following readings:
 - Create vectors using `c()`, and replication functions such as `rep()` and `seq()`
 - Calculate descriptive statistics from vectors using `mean()`, `sd()`, `table()` and others.
 - Do basic arithmetic operations on vectors.
-- Generate random samples from probability distributions such as the Normal with `rnorm()`
+- Generate random samples from vectors using `sample()`, and samples from probability distributions such as the Normal with `rnorm()`
 
 
 # Examples
@@ -32,8 +32,8 @@ This assignment is based on the following readings:
 
 # Vector of specific values
 
-c(37, 45, 23, 54, 66)
-c(-23, 20, 85, 10, 45)
+c(37, 45, 23, 54, 66)   # Numeric
+c("A", "B", "C", "D")   # Character
 
 # Vector of integers 1 to 5
 
@@ -137,13 +137,13 @@ We'll start by creating vector objects representing each vector of data (i.e.; c
 
 6. Create a vector of the age data called `age` using `c()`.
 
-7. Create a vector of the sex data called `sex` but don't use `c()`. Instead, use the `rep()` function by looking for a pattern in the data. To get help on this function, look at the help menu with `?rep`
+7. Create a vector of the sex data called `sex` but don't use just the `c()` function (that would be a lot of typing...). Instead, just repeat the vector `c("male", "female")` several times using the `rep()` function.
 
-8. Create a vector of the eye color data called `eye_color` but don't use `c()`. Instead, use the `rep()` function by looking for the pattern in the data.
+8. Create a vector of the eye color data called `eye_color` using the `rep()` function.
 
 ## Combining and changing vectors
 
-9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: Just multiply each value by 12)
+9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: Just multiply each age value by 12)
 
 10. Oops! It turns out that the watch used to measure time was off. All the before times are 1 second too fast, and all the after times are 1 second too slow. Correct these values by using simple arithmetic and then (re)assigning the objects with `<-`!
 
