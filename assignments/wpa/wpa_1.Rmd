@@ -171,7 +171,7 @@ We'll start by creating vector objects representing each vector of data (i.e.; c
 
 20. What was the mean `after` time? Assign the result to a scaler object called `after_mean`.
 
-21. What was the difference in the mean `before` times and the mean `after` times? Calculate this in two ways: once using the `change` vector, and once using the `before_mean` and `after_mean` objects. You should get the same answer for both! (If you don't get the same answer for both, it's probably because you didn't update the `change` vector in Question 12!)
+21. What was the difference in the mean `before` times and the mean `after` times? Calculate this in two ways: once using the `change` vector, and once using the `before_mean` and `after_mean` objects. You should get the same answer for both!
 
 # CHECKPOINT!
 
