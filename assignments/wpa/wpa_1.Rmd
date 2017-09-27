@@ -198,11 +198,16 @@ hist(rnorm(10000, mean = 100, sd = 10),
 
 ```
 
-R has lots of functions for drawing random samples from probability distributions. For example, you can create random samples of values from a Normal distribution using the `rnorm(n, mean, sd)` function. To illustrate, the following code chunk will save a vector of 50 values from a Normal distribution with mean of 20 and standard deviation of 10
+R has lots of functions for drawing random samples from probability distributions. For example, you can draw random samples from a vector with `sample()`, or draw random samples of values from a Normal distribution using the `rnorm(n, mean, sd)` function. Here are some examples: 
+```{r, eval = FALSE}
+# Draw 10 random numbers from the integers 1 to 100
+sample(x = 1:100, size = 10)
 
-```{r}
-# Random sample of 50 values from N(mean = 20, sd = 10)
-x <- rnorm(n = 50, mean = 20, sd = 10)
+# Simulate 10 flips from a fair coin
+sample(x = c("H", "T"), size = 10, replace = TRUE)
+
+# Random sample of 50 values from a Normal distribution with mean = 20 and sd = 10
+rnorm(n = 50, mean = 20, sd = 10)
 ```
 
 27. Create a vector called `samp_10` that contains 10 samples from a Normal distribution with a mean of 100 and a standard deviation of 10.
@@ -213,22 +218,9 @@ x <- rnorm(n = 50, mean = 20, sd = 10)
 
 30. Calculate the mean and standard deviations of `samp_10` and `samp_1000` separately. Was your prediction correct?
 
-31. Run the following code to create a pirateplot of your data, do the results make sense?
+31. Simulate 100 flips from a fair coin using `sample()` (Hint: include the arguments `x = c("H", "T"), size = 100, replace = TRUE`)
 
-```{r, eval = FALSE}
-# Put data in a dataframe
-sample_data <- data.frame(group = c(rep('10', 10), rep('1000', 1000)),
-                          y = c(samp_10, samp_1000))
-
-# Create pirateplot
-yarrr::pirateplot(formula = y ~ group, 
-                  data = sample_data, 
-                  inf.b.o = 0,    # Turn off inference box border
-                  inf.f.o = 0)    # Turn off inference box filling
-
-```
-
-32. Now run all of your code for this section again (that is, the code that creates `samp_10` and `samp_1000`, and then plots the results). See how the results change!
+32. Simulate 100 flips from a *biased* coin where the probability of heads is 0.8 and the probability of tails is 0.2 (Hint: You can do this in two ways, either by including more heads than tails in the `x` argument, or by using the `prob` argument. Look at the help menu for the sample function for help.)
 
 ## Bonus: The Room with 100 Boxes
 
@@ -296,6 +288,8 @@ sum(result)  # Your total winnings!
 
 You can also represent the boxes game by writing your own custom function in R. Run the following chunk to create the new function `boxes_game`. The code uses advanced functions like `if()` and `function()` that we haven't learned yet, but feel free to take a closer look to try to understand the logic.
 
+When you run the following code, 'nothing' will happen. But in fact, you are defining a new function called `boxes_game` that you can use later to actually play the game.
+
 ```{r}
 # Run this chunk to create the function
 boxes_game <- function(open, 
@@ -332,10 +326,10 @@ if((-Inf %in% result) == FALSE) {
 }
 ```
 
-Now play the game just by running the function with the number of boxes you want to open as the main argument! For example, here's how you'd play the game by opening 5 boxes.
+Now you have defined the new function `boxes_game()`. To play the game, evaluate the function by specifying the two arguments: `open` is the the number of boxes you want to open, and `room` defines the room! For example, here's how you'd play the game by opening 5 boxes in the room with 100 boxes:
 
 ```{r, eval = FALSE}
-# Play boxes game with 5 boxes
+# Play boxes game with 5 boxes in room_100
 
 boxes_game(open = 5, 
            room = room_100)  
