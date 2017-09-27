@@ -72,8 +72,9 @@ a + b    # Add a and b element-wise
 
 # Generate samples from distributions
 
-rnorm(n = 10, mean = 50, sd = 2)       # 10 values from Normal(mean = 50, sd = 2)
-rbinom(n = 100, size = 1, prob = .5)   # 100 coin flips (binomial with size = 1, prob = .5)
+sample(1:10, size = 2, replace = FALSE) # 2 values from the integers from 1 to 10
+rnorm(n = 10, mean = 50, sd = 2)        # 10 values from Normal(mean = 50, sd = 2)
+rbinom(n = 100, size = 1, prob = .5)    # 100 coin flips (binomial with size = 1, prob = .5)
 ```
 
 
@@ -231,9 +232,9 @@ yarrr::pirateplot(formula = y ~ group,
 
 ## Bonus: The Room with 100 Boxes
 
-Here is a fun little risky decision making game you can program in R using sampling functions. Imagine the following. There is a room with 100 boxes. 99 of the 100 boxes each contain 10 Thousand EUR which you can keep. 1 of the 100 boxes contains a bomb which kills you if you open it.
+Here is a fun little risky decision making game you can program in R using the `sample()` function. Imagine the following. There is a room with 100 boxes. 99 of the 100 boxes each contain 10 Thousand EUR, while 1 of the boxes contains a bomb.
 
-Here's the question...if you walked into the room with 100 boxes, how many would you want to open?
+Here's the question...if you walked into the room with 100 boxes, how many would you want to open? If you don't get the bomb, you can keep all of the money in the boxes you open. If you get the bomb, you get nothing (and die).
 
 The code below will create a plot of the boxes game. If you'd like to, you could try running it in your R session to see the result.
 
@@ -266,9 +267,7 @@ points(x = rep(1:10, times = 10),
        pch = "?")
 ```
 
-You can easily play the Room with 100 Boxes game using the `sample` function in R.
-
-First, create the room as an object `room_100` which ontains a vector with 99 values of 10,000 and one value of negative infinity (`-Inf`) which represents the bomb.
+Here's how you can play the boxes game in R. First, create the room as an object `room_100` which contains a vector with 99 values of 10 (representing 10 Thousand Euros) and one value of negative infinity (`-Inf`) which represents the bomb.
 
 ```{r}
 # This vector represents the room of 100 boxes
@@ -278,7 +277,7 @@ room_100 <- c(rep(10, 99), -Inf)
 First, put the number of boxes you want to open as a new scaler object called `open`:
 
 ```{r}
-open <- 0  # How many do you want to open? Change the value from 0 to your number
+open <- 0  # How many do you want to open?
 ```
 
 Now run the following code to see what you get!
@@ -291,11 +290,11 @@ result <- sample(x = room_100,  # Sample from the room...
 
 # Print what you got!
 
-result  # Show what's in each box (1 means 10,000 EUR)
+result       # Show what's in each box (1 means 10,000 EUR)
 sum(result)  # Your total winnings!
 ```
 
-You can also represent the boxes game by writing your own custom function in R. Run the following chunk to create the new function `boxes_game`:
+You can also represent the boxes game by writing your own custom function in R. Run the following chunk to create the new function `boxes_game`. The code uses advanced functions like `if()` and `function()` that we haven't learned yet, but feel free to take a closer look to try to understand the logic.
 
 ```{r}
 # Run this chunk to create the function
