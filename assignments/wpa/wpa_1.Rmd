@@ -8,6 +8,76 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=TRUE, warning=FALSE, message=FALSE)
 ```
 
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr Ch: [1](https://bookdown.org/ndphillips/YaRrr/), [2](https://bookdown.org/ndphillips/YaRrr/started.html), [3](https://bookdown.org/ndphillips/YaRrr/jumpin.html), [4](https://bookdown.org/ndphillips/YaRrr/basics.html), [5](https://bookdown.org/ndphillips/YaRrr/scalersvectors.html), [6](https://bookdown.org/ndphillips/YaRrr/vectorfunctions.html)
+- Videos (optional): [A](https://www.youtube.com/watch?v=Vkv7-nw3wwU&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=1), [B](https://www.youtube.com/watch?v=4Dr0o3g8h3Y&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=2), [C](https://www.youtube.com/watch?v=yNVDA0Noejk&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=3)
+
+
+## Assignment Goals
+
+- Assign objects using the assignment operator `<-`
+- Create vectors using `c()`, and replication functions such as `rep()` and `seq()`
+- Calculate descriptive statistics from vectors using `mean()`, `sd()`, `table()` and others.
+- Do basic arithmetic operations on vectors.
+- Generate random samples from probability distributions such as the Normal with `rnorm()`
+
+
+# Examples
+
+
+```{r, eval = FALSE}
+
+# Vector of specific values
+
+c(37, 45, 23, 54, 66)
+c(-23, 20, 85, 10, 45)
+
+# Vector of integers 1 to 5
+
+c(1, 2, 3, 4, 5)                       # using c()
+1:5                                    # using a:b
+seq(from = 1, to = 5, by = 1)          # using seq()
+seq(from = 1, to = 5, length.out = 5)  # same as above using length.out
+
+# Vector of multiples of 10 from 10 to 50
+
+c(10, 20, 30, 40, 50)
+seq(from = 10, to = 50, by = 10)
+seq(from = 10, to = 50, length.out = 5)
+
+# Assign vectors to objects
+
+data_A <- c(37, 45, 23, 54, 66)
+data_B <- seq(from = 1, to = 100, by = 2)
+
+# Calculate descriptive statistics
+
+mean(c(37, 45, 23, 54, 66))
+mean(data_A)
+
+median(seq(from = 1, to = 100, by = 2))
+median(data_B)
+
+# Vector arithmetic
+
+a <- c(1, 2, 3, 4, 5)
+a * 10   # Multiply all elements by 10
+a + .5   # Add .5 to all elements
+
+b <- c(10, 20, 30, 40, 50)
+a + b    # Add a and b element-wise
+
+# Generate samples from distributions
+
+rnorm(n = 10, mean = 50, sd = 2)       # 10 values from Normal(mean = 50, sd = 2)
+rbinom(n = 100, size = 1, prob = .5)   # 100 coin flips (binomial with size = 1, prob = .5)
+```
+
+
+
 # Get started
 
 0. Open RStudio. Open a new R script (File -- New File -- R Script), and save it as `wpa_1_LastFirst.R` (where Last and First is your last and first name). At the top of your script write the assignment number, your name and date (as comments!). For the rest of the assignment, when you answer a task, indicate which task you are answering with appropriate comments as follows:
@@ -52,13 +122,13 @@ id | before  | after | age | sex | eye_color
 
 ## Creating vectors from scratch
 
-We'll start by creating vector objects representing each vector of data from the study.
+We'll start by creating vector objects representing each vector of data (i.e.; column from the table above) from the study.
 
 1. Create a vector of the id data called `id` using the `c()` function.
 
 2. Now, create the `id` vector again, but this time use the `a:b` function.
 
-3. Now create the `id` vector again! But this time use the `seq()` function. 
+3. Now create the `id` vector again! But this time use the `seq()` function. To get help on this function, look at the help menu with `?seq`
 
 4. Create a vector of the before drink data called `before` using `c()`.
 
@@ -66,19 +136,21 @@ We'll start by creating vector objects representing each vector of data from the
 
 6. Create a vector of the age data called `age` using `c()`.
 
-7. Create a vector of the sex data called `sex` but don't use `c()`. Instead, use the `rep()` function by looking for a pattern in the data.
+7. Create a vector of the sex data called `sex` but don't use `c()`. Instead, use the `rep()` function by looking for a pattern in the data. To get help on this function, look at the help menu with `?rep`
 
 8. Create a vector of the eye color data called `eye_color` but don't use `c()`. Instead, use the `rep()` function by looking for the pattern in the data.
 
 ## Combining and changing vectors
 
-9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: use basic vector arithmetic)
+9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: Just multiply each value by 12)
 
-10. Create a new vector called `change` that shows the change in participants' scores from before to after (Hint: use basic vector arithmetic)
+10. Oops! It turns out that the watch used to measure time was off. All the before times are 1 second too fast, and all the after times are 1 second too slow. Correct these values by using simple arithmetic and then (re)assigning the objects with `<-`!
 
-11. Create a new vector called `average` that shows the participants' *average* score across both tests. That is, the first element of `average` should be the average of the first participant's two scores, and the second element should be the average of the second participant's two scores...(Hint: Don't use `mean()`! Use basic vector arithmetic.)
+11. Create a new vector called `change` that shows the change in participants' scores from before to after (Hint: Just subtract one vector from the other)
 
-12. Oops! It turns out that the watch used to measure time was off. All the before times are 1 second too fast, and all the after times are 1 second too slow. Correct these values! Make sure you also update the `change` vector!
+12. Create a new vector called `average` that shows the participants' *average* score across both tests. That is, the first element of `average` should be the average of the first participant's two scores, and the second element should be the average of the second participant's two scores...(Hint: Don't use the `mean()` function! Instead, use basic arithmetic with `+` and `/`. That is, the elements of `average` should be `before` plus `after` divided by 2.)
+
+
 
 ## Applying functions to vectors
 
@@ -264,7 +336,7 @@ Now play the game just by running the function with the number of boxes you want
 boxes_game(open = 5, room = room_100)  # Play with 5 boxes
 ```
 
-Play the game a few times and see how you do. When you are done, try creating another room called `room_risky` that contains only 10 values: 9 values of 1,000,000 and 1 bomb. Try playing the game in this room a few times and see how your results change.
+Play the game a few times and see how you do. When you are done, try creating another room called `room_risky` that contains only 10 values: 9 values of 1000 Thousand (aka, 1 Million) and 1 bomb. Try playing the game in this room a few times and see how your results change.
 
 
 ## Submit!
