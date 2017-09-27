@@ -299,27 +299,30 @@ You can also represent the boxes game by writing your own custom function in R. 
 
 ```{r}
 # Run this chunk to create the function
-boxes_game <- function(open, room) {
-
-# Prevents exponent printing in the output
-options("scipen" = 100, "digits" = 4)
+boxes_game <- function(open, 
+                       room) {
   
 # Outcome if no boxes are opened
+  
 if(open == 0) {
   
   print("You didn't open any boxes! You earned nothing but are still alive")}
 
 # If at least 1 box is opened...
+  
 if(open > 0) {
   
+  # Calculate the result
   result <- sample(x = room,
                    size = open)
 
+# If -Inf (the bomb) is in the result...
 if(-Inf %in% result) {
   
   print(paste("You're dead!!! You opened ", open, 
               " boxes and got the bomb!!!", sep = ""))}
 
+# If -Inf (the bomb) is NOT in the result...
 if((-Inf %in% result) == FALSE) {
   
   print(paste("Congratulations!!! You opened ", open, 
@@ -333,7 +336,10 @@ if((-Inf %in% result) == FALSE) {
 Now play the game just by running the function with the number of boxes you want to open as the main argument! For example, here's how you'd play the game by opening 5 boxes.
 
 ```{r, eval = FALSE}
-boxes_game(open = 5, room = room_100)  # Play with 5 boxes
+# Play boxes game with 5 boxes
+
+boxes_game(open = 5, 
+           room = room_100)  
 ```
 
 Play the game a few times and see how you do. When you are done, try creating another room called `room_risky` that contains only 10 values: 9 values of 1000 Thousand (aka, 1 Million) and 1 bomb. Try playing the game in this room a few times and see how your results change.
