@@ -38,18 +38,9 @@ Syllabus (you're looking at it): [https://ndphillips.github.io/IntroductionR_Cou
 Instructor: Nathaniel Phillips, nathaniel.phillips@unibas.ch
 
 
-## Course Session Doodle
-
-- If you would like to switch course sessions, please go to the following Doodle linke: [https://doodle.com/poll/g26anuhxqw4rr6mv](https://doodle.com/poll/g26anuhxqw4rr6mv). Enter your name and email address, and indicate which course you are in and if you're available to switch sessions.
-
-- If you match with someone else, contact them and ask if they would like to switch with you. If you both agree, email me, and delete your information from the Doodle.
-
-- On 2 October, we will finalize the the session assignments. Those in session II will need to de-register from session 1 (23496-01) and register for session 2 (23496-02)
-
-
 # Schedule
 
-Your homework for each class period is to actively read the readings for that week. The videos are optional.  All of the work you turn in will be done in class as WPAs (Weekly Programming Assignments).
+Your homework for each class period is to actively read the readings for that week. The videos are optional and do not cover any new material.  All of the work you turn in will be done in class as WPAs (Weekly Programming Assignments).
 
 *If you have trouble opening a link, try right--clicking and opening in an new browser tab.*
 
@@ -80,13 +71,22 @@ You need to install two pieces of software for this course: R, and RStudio.
 - Install R version 3.4.0 "You Stupid Darkness" (or higher) here: [https://cloud.r-project.org/](https://cloud.r-project.org/)
 - Install RStudio for Desktop (the free version) here: [https://www.rstudio.com/products/rstudio/download/#download](https://www.rstudio.com/products/rstudio/download/#download)
 
-## Important Links
+## WPA Submission Page
 
 Link  | Description 
 ------ | ----------------- 
 [WPA Submission Page](https://goo.gl/forms/dTVlSdtHtqiNuHSw1) | After you have emailed your WPA to me, submit your assignments here
-[R Reference Card](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) | A handy R cheat sheet. I recommend you print this out and have it handy.
-[RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) | R Studio provides many very helpful R cheat sheets here.
+
+### Cheat Sheets
+
+Link  | Description 
+------ | ----------------- 
+[Base R Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf) | A simple cheat sheet covering many basic R functions
+[R Reference Card](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) | A handy R cheat sheet covering many, many functions.
+[RStudio Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf) | A cheatsheet for the RStudio environment
+[Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf) | A cheatsheet for the RStudio environment
+[R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) | A cheatsheet for writing documents with RMarkdown
+[RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) | R Studio provides the above cheat sheets, as well as many more, here
 
 
 ## Helpful sites
