@@ -177,6 +177,8 @@ sex <- rep(c("male", "female"), times = 6)
 # or
 
 sex <- rep(c("male", "female"), length.out = 12)
+
+sex
 ```
 
 8. Create a vector of the eye color data called `eye_color` using the `rep()` function.
@@ -187,6 +189,8 @@ eye_color <- rep(c("blue", "brown"), each = 2, times = 3)
 # or
 
 eye_color <- rep(c("blue", "brown"), each = 2, length.out = 12)
+
+eye_color
 ```
 
 
@@ -196,6 +200,8 @@ eye_color <- rep(c("blue", "brown"), each = 2, length.out = 12)
 
 ```{r}
 age_months <- age * 12
+
+age_months
 ```
 
 
@@ -211,6 +217,8 @@ after <- after - 1
 
 ```{r}
 change <- after - before
+
+change
 ```
 
 
@@ -218,6 +226,8 @@ change <- after - before
 
 ```{r}
 average <- (before + after) / 2
+
+average
 ```
 
 ## Applying functions to vectors
@@ -236,6 +246,8 @@ length(eye_color)
 
 ```{r}
 age_sd <- sd(age)
+
+age_sd
 ```
 
 
@@ -243,6 +255,8 @@ age_sd <- sd(age)
 
 ```{r}
 age_median <- median(age)
+
+age_median
 ```
 
 
@@ -272,6 +286,8 @@ table(sex) / sum(table(sex))
 
 ```{r}
 before_mean <- mean(before)
+
+before_mean
 ```
 
 
@@ -279,6 +295,8 @@ before_mean <- mean(before)
 
 ```{r}
 after_mean <- mean(after)
+
+after_mean
 ```
 
 
