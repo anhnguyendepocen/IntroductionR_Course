@@ -89,17 +89,11 @@ Link  | Description
 [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) | R Studio provides the above cheat sheets, as well as many more, here
 
 
-### Other
-Link  | Description 
------- | ----------------- 
-[Google R Style guide](https://google.github.io/styleguide/Rguide.xml) | Google provides a nice style guide for progamming in R
-
-
-
 ### Helpful sites
 
 Link  | Description 
 ------ | ----------------- 
+[Google R Style guide](https://google.github.io/styleguide/Rguide.xml) | Google provides a nice style guide for progamming in R
 [http://r-bloggers.com](http://r-bloggers.com)| The #1 place to hear the latest and greatest R news. Tons of great new R content every day. I encourage you to sign up for their email list!
 [http://rseek.org/](http://rseek.org/) | Use it like Google -- it only returns R related topics.
 
