@@ -1,0 +1,546 @@
+---
+title: "WPA #1 -- Creating and using vectors"
+subtitle: "Answers"
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr Ch: [1](https://bookdown.org/ndphillips/YaRrr/), [2](https://bookdown.org/ndphillips/YaRrr/started.html), [3](https://bookdown.org/ndphillips/YaRrr/jumpin.html), [4](https://bookdown.org/ndphillips/YaRrr/basics.html), [5](https://bookdown.org/ndphillips/YaRrr/scalersvectors.html), [6](https://bookdown.org/ndphillips/YaRrr/vectorfunctions.html)
+- Videos (optional): [A](https://www.youtube.com/watch?v=Vkv7-nw3wwU&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=1), [B](https://www.youtube.com/watch?v=4Dr0o3g8h3Y&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=2), [C](https://www.youtube.com/watch?v=yNVDA0Noejk&list=PL9tt3I41HFS9gmeZFEuNrnu_7V_NFngfJ&index=3)
+
+
+## Assignment Goals
+
+- Assign objects using the assignment operator `<-`
+- Create vectors using `c()`, and replication functions such as `rep()` and `seq()`
+- Calculate descriptive statistics from vectors using `mean()`, `sd()`, `table()` and others.
+- Do basic arithmetic operations on vectors.
+- Generate random samples from vectors using `sample()`, and samples from probability distributions such as the Normal with `rnorm()`
+
+
+# Examples
+
+
+```{r, eval = FALSE}
+
+# Vector of specific values
+
+c(37, 45, 23, 54, 66)   # Numeric
+c("A", "B", "C", "D")   # Character
+
+# Vector of integers 1 to 5
+
+c(1, 2, 3, 4, 5)                       # using c()
+1:5                                    # using a:b
+seq(from = 1, to = 5, by = 1)          # using seq()
+seq(from = 1, to = 5, length.out = 5)  # same as above using length.out
+
+# Vector of multiples of 10 from 10 to 50
+
+c(10, 20, 30, 40, 50)
+seq(from = 10, to = 50, by = 10)
+seq(from = 10, to = 50, length.out = 5)
+
+# Assign vectors to objects
+
+data_A <- c(37, 45, 23, 54, 66)
+data_B <- seq(from = 1, to = 100, by = 2)
+
+# Calculate descriptive statistics
+
+mean(c(37, 45, 23, 54, 66))
+mean(data_A)
+
+median(seq(from = 1, to = 100, by = 2))
+median(data_B)
+
+# Vector arithmetic
+
+a <- c(1, 2, 3, 4, 5)
+a * 10   # Multiply all elements by 10
+a + .5   # Add .5 to all elements
+
+b <- c(10, 20, 30, 40, 50)
+a + b    # Add a and b element-wise
+
+# Generate samples from distributions
+
+sample(1:10, size = 2, replace = FALSE) # 2 values from the integers from 1 to 10
+rnorm(n = 10, mean = 50, sd = 2)        # 10 values from Normal(mean = 50, sd = 2)
+rbinom(n = 100, size = 1, prob = .5)    # 100 coin flips (binomial with size = 1, prob = .5)
+```
+
+
+
+# Get started
+
+0. Open RStudio. Open a new R script (File -- New File -- R Script), and save it as `wpa_1_LastFirst.R` (where Last and First is your last and first name). At the top of your script write the assignment number, your name and date (as comments!). For the rest of the assignment, when you answer a task, indicate which task you are answering with appropriate comments as follows:
+
+*Here is an example of how your `wpa_1_LastFirst.R` file could look*
+```{r, eval = F}
+# Assignment: WPA X
+# Name: LAST, FIRST
+# Date: DAY MONTH YEAR
+
+
+# TASK 1
+1 + 1
+
+# TASK 2
+2 + 2
+
+# ...
+```
+
+# Does drinking non-alcoholic beer affect cognitive performance?
+
+<img src="http://i.telegraph.co.uk/multimedia/archive/02326/obama_2326627b.jpg" width="400" />
+
+A psychologist has a theory that some of the negative cognitive effects of alcohol are the result of psychological rather than physiological processes. To test this, she has 12 participants perform a cognitive test before and after drinking non-alcoholic beer which was labelled to contain 5\% alcohol. Results from the study, including some demographic data, are presented in the following table. Note that higher scores on the test indicate better performance.
+
+id | before  | after | age | sex | eye_color
+----| ------ | ------- | ---- | ---- | ----
+1 | 45 | 43 | 20 | male | blue
+2 | 49 | 50 | 19 | female | blue
+3 | 40 | 61 | 22 | male | brown
+4 | 48 | 44 | 20 | female | brown
+5 | 44 | 45 | 27 | male | blue
+6 | 70 | 20 | 22 | female | blue
+7 | 90 | 85 | 22 | male | brown
+8 | 75 | 65 | 20 | female | brown
+9 | 80 | 72 | 25 | male | blue
+10| 65 | 65 | 22 | female | blue
+11 | 80 | 70 | 24 | male | brown
+12 | 52 | 75 | 22 | female | brown
+
+
+## Creating vectors from scratch
+
+We'll start by creating vector objects representing each vector of data (i.e.; column from the table above) from the study.
+
+1. Create a vector of the id data called `id` using the `c()` function.
+
+```{r}
+id <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+```
+
+
+2. Now, create the `id` vector again, but this time use the `a:b` function.
+
+```{r}
+id <- 1:12
+```
+
+
+3. Now create the `id` vector again! But this time use the `seq()` function. To get help on this function, look at the help menu with `?seq`
+
+```{r}
+id <- seq(from = 1, to = 12, by = 1)
+
+# or
+
+id <- seq(from = 1, to = 12, length.out = 12)
+```
+
+
+4. Create a vector of the before drink data called `before` using `c()`.
+
+```{r}
+before <- c(45, 49, 40, 48, 44, 70, 90, 75, 80, 65, 80, 52)
+```
+
+5. Create a vector of the after drink data called `after` using `c()`.
+
+```{r}
+after <- c(43, 50, 61, 44, 45, 20, 85, 65, 72, 65, 70, 75)
+```
+
+6. Create a vector of the age data called `age` using `c()`.
+
+```{r}
+age <- c(20, 19, 22, 20, 27, 22, 22, 20, 25, 22, 24, 22)
+```
+
+7. Create a vector of the sex data called `sex` but don't use just the `c()` function (that would be a lot of typing...). Instead, just repeat the vector `c("male", "female")` several times using the `rep()` function.
+
+```{r}
+sex <- rep(c("male", "female"), times = 6)
+
+# or
+
+sex <- rep(c("male", "female"), length.out = 12)
+```
+
+8. Create a vector of the eye color data called `eye_color` using the `rep()` function.
+
+```{r}
+eye_color <- rep(c("blue", "brown"), each = 2, times = 3)
+
+# or
+
+eye_color <- rep(c("blue", "brown"), each = 2, length.out = 12)
+```
+
+
+## Combining and changing vectors
+
+9. Create a new vector called `age_months` that shows the participants' age in months instead of years. (Hint: Just multiply each age value by 12)
+
+```{r}
+age_months <- age * 12
+```
+
+
+10. Oops! It turns out that the watch used to measure time was off. All the before times are 1 second too fast, and all the after times are 1 second too slow. Correct these values by using simple arithmetic and then (re)assigning the objects with `<-`!
+
+```{r}
+before <- before + 1
+
+after <- after - 1
+```
+
+11. Create a new vector called `change` that shows the change in participants' scores from before to after (Hint: Just subtract one vector from the other)
+
+```{r}
+change <- after - before
+```
+
+
+12. Create a new vector called `average` that shows the participants' *average* score across both tests. That is, the first element of `average` should be the average of the first participant's two scores, and the second element should be the average of the second participant's two scores...(Hint: Don't use the `mean()` function! Instead, use basic arithmetic with `+` and `/`. That is, the elements of `average` should be `before` plus `after` divided by 2.)
+
+```{r}
+average <- (before + after) / 2
+```
+
+## Applying functions to vectors
+
+13. How many elements are in *each* of the original data vectors? (Hint: use `length()`). If the number of elements in each is not the same, you typed something in wrong!
+```{r}
+length(id)
+length(before)
+length(after)
+length(age)
+length(sex)
+length(eye_color)
+```
+
+14. What was the standard deviation of ages? Assign the result to a scaler object called `age_sd`.
+
+```{r}
+age_sd <- sd(age)
+```
+
+
+15. What is the median age? Assign the result to a scaler object called `age_median`.
+
+```{r}
+age_median <- median(age)
+```
+
+
+16. How many people were there of each sex? (Hint: use `table()`)
+
+```{r}
+table(sex)
+```
+
+
+17. What percent of people had each sex? (Hint: use `table()` then divide by its sum with `sum()`)
+
+```{r}
+table(sex) / sum(table(sex))
+```
+
+18.Calculate the mean of the `sex` column. What happens and why?
+
+```{r}
+#mean(sex)
+
+# Returns an error because sex is not a numeric vector!
+```
+
+
+19. What was the mean `before` time? Assign the result to a scaler object called `before_mean`.
+
+```{r}
+before_mean <- mean(before)
+```
+
+
+20. What was the mean `after` time? Assign the result to a scaler object called `after_mean`.
+
+```{r}
+after_mean <- mean(after)
+```
+
+
+21. What was the difference in the mean `before` times and the mean `after` times? Calculate this in two ways: once using the `change` vector, and once using the `before_mean` and `after_mean` objects. You should get the same answer for both!
+
+```{r}
+after_mean - before_mean
+
+mean(after - before)
+```
+
+
+# CHECKPOINT!
+
+## Standardizing (z-scores) vectors
+
+22. Create a vector called `before_z` showing a standardized version of `before`. (Hint: Standardizing a variable means subtracting the mean, and then dividing the result by the standard deviation.).
+
+```{r}
+before_z <- (before - mean(before)) / sd(before)
+
+before_z
+```
+
+
+
+23. Create a vector called `after_z` showing a standardized version of `after`.
+
+```{r}
+after_z <- (after - mean(after)) / sd(after)
+
+after_z
+```
+
+24. What was the largest `before` score? What was the largest `before_z` score?
+
+```{r}
+min(before)
+
+min(before_z)
+```
+
+25. What was the smallest `after` score? What was the smallest `after_z` score?
+
+```{r}
+min(after)
+
+min(after_z)
+```
+
+26. What should the mean and standard deviation of `before_z` and `after_z` be? Test your predictions by making the appropriate calculations.
+
+```{r}
+# The mean should be 0, the sd should be 1
+
+mean(before_z)
+sd(before_z)
+
+mean(after_z)
+sd(after_z)
+
+
+# The standard deviations are exactly 1 while the means are so small they are almost 0. The reason they aren't exactly 0 is for technical reasons: our computers can't calculate numbers with infinite precision, so numbers that "should" be 0 sometimes will just be very, very, very small.
+```
+
+
+## Random samples from distributions
+
+```{r echo = FALSE, fig.width = 5, fig.height = 5, eval = FALSE}
+# A Histogram of 10,000 samples from a Normal distribution with Mean = 100 and sd = 10
+hist(rnorm(10000, mean = 100, sd = 10), 
+     main = "N(Mean = 100, SD = 10)", yaxt = "n", 
+     xlab = "", col = "wheat2", border = "white", 
+     xlim = c(50, 150), ylab = "")
+
+```
+
+R has lots of functions for drawing random samples from probability distributions. For example, you can draw random samples from a vector with `sample()`, or draw random samples of values from a Normal distribution using the `rnorm(n, mean, sd)` function. Here are some examples: 
+```{r, eval = FALSE}
+# Draw 10 random numbers from the integers 1 to 100
+sample(x = 1:100, size = 10)
+
+# Simulate 10 flips from a fair coin
+sample(x = c("H", "T"), size = 10, replace = TRUE)
+
+# Random sample of 50 values from a Normal distribution with mean = 20 and sd = 10
+rnorm(n = 50, mean = 20, sd = 10)
+```
+
+27. Create a vector called `samp_10` that contains 10 samples from a Normal distribution with a mean of 100 and a standard deviation of 10.
+
+```{r}
+samp_10 <- rnorm(n = 10, mean = 100, sd = 10)
+
+# Note: Due to random sampling, your results will not be identical to mine!
+samp_10
+```
+
+
+28. Create a vector called `samp_1000` that contains 1,000 samples from the same Normal distribution as above (that is, also with a mean of 100 and standard deviation of 10).
+
+```{r}
+
+samp_1000 <- rnorm(n = 1000, mean = 100, sd = 10)
+
+
+# Note: Due to random sampling, your results will not be identical to mine!
+samp_1000
+```
+
+29. Before making any calculations, what would you guess the mean and standard deviations of `samp_10` and `samp_1000` are? If your predictions are the same, which vector's mean and standard deviation do you expect to be closer to your predictions?
+
+```{r}
+# The means "should" be 100 and the standard deviations "should" be 10.
+# Because the sample size for samp_1000 is larger, I have more confident that the mean and standard deviation
+#  will be closer to my expectation than samp_100
+```
+
+
+30. Calculate the mean and standard deviations of `samp_10` and `samp_1000` separately. Was your prediction correct?
+
+```{r}
+# Note: Due to random sampling, your results will not be identical to mine!
+mean(samp_10)
+sd(samp_10)
+
+mean(samp_1000)
+sd(samp_1000)
+```
+
+31. Simulate 100 flips from a fair coin using `sample()` (Hint: include the arguments `x = c("H", "T"), size = 1, replace = TRUE`)
+
+```{r}
+# Note: Due to random sampling, your results will not be identical to mine!
+sample(x = c("H", "T"), size = 100, replace = TRUE)
+```
+
+32. Simulate 100 flips from a *biased* coin where the probability of heads is 0.8 and the probability of tails is 0.2 (Hint: You can do this in two ways, either by including more heads than tails in the `x` argument, or by using the `prob` argument. Look at the help menu for the sample function for help.)
+
+```{r}
+# Note: Due to random sampling, your results will not be identical to mine!
+sample(x = c("H", "T"), size = 100, replace = TRUE, prob = c(.8, .2))
+```
+
+## Bonus: The Room with 100 Boxes
+
+Here is a fun little risky decision making game you can program in R using the `sample()` function. Imagine the following. There is a room with 100 boxes. 99 of the 100 boxes each contain 10 Thousand EUR, while 1 of the boxes contains a bomb.
+
+Here's the question...if you walked into the room with 100 boxes, how many would you want to open? If you don't get the bomb, you can keep all of the money in the boxes you open. If you get the bomb, you get nothing (and die).
+
+The code below will create a plot of the boxes game. If you'd like to, you could try running it in your R session to see the result.
+
+```{r fig.width = 7, fig.height = 7, echo = TRUE}
+# Plot of the Boxes Game
+
+# Plotting space
+plot(1, 
+     xlim = c(0, 11), 
+     ylim = c(0, 11),
+     xlab = "", ylab = "", main = "The 100 Boxes Game!", 
+     type = "n", xaxt = "n", yaxt = "n")
+
+text(x = 5.5,
+     y = 11, 
+     labels = "There are 100 boxes\n99 / 100 contain 10,000 EUR (each) and 1 / 100 contains a bomb! How many will you open?", 
+     font = 3,    # Italic font
+     cex = .8)    # Slightly smaller font size
+
+# Boxes
+points(x = rep(1:10, times = 10), 
+       y = rep(1:10, each = 10), 
+       pch = 22, 
+       cex = 4, 
+       bg = sample(c(rep("green", 99), "red")))
+
+# Labels
+points(x = rep(1:10, times = 10), 
+       y = rep(1:10, each = 10), 
+       pch = "?")
+```
+
+Here's how you can play the boxes game in R. First, create the room as an object `room_100` which contains a vector with 99 values of 10 (representing 10 Thousand Euros) and one value of negative infinity (`-Inf`) which represents the bomb.
+
+```{r}
+# This vector represents the room of 100 boxes
+room_100 <- c(rep(10, 99), -Inf)
+```
+
+First, put the number of boxes you want to open as a new scaler object called `open`:
+
+```{r}
+open <- 0  # How many do you want to open?
+```
+
+Now run the following code to see what you get!
+
+```{r eval = F}
+# Play the Room with 100 Boxes Game!
+
+result <- sample(x = room_100,  # Sample from the room...
+                 size = open)
+
+# Print what you got!
+
+result       # Show what's in each box (1 means 10,000 EUR)
+sum(result)  # Your total winnings!
+```
+
+You can also represent the boxes game by writing your own custom function in R. Run the following chunk to create the new function `boxes_game`. The code uses advanced functions like `if()` and `function()` that we haven't learned yet, but feel free to take a closer look to try to understand the logic.
+
+When you run the following code, 'nothing' will happen. But in fact, you are defining a new function called `boxes_game` that you can use later to actually play the game.
+
+```{r}
+# Run this chunk to create the function
+boxes_game <- function(open, 
+                       room) {
+  
+# Outcome if no boxes are opened
+  
+if(open == 0) {
+  
+  print("You didn't open any boxes! You earned nothing but are still alive")}
+
+# If at least 1 box is opened...
+  
+if(open > 0) {
+  
+  # Calculate the result
+  result <- sample(x = room,
+                   size = open)
+
+# If -Inf (the bomb) is in the result...
+if(-Inf %in% result) {
+  
+  print(paste("You're dead!!! You opened ", open, 
+              " boxes and got the bomb!!!", sep = ""))}
+
+# If -Inf (the bomb) is NOT in the result...
+if((-Inf %in% result) == FALSE) {
+  
+  print(paste("Congratulations!!! You opened ", open, 
+              " boxes and earned ", sum(result), 
+              " Thousand Euros! Don't you want to play again? :)", sep = ""))}
+}
+  
+}
+```
+
+Now you have defined the new function `boxes_game()`. To play the game, evaluate the function by specifying the two arguments: `open` is the the number of boxes you want to open, and `room` defines the room! For example, here's how you'd play the game by opening 5 boxes in the room with 100 boxes:
+
+```{r, eval = FALSE}
+# Play boxes game with 5 boxes in room_100
+
+boxes_game(open = 5, 
+           room = room_100)  
+```
+
+Play the game a few times and see how you do. When you are done, try creating another room called `room_risky` that contains only 10 values: 9 values of 1000 Thousand (aka, 1 Million) and 1 bomb. Try playing the game in this room a few times and see how your results change.
+
+
+## Submit!
+
+- Save and email your `wpa_1_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
+
