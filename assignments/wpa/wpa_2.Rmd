@@ -78,19 +78,20 @@ age[sex == "f"] <- age[sex == "f"] + 1
 ```{r, echo = F, eval = FALSE}
 # Create data
 set.seed(100)
-cologne <- rep(c("gio", "ckone"), each = 100)
+cologne <- rep(c("gio", "ckone", "none"), each = 100)
 
 bar <- c(c(rep("paddys", 10), rep("grenzwert", 90)),
-                 c(rep("paddys", 90), rep("grenzwert", 10)))
+         c(rep("paddys", 90), rep("grenzwert", 10)),
+         c(rep("paddys", 50), rep("grenzwert", 50)))
 
-time <- rep(0, 200)
+time <- rep(0, 300)
 
 bar.lu <- data.frame(bar = c("grenzwert", "paddys"),
                              bar.num = c(10, 160),
-                             stringsAsFactors = F)
+                             stringsAsFactors = FALSE)
 
-cologne.lu <- data.frame(cologne = c("gio", "ckone"),
-                             cologne.num = c(120, 10),
+cologne.lu <- data.frame(cologne = c("gio", "ckone", "none"),
+                             cologne.num = c(120, 10, 0),
                              stringsAsFactors = FALSE)
 
 for(i in 1:length(time)) {
@@ -107,10 +108,10 @@ for(i in 1:length(time)) {
   
 }
 
-id <- paste(substr(bar, 1, 1), ".", rep(1:100, times = 2), sep = "")
-sex <- sample(rep(c("m", "f"), times = 100), size = 200)
+id <- paste(substr(bar, 1, 1), ".", rep(1:100, times = 3), sep = "")
+sex <- sample(rep(c("m", "f"), times = 300), size = 300)
 
-cologne.df <- data.frame(id, sex, cologne, bar, time, stringsAsFactors = F)
+cologne.df <- data.frame(id, sex, cologne, bar, time, stringsAsFactors = FALSE)
 cologne.df <- cologne.df[sample(1:nrow(cologne.df)),]
 
 id <- cologne.df$id
@@ -128,17 +129,15 @@ save(id, sex, cologne, bar, time, file = "data/wpa2.RData")
 
 # Analyzing Bar survey data
 
-In this assignment you will analyse (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy's) last Friday night at 3:00am. The goal of the survey is to see if there is an effect of cologne on how long people talk with others at the bar. As each of the 200 people entered they bar, they were secretly sprayed with one of two types of cologne -- gio or ckone. After answering this question, a (very busy) researcher recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:
+In this assignment you will analyse (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy's) last Friday night at 3:00am. The goal of the survey is to see if there is an effect of cologne on how long people talk with others at the bar. As each of the 300 people entered they bars, secretly given a spray of either one of two types of cologne [Acqua Di Gio](https://www.amazon.com/Giorgio-Armani-Acqua-Toilette-Spray/dp/B000E7YK5K) or [CK One](https://www.amazon.com/Calvin-Klein-one-Eau-Toilette/dp/B000E7WFX4), or [no cologne](https://threeblindwives.files.wordpress.com/2013/10/smelly-boy.jpg) at all. For the rest of the night, two (very busy) researchers recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:
 
 - `id`: An id indicating the participant in the form `x.n`, where `x` is the name of the bar the participant was at, and `n` is a random indexing number)
 - `sex`: The person's sex: `male` or `female`
-- `cologne`: Which cologne did the person wear? `gio` or `ckone`
-- `bar`: Where the person went out: `grenzwert` or `paddys`
+- `cologne`: Which cologne did the person receive? `"gio"`, `"ckone"`, or `"none"`
+- `bar`: The bar -`grenzwert` or `paddys`
 - `time`: The amount of time the person spent talking to people in minutes
 
-
-
-A. Thankfully, you don't need to type in the data yourself! The objects are stored in an *RData* file online at [https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true](https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true). Run the following code to load the vectors into your R session.
+A. First, get the data objects into your R session. Thankfully, you don't need to type in the data yourself! The objects are stored in an *RData* file online at [https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true](https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true). Run the following code to load the vectors into your R session.
 
 ```{r echo = TRUE}
 # Load the data into my current session
@@ -150,10 +149,10 @@ B. The `str()` function will give you basic information about objects. Get to kn
 
 ## Review
 
-1. How many people were there of each sex? (Hint: use `table()`)
+1. How many people were given each type of cologne? (Hint: use `table()`)
 
 ```{r eval = FALSE, echo = FALSE}
-table(sex)
+table(cologne)
 ```
 
 2. What was the mean time?

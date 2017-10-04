@@ -185,15 +185,15 @@ age[sex == &quot;f&quot;] &lt;- age[sex == &quot;f&quot;] + 1</code></pre>
 </div>
 <div id="analyzing-bar-survey-data" class="section level1">
 <h1>Analyzing Bar survey data</h1>
-<p>The following contain (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy’s) last Friday night at 3:00am. Each person was asked which kind of cologne they were wearing. After answering this question, a (very busy) researcher recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:</p>
+<p>In this assignment you will analyse (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy’s) last Friday night at 3:00am. The goal of the survey is to see if there is an effect of cologne on how long people talk with others at the bar. As each of the 300 people entered they bars, secretly given a spray of either one of two types of cologne <a href="https://www.amazon.com/Giorgio-Armani-Acqua-Toilette-Spray/dp/B000E7YK5K">Acqua Di Gio</a> or <a href="https://www.amazon.com/Calvin-Klein-one-Eau-Toilette/dp/B000E7WFX4">CK One</a>, or <a href="https://threeblindwives.files.wordpress.com/2013/10/smelly-boy.jpg">no cologne</a> at all. For the rest of the night, two (very busy) researchers recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:</p>
 <ul>
 <li><code>id</code>: An id indicating the participant in the form <code>x.n</code>, where <code>x</code> is the name of the bar the participant was at, and <code>n</code> is a random indexing number)</li>
 <li><code>sex</code>: The person’s sex: <code>male</code> or <code>female</code></li>
-<li><code>cologne</code>: Which cologne did the person wear? <code>gio</code> or <code>calvinklein</code></li>
-<li><code>bar</code>: Where the person went out: <code>grenzwert</code> or <code>paddys</code></li>
+<li><code>cologne</code>: Which cologne did the person receive? <code>&quot;gio&quot;</code>, <code>&quot;ckone&quot;</code>, or <code>&quot;none&quot;</code></li>
+<li><code>bar</code>: The bar -<code>grenzwert</code> or <code>paddys</code></li>
 <li><code>time</code>: The amount of time the person spent talking to people in minutes</li>
 </ul>
-<p>A. Thankfully, you don’t need to type in the data yourself! The objects are stored in an <em>RData</em> file online at <a href="https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true" class="uri">https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true</a>. Run the following code to load the vectors into your R session.</p>
+<p>A. First, get the data objects into your R session. Thankfully, you don’t need to type in the data yourself! The objects are stored in an <em>RData</em> file online at <a href="https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true" class="uri">https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true</a>. Run the following code to load the vectors into your R session.</p>
 <pre class="r"><code># Load the data into my current session
 
 load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true&quot;))</code></pre>
@@ -201,7 +201,7 @@ load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/ma
 <div id="review" class="section level2">
 <h2>Review</h2>
 <ol style="list-style-type: decimal">
-<li><p>How many people were there of each sex? (Hint: use <code>table()</code>)</p></li>
+<li><p>How many people were given each type of cologne? (Hint: use <code>table()</code>)</p></li>
 <li><p>What was the mean time?</p></li>
 <li><p>What was the standard deviation of times?</p></li>
 <li><p>Create <code>time_z</code> a z-score transformation of time. (Hint: z-score is defined as <code>(x - mean(x)) / sd(x)</code>)</p></li>
@@ -220,7 +220,7 @@ load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/ma
 <h2>Logical Indexing on one variable</h2>
 <ol start="9" style="list-style-type: decimal">
 <li><ol style="list-style-type: lower-alpha">
-<li>How many people wore gio? b) How many wore calvinklein?</li>
+<li>How many people wore gio? b) How many wore ckone?</li>
 </ol></li>
 <li><ol style="list-style-type: lower-alpha">
 <li>How many people went to Grenzwert? b) How many went to Paddys?</li>
@@ -238,7 +238,7 @@ load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/ma
 <li><p>What was the mean time of people who went to Grenzwert?</p></li>
 <li><p>What was the mean time of people who went to Paddys?</p></li>
 <li><p>What was the mean time of people who wore gio?</p></li>
-<li><p>What was the mean time of people who wore calvinklein?</p></li>
+<li><p>What was the mean time of people who wore ckone?</p></li>
 <li><p>Based on what you’ve learned, if someone wants to talk as much (I should have said as <em>long</em>) as possible, what cologne should they wear?</p></li>
 </ol>
 </div>
@@ -251,7 +251,7 @@ load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/ma
 <li>In the <code>bar.r</code> vector, change the <code>&quot;grenzwert&quot;</code> values to <code>&quot;g&quot;</code>. b) Now change the <code>&quot;paddys&quot;</code> values to <code>&quot;p&quot;</code></li>
 </ol></li>
 <li><ol style="list-style-type: lower-alpha">
-<li>In the <code>cologne.r</code> vector, change the <code>&quot;gio&quot;</code> values to <code>&quot;G&quot;</code>. b) Now change the <code>&quot;calvinklein&quot;</code> values to <code>&quot;C&quot;</code></li>
+<li>In the <code>cologne.r</code> vector, change the <code>&quot;gio&quot;</code> values to <code>&quot;G&quot;</code>. b) Now change the <code>&quot;ckone&quot;</code> values to <code>&quot;C&quot;</code></li>
 </ol></li>
 <li><p>In the <code>time.r</code> vector, change all time values greater than 280 to 280. Confirm that you did it correctly by calculating the maximum time in <code>time.r</code></p></li>
 </ol>
@@ -268,9 +268,9 @@ load(file = url(&quot;https://github.com/ndphillips/IntroductionR_Course/blob/ma
 <p><em>Let’s see if your prediction holds up!</em></p>
 <ol start="26" style="list-style-type: decimal">
 <li><p>What was the mean time of people who went to Grenzwert and wore gio??</p></li>
-<li><p>What was the mean time of people who went to Grenzwert and wore calvinklein?</p></li>
+<li><p>What was the mean time of people who went to Grenzwert and wore ckone?</p></li>
 <li><p>What was the mean time of people who went to Paddys who wore gio?</p></li>
-<li><p>What was the mean time of people who went to Paddys who wore calvinklein??</p></li>
+<li><p>What was the mean time of people who went to Paddys who wore ckone??</p></li>
 <li><p>Based on what you’ve learned now, if someone’s goal is to talk to people as long as possible, what cologne should they wear?</p></li>
 </ol>
 <p>You can visualize the data using the following code</p>
@@ -283,10 +283,10 @@ yarrr:::pirateplot(time ~ cologne + bar, data = survey.df)</code></pre>
 <div id="some-bigger-challenges" class="section level2">
 <h2>Some bigger challenges…</h2>
 <ol start="31" style="list-style-type: decimal">
-<li><p>What percent of women wore calvinklein?</p></li>
+<li><p>What percent of women wore ckone?</p></li>
 <li><p>What was the median time of people who went to grenzwert and wore gio but who talked more than 100 minutes?</p></li>
 <li><p>What percent of participants <em>either</em> went to grenzwert and talked for less than 220 minutes <em>or</em> went to paddys and talked for more than 150 minutes but no longer than 250 minutes?</p></li>
-<li><p>Let’s make the calvinklein wearers look better. For all of the calvinklein wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times.</p></li>
+<li><p>Let’s make the ckone wearers look better. For all of the ckone wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times.</p></li>
 </ol>
 </div>
 <div id="submit" class="section level2">
