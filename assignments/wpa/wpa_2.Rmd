@@ -1,9 +1,5 @@
 ---
 title: "WPA #2  -- Indexing Vectors"
-output:
-  prettydoc::html_pretty:
-    theme: lumen
-    highlight: github
 ---
 
 
