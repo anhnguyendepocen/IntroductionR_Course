@@ -2,13 +2,15 @@
 title: "WPA #2  -- Indexing Vectors"
 ---
 
-
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
 ```
 
-<img src="http://mainetoday.com/wp-content/uploads/2014/06/meet-at-bar-red-lipstick-project.jpg" width="400" />
+
+```{r, fig.cap = "A typical 3am scene at Paddy's in Basel.", eval = TRUE, out.width = "60%", fig.align = 'center'}
+knitr::include_graphics("http://mainetoday.com/wp-content/uploads/2014/06/meet-at-bar-red-lipstick-project.jpg")
+```
 
 
 ## Readings
@@ -17,7 +19,6 @@ This assignment is based on the following readings:
 
 - YaRrr: [7](https://bookdown.org/ndphillips/YaRrr/vectorindexing.html)
 - Videos: [D](https://goo.gl/IsrBWO)
-
 
 ## Assignment Goals
 
@@ -67,8 +68,6 @@ height[initials == "NP"] <- 172
 # The ages of all females are one year too low, add 1 to each age
 age[sex == "f"] <- age[sex == "f"] + 1
 ```
-
-
 
 # Get started
 
