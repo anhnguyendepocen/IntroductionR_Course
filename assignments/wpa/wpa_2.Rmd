@@ -22,8 +22,9 @@ This assignment is based on the following readings:
 ## Assignment Goals
 
 - Index vectors using brackets `[]`
-- Create and use logical vectors to index vectors and to calculate summary statistics (e.g. sums with `sum()`, and percentages with `mean()`)
-- Change specific values of a vector using brackets `[]`, logical indexing and assignment `<-`.
+- Create logical vectors with comparison operators `<`, `==`, `>`, `!=`
+- Use logical vectors to index vectors and to calculate summary statistics (e.g. sums with `sum()`, and percentages with `mean()`)
+- Change specific values of a vector using brackets `[]`, logical vectors, and assignment `<-`.
 
 # Examples
 
@@ -66,8 +67,6 @@ height[initials == "NP"] <- 172
 # The ages of all females are one year too low, add 1 to each age
 age[sex == "f"] <- age[sex == "f"] + 1
 ```
-
-
 
 
 
@@ -145,7 +144,7 @@ A. First, get the data objects into your R session. Thankfully, you don't need t
 load(file = url("https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true"))
 ```
 
-B. The `str()` function will give you basic information about objects. Get to know the objects (`id`, `sex`, `cologne`, `bar`, `time`) by running the `str()` function on each of the 5 vectors. 
+B. Make sure the objects (`id`, `sex`, `cologne`, `bar`, `time`) were loaded correctly and get to know them  by running the `str()` function on each of the 5 vectors. 
 
 ## Review
 
@@ -171,10 +170,12 @@ sd(time)
 
 ## Numerical Indexing
 
-5. What was the value of the first time?
+5. How long did the first person spend talking to others? What cologne did he/she wear? What was his/her sex?
 
 ```{r}
 time[1]
+cologne[1]
+sex[1]
 ```
 
 6. What were the sexes of the first five participants?
@@ -183,7 +184,7 @@ time[1]
 sex[1:5]
 ```
 
-7. What were the colognes of the 10th through the 20th participants
+7. What were the colognes of the 10th through the 20th participants? (Hint: use `a:b`)
 
 ```{r}
 cologne[10:20]
@@ -198,41 +199,40 @@ bar[length(bar)]
 
 ## Logical Indexing on one variable
 
-9. a) How many people wore gio? b) How many wore ckone?
+9. How many people were given gio?. How many wore ckone? How many were given no cologne?
 
 ```{r}
-sum(cologne == "fun")
-sum(cologne == "meet")
+sum(cologne == "gio")
+sum(cologne == "ckone")
+sum(cologne == "none")
 ```
 
-10. a) How many people went to Grenzwert? b) How many went to Paddys?
+10. How many people went to Grenzwert? How many went to Paddys?
 
 ```{r}
 sum(bar == "grenzwert")
 sum(bar == "paddys")
 ```
 
-
-11. What percent of people went to Grenzert? (Hint: use `mean()` combined with a logical vector)
+11. What *percent* of people went to Grenzert? (Hint: use `mean()` combined with a logical vector)
 
 ```{r}
 mean(bar == "grenzwert")
 ```
 
-
-12. How many talking times were longer than 30 minutes?
+12. How many people talked to others for more than 30 minutes?
 
 ```{r}
 sum(time > 30)
 ```
 
-13. What percent of talking times were longer than an hour?
+13. What percent of people talked longer than 30 minutes?
 
 ```{r}
-mean(time > 60)
+mean(time > 30)
 ```
 
-14. What percent of talking times were longer than 20 minutes but less than 40 minutes?
+14. What percent of talking times were longer than 20 minutes but less than 40 minutes? (Hint: use `&`)
 
 ```{r}
 mean(time > 20 & time < 40)
@@ -240,48 +240,41 @@ mean(time > 20 & time < 40)
 
 ## Logical indexing and two variables
 
-15. What were the ids of people who went to grenzwert?
+15. What were the ids of people who went to Grenzwert? (They should all start with `g`)
 
 ```{r}
 id[bar == "grenzwert"]
 ```
 
+16. What were the sexes of people who went to Paddy's? What percentage of these were men?
 
-16. What was the mean time of people who went to Grenzwert?
+17. What was the mean talking time of men? What about women?
+
+18. What was the mean talking time of people who went to Grenzwert? What about the people who went to Paddy's?
 
 ```{r}
 mean(time[bar == "grenzwert"])
-```
-
-17. What was the mean time of people who went to Paddys?
-
-```{r}
 mean(time[bar == "paddys"])
 ```
 
-18. What was the mean time of people who wore gio?
+19. What was the mean talking time of people who were given gio? What about ckone? What about no cologne at all?
 
 ```{r}
 mean(time[cologne == "gio"])
-```
-
-
-19. What was the mean time of people who wore ckone?
-
-```{r}
 mean(time[cologne == "ckone"])
+mean(time[cologne == "none"])
 ```
 
-20. Based on what you've learned, if someone wants to talk as much (I should have said as *long*) as possible, what cologne should they wear?
+20. Based on what you've learned, if someone wants to talk as long as possible, what cologne should they wear? Or should they wear no cologne at all?
 
 ```{r}
 # They should wear ckone!
 ```
 
 
-## Changing data in a vector with indexing
+## Changing vector values with indexing and assignment `a[] <- b`
 
-In the next questions, we'll use indexing and assignment to change the values within a vector. Because we don't want to change the original data, we'll make all of our adjustments on new vectors.
+In the next questions, we'll use indexing and assignment to change the values within a vector. To do this, we'll start by creating copies of the original data so we can easily recover the data if we screw something up.
 
 21. Create new objects `bar.r`, `cologne.r` and `time.r` that are copies of the original `bar`, `cologne` and `time` objects (Hint: Just assign the existing vectors to new objects)
 
@@ -291,33 +284,37 @@ cologne.r <- cologne.r
 time.r <- time
 ```
 
-22. a) In the `bar.r` vector, change the `"grenzwert"` values to `"g"`. b) Now change the `"paddys"` values to `"p"`
+22. In the `bar.r` vector, change the `"grenzwert"` values to `"g"`. Now change the `"paddys"` values to `"p"`
 ```{r}
 bar.r[bar == "grenzwert"] <- "g"
 bar.r[bar == "paddys"] <- "p"
 ```
 
-23. a) In the `cologne.r` vector, change the `"gio"` values to `"G"`. b) Now change the `"ckone"` values to `"C"`
+23. In the `cologne.r` vector, change the `"gio"` values to `"G"`. Now change the `"ckone"` values to `"C"`. Now change `"none"` to `"N"`
 
 ```{r}
 cologne.r[cologne == "gio"] <- "G"
 cologne.r[cologne == "ckone"] <- "C"
 ```
 
-24. In the `time.r` vector, change all time values greater than 280 to 280. Confirm that you did it correctly by calculating the maximum time in `time.r`
+24. Some of the time values are too large and should not be included in our analysis. Specifically, values of time greater than 280 should be set to just 280. In the `time.r` vector, change all time values greater than 280 to 280. Confirm that you did it correctly by calculating the maximum time in `time.r`
 
 ```{r}
 time.r[time > 280] <- 280
 max(time.r)
 ```
 
-# Checkpoint!!! ----------------------------
+```{r, eval = TRUE, echo = FALSE}
+knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
+```
+
+# Checkpoint!!!
 
 
 
-## Solving a paradox...
+## Solving a paradox
 
-<img src="http://home.adelphi.edu/~stemkoski/mathematrix/e-waterfall.jpg" width="200" />
+<!-- <img src="http://home.adelphi.edu/~stemkoski/mathematrix/e-waterfall.jpg" width="200" /> -->
 
 25. Based on what you've learned so far, if someone wanted to talk to people as long as possible, what cologne should they wear?
 
@@ -338,27 +335,26 @@ You can visualize the data using the following code
 ```{r eval = F, echo = TRUE}
 # Combine vectors in a dataframe
 survey.df <- data.frame(bar, cologne, time)
-# Create a pirateplot of the data
-yarrr:::pirateplot(time ~ cologne + bar, data = survey.df)
-```
 
+# Create a pirateplot of the data
+yarrr:::pirateplot(time ~ cologne + bar, 
+                   data = survey.df)
+```
 
 What you've just seen is an example of **Simpson's Paradox**. If you want to learn more, check out [the wikipedia page](https://en.wikipedia.org/wiki/Simpson%27s_paradox).
 
-
-
-
-## Some bigger challenges...
+## Challenges
 
 31. What percent of women wore ckone?
 
 32. What was the median time of people who went to grenzwert and wore gio but who talked more than 100 minutes?
 
-33. What percent of participants *either* went to grenzwert and talked for less than 220 minutes *or* went to paddys and talked for more than 150 minutes but no longer than 250 minutes?
+33. What percent of participants *either* went to grenzwert and talked for less than 220 minutes *or* went to paddys and talked for more than 150 minutes *but* no longer than 250 minutes?
 
-34. Let's make the ckone wearers look better. For all of the ckone wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times.
+34. Let's make the ckone wearers look better. For all of the ckone wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times. (Hint: use `rnorm()`)
 
 ## Submit!
 
-Save and email your `wpa_X_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/8pKm39PMS29JoLjI2](https://goo.gl/forms/8pKm39PMS29JoLjI2) to complete the WPA submission form.
+- Save and email your `wpa_2_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 
