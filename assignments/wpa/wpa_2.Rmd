@@ -8,12 +8,77 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
 ```
 
-Open a new R script in R and save it as `wpa_X_LastFirst.R` (where Last and First is your last and first name). At the top of your script, write the assignment number, your name and date in comments. When you answer a task, indicate which task you are answering with appopriate comments.
+<img src="http://mainetoday.com/wp-content/uploads/2014/06/meet-at-bar-red-lipstick-project.jpg" width="400" />
 
 
-```{r, echo = F}
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr: [7](https://bookdown.org/ndphillips/YaRrr/vectorindexing.html)
+- Videos: [D](https://goo.gl/IsrBWO)
+
+
+## Assignment Goals
+
+- Index vectors using brackets `[]`
+- Create and use logical vectors to index vectors and to calculate summary statistics (e.g. sums with `sum()`, and percentages with `mean()`)
+- Change specific values of a vector using brackets `[]`, logical indexing and assignment `<-`.
+
+# Examples
+
+```{r, eval = FALSE, echo = TRUE}
+# Create some vectors of data
+height <- c(168, 157, 189, 147, 172, 166, 201)
+initials <- c("NP", "HT", "AM", "MP", "RH", "MS", "JT")
+sex <- c("m", "f", "m", "f", "m", "f", "m")
+age <- c(28, 19, 23, 24, 25, 22, 26)
+
+# What was the height of the first entry?
+height[1]
+
+# What were the sexes of the first 5 entries?
+sex[1:5]
+
+# What was the age of the last entry?
+age[length(age)]
+
+# How many people were taller than 160cm?
+sum(height > 160)
+
+# What percent of people were younger than 25?
+mean(age < 25)
+
+# What were the initials of the females?
+initials[sex == "f"]
+
+# What were the intials of females older than 22?
+initials[sex == "f" & age > 22]
+
+# What was the height, sex, and age of the person with initials "JT"?
+height[intials == "JT"]
+sex[initials == "JT"]
+age[initials == "JT"]
+
+# The height of pseron 'NP' is incorrect, it should be 172. Change it
+height[initials == "NP"] <- 172
+
+# The ages of all females are one year too low, add 1 to each age
+age[sex == "f"] <- age[sex == "f"] + 1
+```
+
+
+
+
+
+# Get started
+
+0. Open RStudio. Open a new R script (File -- New File -- R Script), and save it as `wpa_2_LastFirst.R` (where Last and First is your last and first name). At the top of your script write the assignment number, your name and date (as comments!). For the rest of the assignment, when you answer a task, indicate which task you are answering with appropriate comments.
+
+```{r, echo = F, eval = FALSE}
+# Create data
 set.seed(100)
-cologne <- rep(c("gio", "calvinklein"), each = 100)
+cologne <- rep(c("gio", "ckone"), each = 100)
 
 bar <- c(c(rep("paddys", 10), rep("grenzwert", 90)),
                  c(rep("paddys", 90), rep("grenzwert", 10)))
@@ -24,9 +89,9 @@ bar.lu <- data.frame(bar = c("grenzwert", "paddys"),
                              bar.num = c(10, 160),
                              stringsAsFactors = F)
 
-cologne.lu <- data.frame(cologne = c("gio", "calvinklein"),
+cologne.lu <- data.frame(cologne = c("gio", "ckone"),
                              cologne.num = c(120, 10),
-                             stringsAsFactors = F)
+                             stringsAsFactors = FALSE)
 
 for(i in 1:length(time)) {
   
@@ -60,28 +125,28 @@ save(id, sex, cologne, bar, time, file = "data/wpa2.RData")
 # aggregate(time ~ bar, data = cologne.df, FUN = mean)
 # aggregate(time ~ bar + cologne, data = cologne.df, FUN = mean)
 ```
+
 # Analyzing Bar survey data
 
-<img src="http://mainetoday.com/wp-content/uploads/2014/06/meet-at-bar-red-lipstick-project.jpg" width="400" />
-
-The following contain (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy's) last Friday night at 3:00am. Each person was asked which kind of cologne they were wearing. After answering this question, a (very busy) researcher recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:
+In this assignment you will analyse (fictional!) data from a survey of 200 people at one of two bars in Basel (Grenzwert and Paddy's) last Friday night at 3:00am. The goal of the survey is to see if there is an effect of cologne on how long people talk with others at the bar. As each of the 200 people entered they bar, they were secretly sprayed with one of two types of cologne -- gio or ckone. After answering this question, a (very busy) researcher recorded how long each person spent talking to people at the bar. The data are stored in the following 5 vector objects:
 
 - `id`: An id indicating the participant in the form `x.n`, where `x` is the name of the bar the participant was at, and `n` is a random indexing number)
 - `sex`: The person's sex: `male` or `female`
-- `cologne`: Which cologne did the person wear? `gio` or `calvinklein`
+- `cologne`: Which cologne did the person wear? `gio` or `ckone`
 - `bar`: Where the person went out: `grenzwert` or `paddys`
 - `time`: The amount of time the person spent talking to people in minutes
 
-Thankfully, you don't need to type in the data yourself! The objects are stored in an *RData* file online.
 
-A. Load the vectors into your R session by running the following code.
+
+A. Thankfully, you don't need to type in the data yourself! The objects are stored in an *RData* file online at [https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true](https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true). Run the following code to load the vectors into your R session.
 
 ```{r echo = TRUE}
-load(file = url("https://dl.dropboxusercontent.com/u/7618380/wpa2.RData"))
+# Load the data into my current session
+
+load(file = url("https://github.com/ndphillips/IntroductionR_Course/blob/master/data/wpa2.RData?raw=true"))
 ```
 
 B. The `str()` function will give you basic information about objects. Get to know the objects (`id`, `sex`, `cologne`, `bar`, `time`) by running the `str()` function on each of the 5 vectors. 
-
 
 ## Review
 
@@ -103,8 +168,7 @@ mean(time)
 sd(time)
 ```
 
-4. Create `time.z` a z-score transformation of time. (Hint: z-score is defined as `(x - mean(x)) / sd(x)`)
-
+4. Create `time_z` a z-score transformation of time. (Hint: z-score is defined as `(x - mean(x)) / sd(x)`)
 
 ## Numerical Indexing
 
@@ -114,13 +178,11 @@ sd(time)
 time[1]
 ```
 
-
 6. What were the sexes of the first five participants?
 
 ```{r}
 sex[1:5]
 ```
-
 
 7. What were the colognes of the 10th through the 20th participants
 
@@ -137,7 +199,7 @@ bar[length(bar)]
 
 ## Logical Indexing on one variable
 
-9. a) How many people wore gio? b) How many wore calvinklein?
+9. a) How many people wore gio? b) How many wore ckone?
 
 ```{r}
 sum(cologne == "fun")
@@ -205,16 +267,16 @@ mean(time[cologne == "gio"])
 ```
 
 
-19. What was the mean time of people who wore calvinklein?
+19. What was the mean time of people who wore ckone?
 
 ```{r}
-mean(time[cologne == "calvinklein"])
+mean(time[cologne == "ckone"])
 ```
 
 20. Based on what you've learned, if someone wants to talk as much (I should have said as *long*) as possible, what cologne should they wear?
 
 ```{r}
-# They should wear calvinklein!
+# They should wear ckone!
 ```
 
 
@@ -236,11 +298,11 @@ bar.r[bar == "grenzwert"] <- "g"
 bar.r[bar == "paddys"] <- "p"
 ```
 
-23. a) In the `cologne.r` vector, change the `"gio"` values to `"G"`. b) Now change the `"calvinklein"` values to `"C"`
+23. a) In the `cologne.r` vector, change the `"gio"` values to `"G"`. b) Now change the `"ckone"` values to `"C"`
 
 ```{r}
 cologne.r[cologne == "gio"] <- "G"
-cologne.r[cologne == "calvinklein"] <- "C"
+cologne.r[cologne == "ckone"] <- "C"
 ```
 
 24. In the `time.r` vector, change all time values greater than 280 to 280. Confirm that you did it correctly by calculating the maximum time in `time.r`
@@ -264,11 +326,11 @@ max(time.r)
 
 26. What was the mean time of people who went to Grenzwert and wore gio??
 
-27. What was the mean time of people who went to Grenzwert and wore calvinklein?
+27. What was the mean time of people who went to Grenzwert and wore ckone?
 
 28. What was the mean time of people who went to Paddys who wore gio?
 
-29. What was the mean time of people who went to Paddys who wore calvinklein??
+29. What was the mean time of people who went to Paddys who wore ckone??
 
 20. Based on what you've learned now, if someone's goal is to talk to people as long as possible, what cologne should they wear?
 
@@ -289,13 +351,13 @@ What you've just seen is an example of **Simpson's Paradox**. If you want to lea
 
 ## Some bigger challenges...
 
-31. What percent of women wore calvinklein?
+31. What percent of women wore ckone?
 
 32. What was the median time of people who went to grenzwert and wore gio but who talked more than 100 minutes?
 
 33. What percent of participants *either* went to grenzwert and talked for less than 220 minutes *or* went to paddys and talked for more than 150 minutes but no longer than 250 minutes?
 
-34. Let's make the calvinklein wearers look better. For all of the calvinklein wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times.
+34. Let's make the ckone wearers look better. For all of the ckone wearers, add a random sample from a normal distribution with mean 30 and standard deviation 5 to their original talking times.
 
 ## Submit!
 

@@ -27,7 +27,6 @@ This assignment is based on the following readings:
 
 # Examples
 
-
 ```{r, eval = FALSE}
 
 # Vector of specific values
