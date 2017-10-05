@@ -153,23 +153,28 @@ B. Make sure the objects (`id`, `sex`, `cologne`, `bar`, `time`) were loaded cor
 
 1. How many people were given each type of cologne? (Hint: use `table()`)
 
-```{r eval = FALSE, echo = FALSE}
+```{r}
 table(cologne)
 ```
 
 2. What was the mean time?
 
-```{r eval = FALSE, echo = FALSE}
+```{r}
 mean(time)
 ```
 
 3. What was the standard deviation of times?
 
-```{r eval = FALSE, echo = FALSE}
+```{r}
 sd(time)
 ```
 
 4. Create `time_z` a z-score transformation of time. (Hint: z-score is defined as `(x - mean(x)) / sd(x)`)
+
+```{r}
+time_z <- (time - mean(time)) / sd(time)
+```
+
 
 ## Numerical Indexing
 
@@ -328,7 +333,7 @@ knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointS
 
 <!-- <img src="http://home.adelphi.edu/~stemkoski/mathematrix/e-waterfall.jpg" width="200" /> -->
 
-25. Based on what you've learned so far, if someone wanted to talk to people as long as possible, what cologne should they wear?
+25. Based on what you've learned so far, if someone wanted to talk a lot, what cologne should they wear?
 
 ```{r}
 # They should wear ckone!
