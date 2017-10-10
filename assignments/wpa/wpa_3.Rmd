@@ -1,5 +1,5 @@
 ---
-title: "WPA #3a  -- Dataframes"
+title: "WPA #3  -- Dataframes"
 ---
 
 ```{r global_options, include=FALSE}
