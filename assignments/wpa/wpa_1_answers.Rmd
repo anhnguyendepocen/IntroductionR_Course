@@ -334,9 +334,9 @@ after_z
 24. What was the largest `before` score? What was the largest `before_z` score?
 
 ```{r}
-min(before)
+max(before)
 
-min(before_z)
+max(before_z)
 ```
 
 25. What was the smallest `after` score? What was the smallest `after_z` score?
