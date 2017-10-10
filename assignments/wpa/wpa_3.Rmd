@@ -1,16 +1,29 @@
 ---
-title: "WPA #3  -- YaRrr! Chapters 6, 7"
-output:
-  prettydoc::html_pretty:
-    theme: lumen
-    highlight: github
+title: "WPA #3  -- Dataframes"
 ---
-
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
 ```
+
+
+```{r, fig.cap = "", eval = TRUE, out.width = "60%", fig.align = 'center'}
+knitr::include_graphics("https://i.pinimg.com/736x/e5/db/12/e5db120571e3883a61f78e00e094ac3c--diy-toddler-halloween-costumes-halloween-halloween.jpg")
+```
+
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr: [8](https://bookdown.org/ndphillips/YaRrr/matricesdataframes.html)
+- Videos: [E](https://goo.gl/w86DM6), [F](https://goo.gl/yEiJ1R)
+
+## Assignment Goals
+
+- Create dataframes.
+- Index dataframes with `$`, `[,]`, and `subset()`
+- Change column names with `$` and `<-`
 
 ```{r, echo = F, eval = F}
 set.seed(100)
@@ -85,96 +98,233 @@ write.table(df, "/Users/nphillips/Dropbox/public/priming.txt", sep = "\t")
 ```
 
 
-# A Priming study
+# Examples
 
-<img src="http://funnyand.com/wp-content/uploads/2014/08/Funny-Old-Man.jpg" width="200" />
+```{r, echo = TRUE, eval = FALSE}
+# Create a dataframe called study
+
+study <- data.frame(id = c(1:8),
+                    sex = c("m", "f", "m", "m", "m", "f", "m", "x34"),
+                    age = c(28, 24, 19, 23, 42, 32, 27, 24),
+                    eyecolor = c("blue", "brown", "brown", "green", "blue", "brown", "blue", "green"),
+                    group = c(1, 1, 1, 1, 2, 2, 2, 2),
+                    score = c(78, 65, 94, 92, 84, 86, 92, 86),
+                    stringsAsFactors = FALSE)
+
+# Summary statistics from specific columns
+
+mean(study$age)         # Mean age
+table(study$sex)        # Counts of each sex
+mean(study$sex == "m")  # Percent that are men
+mean(study$eyecolor %in% c("blue", "brown")) # Percent of eye colors that are blue or brown
+
+# Indexing
+
+study[1:5,]                           # First 5 rows
+study[6:10, c("id", "sex", "score")]  # Rows 6-10 and columns id, sex and score
+
+# Subsetting
+
+study_men <- subset(study, sex == "m")
+study_g1 <- subset(study, group == 1)
+study_g2 <- subset(study, group == 2)
+
+# Different ways to do the same subsetting
+
+# Q: What is the mean score of group 2?
+
+study_g2 <- subset(study, group == 2)   # Method 1A: Create study_g2 dataframe
+mean(study_g2$score)                    #        1B: Calculate mean of study_g2$score
+
+mean(subset(study, group == 2)$score)        # Method 2: Same as method 1 but in one step
+with(subset(study, group == 2), mean(score)) # Method 3: Using with() and subset() 
+mean(study$score[study$group == 2])          # Method 4: Using []
+
+# Q: What percent of women over the age of 20 had brown eyes?
+
+study.women <- subset(study, sex == "f" & age > 20)           #  Method 1A: 
+mean(study.women$eyecolor == "brown")                         #         1B: 
+
+mean(subset(study, sex == "f" & age > 20)$eyecolor == "brown")         # Method 2: 
+with(subset(study, sex == "f" & age > 20), mean(eyecolor == "brown"))  # Method 3: 
+mean(study$eyecolor[study$sex == "f" & study$age > 20] == "brown")     # Method 4: 
+
+# Changing values of a vector in a dataframe
+
+# Change sex values that are NOT f or m to NA
+study$sex[study$sex %in% c("f", "m") == FALSE] <- NA
+
+# Change "f" to "female", and "m" to "male"
+study$sex[study$sex == "f"] <- "female"
+study$sex[study$sex == "m"] <- "male"
+
+# Changing column names
+
+# Change name of first column to participant.id
+names(study)[1] <- "patient.id"
+
+# Change name of eyecolor column to eye
+names(study)[names(study) == "eyecolor"] <- "eye"
+```
+
+# A Priming study
 
 In a provocative paper, Bargh, Chen and Burrows (1996) sought to test whether or not priming people with trait concepts would trigger trait-consistent behavior. In one study, they primed participants with either neutral words (e.g.; bat, cookie, pen), or with words related to an elderly stereotype (e.g.; wise, stubborn, old). They then, unbeknownst to the participants, used a stopwatch to record how long it took the participants to walk down a hallway at the conclusion of an experiment. They predicted that participants primed with words related to the elderly would walk slower than those primed with neutral words. 
 
 In this WPA, you will analyze *fake* data corresponding to this study. 
 
-
 ## Dataset description
 
 Our fake study has 3 primary independent variables:
 
-- `prime`: What kind of primes was the participant given? `neutral` means neutral primes, `elderly` means elderly primes.
-- `prime.duration`: How long (in minutes) were primes displayed to participants? There were 4 conditions: 1, 5, 10 or 30.
-- `grandparents`: Did the participant have a close relationship with their grandparents? `yes` means yes, `no` means no, `none` means they never met their grandparents.
+| Variable | Description| Possible Values |
+|:---------|:------------------------------------------|:-----------------|
+|`prime` | What kind of primes was the participant given? | `neutral`, `elderly` |
+|`prime.duration`| How long (in minutes) were primes displayed to participants? | 1, 5, 10, or 30 |
+|`grandparents` | Did the participant have a close relationship with their grandparents? | `yes` means yes, `no` means no, `none` means they never met their grandparents.|
+|`id` |  The order in which participants completed the study |Integers from 1 to 500 |
+|`age` | Participants' age | Integers larger than 18 |
+|`sex` | Participant's sex | `"m"` = male, `"f"` = female |
+|`attention`| Did the participant pass an attention check? | `1` = yes, `0` = no |
+|`walk` | How long (in seconds) did participants take to walk down the hallway? | Positive numbers|
 
-There was one primary dependent variable
+## Load the data
 
-- `walk`: How long (in seconds) did participants take to walk down the hallway?
+1. The text file containing the data is called `priming.txt`. It is available at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/priming.txt. You can load the data into R as a new dataframe called `priming` by running the following:
 
-There were 4 additional variables:
+```{r echo = TRUE, eval = TRUE}
+priming <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/priming.txt",
+                      stringsAsFactors = FALSE)
+```
 
-- `id`: The order in which participants completed the study
-- `age`: Participants' age
-- `sex`: Participants' sex
-- `attention`: Did the participant pass an attention check? 0 means they failed the attention check, 1 means they passed.
+Here is how the data should look:
 
-## Project management
+```{r, echo = FALSE, eval = TRUE}
+knitr::kable(head(priming))
+```
 
-1. Start a new R-project called `RCourse` (or something similar). Then (either within RStudio or outside of R), navigate to the location of your `RCourse` project, and add the folders `R` and `data`.
+## Understand and clean the data
 
-2. Open a new R script called `wpa_3_LASTFIRST.R` (where LASTFIRST is your last and first name), and save it in the `R` folder.
+2. Get to know the data using `View()`, `summary()`, `head()` and `str()`.
 
-3. The text file containing the data is called `priming.txt`. It is available at http://nathanieldphillips.com/wp-content/uploads/2016/10/priming.txt. Right-click the link and save the file in the `data` folder.
+```{r, eval = FALSE, echo = FALSE}
+View(priming)
+summary(priming)
+head(priming)
+str(priming)
+```
 
-4. Using `read.table()` load the data into a new R object called `priming`. Note that the text file is tab--delimited and contains a header row, so be sure to include the `sep = "\t"` and `header = TRUE` arguments!
+3. Look at the names of the dataframe with `names()`. Those aren't very informative are they? Change the names to the correct values (make sure to use the naming scheme I describe in the dataset description).
 
-## Understanding and cleaning the data
+```{r}
+names(priming) <- c("id", "sex", "age", "attention", "prime", "prime.duration", "grandparents", "walk")
+```
 
-5. Get to know the data using `View()`, `summary()`, `head()` and `str()`.
 
-6. Look at the names of the dataframe with `names()`. Those aren't very informative are they? Change the names to the correct values (make sure to use the naming scheme I describe in the dataset description).
+## Apply functions to columns
 
-## Applying functions to columns
+4. What was the mean participant age? Answer this in two ways. First, calculate the mean directly from the age column. Second, create a new vector object called `age.v` that contains the age data, then calculate the mean age from this vector. Do you get the same result?
+```{r}
+mean(priming$age)
+```
 
-7. What was the mean participant age?
+```{r}
+age.v <- priming$age
+mean(age.v)
+```
 
-8. How many participants were there from each sex?
+5. What was the median walking time?
 
-9. What was the median walking time?
+```{r}
+median(priming$walk)
+```
 
-10. What *percent* of participants passed the attention check (Hint: To calculate a percentage from a 0, 1 variable, use `mean()`)
+6. How many females were there? How many males?
 
-11. Walking time is currently in seconds. Add a new column to the dataframe called `walking.m` That shows the walking time in minutes rather than seconds.
+```{r}
+sum(priming$sex == "f")
+sum(priming$sex == "m")
+```
+
+7. What *percent* of participants passed the attention check? (Hint: To calculate a percentage from a 0, 1 variable, use `mean()`)
+
+```{r}
+mean(priming$attention)
+```
+
+8. Walking time is currently in seconds. Add a new column to the dataframe called `walk_m` that shows the walking time in minutes rather than seconds.
  
-## Indexing and subsettting dataframes
+```{r}
+priming$walk_m <- priming$walk / 60
+```
 
-*Try to split your answers to these problems into two steps*
+ 
+## Index and subset
 
-*Step 1: Index or subset the original data and store as a new object with a new name.*
+9. What were the sexes of the first 10 participants?
 
-*Step 2: Calculate the appropriate summary statistic using the new, subsetted object you just created.*
+```{r}
+priming$sex[1:10]
+```
 
-12. What were the sexes of the first 10 participants?
+10. What was the data for the 50th participant?
 
-13. What was the data for the 50th participant?
+```{r}
+priming[50,]
+```
 
-14. What was the mean walking time for the elderly prime condition?
+**Try answering these questions using one of the methods in the Examples above. The easiest method is Method 1. That is, first create a new dataframe object of the subsetted data, and then calculate the summary data from this new object.**
 
-15. What was the mean walking time for the neutral prime condition?
+11. What was the mean walking time for the elderly prime condition?
 
-16. What was the mean walking time for participants less than 23 years old?
+```{r}
+mean(priming$walk[priming$prime == "elderly"])
+```
 
-17. What was the mean walking time for females with a close relationship with their grandparents?
+12. What was the mean walking time for the neutral prime condition?
 
-18. What was the mean walking time for males over 24 years old *without* a close relationship with their grandparents?
+```{r}
+mean(priming$walk[priming$prime == "neutral"])
+```
 
-**Checkpoint! If you got this far you are doing great!**
+13. What was the mean walking time for participants less than 23 years old?
 
-## Creating new dataframe objects
+```{r}
+mean(priming$walk[priming$age < 23])
+```
 
-19. Create a new dataframe called `priming.att` that *only* includes rows where participants passed the attention check. (Hint: use indexing or `subset()`)
+14. What was the mean walking time for females with a close relationship with their grandparents?
 
-20. Some of the data don't make any sense. For example, some walking times are negative, some prime values aren't correct, and some prime.duration values weren't part of the original study plan. Create a new dataframe called `priming.c` (aka., priming clean) that *only* includes rows with valid values for each column -- do this by looking for an few strange values in each column, and by looking at the original dataset description. Additionally, *only* include participants who passed the attention check. Here's a skeleton of how your code should look
+```{r}
+mean(priming$walk[priming$sex == "f" & priming$grandparents == "yes"])
+```
+
+15. What was the mean walking time for males over 21 years old *without* a close relationship with their grandparents?
+
+```{r}
+mean(priming$walk[priming$sex == "m" & priming$age > 21 & priming$grandparents == "none"])
+```
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
+```
+
+# Checkpoint!!!
+
+## Create new dataframe objects
+
+16. One of your colleagues wants the study data, but only the columns `id`, `prime`, and `walk`. Create a new dataframe called `priming_simple` that only contains these columns.
+
+```{r}
+priming.simple <- priming[c("id", "prime", "walk")]
+```
+
+17. Some of the data don't make any sense. For example, some walking times are negative, some prime values aren't correct, and some prime.duration values weren't part of the original study plan. Create a new dataframe called `priming_c` (aka., priming clean) that *only* includes rows with valid values for each column -- do this by looking for an few strange values in each column, and by looking at the original dataset description. Additionally, *only* include participants who passed the attention check. Here's a skeleton of how your code should look
 
 ```{r, eval = FALSE, echo = TRUE}
-# Create priming.c, a subset of the original priming data
+# Create priming_c, a subset of the original priming data
 #  (replace __ with the appropriate values)
-priming.c <- subset(priming,
+priming_c <- subset(priming,
                     subset = sex %in% c(_____) & 
                              age > ____ &
                              attention == ___ &
@@ -184,38 +334,88 @@ priming.c <- subset(priming,
                              walk > ___ )
 ```
 
-21. How many participants gave valid data and passed the attention check? (Hint: Use the result from your previous answer!)
+```{r, eval = FALSE, echo = FALSE}
+# Create priming_c, a subset of the original priming data
+#  (replace __ with the appropriate values)
+priming_c <- subset(priming,
+                    subset = sex %in% c("m", "f") & 
+                             age > 18 &
+                             attention == 1 &
+                             prime %in% c("elderly", "neutral") &
+                             prime.duration %in% c(1, 5, 10, 30) &
+                             grandparents %in% c("no", "none", "yes") &
+                             walk > 0)
+```
 
-22. Of those participants who gave valid data and passed the attention check, what was the mean walking time of those given the elderly and neutral prime (calculate these separately).
+18. How many participants gave valid data *and* passed the attention check? (Hint: Use the result from your previous answer!)
 
-## Saving and loading data
+```{r}
+nrow(priming_c)
+```
 
-23. Save your two dataframe objects `priming` and `priming.c` in an .RData file called `priming.RData` in the data folder of your project
+19. Of those participants who gave valid data and passed the attention check, what was the mean walking time of those given the elderly and neutral prime (calculate these separately).
 
-24. Save your `priming.c` object as a tab--delimited text file called `priming_clean.txt` in the data folder of your project.
+```{r}
+with(subset(priming_c, prime == "elderly"), mean(walk))
 
-25. Clean your workspace by running `rm(list = ls())`
-
-26. Re-load your two dataframe objects using `load()`.
-
-27. A colleague of yours wants access to the data from the females given the neutral prime in your experiment. Create a dataframe called `priming.f` that only includes these data. Additionally, do *not* include the `id` column as this could be used to identify the participants.
-
-28. Save your `priming.f` object as a tab--delimited text file called `priming_females.txt` in the data folder of your project.
-
-29. Save your entire workspace using to an .RData file called `priming_ws.RData` in the data folder of your project.
+with(subset(priming_c, prime == "neutral"), mean(walk))
+```
 
 ## Challenges
 
-The following questions apply to your cleaned dataframe (`priming.c`)
+20. Run the following lines of code and look at the resulting objects. Are they the same or different? You can do this by printing them and visually exploring the results. Or, you can use the R function `identical()` (look at the help function with `?identical` to see how it works)
 
-30. Did the effect of priming condition on walking times differ between the first 100 and the last 100 participants (Hint: Make sure to index the data using `id`!)?
+```{r}
+v1 <- priming$walk
+v2 <- priming["walk"]
+v3 <- priming[,names(priming) == "walk"]
+```
 
-31. Due to a computer error, the data from every participant with an even id number is invalid. Remove these data from your `priming.c` dataframe.
+21. Run the following lines of code and look at the resulting objects. Are they the same or different? If they are different, why?
 
-32. Do you find evidence that a participant's relationship with their grandparents affects how they responded to the primes?
+```{r}
+vA <- priming$walk
+vB <- subset(priming, select = "walk")
+```
+
+22. Based on what you've learned in the previous question, run the following code and see what happens. Can you explain why?
+
+```{r}
+mean(vA)
+mean(vB)
+```
+
+**Note: The following questions apply to your cleaned dataframe (`priming_c`)**
+
+23. Did the effect of priming condition on walking times differ between the first 50 and the last 50 participants. That is, what was the difference in the mean walking time between the two priming conditions for the first 50 participants? What about the last 50 participants?  (Hint: Make sure to index the data using `id`!)? 
+
+```{r}
+mean(priming_c$walk[priming_c$id <= 50 & priming_c$prime == "elderly"]) - mean(priming_c$walk[priming_c$id <= 50 & priming_c$prime == "neutral"])
+
+
+mean(priming_c$walk[priming_c$id >= 450 & priming_c$prime == "elderly"]) - mean(priming_c$walk[priming_c$id >= 450 & priming_c$prime == "neutral"])
+```
+
+24. Do you find evidence that a participant's relationship with their grandparents affects how they responded to the primes?
+
+```{r}
+# Strong relationship only
+mean(priming_c$walk[priming_c$grandparents == "yes" & priming_c$prime == "elderly"]) - mean(priming_c$walk[priming_c$grandparents == "yes" & priming_c$prime == "neutral"])
+
+
+# No relationship only
+mean(priming_c$walk[priming_c$grandparents == "none" & priming_c$prime == "elderly"]) - mean(priming_c$walk[priming_c$grandparents == "none" & priming_c$prime == "neutral"])
+```
+
+25. Due to a computer error, the data from every participant with an even id number is invalid. Remove these data from your `priming_c` dataframe.
+
+```{r}
+priming_c <- priming_c[priming_c$id %in% seq(1, 501, by = 2),]
+```
 
 
 ## Submit!
 
-Save and email your `wpa_X_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/UblvQ6dvA76veEWu1](https://goo.gl/forms/UblvQ6dvA76veEWu1) to complete the WPA submission form.
+- Save and email your `wpa_3_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 

@@ -4,6 +4,12 @@ subtitle: "Answers"
 ---
 
 
+
+```{r, fig.cap = "An unidentified man drinking a non-alcoholic beer.", eval = TRUE, out.width = "60%", fig.align = 'center', echo = FALSE}
+knitr::include_graphics("http://i.telegraph.co.uk/multimedia/archive/02326/obama_2326627b.jpg")
+```
+
+
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=TRUE, warning=FALSE, message=FALSE)
@@ -102,8 +108,6 @@ rbinom(n = 100, size = 1, prob = .5)    # 100 coin flips (binomial with size = 1
 
 # Does drinking non-alcoholic beer affect cognitive performance?
 
-<img src="http://i.telegraph.co.uk/multimedia/archive/02326/obama_2326627b.jpg" width="400" />
-
 A psychologist has a theory that some of the negative cognitive effects of alcohol are the result of psychological rather than physiological processes. To test this, she has 12 participants perform a cognitive test before and after drinking non-alcoholic beer which was labelled to contain 5\% alcohol. Results from the study, including some demographic data, are presented in the following table. Note that higher scores on the test indicate better performance.
 
 id | before  | after | age | sex | eye_color
@@ -132,13 +136,11 @@ We'll start by creating vector objects representing each vector of data (i.e.; c
 id <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 ```
 
-
 2. Now, create the `id` vector again, but this time use the `a:b` function.
 
 ```{r}
 id <- 1:12
 ```
-
 
 3. Now create the `id` vector again! But this time use the `seq()` function. To get help on this function, look at the help menu with `?seq`
 
