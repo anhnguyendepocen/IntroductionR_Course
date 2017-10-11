@@ -163,8 +163,11 @@ study$sex[study$sex == "m"] <- "male"
 # Change name of first column to participant.id
 names(study)[1] <- "patient.id"
 
-# Change name of eyecolor column to eye
-names(study)[names(study) == "eyecolor"] <- "eye"
+# Change the name of columns 2 through 4
+names(study)[2:5] <- c("gender", "age_years", "eye")
+
+# Change name of group column to condition
+names(study)[names(study) == "group"] <- "condition"
 ```
 
 # A Priming study

@@ -201,8 +201,11 @@ study$sex[study$sex == &quot;m&quot;] &lt;- &quot;male&quot;
 # Change name of first column to participant.id
 names(study)[1] &lt;- &quot;patient.id&quot;
 
-# Change name of eyecolor column to eye
-names(study)[names(study) == &quot;eyecolor&quot;] &lt;- &quot;eye&quot;</code></pre>
+# Change the name of columns 2 through 4
+names(study)[2:5] &lt;- c(&quot;gender&quot;, &quot;age_years&quot;, &quot;eye&quot;)
+
+# Change name of group column to condition
+names(study)[names(study) == &quot;group&quot;] &lt;- &quot;condition&quot;</code></pre>
 </div>
 <div id="a-priming-study" class="section level1">
 <h1>A Priming study</h1>
