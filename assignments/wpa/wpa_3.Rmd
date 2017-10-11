@@ -164,7 +164,7 @@ study$sex[study$sex == "m"] <- "male"
 names(study)[1] <- "patient.id"
 
 # Change the name of columns 2 through 4
-names(study)[2:5] <- c("gender", "age_years", "eye")
+names(study)[2:4] <- c("gender", "age_years", "eye")
 
 # Change name of group column to condition
 names(study)[names(study) == "group"] <- "condition"
@@ -178,7 +178,7 @@ In this WPA, you will analyze *fake* data corresponding to this study.
 
 ## Dataset description
 
-Our fake study has 3 primary independent variables:
+Our fake study has data from the following measures;
 
 | Variable | Description| Possible Values |
 |:---------|:------------------------------------------|:-----------------|

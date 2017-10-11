@@ -202,7 +202,7 @@ study$sex[study$sex == &quot;m&quot;] &lt;- &quot;male&quot;
 names(study)[1] &lt;- &quot;patient.id&quot;
 
 # Change the name of columns 2 through 4
-names(study)[2:5] &lt;- c(&quot;gender&quot;, &quot;age_years&quot;, &quot;eye&quot;)
+names(study)[2:4] &lt;- c(&quot;gender&quot;, &quot;age_years&quot;, &quot;eye&quot;)
 
 # Change name of group column to condition
 names(study)[names(study) == &quot;group&quot;] &lt;- &quot;condition&quot;</code></pre>
@@ -213,7 +213,7 @@ names(study)[names(study) == &quot;group&quot;] &lt;- &quot;condition&quot;</cod
 <p>In this WPA, you will analyze <em>fake</em> data corresponding to this study.</p>
 <div id="dataset-description" class="section level2">
 <h2>Dataset description</h2>
-<p>Our fake study has 3 primary independent variables:</p>
+<p>Our fake study has data from the following measures;</p>
 <table>
 <colgroup>
 <col width="14%"></col>
