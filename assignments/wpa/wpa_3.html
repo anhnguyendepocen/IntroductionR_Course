@@ -413,10 +413,21 @@ priming_c &lt;- subset(priming,
 <div id="challenges" class="section level2">
 <h2>Challenges</h2>
 <ol start="20" style="list-style-type: decimal">
-<li><p>Run the following lines of code and look at the resulting objects. Are they the same or different? You can do this by printing them and visually exploring the results. Or, you can use the R function <code>identical()</code> (look at the help function with <code>?identical</code> to see how it works)</p></li>
-<li><p>Run the following lines of code and look at the resulting objects. Are they the same or different? If they are different, why?</p></li>
-<li><p>Based on what you’ve learned in the previous question, run the following code and see what happens. Can you explain why?</p></li>
+<li>Run the following lines of code and look at the resulting objects. Are they the same or different? You can do this by printing them and visually exploring the results. Or, you can use the R function <code>identical()</code> (look at the help function with <code>?identical</code> to see how it works)</li>
 </ol>
+<pre class="r"><code>v1 &lt;- priming$walk
+v2 &lt;- priming[&quot;walk&quot;]
+v3 &lt;- priming[,names(priming) == &quot;walk&quot;]</code></pre>
+<ol start="21" style="list-style-type: decimal">
+<li>Run the following lines of code and look at the resulting objects. Are they the same or different? If they are different, why?</li>
+</ol>
+<pre class="r"><code>vA &lt;- priming$walk
+vB &lt;- subset(priming, select = &quot;walk&quot;)</code></pre>
+<ol start="22" style="list-style-type: decimal">
+<li>Based on what you’ve learned in the previous question, run the following code and see what happens. Can you explain why?</li>
+</ol>
+<pre class="r"><code>mean(vA)
+mean(vB)</code></pre>
 <p><strong>Note: The following questions apply to your cleaned dataframe (<code>priming_c</code>)</strong></p>
 <ol start="23" style="list-style-type: decimal">
 <li><p>Did the effect of priming condition on walking times differ between the first 50 and the last 50 participants. That is, what was the difference in the mean walking time between the two priming conditions for the first 50 participants? What about the last 50 participants? (Hint: Make sure to index the data using <code>id</code>!)?</p></li>

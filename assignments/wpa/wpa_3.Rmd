@@ -365,7 +365,7 @@ with(subset(priming_c, prime == "neutral"), mean(walk))
 
 20. Run the following lines of code and look at the resulting objects. Are they the same or different? You can do this by printing them and visually exploring the results. Or, you can use the R function `identical()` (look at the help function with `?identical` to see how it works)
 
-```{r}
+```{r, echo = TRUE}
 v1 <- priming$walk
 v2 <- priming["walk"]
 v3 <- priming[,names(priming) == "walk"]
@@ -373,14 +373,14 @@ v3 <- priming[,names(priming) == "walk"]
 
 21. Run the following lines of code and look at the resulting objects. Are they the same or different? If they are different, why?
 
-```{r}
+```{r, echo = TRUE}
 vA <- priming$walk
 vB <- subset(priming, select = "walk")
 ```
 
 22. Based on what you've learned in the previous question, run the following code and see what happens. Can you explain why?
 
-```{r}
+```{r, echo = TRUE}
 mean(vA)
 mean(vB)
 ```
