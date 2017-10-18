@@ -259,7 +259,7 @@ matthews$gender_a[matthews$gender == 1] <- "male"
 matthews$gender_a[matthews$gender == 2] <- "female"
 ```
 
-10. What percent of participants were male? (Hint: `mean(__$__ == "__")`)
+10. What percent of participants were male? (Hint: use the template: `mean(__$__ == "__")`)
 
 ```{r}
 mean(matthews$gender_a == "male")
