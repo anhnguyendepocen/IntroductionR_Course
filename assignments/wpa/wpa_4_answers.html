@@ -312,8 +312,14 @@ save(pirates, pirates_agg,
 <ol start="2" style="list-style-type: decimal">
 <li><p>Open a new R script and save it as <code>wpa4.R</code> in the <code>R</code> folder you just created using the main RStudio menus “File – Save As”&quot;</p></li>
 <li><p>At the top of your script load the <code>dplyr</code> package using <code>library()</code></p></li>
-<li><p>Using <code>getwd()</code> print the current working directory of your project. This is the directory on your computer where your project is located.</p></li>
-<li><p>Now it’s time to load the data. The data for this WPA are stored at <a href="http://journal.sjdm.org/15/15909/data1.csv" class="uri">http://journal.sjdm.org/15/15909/data1.csv</a>. Load the data into R by using <code>read.table()</code> into a new object called <code>matthews</code> by running the following code. Once you have done this, kook at the first few rows of <code>matthews</code> using <code>head()</code>, and <code>str()</code> to make sure the data were loaded correctly into R.</p></li>
+</ol>
+<pre class="r"><code>library(dplyr)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Using <code>getwd()</code> print the current working directory of your project. This is the directory on your computer where your project is located.</li>
+</ol>
+<pre class="r"><code>getwd()</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Now it’s time to load the data. The data for this WPA are stored at <a href="http://journal.sjdm.org/15/15909/data1.csv" class="uri">http://journal.sjdm.org/15/15909/data1.csv</a>. Load the data into R by using <code>read.table()</code> into a new object called <code>matthews</code> by running the following code. Once you have done this, kook at the first few rows of <code>matthews</code> using <code>head()</code>, and <code>str()</code> to make sure the data were loaded correctly into R.</li>
 </ol>
 <pre class="r"><code># Load the comma-separated data1.csv file into R as a new object called matthews
 
@@ -321,6 +327,41 @@ matthews &lt;- read.table(file = &quot;http://journal.sjdm.org/15/15909/data1.cs
                        sep = &quot;,&quot;,                             # File is comma-separated
                        header = TRUE,                         # There IS a header column
                        stringsAsFactors = FALSE)              # Do NOT convert strings to factors</code></pre>
+<pre class="r"><code>head(matthews)</code></pre>
+<pre><code>##                  id gender age income p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 task
+## 1 R_3PtNn51LmSFdLNM      2  26      7  1  1  1  1  1  1  1  1  1   1    0
+## 2 R_2AXrrg62pgFgtMV      2  32      4  1  1  1  1  1  1  1  1  1   1    0
+## 3 R_cwEOX3HgnMeVQHL      1  25      2  0  1  1  1  1  1  1  1  0   0    0
+## 4 R_d59iPwL4W6BH8qx      1  33      5  1  1  1  1  1  1  1  1  1   1    0
+## 5 R_1f3K2HrGzFGNelZ      1  24      1  1  1  0  1  1  1  1  1  1   1    1
+## 6 R_3oN5ijzTfoMy4ca      1  22      2  1  1  0  0  1  1  1  1  0   1    0
+##   havemore haveless pcmore
+## 1       NA       50     50
+## 2       NA       25     75
+## 3       NA       10     90
+## 4       NA       50     50
+## 5       99       NA     99
+## 6       NA       20     80</code></pre>
+<pre class="r"><code>str(matthews)</code></pre>
+<pre><code>## 'data.frame':    190 obs. of  18 variables:
+##  $ id      : chr  &quot;R_3PtNn51LmSFdLNM&quot; &quot;R_2AXrrg62pgFgtMV&quot; &quot;R_cwEOX3HgnMeVQHL&quot; &quot;R_d59iPwL4W6BH8qx&quot; ...
+##  $ gender  : int  2 2 1 1 1 1 1 1 1 1 ...
+##  $ age     : int  26 32 25 33 24 22 47 26 29 32 ...
+##  $ income  : int  7 4 2 5 1 2 3 4 1 7 ...
+##  $ p1      : int  1 1 0 1 1 1 1 1 1 1 ...
+##  $ p2      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ p3      : int  1 1 1 1 0 0 0 0 0 1 ...
+##  $ p4      : int  1 1 1 1 1 0 0 0 1 1 ...
+##  $ p5      : int  1 1 1 1 1 1 1 0 0 1 ...
+##  $ p6      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ p7      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ p8      : int  1 1 1 1 1 1 1 1 1 0 ...
+##  $ p9      : int  1 1 0 1 1 0 1 0 1 1 ...
+##  $ p10     : int  1 1 0 1 1 1 0 0 1 1 ...
+##  $ task    : int  0 0 0 0 1 0 1 0 1 1 ...
+##  $ havemore: int  NA NA NA NA 99 NA 95 NA 70 25 ...
+##  $ haveless: int  50 25 10 50 NA 20 NA 30 NA NA ...
+##  $ pcmore  : int  50 75 90 50 99 80 95 70 70 25 ...</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Now that you’ve loaded the data into R, let’s save a local copy of the data as a text file called <code>matthews.txt</code> into your <code>data</code> folder. Using <code>write.table()</code>, save the data as a tab–delimited text file called <code>matthews.txt</code> in the data folder as follows:</li>
 </ol>
@@ -334,32 +375,55 @@ write.table(x = matthews,                    # Save the object matthews
 <div id="review" class="section level3">
 <h3>Review</h3>
 <ol start="7" style="list-style-type: decimal">
-<li><p>What are the names of the data columns?</p></li>
-<li><p>What was the mean age?</p></li>
-<li><p>Currently the column <code>gender</code> is coded as 1 (male) and 2 (female). Let’s create a new <em>character</em> column called <code>gender_a</code> that codes the data as <code>&quot;male&quot;</code> and <code>&quot;female&quot;</code> (instead of 1 and 2). Do this by using the following template:</p></li>
+<li>What are the names of the data columns?</li>
+</ol>
+<pre class="r"><code>names(matthews)</code></pre>
+<pre><code>##  [1] &quot;id&quot;       &quot;gender&quot;   &quot;age&quot;      &quot;income&quot;   &quot;p1&quot;       &quot;p2&quot;      
+##  [7] &quot;p3&quot;       &quot;p4&quot;       &quot;p5&quot;       &quot;p6&quot;       &quot;p7&quot;       &quot;p8&quot;      
+## [13] &quot;p9&quot;       &quot;p10&quot;      &quot;task&quot;     &quot;havemore&quot; &quot;haveless&quot; &quot;pcmore&quot;</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>What was the mean age?</li>
+</ol>
+<pre class="r"><code>mean(matthews$age)</code></pre>
+<pre><code>## [1] 31.71579</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Currently the column <code>gender</code> is coded as 1 (male) and 2 (female). Let’s create a new <em>character</em> column called <code>gender_a</code> that codes the data as <code>&quot;male&quot;</code> and <code>&quot;female&quot;</code> (instead of 1 and 2). Do this by using the following template:</li>
 </ol>
 <pre class="r"><code>matthews$gender_a &lt;- NA   # Start with a column of NA values.
 matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot; # Change 1 to &quot;male&quot;
 matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot; # Change 2 to &quot;female&quot;</code></pre>
+<pre class="r"><code># Create a new column called gender_a that codes gender as a string
+matthews$gender_a &lt;- NA  # Start with a column of NA values.
+matthews$gender_a[matthews$gender == 1] &lt;- &quot;male&quot;
+matthews$gender_a[matthews$gender == 2] &lt;- &quot;female&quot;</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li><p>What percent of participants were male? (Hint: use the template: <code>mean(__$__ == &quot;__&quot;)</code>)</p></li>
-<li><p>Calculate the mean age for males only using the following templates</p></li>
+<li>What percent of participants were male? (Hint: use the template: <code>mean(__$__ == &quot;__&quot;)</code>)</li>
 </ol>
-<pre class="r"><code>mean(matthews$__[matthews$__ == &quot;male&quot;])</code></pre>
+<pre class="r"><code>mean(matthews$gender_a == &quot;male&quot;)</code></pre>
+<pre><code>## [1] 0.6263158</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li>Calculate the mean age for males only using the following templates</li>
+</ol>
+<pre class="r"><code>mean(matthews$age[matthews$gender_a == &quot;male&quot;])</code></pre>
+<pre><code>## [1] 29.76471</code></pre>
 <ol start="12" style="list-style-type: decimal">
 <li>Calculate the mean age for females only using the following template</li>
 </ol>
-<pre class="r"><code>mean(matthews$__[matthews$gender_a == &quot;__&quot;])</code></pre>
+<pre class="r"><code>mean(matthews$age[matthews$gender_a == &quot;female&quot;])</code></pre>
+<pre><code>## [1] 34.98592</code></pre>
 </div>
 <div id="grouped-aggregation" class="section level3">
 <h3>Grouped Aggregation</h3>
 <ol start="13" style="list-style-type: decimal">
 <li>Using <code>aggregate()</code> calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?</li>
 </ol>
-<pre class="r"><code># Calculate mean age for each sex using aggregate()
-aggregate(formula = __ ~ __,
-          FUN = __,
-          data = __)</code></pre>
+<pre class="r"><code>aggregate(formula = age ~ gender_a,
+          FUN = mean,
+          data = matthews)</code></pre>
+<pre><code>##   gender_a      age
+## 1   female 34.98592
+## 2     male 29.76471</code></pre>
+<pre class="r"><code># Yes the answers are the same!</code></pre>
 <ol start="14" style="list-style-type: decimal">
 <li>Now use <code>dplyr</code> to do the same calculations using the following template. Do you get the same answers as before?</li>
 </ol>
@@ -373,6 +437,19 @@ matthews %&gt;%
 <ol start="15" style="list-style-type: decimal">
 <li>The variable <code>pcmore</code> reflects the question: “What percent of people taking part in this survey do you think earn more than you do?”. Using <code>aggregate()</code>, calculate the median value of this variable separately for each level of income. What does the result tell you?</li>
 </ol>
+<pre class="r"><code>aggregate(formula = pcmore ~ income,
+          FUN = median,
+          data = matthews)</code></pre>
+<pre><code>##   income pcmore
+## 1      1     80
+## 2      2     75
+## 3      3     50
+## 4      4     60
+## 5      5     50
+## 6      6     45
+## 7      7     50
+## 8      8     50</code></pre>
+<pre class="r"><code># The higher one's income, the less people think that other people make more than them.</code></pre>
 </div>
 <div id="merging-two-dataframes" class="section level3">
 <h3>Merging two dataframes</h3>
@@ -383,18 +460,37 @@ matthews %&gt;%
                             sep = &quot;__&quot;,            # How are columns separted?
                             header = __,           # Is there a header row?
                             stringsAsFactors = __) # Should strings be converted to factors?</code></pre>
+<pre class="r"><code>matthews_demo &lt;- read.table(&quot;https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/matthews_demographics.txt&quot;, 
+                      sep = &quot;\t&quot;,
+                      header = TRUE,
+                      stringsAsFactors = FALSE)</code></pre>
 <ol start="17" style="list-style-type: decimal">
 <li>Using <code>merge()</code> add the demographic data to the <code>matthews</code> data using the following template:</li>
 </ol>
 <pre class="r"><code>matthews &lt;- merge(x = __,       # First dataframe
                   y = __,       # Second dataframe
                   by = &quot;__&quot;)    # Column to match rows</code></pre>
+<pre class="r"><code>matthews &lt;- merge(x = matthews,
+                  y = matthews_demo,
+                  by = &quot;id&quot;)</code></pre>
 <ol start="18" style="list-style-type: decimal">
 <li>Using <code>aggregate()</code>, calculate the mean value of <code>havemore</code> for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?</li>
 </ol>
 <pre class="r"><code>aggregate(formula = __ ~ __ + __, 
           FUN = __, 
           data = __)</code></pre>
+<pre class="r"><code>aggregate(havemore ~ gender + race, 
+          FUN = mean, 
+          data = matthews)</code></pre>
+<pre><code>##   gender     race havemore
+## 1      1    asian 62.05882
+## 2      2    asian 55.00000
+## 3      1    black 57.50000
+## 4      2    black 65.00000
+## 5      1 hispanic 51.87500
+## 6      2 hispanic 31.66667
+## 7      1    white 64.62963
+## 8      2    white 56.00000</code></pre>
 <ol start="19" style="list-style-type: decimal">
 <li>Now do the same calculations using <code>dplyr</code> using the following template. Do you get the same answer?</li>
 </ol>
@@ -403,6 +499,12 @@ matthews %&gt;%
   summarise(
     N = n(),
     havemore_mean = mean(__)
+  )</code></pre>
+<pre class="r"><code>matthews %&gt;% 
+  group_by(gender, race) %&gt;%
+  summarise(
+    N = n(),
+    havemore_mean = mean(havemore, na.rm = TRUE)
   )</code></pre>
 <p><img src="data:image/png;base64,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WmbgRsw4IVtDlJbolFaVhJZJoLkl5W5yj1o3P1RwYlSkTq2WGbRiGcQQM9SMzsTqMsDKOWvakrTMrNycU2NlXmWQliwtUkayYwrrOTNuEoPdf4PBtqv4Uml5esYhMGMVaW7m4HXv5c7r3s9k+QYSy5iuo04gTyF5gYynkTGpNXK2julxZfaya6kZompgLc5lRMs8zE0GSHMBVEt5ijiHVWWIi1eoneEyVM7jslGFloSRQs0kVohuxw0uZXrfc5m+5B9CuBrobYXATudoM5bXUNcQ15Y4cu8N3HPXR1levIFm5U7S6nF86iTTEg7FaXEh1BVu1hwk14EmGafFghVJiGZUc3E5uvYx6hzqA7UJFYZqwnkjp4hIGfTdVANibye+fwnV4ABzu55Lb+EaZPoSkBm+lIpUHmOmAQ9SWRPS6Ajt8Cgrx27nxJHbGC4fZfnYQdZPHCM3y+S4jNkQ8Qms1Ec7NbxmvBZfUSUjEhGXSy5Q5zFqqHC+wgMhVFAN8NM70d4uQn8vM/MX4Wcupp69CN/bhfi5boDoFF+K6zGBuWndWmd+PHg6Xtd21HJDase0o0WGw+NMxitMmnXyaBEdH6eNDTk1lDL3Uu5uJqg6qhBwrqKqeoS6j6unkXqGqj9LqKeReh71C4gsAPUjbLYHG3BbYJ4huJ2X0TUG5lHnsOUOwKb7eupU+I2ZwOGUfz+qqjgFty/t/NnHCeZfA/BpID+MpFh+6Oc7aT99Gu3p48ZP9y+2kp+fZDC31tlaWxU5W2BurXNx/f9pGZ9040qpYgAAAEZ0RVh0Y29tbWVudABGaWxlIHNvdXJjZTogaHR0cDovL3d3dy5tYXJpb3dpa2kuY29tL0ZpbGU6Q2hlY2twb2ludFNNM0RMLnBuZyy+atQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTMtMDgtMjJUMTc6MzM6MzMtMDQ6MDBtyQm2AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEzLTA4LTIyVDE3OjMzOjMzLTA0OjAwHJSxCgAAAEZ0RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi43LjgtOCAyMDEyLTExLTIzIFExNiBodHRwOi8vd3d3LmltYWdlbWFnaWNrLm9yZ7diKL0AAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6aGVpZ2h0ADM2M/wbirIAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMjY3Jhh3EQAAABl0RVh0VGh1bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxMzc3MjA3MjEz1HMgnAAAABN0RVh0VGh1bWI6OlNpemUANTkuNktCQmRG4L4AAABMdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL21hcmlvd2lrL3B1YmxpY19odG1sL2ltYWdlcy82LzY1L0NoZWNrcG9pbnRTTTNETC5wbmepq8twAAAAAElFTkSuQmCC" /><!-- --></p>
 </div>
@@ -416,13 +518,55 @@ matthews %&gt;%
 <pre class="r"><code># Create product, a dataframe containing only columns p1, p2, ... p10
 product &lt;- matthews[,paste0(&quot;p&quot;, 1:10)]</code></pre>
 <ol start="21" style="list-style-type: decimal">
-<li><p>The <code>colMeans()</code> function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using <code>colMeans()</code>, calculate the percentage of participants who indicated that the ‘typical’ participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?</p></li>
-<li><p>The <code>rowMeans()</code> function is like <code>colMeans()</code>, but for calculating means across columns for every row of data. Using <code>rowMeans()</code> calculate for each participant, the percentage of the 10 items that the participant believed other people would spend more on. Save this data as a vector called <code>pall</code>.</p></li>
-<li><p>Add the <code>pall</code> vector as a new column called <code>pall</code> to the <code>matthews</code> dataframe using basic assignment (<code>__$__ &lt;- __</code>)</p></li>
-<li><p>What was the mean value of <code>pall</code> across participants? This value is the answer to the question: “How often does the average participant think that someone else would pay more for an item than themselves?”</p></li>
-<li><p>Calculate the mean <code>pall</code> value for male and female participants separately. Which gender tends to think that others would pay more for products than them?</p></li>
-<li><p>Calculate the mean <code>pall</code> value of participants for each level of income. Do you find a consistent relationship between <code>pall</code> and income?</p></li>
-<li><p>For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called <code>gender_agg</code></p></li>
+<li>The <code>colMeans()</code> function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using <code>colMeans()</code>, calculate the percentage of participants who indicated that the ‘typical’ participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?</li>
+</ol>
+<pre class="r"><code>colMeans(product)</code></pre>
+<pre><code>##        p1        p2        p3        p4        p5        p6        p7 
+## 0.6947368 0.8631579 0.7052632 0.8526316 0.7736842 0.8000000 0.8631579 
+##        p8        p9       p10 
+## 0.9000000 0.6736842 0.7315789</code></pre>
+<pre class="r"><code># Yes the numbers match!!!</code></pre>
+<ol start="22" style="list-style-type: decimal">
+<li>The <code>rowMeans()</code> function is like <code>colMeans()</code>, but for calculating means across columns for every row of data. Using <code>rowMeans()</code> calculate for each participant, the percentage of the 10 items that the participant believed other people would spend more on. Save this data as a vector called <code>pall</code>.</li>
+</ol>
+<pre class="r"><code>pall &lt;- rowMeans(product)</code></pre>
+<ol start="23" style="list-style-type: decimal">
+<li>Add the <code>pall</code> vector as a new column called <code>pall</code> to the <code>matthews</code> dataframe using basic assignment (<code>__$__ &lt;- __</code>)</li>
+</ol>
+<pre class="r"><code>matthews$pall &lt;- pall</code></pre>
+<ol start="24" style="list-style-type: decimal">
+<li>What was the mean value of <code>pall</code> across participants? This value is the answer to the question: “How often does the average participant think that someone else would pay more for an item than themselves?”</li>
+</ol>
+<pre class="r"><code>mean(matthews$pall)</code></pre>
+<pre><code>## [1] 0.7857895</code></pre>
+<ol start="25" style="list-style-type: decimal">
+<li>Calculate the mean <code>pall</code> value for male and female participants separately. Which gender tends to think that others would pay more for products than them?</li>
+</ol>
+<pre class="r"><code>aggregate(formula = pall ~ gender_a,
+          FUN = mean,
+          data = matthews)</code></pre>
+<pre><code>##   gender_a      pall
+## 1   female 0.8014085
+## 2     male 0.7764706</code></pre>
+<pre class="r"><code># Males tend to think that others will pay more for items than them relative to females.</code></pre>
+<ol start="26" style="list-style-type: decimal">
+<li>Calculate the mean <code>pall</code> value of participants for each level of income. Do you find a consistent relationship between <code>pall</code> and income?</li>
+</ol>
+<pre class="r"><code>aggregate(formula = pall ~ income,
+          FUN = mean,
+          data = matthews)</code></pre>
+<pre><code>##   income      pall
+## 1      1 0.9037037
+## 2      2 0.8044444
+## 3      3 0.7370370
+## 4      4 0.7862069
+## 5      5 0.7500000
+## 6      6 0.6958333
+## 7      7 0.8142857
+## 8      8 0.8666667</code></pre>
+<pre class="r"><code># The values decrease from income = 1 to income = 6, then they go up again!</code></pre>
+<ol start="27" style="list-style-type: decimal">
+<li>For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called <code>gender_agg</code></li>
 </ol>
 <table>
 <thead>
@@ -468,12 +612,137 @@ product &lt;- matthews[,paste0(&quot;p&quot;, 1:10)]</code></pre>
     pcmore.mean = __,
     pall.mean = __
   )</code></pre>
+<pre class="r"><code>gender_agg &lt;- matthews %&gt;%
+  group_by(gender) %&gt;%
+  summarise(
+    N = n(),
+    age.mean = mean(age),
+    age.sd = sd(age),
+    income.mean = mean(income),
+    pcmore.mean = mean(pcmore),
+    pall.mean = mean(pall)
+  )
+
+gender_agg</code></pre>
+<pre><code>## # A tibble: 2 x 7
+##   gender     N age.mean    age.sd income.mean pcmore.mean pall.mean
+##    &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1      1   119 29.76471  7.648757    3.285714    62.25210 0.7764706
+## 2      2    71 34.98592 10.430029    3.943662    58.80282 0.8014085</code></pre>
 <ol start="28" style="list-style-type: decimal">
-<li><p>For each level of <code>income</code>, calculate the summary statistics in the following table – <em>only for participants older than 21</em> – and save them to a new object called <code>income_df</code>.</p></li>
-<li><p>Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called <code>racegender_agg</code></p></li>
-<li><p>Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this <strong>only</strong> for people with an income greater than 5. Save the results to an object called <code>taskgender_agg</code>.</p></li>
-<li><p>Using <code>save()</code>, save <code>matthews</code>, <code>gender_agg</code>, <code>income_df</code>, <code>racegender_agg</code>, and <code>taskgender_agg</code> objects to a file called <code>matthews.RData</code> in the <code>data</code> folder in your working directory.</p></li>
+<li>For each level of <code>income</code>, calculate the summary statistics in the following table – <em>only for participants older than 21</em> – and save them to a new object called <code>income_df</code>.</li>
 </ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">N</td>
+<td align="left">Number of participants</td>
+</tr>
+<tr class="even">
+<td align="left">age_min</td>
+<td align="left">Minimum age</td>
+</tr>
+<tr class="odd">
+<td align="left">age_mean</td>
+<td align="left">Mean age</td>
+</tr>
+<tr class="even">
+<td align="left">male_p</td>
+<td align="left">Percent of males</td>
+</tr>
+<tr class="odd">
+<td align="left">female_p</td>
+<td align="left">Percent of females</td>
+</tr>
+<tr class="even">
+<td align="left">pcmore_mean</td>
+<td align="left">Mean value of pcmore</td>
+</tr>
+<tr class="odd">
+<td align="left">pall_mean</td>
+<td align="left">Mean value of pall</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>income_df &lt;- matthews %&gt;%
+  filter(age &gt; 21) %&gt;%
+  group_by(income) %&gt;%
+  summarise(
+    N = n(),
+    age.mean = mean(age),
+    male.p = mean(gender == 1),
+    female.p = mean(gender == 2),
+    pcmore.mean = mean(pcmore),
+    pall.mean = mean(pall)
+  )
+
+income_df</code></pre>
+<pre><code>## # A tibble: 8 x 7
+##   income     N age.mean    male.p  female.p pcmore.mean pall.mean
+##    &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1      1    26 29.76923 0.6923077 0.3076923    74.88462 0.9038462
+## 2      2    43 33.06977 0.6279070 0.3720930    70.09302 0.8069767
+## 3      3    25 31.20000 0.7600000 0.2400000    54.60000 0.7400000
+## 4      4    27 31.62963 0.7037037 0.2962963    61.25926 0.7814815
+## 5      5    26 33.30769 0.6153846 0.3846154    53.65385 0.7500000
+## 6      6    23 32.78261 0.3913043 0.6086957    46.00000 0.6826087
+## 7      7     7 39.28571 0.2857143 0.7142857    41.42857 0.8142857
+## 8      8     3 33.33333 0.3333333 0.6666667    33.33333 0.8666667</code></pre>
+<ol start="29" style="list-style-type: decimal">
+<li>Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called <code>racegender_agg</code></li>
+</ol>
+<pre class="r"><code>racegender_agg &lt;- matthews %&gt;%
+  group_by(race, gender_a) %&gt;%
+  summarise(
+    N = n(),  # N
+    age.max = max(age), # Oldest person
+    income.mean = mean(income) # Mean income
+  )
+
+racegender_agg</code></pre>
+<pre><code>## # A tibble: 8 x 5
+## # Groups:   race [?]
+##       race gender_a     N age.max income.mean
+##      &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+## 1    asian   female    14      60    3.714286
+## 2    asian     male    27      58    3.444444
+## 3    black   female    13      49    3.615385
+## 4    black     male    24      44    3.291667
+## 5 hispanic   female     7      67    4.571429
+## 6 hispanic     male    16      52    2.625000
+## 7    white   female    37      59    4.027027
+## 8    white     male    52      57    3.403846</code></pre>
+<ol start="30" style="list-style-type: decimal">
+<li>Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this <strong>only</strong> for people with an income greater than 5. Save the results to an object called <code>taskgender_agg</code>.</li>
+</ol>
+<pre class="r"><code>taskgender_agg &lt;- matthews %&gt;%
+  filter(income &gt; 5) %&gt;%
+  group_by(task, gender_a) %&gt;%
+  summarise(
+    N = n(),  # N
+    pcmore.mean = mean(pcmore), # mean pcmore
+    p.black = mean(race == &quot;black&quot;) # Percent black
+  )
+
+taskgender_agg</code></pre>
+<pre><code>## # A tibble: 4 x 5
+## # Groups:   task [?]
+##    task gender_a     N pcmore.mean   p.black
+##   &lt;int&gt;    &lt;chr&gt; &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1     0   female    12    50.41667 0.1666667
+## 2     0     male     5    39.00000 0.2000000
+## 3     1   female     9    41.11111 0.1111111
+## 4     1     male     8    46.00000 0.2500000</code></pre>
+<ol start="31" style="list-style-type: decimal">
+<li>Using <code>save()</code>, save <code>matthews</code>, <code>gender_agg</code>, <code>income_df</code>, <code>racegender_agg</code>, and <code>taskgender_agg</code> objects to a file called <code>matthews.RData</code> in the <code>data</code> folder in your working directory.</li>
+</ol>
+<pre class="r"><code>save(matthews, gender_agg, income_df, racegender_agg, taskgender_agg, file = &quot;data/matthews.RData&quot;)</code></pre>
 <div id="submit" class="section level2">
 <h2>Submit!</h2>
 <ul>

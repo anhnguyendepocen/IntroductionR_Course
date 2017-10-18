@@ -6,7 +6,7 @@ output: html_document
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE)
 ```
 
 
@@ -137,7 +137,7 @@ write.table(x = matthews_demo, file = "/Users/nphillips/Dropbox/Public/matthews_
 
 ## Why do we overestimate others' willingness to pay?
 
-```{r, eval = TRUE, fig.align = 'center', out.width = "70%"}
+```{r, eval = TRUE, fig.align = 'center', out.width = "70%", echo = FALSE}
 knitr::include_graphics(path = "https://blogs.franciscan.edu/wp-content/uploads/2016/12/window-shopipng-6-thinkstock.jpg")
 ```
 
@@ -184,7 +184,7 @@ Here are descriptions of the data variables (taken from the author's dataset not
 
 1. Open RStudio. Create a new project called `rcourse` (or anything else you want) in a new working directory on your computer. In the directory of the folder, create two folders: `R`, and `data` -- you can do this either in RStudio (by clicking the "New Folder" icon in the Files window), or outside of RStudio in your computer browser. When you are finished, your file structure should look like this:
 
-```{r, eval = TRUE, fig.align = 'center', out.width = "70%"}
+```{r, eval = TRUE, fig.align = 'center', out.width = "70%", echo = FALSE}
 knitr::include_graphics(path = "../../materials/images/projectss.png")
 ```
 
@@ -198,7 +198,7 @@ library(dplyr)
 
 4. Using `getwd()` print the current working directory of your project. This is the directory on your computer where your project is located.
 
-```{r}
+```{r, eval = FALSE}
 getwd()
 ```
 
@@ -246,7 +246,7 @@ mean(matthews$age)
 
 9. Currently the column `gender` is coded as 1 (male) and 2 (female). Let's create a new *character* column called `gender_a` that codes the data as `"male"` and `"female"` (instead of 1 and 2). Do this by using the following template:
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 matthews$gender_a <- NA   # Start with a column of NA values.
 matthews$gender_a[matthews$gender == __] <- "__" # Change 1 to "male"
 matthews$gender_a[matthews$gender == __] <- "__" # Change 2 to "female"
@@ -268,21 +268,21 @@ mean(matthews$gender_a == "male")
 
 11. Calculate the mean age for males only using the following templates
 
-```{r, echo = TRUE}
-mean(matthews$__[matthews$__ == "male"])
+```{r}
+mean(matthews$age[matthews$gender_a == "male"])
 ```
 
 12. Calculate the mean age for females only using the following template
 
-```{r, echo = TRUE}
-mean(matthews$__[matthews$gender_a == "__"])
+```{r}
+mean(matthews$age[matthews$gender_a == "female"])
 ```
 
 ### Grouped Aggregation
 
 13. Using `aggregate()` calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?
 
-```{r, echo = TRUE}
+```{r, echo = FALSE, eval = FALSE}
 # Calculate mean age for each sex using aggregate()
 aggregate(formula = __ ~ __,
           FUN = __,
@@ -299,7 +299,7 @@ aggregate(formula = age ~ gender_a,
 
 14. Now use `dplyr` to do the same calculations using the following template. Do you get the same answers as before?
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 # Calculate mean age for each sex using dplyr
 matthews %>%
   group_by(__) %>%
@@ -324,7 +324,7 @@ aggregate(formula = pcmore ~ income,
 16. I created a new table containing **fictional** demographic information about each participant. The data are stored in a **tab--delimited** text file (with a header row) at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/matthews_demographics.txt. Using `read.table()`, load the data into an object called  `matthews_demo` into R using the following template:
 
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 matthews_demo <- read.table(file = "___",          # File location
                             sep = "__",            # How are columns separted?
                             header = __,           # Is there a header row?
@@ -334,12 +334,13 @@ matthews_demo <- read.table(file = "___",          # File location
 ```{r}
 matthews_demo <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/matthews_demographics.txt", 
                       sep = "\t",
-                      header = TRUE)
+                      header = TRUE,
+                      stringsAsFactors = FALSE)
 ```
 
 17. Using `merge()` add the demographic data to the `matthews` data using the following template:
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 matthews <- merge(x = __,       # First dataframe
                   y = __,       # Second dataframe
                   by = "__")    # Column to match rows
@@ -353,7 +354,7 @@ matthews <- merge(x = matthews,
 
 18. Using `aggregate()`, calculate the mean value of `havemore` for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 aggregate(formula = __ ~ __ + __, 
           FUN = __, 
           data = __)
@@ -367,12 +368,22 @@ aggregate(havemore ~ gender + race,
 
 19. Now do the same calculations using `dplyr` using the following template. Do you get the same answer?
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 matthews %>% 
   group_by(__, __) %>%
   summarise(
     N = n(),
     havemore_mean = mean(__)
+  )
+```
+
+
+```{r, echo = TRUE, eval = FALSE}
+matthews %>% 
+  group_by(gender, race) %>%
+  summarise(
+    N = n(),
+    havemore_mean = mean(havemore, na.rm = TRUE)
   )
 ```
 
@@ -385,7 +396,7 @@ knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointS
 
 20. Create a new dataframe called `product` that only contain columns p1, p2, ... p10 from `matthews` by running the following code.  After you run the code, look at it with `head()` to see what it looks like.
 
-```{r, echo = TRUE}
+```{r}
 # Create product, a dataframe containing only columns p1, p2, ... p10
 product <- matthews[,paste0("p", 1:10)]
 ```
@@ -438,7 +449,7 @@ aggregate(formula = pall ~ income,
 
 27. For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called `gender_agg`
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, echo = FALSE}
 knitr::kable(data.frame(
   variable = c("n", "age.mean", "age.sd", "income.mean", "pcmore.mean", "pall.mean"),
   description = c("Number of participants", "Mean age", "Standard deviation of age", "Mean income", "Mean value of pcmore", "Mean value of pall")
@@ -446,7 +457,7 @@ knitr::kable(data.frame(
 ```
 
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 gender_agg <- __ %>%
   group_by(__) %>%
   summarise(
@@ -478,7 +489,7 @@ gender_agg
 
 28. For each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income_df`.
 
-```{r}
+```{r, echo = FALSE}
 knitr::kable(data.frame(
   variable = c("N", "age_min", "age_mean", "male_p", "female_p", "pcmore_mean", "pall_mean"),
   description = c("Number of participants", "Minimum age", "Mean age", "Percent of males", "Percent of females","Mean value of pcmore", "Mean value of pall")
