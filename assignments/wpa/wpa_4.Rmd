@@ -6,24 +6,24 @@ output: html_document
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE)
+                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
 ```
 
 
 ```{r, echo = FALSE, eval = TRUE}
-setwd(rprojroot::is_rstudio_project$find_file())
+# setwd(rprojroot::is_rstudio_project$find_file())
 ```
 
 
 ```{r echo = FALSE, eval = FALSE}
 # Create demographic data
-matthews.df <- read.table(file = "http://journal.sjdm.org/15/15909/data1.csv", 
+matthews <- read.table(file = "http://journal.sjdm.org/15/15909/data1.csv", 
                      sep = ",",
                      header = TRUE)
 
 # Create demo.df
 set.seed(100)
-demo.df <- data.frame(id = matthews.df$id)
+demo.df <- data.frame(id = matthews$id)
 demo.df$height <- round(rnorm(n = nrow(demo.df), mean = 170, sd = 10), 0)
 demo.df$race <- sample(c("white", "hispanic", "black", "asian"), size = nrow(demo.df), prob = c(.5, .1, .2, .2), replace = TRUE)
 
@@ -36,7 +36,9 @@ write.table(x = demo.df, file = "/Users/nphillips/Dropbox/Public/matthews_demogr
 
 ## Why do we overestimate others' willingness to pay?
 
-<img src="https://dl.dropboxusercontent.com/u/7618380/matthewsscreen.png" height="200" />
+```{r, eval = TRUE, fig.align = 'center'}
+knitr::include_graphics(path = "../../materials/images/matthewsscreen.png")
+```
 
 In this WPA, we will analyze data from Matthews et al. (2016): Why do we overestimate others' willingness to pay? The purpose of this research was to test if our beliefs about other people's affluence (i.e.; wealth) affect how much we think they will be willing to pay for items. You can find the full paper at http://journal.sjdm.org/15/15909/jdm15909.pdf.
 
@@ -80,110 +82,115 @@ Here are descriptions of the data variables (taken from the author's dataset not
 
 1. Open RStudio. Create a new project in a new working directory on your computer. Call the project `rcourse`. In the directory of the folder, create two folders: `R`, and `data`. Your file structure should look like this:
 
-```{r, eval = TRUE, fig.align = 'center'}
-knitr::include_graphics(path = "../images/projectss.png")
+```{r, eval = TRUE, fig.align = 'center', out.width = "70%"}
+knitr::include_graphics(path = "../../materials/images/projectss.png")
 ```
-
 
 2. Open a new R script and save it as `wpa3.R` in the `R` folder you just created
 
-3. The data for this WPA are stored at http://journal.sjdm.org/15/15909/data1.csv. Load the data into R by using `read.table()` into a new object called `matthews.df`.
+2b. At the top of your script load the `dplyr` package.
+
+```{r}
+library(dplyr)
+```
+
+3. Now it's time to load the data. The data for this WPA are stored at http://journal.sjdm.org/15/15909/data1.csv. Load the data into R by using `read.table()` into a new object called `matthews` by running the following code.
 
 ```{r, echo = TRUE, eval = TRUE}
-matthews.df <- read.table(file = "http://journal.sjdm.org/15/15909/data1.csv",  # Link to the file
+matthews <- read.table(file = "http://journal.sjdm.org/15/15909/data1.csv",  # Link to the file
                           sep = ",",                                            # File is comma-separated
                           header = TRUE,                                        # There IS a header column
                           stringsAsFactors = FALSE)                             # Do NOT convert strings to factors
 ```
 
-4. Using `write.table()`, save the data as a tab--delimited text file called `matthews.txt` in the data folder as follows:
+4. Look at the first few rows of `matthews` using `head()`, and `str()` to make sure the data were loaded correctly into R
 
-```{r, eval = FALSE, echo = TRUE}
-write.table(x = matthews.df,                 # Save the object matthews.df
-            file = "data/study1.txt",        # Write the object to study1.txt in the data folder
-            sep = "\t")                      # Separate columns by tabs
+```{r}
+head(matthews)
+str(matthews)
 ```
 
+5. Now that you've loaded the data into R, let's save a local copy of the data as a text file called `matthews.txt` into your `data` folder. Using `write.table()`, save the data as a tab--delimited text file called `matthews.txt` in the data folder as follows:
 
-5. Look at the first few rows of `matthews.df` using `head()`, and `str()` to make sure the data were loaded correctly into R
-
-```{r, echo = TRUE}
-head(matthews.df)
-str(matthews.df)
+```{r, eval = FALSE, echo = TRUE}
+write.table(x = matthews,                 # Save the object matthews
+            file = "data/matthews.txt",        # Write the object to study1.txt in the data folder
+            sep = "\t")                      # Separate columns by tabs
 ```
 
 6. What are the names of the data columns?
 
 ```{r}
-names(matthews.df)
+names(matthews)
 ```
 
-7. Currently gender is coded as 1 and 2. Let's create a new character column called `gender.a` that codes the data as `male` and `female`. Do this by running the following code:
+
+7. What was the mean age?
+
+```{r}
+mean(matthews$age)
+```
+
+
+8. Currently gender is coded as 1 and 2. Let's create a new character column called `gender.a` that codes the data as `male` and `female`. Do this by running the following code:
 
 ```{r echo = TRUE}
 # Create a new column called gender.a that codes gender as a string
-matthews.df$gender.a <- NA
-matthews.df$gender.a[matthews.df$gender == 1] <- "male"
-matthews.df$gender.a[matthews.df$gender == 2] <- "female"
+matthews$gender.a <- NA  # Start with a column of NA values.
+matthews$gender.a[matthews$gender == 1] <- "male"
+matthews$gender.a[matthews$gender == 2] <- "female"
 ```
 
-8. What percent of participants were male?
+9. What percent of participants were male?
 
 ```{r}
-mean(matthews.df$gender.a == "male")
-```
-
-9. What was the mean age?
-
-```{r}
-mean(matthews.df$age)
+mean(matthews$gender.a == "male")
 ```
 
 10. Using either basic indexing or `subset()`, calculate the mean age for males only.
 
 ```{r}
-mean(matthews.df$age[matthews.df$gender.a == "male"])
+mean(matthews$age[matthews$gender.a == "male"])
 
 # OR
 
-male.df <- subset(matthews.df, subset = gender.a == "male")
+male.df <- subset(matthews, subset = gender.a == "male")
 mean(male.df$age)
 ```
 
 11. Using either basic indexing or `subset()`, calculate the mean age for females only.
 
 ```{r}
-mean(matthews.df$age[matthews.df$gender.a == "female"])
+mean(matthews$age[matthews$gender.a == "female"])
 
 # OR
 
-female.df <- subset(matthews.df, subset = gender.a == "female")
+female.df <- subset(matthews, subset = gender.a == "female")
 mean(female.df$age)
 ```
 
 12. Using `aggregate()` calculate the mean age of male and female participants separately. Do you get the same answers as before?
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
 aggregate(formula = age ~ gender.a,
           FUN = mean,
-          data = matthews.df)
+          data = matthews)
 
 # Yes the answers are the same!
 ```
 
-
 13. The variable `pcmore` reflects the question: "What percent of people taking part in this survey do you think earn more than you do?". Using `aggregate()`, calculate the median value of this variable separately for each level of income. What does the result tell you?
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
 aggregate(formula = pcmore ~ income,
           FUN = median,
-          data = matthews.df)
+          data = matthews)
 
 # The higher one's income, the less people think that other people make more than them.
 ```
 
 
-14. I created a new table containing fictional demographic information about each participant. The data are stored in a tab--delimited text file (with a header row) at http://nathanieldphillips.com/wp-content/uploads/2016/10/matthews_demographics.txt. Load the data into an object called  `demo.df` into R.
+14. I created a new table containing **fictional** demographic information about each participant. The data are stored in a tab--delimited text file (with a header row) at http://nathanieldphillips.com/wp-content/uploads/2016/10/matthews_demographics.txt. Load the data into an object called  `demo.df` into R.
 
 ```{r, echo = TRUE}
 demo.df <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/10/matthews_demographics.txt", 
@@ -191,10 +198,10 @@ demo.df <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/10/
                       header = TRUE)
 ```
 
-15. Using `merge` add the demographic data to `matthews.df`
+15. Using `merge` add the demographic data to `matthews`
 
 ```{r, echo = TRUE}
-matthews.df <- merge(x = matthews.df,
+matthews <- merge(x = matthews,
                      y = demo.df,
                      by = "id")
 ```
@@ -205,23 +212,23 @@ matthews.df <- merge(x = matthews.df,
 ```{r}
 aggregate(havemore ~ gender + race, 
           FUN = mean, 
-          data = matthews.df)
+          data = matthews)
 ```
 
 
 #### Checkpoint! If you got this far you're doing just fine!
 
 
-17. Create a new dataframe called `product.df` that only contain columns p1, p2, ... p10 from `matthews.df` by running the following code. 
+17. Create a new dataframe called `product.df` that only contain columns p1, p2, ... p10 from `matthews` by running the following code. 
 
 ```{r, echo = TRUE}
 # Create product.df, a dataframe containing only columns p1, p2, ... p10
-product.df <- matthews.df[,paste("p", 1:10, sep = "")]
+product.df <- matthews[,paste("p", 1:10, sep = "")]
 ```
 
 18. The `colMeans()` function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using `colMeans()`, calculate the percentage of participants who indicated that the 'typical' participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
 colMeans(product.df)
 
 # Yes the numbers match!!!
@@ -233,49 +240,49 @@ colMeans(product.df)
 pall <- rowMeans(product.df)
 ```
 
-20. Add the `pall` vector as a new column called `pall` to the `matthews.df` dataframe
+20. Add the `pall` vector as a new column called `pall` to the `matthews` dataframe
 
 ```{r, echo = TRUE}
-matthews.df$pall <- pall
+matthews$pall <- pall
 ```
 
 21. What was the mean value of `pall` across participants? This value is the answer to the question: "How often does the average participant think that someone else would pay more for an item than themselves?"
 
 ```{r}
-mean(matthews.df$pall)
+mean(matthews$pall)
 ```
 
 
 22. Using `aggregate()` calculate the mean `pall` value for male and female participants separately. Which gender tends to think that others would pay more for products than them?
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
 aggregate(formula = pall ~ gender.a,
           FUN = mean,
-          data = matthews.df)
+          data = matthews)
 
 # Males tend to think that others will pay more for items than them relative to females.
 ```
 
 23.  Using `aggregate()` calculate the mean `pall` value of participants for each level of income. Do you find a consistent relationship between `pall` and income?
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
 aggregate(formula = pall ~ income,
           FUN = mean,
-          data = matthews.df)
+          data = matthews)
 
 # The values decrease from income = 1 to income = 6, then they go up again!
 ```
 
 24. For the remaining problems, we'll be using `dplyr`. Load the `dplyr` library:
 
-```{r, echo = TRUE, message = F}
+```{r}
 library(dplyr)
 ```
 
 
 25. Using `dplyr`, for each level of gender, calculate the summary statistics in the following table. Save the summary statistics to an object called `gender.df`
 
-```{r eval = TRUE, echo = FALSE}
+```{r}
 knitr::kable(data.frame(
   variable = c("n", "age.mean", "age.sd", "income.mean", "pcmore.mean", "pall.mean"),
   description = c("Number of participants", "Mean age", "Standard deviation of age", "Mean income", "Mean value of pcmore", "Mean value of pall")
@@ -283,8 +290,8 @@ knitr::kable(data.frame(
 ```
 
 
-```{r, echo = TRUE, eval = TRUE}
-gender.df <- matthews.df %>%
+```{r}
+gender.df <- matthews %>%
   group_by(gender) %>%
   summarise(
     n = n(),
@@ -300,7 +307,7 @@ gender.df
 
 26. Using `dplyr`, for each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income.df`.
 
-```{r eval = TRUE, echo = FALSE}
+```{r}
 knitr::kable(data.frame(
   variable = c("n", "age.min", "age.mean", "male.p", "female.p", "pcmore.mean", "pall.mean"),
   description = c("Number of participants", "Minimum age", "Mean age", "Percent of males", "Percent of females","Mean value of pcmore", "Mean value of pall")
@@ -308,8 +315,8 @@ knitr::kable(data.frame(
 ```
 
 
-```{r, echo = TRUE, eval = TRUE}
-income.df <- matthews.df %>%
+```{r}
+income.df <- matthews %>%
   filter(age > 21) %>%
   group_by(income) %>%
   summarise(
@@ -327,7 +334,7 @@ income.df
 27. Using `dplyr`, calculate several summary statistics (you choose which ones!) aggregated at each level of race and gender. Save the results to an object called `racegender.df`
 
 ```{r}
-racegender.df <- matthews.df %>%
+racegender.df <- matthews %>%
   group_by(race, gender.a) %>%
   summarise(
     n = n(),  # N
@@ -342,7 +349,7 @@ racegender.df
 28. Using `dplyr`, calculate several summary statistics (you choose which ones!) aggregated at each level of independent variables of your choice. Save the results to an object called `XXX.df`, where XXX are the names of the variables you aggregated.
 
 ```{r}
-taskgender.df <- matthews.df %>%
+taskgender.df <- matthews %>%
   group_by(task, gender.a) %>%
   summarise(
     n = n(),  # N
@@ -354,11 +361,11 @@ taskgender.df
 ```
 
 
-29. Using `save()`, save `matthews.df`, `gender.df`, `income.df`, `racegender.df`, and `XXX.df` objects to a file called `matthews.RData` in the `data` folder in your working directory.
+29. Using `save()`, save `matthews`, `gender.df`, `income.df`, `racegender.df`, and `XXX.df` objects to a file called `matthews.RData` in the `data` folder in your working directory.
 
 
 ```{r eval = FALSE}
-save(matthews.df, gender.df, income.df, racegender.df, taskgender.df, file = "data/matthews.RData")
+save(matthews, gender.df, income.df, racegender.df, taskgender.df, file = "data/matthews.RData")
 ```
 
 ## Submit!
