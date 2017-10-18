@@ -188,7 +188,7 @@ aggregate(formula = tattoos ~ headband + sex,   # DV is tattoos, IVs are headban
 
 # Using dplyr
 pirates %&gt;%                    # Start with the pirates dataframe ..AND THEN...
-  filter(sex == &quot;m&quot;) %&gt;%       # Only include male pirates ..AND THEN..
+  filter(sex == &quot;male&quot;) %&gt;%       # Only include male pirates ..AND THEN..
   group_by(headband, sex) %&gt;%  # Group the data by headband and sex ..AND THEN...
   summarise(                   # Calculate summary statistics....
     N = n(),                          # Number of cases in each group
@@ -353,7 +353,7 @@ matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot;</code></pre>
 <div id="grouped-aggregation" class="section level3">
 <h3>Grouped Aggregation</h3>
 <ol start="13" style="list-style-type: decimal">
-<li>Using <code>aggregate()</code> (or <code>dplyr</code>) calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?</li>
+<li>Using <code>aggregate()</code> calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?</li>
 </ol>
 <pre class="r"><code># Calculate mean age for each sex using aggregate()
 aggregate(formula = __ ~ __,
@@ -410,18 +410,18 @@ matthews %&gt;%
 <div id="checkpoint" class="section level1">
 <h1>Checkpoint!!!</h1>
 <ol start="18" style="list-style-type: decimal">
-<li>Create a new dataframe called <code>product</code> that only contain columns p1, p2, … p10 from <code>matthews</code> by running the following code.</li>
+<li>Create a new dataframe called <code>product</code> that only contain columns p1, p2, … p10 from <code>matthews</code> by running the following code. After you run the code, look at it with <code>head()</code> to see what it looks like.</li>
 </ol>
 <pre class="r"><code># Create product, a dataframe containing only columns p1, p2, ... p10
 product &lt;- matthews[,paste0(&quot;p&quot;, 1:10)]</code></pre>
 <ol start="19" style="list-style-type: decimal">
 <li><p>The <code>colMeans()</code> function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using <code>colMeans()</code>, calculate the percentage of participants who indicated that the ‘typical’ participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?</p></li>
 <li><p>The <code>rowMeans()</code> function is like <code>colMeans()</code>, but for calculating means across columns for every row of data. Using <code>rowMeans()</code> calculate for each participant, the percentage of the 10 items that the participant believed other people would spend more on. Save this data as a vector called <code>pall</code>.</p></li>
-<li><p>Add the <code>pall</code> vector as a new column called <code>pall</code> to the <code>matthews</code> dataframe</p></li>
+<li><p>Add the <code>pall</code> vector as a new column called <code>pall</code> to the <code>matthews</code> dataframe using basic assignment (<code>__$__ &lt;- __</code>)</p></li>
 <li><p>What was the mean value of <code>pall</code> across participants? This value is the answer to the question: “How often does the average participant think that someone else would pay more for an item than themselves?”</p></li>
-<li><p>Using <code>aggregate()</code> or <code>dplyr</code> calculate the mean <code>pall</code> value for male and female participants separately. Which gender tends to think that others would pay more for products than them?</p></li>
-<li><p>Using <code>aggregate()</code> or <code>dplyr</code> calculate the mean <code>pall</code> value of participants for each level of income. Do you find a consistent relationship between <code>pall</code> and income?</p></li>
-<li><p>Using <code>dplyr</code> (and the following template), for each level of gender, calculate the summary statistics in the following table. Save the summary statistics to an object called <code>gender_agg</code></p></li>
+<li><p>Calculate the mean <code>pall</code> value for male and female participants separately. Which gender tends to think that others would pay more for products than them?</p></li>
+<li><p>Calculate the mean <code>pall</code> value of participants for each level of income. Do you find a consistent relationship between <code>pall</code> and income?</p></li>
+<li><p>For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called <code>gender_agg</code></p></li>
 </ol>
 <table>
 <thead>
@@ -468,10 +468,10 @@ product &lt;- matthews[,paste0(&quot;p&quot;, 1:10)]</code></pre>
     pall.mean = __
   )</code></pre>
 <ol start="26" style="list-style-type: decimal">
-<li><p>Using <code>dplyr</code>, for each level of <code>income</code>, calculate the summary statistics in the following table – <em>only for participants older than 21</em> – and save them to a new object called <code>income_df</code>.</p></li>
-<li><p>Using <code>dplyr</code>, calculate several summary statistics (you choose which ones!) aggregated at each level of race and gender. Save the results to an object called <code>racegender_agg</code></p></li>
-<li><p>Using <code>dplyr</code>, calculate several summary statistics (you choose which ones!) aggregated at each level of independent variables of your choice. Save the results to an object called <code>XXX_df</code>, where XXX are the names of the variables you aggregated.</p></li>
-<li><p>Using <code>save()</code>, save <code>matthews</code>, <code>gender_agg</code>, <code>income_df</code>, <code>racegender_agg</code>, and <code>XXX_df</code> objects to a file called <code>matthews.RData</code> in the <code>data</code> folder in your working directory.</p></li>
+<li><p>For each level of <code>income</code>, calculate the summary statistics in the following table – <em>only for participants older than 21</em> – and save them to a new object called <code>income_df</code>.</p></li>
+<li><p>Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called <code>racegender_agg</code></p></li>
+<li><p>Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this <strong>only</strong> for people with an income greater than 5. Save the results to an object called <code>taskgender_agg</code>.</p></li>
+<li><p>Using <code>save()</code>, save <code>matthews</code>, <code>gender_agg</code>, <code>income_df</code>, <code>racegender_agg</code>, and <code>taskgender_agg</code> objects to a file called <code>matthews.RData</code> in the <code>data</code> folder in your working directory.</p></li>
 </ol>
 <div id="submit" class="section level2">
 <h2>Submit!</h2>

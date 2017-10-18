@@ -279,7 +279,7 @@ mean(matthews$__[matthews$gender_a == "__"])
 
 ### Grouped Aggregation
 
-13. Using `aggregate()` (or `dplyr`) calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?
+13. Using `aggregate()` calculate the mean age of male and female participants separately using the following template. Do you get the same answers as before?
 
 ```{r, echo = TRUE}
 # Calculate mean age for each sex using aggregate()
@@ -287,7 +287,6 @@ aggregate(formula = __ ~ __,
           FUN = __,
           data = __)
 ```
-
 
 ```{r}
 aggregate(formula = age ~ gender_a,
@@ -383,7 +382,7 @@ knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointS
 
 # Checkpoint!!!
 
-18. Create a new dataframe called `product` that only contain columns p1, p2, ... p10 from `matthews` by running the following code. 
+18. Create a new dataframe called `product` that only contain columns p1, p2, ... p10 from `matthews` by running the following code.  After you run the code, look at it with `head()` to see what it looks like.
 
 ```{r, echo = TRUE}
 # Create product, a dataframe containing only columns p1, p2, ... p10
@@ -404,7 +403,7 @@ colMeans(product)
 pall <- rowMeans(product)
 ```
 
-21. Add the `pall` vector as a new column called `pall` to the `matthews` dataframe
+21. Add the `pall` vector as a new column called `pall` to the `matthews` dataframe using basic assignment (`__$__ <- __`)
 
 ```{r}
 matthews$pall <- pall
@@ -416,7 +415,7 @@ matthews$pall <- pall
 mean(matthews$pall)
 ```
 
-23. Using `aggregate()` or `dplyr` calculate the mean `pall` value for male and female participants separately. Which gender tends to think that others would pay more for products than them?
+23. Calculate the mean `pall` value for male and female participants separately. Which gender tends to think that others would pay more for products than them?
 
 ```{r}
 aggregate(formula = pall ~ gender_a,
@@ -426,7 +425,7 @@ aggregate(formula = pall ~ gender_a,
 # Males tend to think that others will pay more for items than them relative to females.
 ```
 
-24. Using `aggregate()` or `dplyr` calculate the mean `pall` value of participants for each level of income. Do you find a consistent relationship between `pall` and income?
+24. Calculate the mean `pall` value of participants for each level of income. Do you find a consistent relationship between `pall` and income?
 
 ```{r}
 aggregate(formula = pall ~ income,
@@ -436,8 +435,7 @@ aggregate(formula = pall ~ income,
 # The values decrease from income = 1 to income = 6, then they go up again!
 ```
 
-
-25. Using `dplyr` (and the following template), for each level of gender, calculate the summary statistics in the following table. Save the summary statistics to an object called `gender_agg`
+25. For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called `gender_agg`
 
 ```{r, eval = TRUE}
 knitr::kable(data.frame(
@@ -477,7 +475,7 @@ gender_agg <- matthews %>%
 gender_agg
 ```
 
-26. Using `dplyr`, for each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income_df`.
+26. For each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income_df`.
 
 ```{r}
 knitr::kable(data.frame(
@@ -503,7 +501,7 @@ income_df <- matthews %>%
 income_df
 ```
 
-27. Using `dplyr`, calculate several summary statistics (you choose which ones!) aggregated at each level of race and gender. Save the results to an object called `racegender_agg`
+27. Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called `racegender_agg`
 
 ```{r}
 racegender_agg <- matthews %>%
@@ -517,11 +515,11 @@ racegender_agg <- matthews %>%
 racegender_agg
 ```
 
-
-28. Using `dplyr`, calculate several summary statistics (you choose which ones!) aggregated at each level of independent variables of your choice. Save the results to an object called `XXX_df`, where XXX are the names of the variables you aggregated.
+28. Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this **only** for people with an income greater than 5. Save the results to an object called `taskgender_agg`.
 
 ```{r}
 taskgender_agg <- matthews %>%
+  filter(income > 5) %>%
   group_by(task, gender_a) %>%
   summarise(
     N = n(),  # N
@@ -532,8 +530,7 @@ taskgender_agg <- matthews %>%
 taskgender_agg
 ```
 
-29. Using `save()`, save `matthews`, `gender_agg`, `income_df`, `racegender_agg`, and `XXX_df` objects to a file called `matthews.RData` in the `data` folder in your working directory.
-
+29. Using `save()`, save `matthews`, `gender_agg`, `income_df`, `racegender_agg`, and `taskgender_agg` objects to a file called `matthews.RData` in the `data` folder in your working directory.
 
 ```{r eval = FALSE}
 save(matthews, gender_agg, income_df, racegender_agg, taskgender_agg, file = "data/matthews.RData")
