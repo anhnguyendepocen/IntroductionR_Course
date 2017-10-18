@@ -35,6 +35,7 @@ library(dplyr) # Load dplyr for aggregation
 # Start by creating a project with File -- New Project.
 # put the project in the working directory you want on your computer.
 # Then, create a folder called "data" in that working directory
+#   by clicking "New Folder" in the File window in RStudio
 
 # Print my current working directory (this is where you put your project)
 getwd()
