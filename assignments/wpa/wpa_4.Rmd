@@ -204,7 +204,7 @@ getwd()
 5. Now it's time to load the data. The data for this WPA are stored at http://journal.sjdm.org/15/15909/data1.csv. Load the data into R by using `read.table()` into a new object called `matthews` by running the following code. Once you have done this, kook at the first few rows of `matthews` using `head()`, and `str()` to make sure the data were loaded correctly into R.
 
 ```{r, echo = TRUE, eval = TRUE}
-# Load the data into R as a new object called matthews
+# Load the comma-separated data1.csv file into R as a new object called matthews
 
 matthews <- read.table(file = "http://journal.sjdm.org/15/15909/data1.csv", # Link to the file
                        sep = ",",                             # File is comma-separated
@@ -479,7 +479,7 @@ gender_agg
 
 ```{r}
 knitr::kable(data.frame(
-  variable = c("n", "age.min", "age.mean", "male.p", "female.p", "pcmore.mean", "pall.mean"),
+  variable = c("N", "age_min", "age_mean", "male_p", "female_p", "pcmore_mean", "pall_mean"),
   description = c("Number of participants", "Minimum age", "Mean age", "Percent of males", "Percent of females","Mean value of pcmore", "Mean value of pall")
 ))
 ```
