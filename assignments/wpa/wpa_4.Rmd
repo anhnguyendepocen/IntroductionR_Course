@@ -539,4 +539,6 @@ save(matthews, gender_agg, income_df, racegender_agg, taskgender_agg, file = "da
 
 ## Submit!
 
-Save and email your `wpa_4_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/8pKm39PMS29JoLjI2](https://goo.gl/forms/8pKm39PMS29JoLjI2) to complete the WPA submission form.
+
+- Save and email your `wpa_4_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
