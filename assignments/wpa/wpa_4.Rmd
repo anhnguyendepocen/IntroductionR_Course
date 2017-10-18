@@ -351,7 +351,7 @@ matthews <- merge(x = matthews,
                   by = "id")
 ```
 
-17. Using `aggregate()`, calculate the value of `havemore` for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?
+17. Using `aggregate()`, calculate the mean value of `havemore` for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?
 
 ```{r, echo = TRUE}
 aggregate(formula = __ ~ __ + __, 
