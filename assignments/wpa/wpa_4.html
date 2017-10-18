@@ -337,9 +337,9 @@ write.table(x = matthews,                    # Save the object matthews
 <li><p>What was the mean age?</p></li>
 <li><p>Currently the column <code>gender</code> is coded as 1 (male) and 2 (female). Let’s create a new <em>character</em> column called <code>gender_a</code> that codes the data as <code>&quot;male&quot;</code> and <code>&quot;female&quot;</code> (instead of 1 and 2). Do this by using the following template:</p></li>
 </ol>
-<pre class="r"><code>matthews$gender_a &lt;- NA                                # Start with a column of NA values.
-matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot;
-matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot;</code></pre>
+<pre class="r"><code>matthews$gender_a &lt;- NA   # Start with a column of NA values.
+matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot; # Change 1 to &quot;male&quot;
+matthews$gender_a[matthews$gender == __] &lt;- &quot;__&quot; # Change 2 to &quot;female&quot;</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li><p>What percent of participants were male? (Hint: use the template: <code>mean(__$__ == &quot;__&quot;)</code>)</p></li>
 <li><p>Using either basic indexing, calculate the mean age for males only using the following templates</p></li>

@@ -246,9 +246,9 @@ mean(matthews$age)
 9. Currently the column `gender` is coded as 1 (male) and 2 (female). Let's create a new *character* column called `gender_a` that codes the data as `"male"` and `"female"` (instead of 1 and 2). Do this by using the following template:
 
 ```{r, echo = TRUE}
-matthews$gender_a <- NA                                # Start with a column of NA values.
-matthews$gender_a[matthews$gender == __] <- "__"
-matthews$gender_a[matthews$gender == __] <- "__"
+matthews$gender_a <- NA   # Start with a column of NA values.
+matthews$gender_a[matthews$gender == __] <- "__" # Change 1 to "male"
+matthews$gender_a[matthews$gender == __] <- "__" # Change 2 to "female"
 ```
 
 
