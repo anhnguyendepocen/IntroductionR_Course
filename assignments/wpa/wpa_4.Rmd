@@ -188,7 +188,7 @@ Here are descriptions of the data variables (taken from the author's dataset not
 knitr::include_graphics(path = "../../materials/images/projectss.png")
 ```
 
-2. Open a new R script and save it as `wpa3.R` in the `R` folder you just created using the main RStudio menus "File -- Save As""
+2. Open a new R script and save it as `wpa4.R` in the `R` folder you just created using the main RStudio menus "File -- Save As""
 
 3. At the top of your script load the `dplyr` package using `library()`
 
