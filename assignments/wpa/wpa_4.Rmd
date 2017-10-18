@@ -309,7 +309,7 @@ matthews %>%
   )
 ```
 
-14. The variable `pcmore` reflects the question: "What percent of people taking part in this survey do you think earn more than you do?". Using `aggregate()`, calculate the median value of this variable separately for each level of income. What does the result tell you?
+15. The variable `pcmore` reflects the question: "What percent of people taking part in this survey do you think earn more than you do?". Using `aggregate()`, calculate the median value of this variable separately for each level of income. What does the result tell you?
 
 ```{r}
 aggregate(formula = pcmore ~ income,
@@ -321,7 +321,7 @@ aggregate(formula = pcmore ~ income,
 
 ### Merging two dataframes
 
-15. I created a new table containing **fictional** demographic information about each participant. The data are stored in a **tab--delimited** text file (with a header row) at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/matthews_demographics.txt. Using `read.table()`, load the data into an object called  `matthews_demo` into R using the following template:
+16. I created a new table containing **fictional** demographic information about each participant. The data are stored in a **tab--delimited** text file (with a header row) at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/data/matthews_demographics.txt. Using `read.table()`, load the data into an object called  `matthews_demo` into R using the following template:
 
 
 ```{r, echo = TRUE}
@@ -337,7 +337,7 @@ matthews_demo <- read.table("https://raw.githubusercontent.com/ndphillips/Introd
                       header = TRUE)
 ```
 
-16. Using `merge()` add the demographic data to the `matthews` data using the following template:
+17. Using `merge()` add the demographic data to the `matthews` data using the following template:
 
 ```{r, echo = TRUE}
 matthews <- merge(x = __,       # First dataframe
@@ -351,7 +351,7 @@ matthews <- merge(x = matthews,
                   by = "id")
 ```
 
-17. Using `aggregate()`, calculate the mean value of `havemore` for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?
+18. Using `aggregate()`, calculate the mean value of `havemore` for each combination of gender and race using the following template. Is there a difference between men and women, or people of different races, in how often they think other people earn more money than them?
 
 ```{r, echo = TRUE}
 aggregate(formula = __ ~ __ + __, 
@@ -365,7 +365,7 @@ aggregate(havemore ~ gender + race,
           data = matthews)
 ```
 
-18. Now do the same calculations using `dplyr` using the following template. Do you get the same answer?
+19. Now do the same calculations using `dplyr` using the following template. Do you get the same answer?
 
 ```{r, echo = TRUE}
 matthews %>% 
@@ -383,14 +383,14 @@ knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointS
 
 # Checkpoint!!!
 
-18. Create a new dataframe called `product` that only contain columns p1, p2, ... p10 from `matthews` by running the following code.  After you run the code, look at it with `head()` to see what it looks like.
+20. Create a new dataframe called `product` that only contain columns p1, p2, ... p10 from `matthews` by running the following code.  After you run the code, look at it with `head()` to see what it looks like.
 
 ```{r, echo = TRUE}
 # Create product, a dataframe containing only columns p1, p2, ... p10
 product <- matthews[,paste0("p", 1:10)]
 ```
 
-19. The `colMeans()` function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using `colMeans()`, calculate the percentage of participants who indicated that the 'typical' participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?
+21. The `colMeans()` function takes a dataframe as an argument, and returns a vector showing means across rows for each column of data. Using `colMeans()`, calculate the percentage of participants who indicated that the 'typical' participant would be willing to pay more than them for each item. Do your values match what the authors reported in Table 1?
 
 ```{r}
 colMeans(product)
@@ -398,25 +398,25 @@ colMeans(product)
 # Yes the numbers match!!!
 ```
 
-20. The `rowMeans()` function is like `colMeans()`, but for calculating means across columns for every row of data. Using `rowMeans()` calculate for each participant, the percentage of the 10 items that the participant believed other people would spend more on. Save this data as a vector called `pall`.
+22. The `rowMeans()` function is like `colMeans()`, but for calculating means across columns for every row of data. Using `rowMeans()` calculate for each participant, the percentage of the 10 items that the participant believed other people would spend more on. Save this data as a vector called `pall`.
 
 ```{r}
 pall <- rowMeans(product)
 ```
 
-21. Add the `pall` vector as a new column called `pall` to the `matthews` dataframe using basic assignment (`__$__ <- __`)
+23. Add the `pall` vector as a new column called `pall` to the `matthews` dataframe using basic assignment (`__$__ <- __`)
 
 ```{r}
 matthews$pall <- pall
 ```
 
-22. What was the mean value of `pall` across participants? This value is the answer to the question: "How often does the average participant think that someone else would pay more for an item than themselves?"
+24. What was the mean value of `pall` across participants? This value is the answer to the question: "How often does the average participant think that someone else would pay more for an item than themselves?"
 
 ```{r}
 mean(matthews$pall)
 ```
 
-23. Calculate the mean `pall` value for male and female participants separately. Which gender tends to think that others would pay more for products than them?
+25. Calculate the mean `pall` value for male and female participants separately. Which gender tends to think that others would pay more for products than them?
 
 ```{r}
 aggregate(formula = pall ~ gender_a,
@@ -426,7 +426,7 @@ aggregate(formula = pall ~ gender_a,
 # Males tend to think that others will pay more for items than them relative to females.
 ```
 
-24. Calculate the mean `pall` value of participants for each level of income. Do you find a consistent relationship between `pall` and income?
+26. Calculate the mean `pall` value of participants for each level of income. Do you find a consistent relationship between `pall` and income?
 
 ```{r}
 aggregate(formula = pall ~ income,
@@ -436,7 +436,7 @@ aggregate(formula = pall ~ income,
 # The values decrease from income = 1 to income = 6, then they go up again!
 ```
 
-25. For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called `gender_agg`
+27. For each level of gender, calculate the summary statistics in the following table using the following template. Save the summary statistics to an object called `gender_agg`
 
 ```{r, eval = TRUE}
 knitr::kable(data.frame(
@@ -476,7 +476,7 @@ gender_agg <- matthews %>%
 gender_agg
 ```
 
-26. For each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income_df`.
+28. For each level of `income`, calculate the summary statistics in the following table -- *only for participants older than 21* -- and save them to a new object called `income_df`.
 
 ```{r}
 knitr::kable(data.frame(
@@ -502,7 +502,7 @@ income_df <- matthews %>%
 income_df
 ```
 
-27. Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called `racegender_agg`
+29. Calculate the maximum and minimum age, and mean income aggregated at each level of race and gender. Save the results to an object called `racegender_agg`
 
 ```{r}
 racegender_agg <- matthews %>%
@@ -516,7 +516,7 @@ racegender_agg <- matthews %>%
 racegender_agg
 ```
 
-28. Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this **only** for people with an income greater than 5. Save the results to an object called `taskgender_agg`.
+30. Calculate the mean value of pcmore, the percent of participants that were black, and the mean age) aggregated at each level of task and gender. But do this **only** for people with an income greater than 5. Save the results to an object called `taskgender_agg`.
 
 ```{r}
 taskgender_agg <- matthews %>%
@@ -531,7 +531,7 @@ taskgender_agg <- matthews %>%
 taskgender_agg
 ```
 
-29. Using `save()`, save `matthews`, `gender_agg`, `income_df`, `racegender_agg`, and `taskgender_agg` objects to a file called `matthews.RData` in the `data` folder in your working directory.
+31. Using `save()`, save `matthews`, `gender_agg`, `income_df`, `racegender_agg`, and `taskgender_agg` objects to a file called `matthews.RData` in the `data` folder in your working directory.
 
 ```{r eval = FALSE}
 save(matthews, gender_agg, income_df, racegender_agg, taskgender_agg, file = "data/matthews.RData")
