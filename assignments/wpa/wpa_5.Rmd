@@ -26,12 +26,12 @@ This assignment is based on the following readings:
 knitr::include_graphics("images/ggplot_cheatsheet_ss.png")
 ```
 
-**Before you start anything else, look at the ggplot2 cheatsheet here**: [https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+**Before you start anything else, open the ggplot2 cheatsheet here in a new window**: [https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). You should keep this handy, and maybe even print one out for yourself, as it will help you to quickly find code to customise your plots.
 
 
 # Inspiration and helpful links
 
-Check out the following links for additional guides, examples, and inspiration on how to make more interesting and complex plots. Really the sky is the limit!
+Check out the following links for additional guides, examples, and inspiration on how to make more interesting and complex plots. All of these links contain complete replicable code. I highly recommend spending a few minutes browsing them!
 
 - [R graph cookbook: http://www.cookbook-r.com/Graphs/](http://www.cookbook-r.com/Graphs/)
 - [R Graph Catalog: http://shinyapps.stat.ubc.ca/r-graph-catalog/#fig04-16_paying-attention-data-loess-fit](http://shinyapps.stat.ubc.ca/r-graph-catalog/#fig04-16_paying-attention-data-loess-fit)
@@ -53,13 +53,11 @@ library(tidyverse)   # Load tidyverse packages
 library(yarrr)       # Load yarrr package (for pirates data)
 library(jtools)      # Load jtools (for theme_apa())
 
-# Set theme (try different themes and see how the plots change)
+# Set theme (try running one of these themes and see how the following plots change)
 
-theme_set(theme_apa())
-#or
-theme_set(theme_bw())
-# or
-theme_set(theme_minimal())
+# theme_set(theme_apa())
+# theme_set(theme_bw())
+# theme_set(theme_minimal())
 
 # Histogram
 
