@@ -370,7 +370,7 @@ Ok now we're ready! Create the following barplot using this template:
 
 
 ```{r, eval = FALSE}
-ggplot(data = __,
+ggplot(data = study1_agg_1,
        aes(x = factor(__), y = __)) + 
   geom_bar(stat = "identity", position = position_dodge(.9), col = "white") + 
   geom_errorbar(aes(ymax = __,
@@ -393,7 +393,6 @@ ggplot(data = study1_agg_1,
   labs(x = "Important", 
        y = "Acceptability")
 ```
-
 
 
 12. Now we'll make a barplot with two independent variables. First, we need to aggregate the data. Do this by running the following code:

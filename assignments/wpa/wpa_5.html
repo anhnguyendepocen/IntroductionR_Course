@@ -491,7 +491,7 @@ study2 &lt;- read.table(file = &quot;https://raw.githubusercontent.com/ndphillip
     acceptability_ub = t.test(acceptability)$conf.int[2]      # CI upper bound
   )</code></pre>
 <p>Ok now we’re ready! Create the following barplot using this template:</p>
-<pre class="r"><code>ggplot(data = __,
+<pre class="r"><code>ggplot(data = study1_agg_1,
        aes(x = factor(__), y = __)) + 
   geom_bar(stat = &quot;identity&quot;, position = position_dodge(.9), col = &quot;white&quot;) + 
   geom_errorbar(aes(ymax = __,
