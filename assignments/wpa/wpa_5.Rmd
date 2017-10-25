@@ -102,6 +102,7 @@ ggplot(data = pirates,
   theme(panel.grid.major = element_line(colour = gray(.9)))
 
 # More customizations
+
 ggplot(data = pirates,
        aes(x = height, y = weight, col = sex)) +
   geom_point(alpha = .2) + 
@@ -128,6 +129,8 @@ ggplot(data = pirates,
   guides(fill = FALSE) # Turn off legend for filling  
 
 ### Barplot
+
+# First, calculate aggregate data to be plotted
 
 pirates_agg <- pirates %>% 
   group_by(headband, sex) %>%
