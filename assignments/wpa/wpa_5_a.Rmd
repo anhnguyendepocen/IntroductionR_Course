@@ -51,7 +51,7 @@ failed | Did participant fail an attention check?
 ### Study 2
 
 - Original: [http://journal.sjdm.org/16/16428/expt2.csv](http://journal.sjdm.org/16/16428/expt2.csv)
-- Cleaned [https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt](https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt)
+- Cleaned https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/Millar_study1.txt](https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/Millar_study1.txt)
 
 Variable | Description 
 ------------  | ------------------------------------------------------- 
@@ -71,15 +71,15 @@ failed | Did participant fail an attention check?
 library(yarrr)
 ```
 
-0. For this assignment, you'll need both the `yarrr` package and the `dplyr` package. Install (if you don't have them already) and load the packages using the following code:
+0. For this assignment, you'll need both the `yarrr` package and the `tidyverse` package. Install (if you don't have them already) and load the packages using the following code:
 
 ```{r, eval = FALSE}
 # Install the dplyr and yarrr packages (if you don't have them already)
-install.packages("dplyr")
+install.packages("tidyverse")
 install.packages("yarrr")
 
 # Load the libraries for the the assignment
-library("dplyr")
+library("tidyverse")
 library("yarrr")
 ```
 
@@ -87,15 +87,15 @@ library("yarrr")
 
 2. Open a new R script and save it as `wpa5.R` in the `R` folder in your project directory
 
-3. The data are stored in two separate .csv files. Study 1 is at https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt and Study 2 is at https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt. Load the data into R by using `read.table()` (or the `Import Dataset` button in RStudio) into new objects called `study1` and `study2`. Note: You can either read the tables directly from the web, or download the files to your computer, and then load them (Hint: Make sure to use the arguments `sep = "\t"` and `header = TRUE`)
+3. The data are stored in two separate .csv files. Study 1 is at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/Millar_study1.txt and Study 2 is at https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt. Load the data into R by using `read.table()` (or the `Import Dataset` button in RStudio) into new objects called `study1` and `study2`. Note: You can either read the tables directly from the web, or download the files to your computer, and then load them (Hint: Make sure to use the arguments `sep = "\t"` and `header = TRUE`)
 
 ```{r, echo = TRUE, eval = TRUE}
-study1 <- read.table(file = "https://dl.dropboxusercontent.com/u/7618380/Millar_study1.txt", 
+study1 <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/Millar_study1.txt", 
                      sep = "\t",
                      header = TRUE, 
                      stringsAsFactors = FALSE)
 
-study2 <- read.table(file = "https://dl.dropboxusercontent.com/u/7618380/Millar_study2.txt", 
+study2 <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/Millar_study2.txt", 
                      sep = "\t",
                      header = TRUE, 
                      stringsAsFactors = FALSE)
