@@ -1,5 +1,5 @@
 ---
-title: "WPA #6  -- Hypothesis tests"
+title: "WPA #XXX  -- XXX"
 output: html_document
 ---
 
@@ -9,62 +9,40 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE, fig.align = 'center', out.width = "70%")
 ```
 
+
+
 ## Readings
 
 This assignment is based on the following readings:
 
-- YaRrr: [13](https://bookdown.org/ndphillips/YaRrr/htests.html)
+- YaRrr: [9](https://bookdown.org/ndphillips/YaRrr/importingdata.html), [10](https://bookdown.org/ndphillips/YaRrr/advanceddataframe.html)
+- Videos: [G](https://www.youtube.com/watch?v=jWjqLW-u3hc&feature=youtu.be)
 
 ## Assignment Goals
 
-- Conduct hypothesis tests such as t-tests, correlation tests and chi-square tests
-- Know how to access specific elements of hypothesis test objects (like p-values and test statistics)
+- GOAL 1
+- GOAL 2
+- GOAL 3
+- GOAL 4
+
+
 
 # Examples
 
 ```{r, echo = TRUE, eval = FALSE}
 library(yarrr) # Load yarrr for the pirates dataframe
-
-# 1 sample t-test
-
-# Are pirate ages different than 30 on average?
-t.test(x = pirates$age, 
-       mu = 30)
-
-# 2 sample t-test
-
-# Do females and males have different numbers of  tattoos?
-t.test(formula = tattoos ~ sex,
-       data = pirates, 
-       subset = sex %in% c("male", "female"))
-
-# Correlation test
-
-# Is there a relationship between age and height?
- cor.test(formula = ~ age + height,
-          data = pirates)
-
-# Chi-Square test
- 
-# Is there a relationship between college and favorite pirate?
-chisq.test(x = pirates$college,
-           y = pirates$favorite.pirate)
+library(dplyr) # Load dplyr for aggregation
 
 
-# Assign the results of a test to a new htest object and then acces specific outputs
-
-age.ttest <- t.test(x = pirates$age, 
-                   mu = 30)
-
-class(age.ttest)    # sex.ttest is an htest object
-names(age.ttest)      # What elements are in the object?
-
-# Now you can access specific named elements with $
-
-age.ttest$statistic   # The test statistic
-age.ttest$p.value     # The p-value
-age.ttest$conf.int    # Confidence interval for mean
 ```
+
+
+```{r, echo = FALSE, eval = TRUE}
+# setwd(rprojroot::is_rstudio_project$find_file())
+
+# Misc Code
+```
+
 
 
 ## TITLE

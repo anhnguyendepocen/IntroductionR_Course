@@ -1,12 +1,15 @@
 ---
-title: "WPA 6: Winter 2016/2017"
-output: pdf_document
+title: "WPA #6 -- Hypothesis tests"
+output:
+  prettydoc::html_pretty:
+    theme: lumen
+    highlight: github
 ---
 
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE)
+                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE)
 ```
 
 # Hypothesis tests from a student survey
@@ -177,18 +180,12 @@ t.test(x = wpa6.df$iq,
        mu = 100)
 ```
 
-*Answer: Yes, the participants have significantly higher IQ than the general population t(99) = 20.847, p < .01*
-
-
-6. A friend of your's claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
+6. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
 
 ```{r}
 t.test(x = wpa6.df$siblings,
        mu = 2.5)
 ```
-
-*Answer: The data do not reject the person's claims -- that is, the mean number of siblings students have is not significantly different from 2.5: t(99) = -0.91, p = 0.36*
-
 
 7. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
 
@@ -197,29 +194,21 @@ t.test(iq ~ marijuana,
        data = wpa6.df)
 ```
 
-*Answer: We do not have evidence to show that iq changes as a function of marijuana use: t(96) = -0.72, p = 0.47*
-
 # Correlation test(s)
 
 8. Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:
 
 ```{r}
 cor.test(formula = ~ multitasking + partners,
-         data = wpa6.df,
-         alternative = "greater")
+       data = wpa6.df)
 ```
 
-*Answer: We do not have evidence that people with higher multitasking skills tend to have more romantic partners than those with lower skills: t(98) = -0.79, p = 0.79*
-
-9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
+1. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
 
 ```{r}
 cor.test(formula = ~ iq + logic,
-         data = wpa6.df,
-         alternative = "less")
+         data = wpa6.df)
 ```
-
-*Answer: We do not have evidence that people with higher IQs perform faster on the logic test: t(98) = 1.21, p = 0.88*
 
 # chi-square test(s)
 
@@ -229,27 +218,17 @@ cor.test(formula = ~ iq + logic,
 chisq.test(table(wpa6.df$major))
 ```
 
-*Answer: We do find significant evidence that some majors are more popular than others: X2(3) = 130.96, p < .01*
-
 10. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
 
 ```{r}
 chisq.test(table(wpa6.df$risk))
-
-# But look at the direction!!!
-table(wpa6.df$risk)
 ```
-
-*Answer: No! We do find significant evidence that people are more likely to take a risk than not, in fact, we find evidence that they are significantly less likely to take a risk than not : X2(1) = 17.64, p < .01*
-
 
 11. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
 
 ```{r}
 chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
 ```
-
-*Answer: We do not find significant evidence for a relationship between hair color and major: X2(9) = 5.92, p = 0.74*
 
 ## CHECKPOINT!
 
@@ -274,21 +253,9 @@ anscombe.df <- data.frame(x1 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
 
 13. Calculate the correlation between x1 and y1, x2 and y2, x3 and y3, and x4 and y4 separately (that is, what is the correlation between x1 and y? Now, what is the correlation between x2 and y2?, ...). What do you notice about the correlation values for each test?
 
-```{r}
-cor.test(~x1 + y1, data = anscombe.df)
-
-cor.test(~x2 + y2, data = anscombe.df)
-
-cor.test(~x3 + y3, data = anscombe.df)
-
-cor.test(~x4 + y4, data = anscombe.df)
-```
-
-*Answer: The correlation are all almost the same!*
-
 14. Now run the following code to generate a scatterplot of each data pair, what do you find?
 
-```{r eval = TRUE, echo = TRUE}
+```{r eval = FALSE, echo = TRUE}
 # JUST COPY, PASTE, AND RUN!
 
 # Plot the famous Anscombe quartet
@@ -340,16 +307,11 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 chisq.test(table(wpa6.df$marijuana, wpa6.df$risk))
 ```
 
-*Answer: We do not find significant evidence that marijuana is related to selecting the risky gamble: X2(1) = 0.57, p = 0.45*
-
 16. Do males and females have different numbers of sexual partners on average?
 
 ```{r}
-t.test(partners ~ sex, 
-       data = wpa6.df)
+t.test(partners ~ sex, data = wpa6.df)
 ```
-
-*Answer: We do not find signifciant evidence that males and females have a different number of sexual partners on average: t(93.77) = 0.92, p = 0.36*
 
 17. Do males and females differ in how likely they are to have smoked marijuana?
 
@@ -357,96 +319,35 @@ t.test(partners ~ sex,
 chisq.test(table(wpa6.df$marijuana, wpa6.df$sex))
 ```
 
-*Answer: We do not find signifcant evidence that males and females differ in how likely they are to have smoked marijuana: X2(1) = 0.16, p = 0.69*
-
 18. Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?
 
 ```{r}
 t.test(logic ~ marijuana, data = wpa6.df)
 ```
 
-*Answer: We do not find significant evidence that those who have smoked marijuana have different logic scores on average than those who have not smoked marijuana: t(90.88) = 0.96, p = 0.34*
-
-
-19. Do people with higher iq scores tend to perform better on the logic test than those with lower iq scores?
+19. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
 
 ```{r}
-cor.test(~ iq + logic, 
-         data = wpa6.df,
-         alternative = "less")
+cor.test(~ iq + logic, data = wpa6.df)
 ```
-
-*Answer: We do not find significant evidence that people with higher iq scores tend to perform better on the logic test than those with lower iq scores: t(98) = 1.21, p = 0.88.*
-
 
 # More complicated tests
 
 20. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
 
-```{r}
-mar.ger <- wpa6.df$marijuana[wpa6.df$country == "germany"]
-chisq.test(mar.ger)
-
-# Look at the frequencies
-table(mar.ger)
-```
-
-*Answer: We do not find evidence that German students were more likely than not to have tried marijuana: X2(28) = 15, p = 0.98*
-
 21. Does the relationship between iq and multitasking differ between males and females? Test this by conducting two separate tests -- one for males and one for females. Do your conclusions differ?
-
-```{r}
-# For males
-
-cor.test(formula = ~ iq + multitasking,
-         data = subset(wpa6.df, sex == "m"))
-
-# For females
-
-cor.test(formula = ~ iq + multitasking,
-         data = subset(wpa6.df, sex == "f"))
-```
-
-*Answer: While the raw correlations are different, we do not find a significant correlation between iq and multitasking for either males or females: t(48) = -1.45, p = 0.15.*
-
 
 22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
 
-```{r}
-t.test(iq ~ haircolor,
-       data = subset(wpa6.df, haircolor %in% c("brown", "blonde")))
-```
-
-*Answer: We do not find a significant difference in IQ between blondes and brown haired people: t(59.05) = 0.51, p = 0.61.*
-
 23. Only for men from Switzerland, is there a relationship between age and IQ?
-
-```{r}
-cor.test(formula = ~ age + iq,
-         data = subset(wpa6.df, country == "switzerland"))
-```
-
-*Answer: We do not find sufficient evidence to show that men from Switzerland have a significant relationship between age and IQ: t(58) = 1.15, p = 0.25.*
 
 24. Only for people who chose the risky gamble, do people that have smoked marijuana have more sexual partners than those who have never smoked marijuana? is there a relationship between smoking marijuana and number of sexual partners?
 
-```{r}
-t.test(formula = partners ~ marijuana,
-       data = subset(wpa6.df, risk == 1))
-```
-
-*Answer: No, for those people who did choose the risky gamble, we did not find evidence for a relationship between marijuana use and sexual partners: t(25.53) = 0.88, p = 0.39*
-
 25. Only for people who chose the risky gamble *and* have never tried marijuana, is there a relationship between iq and performance on the logic test?
 
-```{r}
-cor.test(formula = ~ iq + logic,
-         data = subset(wpa6.df, risk == 1 & marijuana == 0))
-```
 
-*Answer: We do not find evidence for a relationship between iq and logic performance for those who chose the risky gamble and who tried marijuana: t(10) = 1.42, p = 0.18*
+# Submit!
 
-
-
+Save and email your `wpa_6_LastFirst.R` file to me at nathaniel.phillips@unibas.ch. Then, go to [https://goo.gl/forms/UblvQ6dvA76veEWu1](https://goo.gl/forms/UblvQ6dvA76veEWu1) to complete the WPA submission form.
 
 
