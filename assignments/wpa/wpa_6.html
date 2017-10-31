@@ -262,8 +262,9 @@ age.ttest$conf.int    # Confidence interval for mean</code></pre>
 </table>
 <p><em>Table 1</em>: Description of columns in the student survey data</p>
 </div>
-<div id="loading-the-data-and-saving-a-local-copy" class="section level3">
-<h3>Loading the data and saving a local copy</h3>
+<div id="load-the-data-into-r-and-saving-a-local-copy-as-a-.txt-file" class="section level3">
+<h3>Load the data into R and saving a local copy as a .txt file</h3>
+<p><em>Hint: Look at the answers to WPA #4 at <a href="https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_4_answers.html" class="uri">https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_4_answers.html</a> if you get stuck</em></p>
 <ol style="list-style-type: decimal">
 <li><p>Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the <code>R</code> folder in your project working directory as <code>wpa_6_LastFirst.R</code>, where Last and First are your last and first names.</p></li>
 <li><p>The data are stored in a <strong>tab–delimited</strong> text file located at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt</a>. Using <code>read.table()</code> load this data into R as a new object called <code>survey</code>.</p></li>
@@ -350,6 +351,15 @@ t.test(formula = tattoos ~ headband,
 <li><p>Is there a relationship between hair color and students’ academic major? Answer this with a two-sample chi-square test</p></li>
 </ol>
 </div>
+<div id="you-pick-the-test" class="section level4">
+<h4>You pick the test!</h4>
+<ol start="12" style="list-style-type: decimal">
+<li><p>Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?</p></li>
+<li><p>Do males and females have different numbers of sexual partners on average?</p></li>
+<li><p>Do males and females differ in how likely they are to have smoked marijuana?</p></li>
+<li><p>Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?</p></li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -359,7 +369,7 @@ t.test(formula = tattoos ~ headband,
 <div id="anscombes-famous-data-quartet" class="section level3">
 <h3>Anscombe’s Famous data quartet</h3>
 <p>In the next few questions, we’ll explore Anscombe’s famous data quartet. This famous dataset will show you the dangers of interpreting statistical tests (like a correlation test), without first plotting the data!</p>
-<ol start="12" style="list-style-type: decimal">
+<ol start="16" style="list-style-type: decimal">
 <li>Run the following code to create the <code>anscombe</code> dataframe. This dataframe contains 11 pairs of data for four different datasets: A, B, C and D</li>
 </ol>
 <pre class="r"><code># JUST COPY, PASTE, AND RUN!
@@ -373,8 +383,8 @@ anscombe &lt;- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
                              c(7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73),
                              c(6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.5, 5.56, 7.91, 6.89)),
                        set = rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;), each = 11))</code></pre>
-<ol start="13" style="list-style-type: decimal">
-<li><p>Look at the <code>anscombe</code> dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don’t need to report full APA style for these tests, just write down the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?</p></li>
+<ol start="17" style="list-style-type: decimal">
+<li><p>Look at the <code>anscombe</code> dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don’t need to report full APA style for these tests, just make a note of the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?</p></li>
 <li><p>Now it’s time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?</p></li>
 </ol>
 <pre class="r"><code># JUST COPY, PASTE, AND RUN!
@@ -391,13 +401,9 @@ ggplot(data = anscombe,
   guides(colour = &quot;none&quot;)</code></pre>
 <p>What you have just seen is the famous <strong>Anscombe’s quartet</strong> a dataset designed to show you how important is to <em>always</em> plot your data before running a statistical test!!! You can see more at the wikipedia page here: <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">https://en.wikipedia.org/wiki/Anscombe%27s_quartet</a></p>
 </div>
-<div id="you-pick-the-test" class="section level3">
+<div id="you-pick-the-test-1" class="section level3">
 <h3>You pick the test!</h3>
-<ol start="15" style="list-style-type: decimal">
-<li><p>Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?</p></li>
-<li><p>Do males and females have different numbers of sexual partners on average?</p></li>
-<li><p>Do males and females differ in how likely they are to have smoked marijuana?</p></li>
-<li><p>Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?</p></li>
+<ol start="19" style="list-style-type: decimal">
 <li><p>Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?</p></li>
 <li><p>Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a <code>subset</code> argument)</p></li>
 <li><p>Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the <code>subset()</code> argument to tell R which two groups you want to compare)</p></li>
@@ -452,7 +458,10 @@ t.test(x = sample.H1, mu = 0, alternative = &quot;two.sided&quot;)$p.value</code
 <li><p>It’s time to put it all together. In the code below, you’ll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world</p></li>
 <li><p>Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)</p></li>
 <li><p>Is the mean p-value from the H0 world significantly different from the mean p-value from the H1 world? Conduct the appropriate test!</p></li>
-<li><p>Using basic aggregation commands (e.g.; <code>aggregate()</code> or <code>dplyr</code>) answer the following question: given that a p-value is less than .05, what is the probability that the null hypothesis is False? In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world?</p></li>
+<li><p>Use your simulation to answer the following question: “Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?” In other words, for all of your simulations in the H1 world, what percent resulted in a p-value less than 0.05? (Hint: use <code>aggregate()</code> or <code>dplyr</code>).</p></li>
+<li><p>Now use your simulation to answer a slightly different question: “Given that a p-value is less than .05, what is the probability that the null hypothesis is really False?” In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world (and not in the H0 world)?</p></li>
+<li><p>Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 100 simulations from the H0 world, and 500 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, “Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?” and “Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?” Are you answers the same or different from before?</p></li>
+<li><p>Based on what you’ve learned, what is the correct answer to the general question: “Given that the p-value from a hypothesis test is less than 0.05, what is the probability that the null hypothesis is True?”</p></li>
 </ol>
 </div>
 <div id="submit" class="section level2">
