@@ -4,18 +4,7 @@ output: html_document
 ---
 
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE, fig.align = 'center', out.width = "70%")
 
-
-library(yarrr)
-
-survey <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt",            # Where is the file located?
-                 header = TRUE,           # Is there a header row?
-                 sep = "\t")            # How are columns separated?
-
-```
 
 ## Readings
 
@@ -30,7 +19,8 @@ This assignment is based on the following readings:
 
 # Examples
 
-```{r, echo = TRUE, eval = FALSE}
+
+```r
 library(yarrr) # Load yarrr for the pirates dataframe
 
 # 1 sample t-test
@@ -76,9 +66,7 @@ age.ttest$conf.int    # Confidence interval for mean
 
 ## Analyzing results from a survey
 
-```{r, eval = TRUE, fig.align = 'center', out.width = "70%"}
-knitr::include_graphics(path = "http://assets.careerspot.com.au/files/news/mischevioussurvyepenguins.jpg")
-```
+<img src="http://assets.careerspot.com.au/files/news/mischevioussurvyepenguins.jpg" width="70%" style="display: block; margin: auto;" />
 
 In this WPA, you'll analyze data from a *fictional* survey of 100 students (in fact, you can even see the code I used to generate the data here: [code to generate wpa6 data](https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/R/wpa_datageneration.R)). In the survey, students were asked a variety of demographic questions (e.g.; sex, age, and country of origin), behavioral self-report questions (e.g.; have you smoked marijuana?), and completed a few cognitive tasks (e.g.; completing a logic problem). Your task is to conduct several hypothesis tests on these data.
 
@@ -112,25 +100,13 @@ Name| Class |Description
 
 2. The data are stored in a **tab--delimited** text file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt. Using `read.table()` load this data into R as a new object called `survey`.
 
-```{r eval = FALSE, echo = FALSE}
-# Read tab-separated data from the web and store as a new object called survey
 
-XX <- read.table(file = "XXX",            # Where is the file located?
-                 header = XXX,           # Is there a header row?
-                 sep = "XXX")            # How are columns separated?
-```
 
 3. Using `head()`, `str()`, and `View()` look at the dataset and make sure that it was loaded correctly. If the data don't look correct (i.e; if there isn't a header row and 100 rows and 12 columns), then something must have gone wrong when you loaded the data. Try and fix it! 
 
 4. Save a local copy of the data as a tab-separated text file called `studentsurvey.txt` to the `data` folder of your project using `write.table()`.
 
-```{r eval = FALSE, echo = FALSE}
-# Write survey to a tab-delimited text file in my data folder.
 
-write.table(XX,                        # Object to be written
-            file = "XX/XX.txt",        # File location and name
-            sep = "XXX")               # How should columns be separated?
-```
 
 ### How to report hypothesis tests
 
@@ -147,7 +123,8 @@ Correlation test         | r = \__, t(\__) = \__, p =\ __ (\__-tailed), 95% CI =
 
 For example, here is some output with the appropriate apa conclusion:
 
-```{r eval = TRUE, echo = TRUE}
+
+```r
 # Do pirates with headbands have different numbers of tattoos than those
 #  who do not wear headbands?
 
@@ -158,6 +135,20 @@ t.test(formula = tattoos ~ headband,
        conf.level = .95)
 ```
 
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  tattoos by headband
+## t = -19.313, df = 146.73, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -5.878101 -4.786803
+## sample estimates:
+##  mean in group no mean in group yes 
+##          4.699115         10.031567
+```
+
 *Answer: Pirates with headbands have significantly more tattoos on average than those who do not wear headbands: t(146.73) = -19.31, p < .01 (2-tailed), 95% CI = (-5.88, -4.79)*
 
 
@@ -165,60 +156,39 @@ t.test(formula = tattoos ~ headband,
 
 5. The average global IQ is known to be 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.
 
-```{r}
-t.test(x = wpa6.df$iq,
-       mu = 100)
-```
+
 
 6. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
 
-```{r}
-t.test(x = wpa6.df$siblings,
-       mu = 2.5)
-```
+
 
 7. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
 
-```{r}
-t.test(iq ~ marijuana, 
-       data = wpa6.df)
-```
+
 
 #### correlation test
 
 8. Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:
 
-```{r}
-cor.test(formula = ~ multitasking + partners,
-       data = wpa6.df)
-```
+
 
 9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
 
-```{r}
-cor.test(formula = ~ iq + logic,
-         data = wpa6.df)
-```
+
 
 #### chi-square test
 
 10. Are some majors more popular than others? Answer this question with a one-sample chi-square test.
 
-```{r}
-chisq.test(table(wpa6.df$major))
-```
+
 
 11. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
 
-```{r}
-chisq.test(table(wpa6.df$risk))
-```
+
 
 12. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
 
-```{r}
-chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
-```
+
 
 
 #### You pick the test!
@@ -233,9 +203,7 @@ chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
 
 # Checkpoint!!!
 
-```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
-knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
-```
+<img src="https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png" width="20%" style="display: block; margin: auto;" />
 
 
 ### Anscombe's Famous data quartet
@@ -244,7 +212,8 @@ In the next few questions, we'll explore Anscombe's famous data quartet. This fa
 
 17. Run the following code to create the `anscombe` dataframe. This dataframe contains 11 pairs of data for four different datasets: A, B, C and D
 
-```{r echo = TRUE}
+
+```r
 # JUST COPY, PASTE, AND RUN!
 
 anscombe <- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
@@ -262,7 +231,8 @@ anscombe <- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
 
 19. Now it's time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?
 
-```{r eval = FALSE, echo = TRUE}
+
+```r
 # JUST COPY, PASTE, AND RUN!
 library(ggplot2)    # Load ggplot2
 
@@ -295,21 +265,24 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 
 25. What do you predict the correlation will be between the following two vectors `x` and `y`? Test your prediction by conducting the appropriate test (hint: you may want to put the vectors into a dataframe by running `df <- data.frame(x = x, y = y)` before running the correlation test),
 
-```{r, echo = TRUE}
+
+```r
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- rnorm(n = 100, mean = 50, sd = 10)
 ```
 
 26. What about the correlation between the following two vectors? Test your prediction by conducting the appropriate test.
 
-```{r, echo = TRUE}
+
+```r
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- -5 * x
 ```
 
 27. What about these? Test your prediction by conducting the appropriate test.
 
-```{r, echo = TRUE}
+
+```r
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- x + rnorm(n = 100, mean = 50, sd = 10)
 ```
@@ -321,7 +294,8 @@ Let's run some simulations to see what p-values *really* mean. We'll do this by 
 
 28. First, let's draw a random sample from the world when the null hypothesis H0 is True. We'll save the results as `sample.H0`. Then, we'll conduct a one-sample t-test to test if the true population mean is really 0:
 
-```{r echo = TRUE}
+
+```r
 # Generate a vector of 20 samples from a normal distribution with mu = 0
 #  Here, the null hypothesis H0: Mu = 0 IS true
 
@@ -336,7 +310,8 @@ t.test(x = sample.H0, mu = 0, alternative = "two.sided")$p.value
 
 30. Now, let's repeat the process in a world where the null hypothesis is False (that is, the true mean is 0.5). Run the following code several times to see what the p-values look like
 
-```{r echo = TRUE}
+
+```r
 # Generate a vector of 20 samples from a normal distribution with mu = 0.5
 #  Here, the null hypothesis H0: Mu = 0 is FALSE
 
@@ -348,41 +323,7 @@ t.test(x = sample.H1, mu = 0, alternative = "two.sided")$p.value
 
 31. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
 
-```{r}
 
-# Set up the simulation parameters
-simulation <- data.frame(world = c(rep("H0", 100), rep("H1", 100)),
-                         p = NA,
-                         stringsAsFactors = FALSE)
-
-# Loop over each row
-for(i in 1:nrow(simulation)) {
-  
-  print(paste("Sim", i, "of", nrow(simulation)))  # Print the curent
-  
-  world.i <- simulation$world[i]   # Which world are we in?
-  
-  if(world.i == "H0") {  # If world is H0 (null is TRUE)...
-    
-    x <- rnorm(n = 20, mean = 0, sd = 1)  # Get random samples from H0 world
-    
-    p.i <- t.test(x)$p.value  # Run t.test, and get resulting p-value
-    
-  }
-  
-  if(world.i == "H1") {  # If world is H0 (null is TRUE)...
-    
-    x <- rnorm(n = 20, mean = .5, sd = 1)  # Get random samples from H1 world
-    
-    p.i <- t.test(x)$p.value # Run t.test, and get resulting p-value
-    
-  }
-  
-  simulation$p[i] <- p.i  # Assign resulting p-value back to simulation
-  
-} # Close loop!
-
-```
 
 32. Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)
 

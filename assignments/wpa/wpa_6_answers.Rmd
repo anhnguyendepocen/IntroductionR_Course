@@ -4,9 +4,9 @@ output: html_document
 ---
 
 
-```{r global_options, include=FALSE}
+```{r global_options, include=FALSE, echo = FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE, fig.align = 'center', out.width = "70%")
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align = 'center', out.width = "70%")
 
 
 library(yarrr)
@@ -112,24 +112,24 @@ Name| Class |Description
 
 2. The data are stored in a **tab--delimited** text file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt. Using `read.table()` load this data into R as a new object called `survey`.
 
-```{r eval = FALSE, echo = FALSE}
+```{r eval = FALSE, echo = TRUE}
 # Read tab-separated data from the web and store as a new object called survey
 
-XX <- read.table(file = "XXX",            # Where is the file located?
-                 header = XXX,           # Is there a header row?
-                 sep = "XXX")            # How are columns separated?
+survey <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentsurvey.txt",            # Where is the file located?
+                 header = TRUE,           # Is there a header row?
+                 sep = "\t")            # How are columns separated?
 ```
 
 3. Using `head()`, `str()`, and `View()` look at the dataset and make sure that it was loaded correctly. If the data don't look correct (i.e; if there isn't a header row and 100 rows and 12 columns), then something must have gone wrong when you loaded the data. Try and fix it! 
 
 4. Save a local copy of the data as a tab-separated text file called `studentsurvey.txt` to the `data` folder of your project using `write.table()`.
 
-```{r eval = FALSE, echo = FALSE}
+```{r eval = FALSE, echo = TRUE}
 # Write survey to a tab-delimited text file in my data folder.
 
-write.table(XX,                        # Object to be written
-            file = "XX/XX.txt",        # File location and name
-            sep = "XXX")               # How should columns be separated?
+write.table(survey,                        # Object to be written
+            file = "data/studentsurvey.txt",        # File location and name
+            sep = "\t")               # How should columns be separated?
 ```
 
 ### How to report hypothesis tests
@@ -141,7 +141,7 @@ Here is the basic structure of APA style for reporting hypothesis tests
 
 Name| Skeleton |Example
 -------  | -------------------------- | -------------------------------
-Chi-square            | X(\__) = \__, p = \__ |  X(25) = 15.89, p = 0.92 
+Chi-square            | X(\__, N =  \__) = \__, p = \__ |  X(25, N = 100) = 15.89, p = 0.92 
 T-test           | t(\__) = \__, p = \__ (\__-tailed), 95% CI = (\__, \__)| t(99) = 3.47, p < .01 (2-tailed), 95% CI = (0.14, 0.53)
 Correlation test         | r = \__, t(\__) = \__, p =\ __ (\__-tailed), 95% CI = (\__, \__)| r = 0.09, t(98) = 0.89, p = 0.37 (2-tailed), 95% CI = (-0.11, 0.28)
 
@@ -166,14 +166,16 @@ t.test(formula = tattoos ~ headband,
 5. The average global IQ is known to be 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.
 
 ```{r}
-t.test(x = wpa6.df$iq,
+t.test(x = survey$iq,
        mu = 100)
 ```
+
+*Answer: I do not find significant evidence that these participants have a mean IQ different from the general population t(99) = -0.91, p = 0.37*
 
 6. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
 
 ```{r}
-t.test(x = wpa6.df$siblings,
+t.test(x = survey$siblings,
        mu = 2.5)
 ```
 
@@ -181,7 +183,7 @@ t.test(x = wpa6.df$siblings,
 
 ```{r}
 t.test(iq ~ marijuana, 
-       data = wpa6.df)
+       data = survey)
 ```
 
 #### correlation test
@@ -190,14 +192,14 @@ t.test(iq ~ marijuana,
 
 ```{r}
 cor.test(formula = ~ multitasking + partners,
-       data = wpa6.df)
+       data = survey)
 ```
 
 9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
 
 ```{r}
 cor.test(formula = ~ iq + logic,
-         data = wpa6.df)
+         data = survey)
 ```
 
 #### chi-square test
@@ -205,19 +207,19 @@ cor.test(formula = ~ iq + logic,
 10. Are some majors more popular than others? Answer this question with a one-sample chi-square test.
 
 ```{r}
-chisq.test(table(wpa6.df$major))
+chisq.test(table(survey$major))
 ```
 
 11. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
 
 ```{r}
-chisq.test(table(wpa6.df$risk))
+chisq.test(table(survey$risk))
 ```
 
 12. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
 
 ```{r}
-chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
+chisq.test(table(survey$major, survey$haircolor))
 ```
 
 
@@ -349,7 +351,6 @@ t.test(x = sample.H1, mu = 0, alternative = "two.sided")$p.value
 31. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
 
 ```{r}
-
 # Set up the simulation parameters
 simulation <- data.frame(world = c(rep("H0", 100), rep("H1", 100)),
                          p = NA,
