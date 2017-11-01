@@ -330,7 +330,7 @@ t.test(formula = tattoos ~ headband,
 <p><em>Answer: Pirates with headbands have significantly more tattoos on average than those who do not wear headbands: t(146.73) = -19.31, p &lt; .01 (2-tailed), 95% CI = (4.70, 10.03)</em></p>
 <div id="t-test" class="section level4">
 <h4>t-test</h4>
-<ol start="4" style="list-style-type: decimal">
+<ol start="5" style="list-style-type: decimal">
 <li><p>The average global IQ is known to be 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.</p></li>
 <li><p>A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.</p></li>
 <li><p>Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)</p></li>
@@ -338,14 +338,14 @@ t.test(formula = tattoos ~ headband,
 </div>
 <div id="correlation-test" class="section level4">
 <h4>correlation test</h4>
-<ol start="7" style="list-style-type: decimal">
+<ol start="8" style="list-style-type: decimal">
 <li><p>Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:</p></li>
 <li><p>Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.</p></li>
 </ol>
 </div>
 <div id="chi-square-test" class="section level4">
 <h4>chi-square test</h4>
-<ol start="9" style="list-style-type: decimal">
+<ol start="10" style="list-style-type: decimal">
 <li><p>Are some majors more popular than others? Answer this question with a one-sample chi-square test.</p></li>
 <li><p>In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test</p></li>
 <li><p>Is there a relationship between hair color and students’ academic major? Answer this with a two-sample chi-square test</p></li>
@@ -353,7 +353,7 @@ t.test(formula = tattoos ~ headband,
 </div>
 <div id="you-pick-the-test" class="section level4">
 <h4>You pick the test!</h4>
-<ol start="12" style="list-style-type: decimal">
+<ol start="13" style="list-style-type: decimal">
 <li><p>Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?</p></li>
 <li><p>Do males and females have different numbers of sexual partners on average?</p></li>
 <li><p>Do males and females differ in how likely they are to have smoked marijuana?</p></li>
@@ -369,7 +369,7 @@ t.test(formula = tattoos ~ headband,
 <div id="anscombes-famous-data-quartet" class="section level3">
 <h3>Anscombe’s Famous data quartet</h3>
 <p>In the next few questions, we’ll explore Anscombe’s famous data quartet. This famous dataset will show you the dangers of interpreting statistical tests (like a correlation test), without first plotting the data!</p>
-<ol start="16" style="list-style-type: decimal">
+<ol start="17" style="list-style-type: decimal">
 <li>Run the following code to create the <code>anscombe</code> dataframe. This dataframe contains 11 pairs of data for four different datasets: A, B, C and D</li>
 </ol>
 <pre class="r"><code># JUST COPY, PASTE, AND RUN!
@@ -383,7 +383,7 @@ anscombe &lt;- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
                              c(7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73),
                              c(6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.5, 5.56, 7.91, 6.89)),
                        set = rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;), each = 11))</code></pre>
-<ol start="17" style="list-style-type: decimal">
+<ol start="18" style="list-style-type: decimal">
 <li><p>Look at the <code>anscombe</code> dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don’t need to report full APA style for these tests, just make a note of the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?</p></li>
 <li><p>Now it’s time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?</p></li>
 </ol>
@@ -403,7 +403,7 @@ ggplot(data = anscombe,
 </div>
 <div id="you-pick-the-test-1" class="section level3">
 <h3>You pick the test!</h3>
-<ol start="19" style="list-style-type: decimal">
+<ol start="20" style="list-style-type: decimal">
 <li><p>Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?</p></li>
 <li><p>Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a <code>subset</code> argument)</p></li>
 <li><p>Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the <code>subset()</code> argument to tell R which two groups you want to compare)</p></li>
@@ -413,17 +413,17 @@ ggplot(data = anscombe,
 </div>
 <div id="predict-the-correlation" class="section level3">
 <h3>Predict the correlation</h3>
-<ol start="24" style="list-style-type: decimal">
+<ol start="25" style="list-style-type: decimal">
 <li>What do you predict the correlation will be between the following two vectors <code>x</code> and <code>y</code>? Test your prediction by conducting the appropriate test (hint: you may want to put the vectors into a dataframe by running <code>df &lt;- data.frame(x = x, y = y)</code> before running the correlation test),</li>
 </ol>
 <pre class="r"><code>x &lt;- rnorm(n = 100, mean = 10, sd = 10)
 y &lt;- rnorm(n = 100, mean = 50, sd = 10)</code></pre>
-<ol start="25" style="list-style-type: decimal">
+<ol start="26" style="list-style-type: decimal">
 <li>What about the correlation between the following two vectors? Test your prediction by conducting the appropriate test.</li>
 </ol>
 <pre class="r"><code>x &lt;- rnorm(n = 100, mean = 10, sd = 10)
 y &lt;- -5 * x</code></pre>
-<ol start="26" style="list-style-type: decimal">
+<ol start="27" style="list-style-type: decimal">
 <li>What about these? Test your prediction by conducting the appropriate test.</li>
 </ol>
 <pre class="r"><code>x &lt;- rnorm(n = 100, mean = 10, sd = 10)
@@ -432,7 +432,7 @@ y &lt;- x + rnorm(n = 100, mean = 50, sd = 10)</code></pre>
 <div id="conducting-a-simulation-of-p-values" class="section level3">
 <h3>Conducting a simulation of p-values</h3>
 <p>Let’s run some simulations to see what p-values <em>really</em> mean. We’ll do this by drawing repeated samples from a world when the null hypothesis H0 is True, and other samples from a world when the null hypothesis is False, that is, when the alternative hypothesis H1 is True).</p>
-<ol start="27" style="list-style-type: decimal">
+<ol start="28" style="list-style-type: decimal">
 <li>First, let’s draw a random sample from the world when the null hypothesis H0 is True. We’ll save the results as <code>sample.H0</code>. Then, we’ll conduct a one-sample t-test to test if the true population mean is really 0:</li>
 </ol>
 <pre class="r"><code># Generate a vector of 20 samples from a normal distribution with mu = 0
@@ -443,7 +443,7 @@ sample.H0 &lt;- rnorm(n = 20, mean = 0, sd = 1)
 
 # Now look at the p-values from one-sample t-tests of each object
 t.test(x = sample.H0, mu = 0, alternative = &quot;two.sided&quot;)$p.value</code></pre>
-<ol start="28" style="list-style-type: decimal">
+<ol start="29" style="list-style-type: decimal">
 <li><p>Copy and paste your code above several times and see what happens! As you’ll see, the value keeps changing, this is because you’re getting new samples each time. How often do you get a ‘significant’ p-value?</p></li>
 <li><p>Now, let’s repeat the process in a world where the null hypothesis is False (that is, the true mean is 0.5). Run the following code several times to see what the p-values look like</p></li>
 </ol>
@@ -454,7 +454,7 @@ sample.H1 &lt;- rnorm(n = 20, mean = 0.5, sd = 1)
 
 # Now look at the p-values from one-sample t-tests of each object
 t.test(x = sample.H1, mu = 0, alternative = &quot;two.sided&quot;)$p.value</code></pre>
-<ol start="30" style="list-style-type: decimal">
+<ol start="31" style="list-style-type: decimal">
 <li><p>It’s time to put it all together. In the code below, you’ll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world</p></li>
 <li><p>Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)</p></li>
 <li><p>Is the mean p-value from the H0 world significantly different from the mean p-value from the H1 world? Conduct the appropriate test!</p></li>

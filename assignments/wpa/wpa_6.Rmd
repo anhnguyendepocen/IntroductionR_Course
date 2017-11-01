@@ -121,9 +121,9 @@ XX <- read.table(file = "XXX",            # Where is the file located?
                  sep = "XXX")            # How are columns separated?
 ```
 
-2. Using `head()`, `str()`, and `View()` look at the dataset and make sure that it was loaded correctly. If the data don't look correct (i.e; if there isn't a header row and 100 rows and 12 columns), then something must have gone wrong when you loaded the data. Try and fix it! 
+3. Using `head()`, `str()`, and `View()` look at the dataset and make sure that it was loaded correctly. If the data don't look correct (i.e; if there isn't a header row and 100 rows and 12 columns), then something must have gone wrong when you loaded the data. Try and fix it! 
 
-3. Save a local copy of the data as a tab-separated text file called `studentsurvey.txt` to the `data` folder of your project using `write.table()`.
+4. Save a local copy of the data as a tab-separated text file called `studentsurvey.txt` to the `data` folder of your project using `write.table()`.
 
 ```{r eval = FALSE, echo = FALSE}
 # Write survey to a tab-delimited text file in my data folder.
@@ -164,21 +164,21 @@ t.test(formula = tattoos ~ headband,
 
 #### t-test
 
-4. The average global IQ is known to be 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.
+5. The average global IQ is known to be 100. Do the participants have an IQ different from the general population? Answer this with a one-sample t-test.
 
 ```{r}
 t.test(x = wpa6.df$iq,
        mu = 100)
 ```
 
-5. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
+6. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
 
 ```{r}
 t.test(x = wpa6.df$siblings,
        mu = 2.5)
 ```
 
-6. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
+7. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
 
 ```{r}
 t.test(iq ~ marijuana, 
@@ -187,14 +187,14 @@ t.test(iq ~ marijuana,
 
 #### correlation test
 
-7. Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:
+8. Do students with higher multitasking skills tend to have more romantic partners than those with lower multitasking skills? Test this with a correlation test:
 
 ```{r}
 cor.test(formula = ~ multitasking + partners,
        data = wpa6.df)
 ```
 
-8. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
+9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
 
 ```{r}
 cor.test(formula = ~ iq + logic,
@@ -203,19 +203,19 @@ cor.test(formula = ~ iq + logic,
 
 #### chi-square test
 
-9. Are some majors more popular than others? Answer this question with a one-sample chi-square test.
+10. Are some majors more popular than others? Answer this question with a one-sample chi-square test.
 
 ```{r}
 chisq.test(table(wpa6.df$major))
 ```
 
-10. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
+11. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
 
 ```{r}
 chisq.test(table(wpa6.df$risk))
 ```
 
-11. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
+12. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
 
 ```{r}
 chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
@@ -224,13 +224,13 @@ chisq.test(table(wpa6.df$major, wpa6.df$haircolor))
 
 #### You pick the test!
 
-12. Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?
+13. Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?
 
-13. Do males and females have different numbers of sexual partners on average?
+14. Do males and females have different numbers of sexual partners on average?
 
-14. Do males and females differ in how likely they are to have smoked marijuana?
+15. Do males and females differ in how likely they are to have smoked marijuana?
 
-15. Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?
+16. Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?
 
 # Checkpoint!!!
 
@@ -243,7 +243,7 @@ knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointS
 
 In the next few questions, we'll explore Anscombe's famous data quartet. This famous dataset will show you the dangers of interpreting statistical tests (like a correlation test), without first plotting the data!
 
-16. Run the following code to create the `anscombe` dataframe. This dataframe contains 11 pairs of data for four different datasets: A, B, C and D
+17. Run the following code to create the `anscombe` dataframe. This dataframe contains 11 pairs of data for four different datasets: A, B, C and D
 
 ```{r echo = TRUE}
 # JUST COPY, PASTE, AND RUN!
@@ -259,9 +259,9 @@ anscombe <- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
                        set = rep(c("A", "B", "C", "D"), each = 11))
 ```
 
-17. Look at the `anscombe` dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don't need to report full APA style for these tests, just make a note of the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?
+18. Look at the `anscombe` dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don't need to report full APA style for these tests, just make a note of the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?
 
-18. Now it's time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?
+19. Now it's time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?
 
 ```{r eval = FALSE, echo = TRUE}
 # JUST COPY, PASTE, AND RUN!
@@ -282,33 +282,33 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 
 ### You pick the test!
 
-19. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
+20. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
 
-20. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
+21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
 
-21. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
+22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
 
-22. Only for men from Switzerland, is there a relationship between age and IQ?
+23. Only for men from Switzerland, is there a relationship between age and IQ?
 
-23. Only for people who chose the risky gamble *and* have never tried marijuana, is there a relationship between iq and performance on the logic test?
+24. Only for people who chose the risky gamble *and* have never tried marijuana, is there a relationship between iq and performance on the logic test?
 
 ### Predict the correlation
 
-24. What do you predict the correlation will be between the following two vectors `x` and `y`? Test your prediction by conducting the appropriate test (hint: you may want to put the vectors into a dataframe by running `df <- data.frame(x = x, y = y)` before running the correlation test),
+25. What do you predict the correlation will be between the following two vectors `x` and `y`? Test your prediction by conducting the appropriate test (hint: you may want to put the vectors into a dataframe by running `df <- data.frame(x = x, y = y)` before running the correlation test),
 
 ```{r, echo = TRUE}
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- rnorm(n = 100, mean = 50, sd = 10)
 ```
 
-25. What about the correlation between the following two vectors? Test your prediction by conducting the appropriate test.
+26. What about the correlation between the following two vectors? Test your prediction by conducting the appropriate test.
 
 ```{r, echo = TRUE}
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- -5 * x
 ```
 
-26. What about these? Test your prediction by conducting the appropriate test.
+27. What about these? Test your prediction by conducting the appropriate test.
 
 ```{r, echo = TRUE}
 x <- rnorm(n = 100, mean = 10, sd = 10)
@@ -320,7 +320,7 @@ y <- x + rnorm(n = 100, mean = 50, sd = 10)
 
 Let's run some simulations to see what p-values *really* mean. We'll do this by drawing repeated samples from a world when the null hypothesis H0 is True, and other samples from a world when the null hypothesis is False, that is, when the alternative hypothesis H1 is True).
 
-27. First, let's draw a random sample from the world when the null hypothesis H0 is True. We'll save the results as `sample.H0`. Then, we'll conduct a one-sample t-test to test if the true population mean is really 0:
+28. First, let's draw a random sample from the world when the null hypothesis H0 is True. We'll save the results as `sample.H0`. Then, we'll conduct a one-sample t-test to test if the true population mean is really 0:
 
 ```{r echo = TRUE}
 # Generate a vector of 20 samples from a normal distribution with mu = 0
@@ -333,9 +333,9 @@ sample.H0 <- rnorm(n = 20, mean = 0, sd = 1)
 t.test(x = sample.H0, mu = 0, alternative = "two.sided")$p.value
 ```
 
-28. Copy and paste your code above several times and see what happens! As you'll see, the value keeps changing, this is because you're getting new samples each time. How often do you get a 'significant' p-value?
+29. Copy and paste your code above several times and see what happens! As you'll see, the value keeps changing, this is because you're getting new samples each time. How often do you get a 'significant' p-value?
 
-29. Now, let's repeat the process in a world where the null hypothesis is False (that is, the true mean is 0.5). Run the following code several times to see what the p-values look like
+30. Now, let's repeat the process in a world where the null hypothesis is False (that is, the true mean is 0.5). Run the following code several times to see what the p-values look like
 
 ```{r echo = TRUE}
 # Generate a vector of 20 samples from a normal distribution with mu = 0.5
@@ -347,7 +347,7 @@ sample.H1 <- rnorm(n = 20, mean = 0.5, sd = 1)
 t.test(x = sample.H1, mu = 0, alternative = "two.sided")$p.value
 ```
 
-30. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
+31. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
 
 ```{r}
 
@@ -385,17 +385,17 @@ for(i in 1:nrow(p.values)) {
 
 ```
 
-31. Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)
+32. Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)
 
-32. Is the mean p-value from the H0 world significantly different from the mean p-value from the H1 world? Conduct the appropriate test!
+33. Is the mean p-value from the H0 world significantly different from the mean p-value from the H1 world? Conduct the appropriate test!
 
 34. Use your simulation to answer the following question: "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" In other words, for all of your simulations in the H1 world, what percent resulted in a p-value less than 0.05? (Hint: use `aggregate()` or `dplyr`).
 
-33. Now use your simulation to answer a slightly different question: "Given that a p-value is less than .05, what is the probability that the null hypothesis is really False?" In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world (and not in the H0 world)?
+35. Now use your simulation to answer a slightly different question: "Given that a p-value is less than .05, what is the probability that the null hypothesis is really False?" In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world (and not in the H0 world)?
 
-35. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 100 simulations from the H0 world, and 500 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
+36. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 100 simulations from the H0 world, and 500 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
 
-36. Based on what you've learned, what is the correct answer to the general question: "Given that the p-value from a hypothesis test is less than 0.05, what is the probability that the null hypothesis is True?"
+37. Based on what you've learned, what is the correct answer to the general question: "Given that the p-value from a hypothesis test is less than 0.05, what is the probability that the null hypothesis is True?"
 
 
 ## Submit!
