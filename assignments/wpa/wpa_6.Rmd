@@ -144,7 +144,7 @@ Name| Skeleton |Example
 -------  | -------------------------- | -------------------------------
 Chi-square            | X(\__) = \__, p = \__ |  X(25) = 15.89, p = 0.92 
 T-test           | t(\__) = \__, p = \__ (\__-tailed), 95% CI = (\__, \__)| t(99) = 3.47, p < .01 (2-tailed), 95% CI = (0.14, 0.53)
-Correlation test         | r = \__, t(\__) = \__, p =\ __ (\__-tailed), 95% CI = (\__, \__)| r(98) = 0.09, t = 0.89, p = 0.37 (2-tailed), 95% CI = (-0.11, 0.28)
+Correlation test         | r = \__, t(\__) = \__, p =\ __ (\__-tailed), 95% CI = (\__, \__)| r = 0.09, t(98) = 0.89, p = 0.37 (2-tailed), 95% CI = (-0.11, 0.28)
 
 For example, here is some output with the appropriate apa conclusion:
 
