@@ -160,9 +160,8 @@ t.test(formula = tattoos ~ sex,
 # Chi-Square test
  
 # Is there a relationship between college and favorite pirate?
-chisq.test(x = pirates$college,
-           y = pirates$favorite.pirate)
-
+chisq.test(table(pirates$college,
+                 pirates$favorite.pirate))
 
 # Assign the results of a test to a new htest object and then acces specific outputs
 
