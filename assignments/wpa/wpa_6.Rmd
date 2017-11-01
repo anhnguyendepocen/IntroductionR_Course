@@ -348,7 +348,7 @@ t.test(x = sample.H1, mu = 0, alternative = "two.sided")$p.value
 
 31. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
 
-```{r}
+```{r, include = FALSE}
 
 # Set up the simulation parameters
 simulation <- data.frame(world = c(rep("H0", 100), rep("H1", 100)),
@@ -392,7 +392,7 @@ for(i in 1:nrow(simulation)) {
 
 35. Now use your simulation to answer a slightly different question: "Given that a p-value is less than .05, what is the probability that the null hypothesis is really False?" In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world (and not in the H0 world)?
 
-36. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 100 simulations from the H0 world, and 500 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
+36. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 1,000 simulations from the H0 world, and 100 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
 
 37. Based on what you've learned, what is the correct answer to the general question: "Given that the p-value from a hypothesis test is less than 0.05, what is the probability that the null hypothesis is True?"
 

@@ -353,7 +353,7 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 
 ### You pick the test!
 
-20. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
+20. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores? (Note: this appears to be the same as question 9)
 
 ```{r}
 cor.test(~ iq + logic,
@@ -362,16 +362,47 @@ cor.test(~ iq + logic,
 
 <font color='blue'>I do not find significant evidence that people with higher IQs perform better on a logic test than those with lower IQs, t(98) = 1.21, p = 0.23, 95% CI = (-0.08, 0.31)</font>
 
-21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
+21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test on a subset of the original data)
 
+```{r}
+survey_germans <- subset(survey, country == "germany")
 
+chisq.test(table(survey_germans$marijuana))
+```
 
+<font color='blue'>I do NOT find significant evidence that Germans are more likely than not to have smoked marijuana, X(1, N = 29) = 0.03, p = 0.85</font>
 
 22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
 
+```{r}
+t.test(formula = iq ~ haircolor,
+       data = survey,
+       subset = haircolor %in% c("blonde", "brown"))
+```
+
+
+<font color='blue'>I do NOT find significant evidence that the mean IQ of people with blonde hair is different from those with brown hair, t(59.1) = 0.51, p = 0.61, 95% CI = (-1.76, 2.95)</font>
+
 23. Only for men from Switzerland, is there a relationship between age and IQ?
 
+```{r}
+cor.test(formula = ~age + iq,
+         data = survey,
+         subset = country == "switzerland")
+```
+
+<font color='blue'>I do NOT find evidence for a correlation between age and IQ in students from Switzerland, t(58) = 1.15, p = 0.25, 95% CI = (-0.11, 0.39)</font>
+
+
 24. Only for people who chose the risky gamble *and* have never tried marijuana, is there a relationship between iq and performance on the logic test?
+
+```{r}
+cor.test(formula = ~ iq + logic,
+         data = survey,
+         subset = risk == 1 & marijuana == 0)
+```
+
+<font color='blue'>I do NOT find evidence for a correlation between IQ and logic for people who chose the risky gambe and have never tried marijuana, t(10) = 1.42, p = 0.18, 95% CI = (-0.21, 0.80)</font>
 
 ### Predict the correlation
 
@@ -382,11 +413,32 @@ x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- rnorm(n = 100, mean = 50, sd = 10)
 ```
 
+
+```{r}
+df <- data.frame(x = x, y = y)
+
+cor.test(formula = ~ y + x,
+         data = df)
+
+# Nope not significant!
+```
+
+
 26. What about the correlation between the following two vectors? Test your prediction by conducting the appropriate test.
 
 ```{r, echo = TRUE}
 x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- -5 * x
+```
+
+
+```{r}
+df <- data.frame(x = x, y = y)
+
+cor.test(formula = ~ y + x,
+         data = df)
+
+# A perfect negative correlation!
 ```
 
 27. What about these? Test your prediction by conducting the appropriate test.
@@ -396,6 +448,15 @@ x <- rnorm(n = 100, mean = 10, sd = 10)
 y <- x + rnorm(n = 100, mean = 50, sd = 10)
 ```
 
+
+```{r}
+df <- data.frame(x = x, y = y)
+
+cor.test(formula = ~ y + x,
+         data = df)
+
+# A large positive correlation!
+```
 
 ### Conducting a simulation of p-values
 
@@ -428,9 +489,15 @@ sample.H1 <- rnorm(n = 20, mean = 0.5, sd = 1)
 t.test(x = sample.H1, mu = 0, alternative = "two.sided")$p.value
 ```
 
+
+```{r, echo = FALSE, include = FALSE}
+set.seed(100)
+```
+
+
 31. It's time to put it all together. In the code below, you'll run a simulation where you repeat the process above 100 times for the H0 world, and 100 times for the H1 world
 
-```{r}
+```{r, include = FALSE}
 # Set up the simulation parameters
 simulation <- data.frame(world = c(rep("H0", 100), rep("H1", 100)),
                          p = NA,
@@ -467,15 +534,96 @@ for(i in 1:nrow(simulation)) {
 
 32. Visualize the distribution of p values from the simulation separately for each world (for example, you could create a boxplot)
 
+```{r}
+ggplot(data = simulation,
+       aes(x = world, y = p)) + 
+  geom_boxplot()
+```
+
+
 33. Is the mean p-value from the H0 world significantly different from the mean p-value from the H1 world? Conduct the appropriate test!
+
+```{r}
+t.test(formula = p ~ world,
+       data = simulation)
+```
+
+<font color='blue'>I do find evidence for a significant difference in p-values in the H0 world and the H1 world, t(182.65) = 10.35, p < .01, 95% CI = (0.31, 0.46)</font>
 
 34. Use your simulation to answer the following question: "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" In other words, for all of your simulations in the H1 world, what percent resulted in a p-value less than 0.05? (Hint: use `aggregate()` or `dplyr`).
 
+```{r}
+library(dplyr)
+
+simulation %>% 
+  filter(world == "H0") %>%
+  summarise(mean(p < .05))
+
+# About 3% of the time (pretty close to 5%)
+```
+
+
+
 35. Now use your simulation to answer a slightly different question: "Given that a p-value is less than .05, what is the probability that the null hypothesis is really False?" In other words, for all the simulations that resulted in a p-value less than 0.05, what proportion were in the H1 world (and not in the H0 world)?
 
-36. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 100 simulations from the H0 world, and 500 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
+
+```{r}
+simulation %>% 
+  filter(p < .05) %>%
+  summarise(mean(world == "H1"))
+
+# About 95% of the time
+```
+
+36. Now, run the simulation again, but this time instead of performing 100 simulations from both worlds, do 1,000 simulations from the H0 world, and 100 from the H1 world. Based on this simulation, now make the same calculations as the previous two questions. That is, "Given that the null hypothesis is true, what is the probability of obtaining a p-value less than 0.05?" and "Given that a p-value is less than 0.05, what is the probability that the null hypothesis is False?" Are you answers the same or different from before?
+
+```{r, include = FALSE}
+
+# Set up the simulation parameters
+simulation <- data.frame(world = c(rep("H0", 1000), rep("H1", 100)),
+                         p = NA,
+                         stringsAsFactors = FALSE)
+
+# Loop over each row
+for(i in 1:nrow(simulation)) {
+  
+  print(paste("Sim", i, "of", nrow(simulation)))  # Print the curent
+  
+  world.i <- simulation$world[i]   # Which world are we in?
+  
+  if(world.i == "H0") {  # If world is H0 (null is TRUE)...
+    
+    x <- rnorm(n = 20, mean = 0, sd = 1)  # Get random samples from H0 world
+    
+    p.i <- t.test(x)$p.value  # Run t.test, and get resulting p-value
+    
+  }
+  
+  if(world.i == "H1") {  # If world is H0 (null is TRUE)...
+    
+    x <- rnorm(n = 20, mean = .5, sd = 1)  # Get random samples from H1 world
+    
+    p.i <- t.test(x)$p.value # Run t.test, and get resulting p-value
+    
+  }
+  
+  simulation$p[i] <- p.i  # Assign resulting p-value back to simulation
+  
+} # Close loop!
+```
+
+
+```{r}
+simulation %>% 
+  filter(p < .05) %>%
+  summarise(mean(world == "H1"))
+
+# Only about half the time!
+```
 
 37. Based on what you've learned, what is the correct answer to the general question: "Given that the p-value from a hypothesis test is less than 0.05, what is the probability that the null hypothesis is True?"
+
+<font color='blue'>It depends on the prior probability that the null hypothesis was true in the first place!</font>
 
 
 ## Submit!
