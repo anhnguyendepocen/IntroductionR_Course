@@ -170,7 +170,7 @@ t.test(x = survey$iq,
        mu = 100)
 ```
 
-*Answer: I do not find significant evidence that these participants have a mean IQ different from the general population t(99) = -0.91, p = 0.37*
+<font color='blue'>I do find significant evidence that these participants have a mean IQ larger than the general population, t(99) = 20.85, p < .01, 95% CI = (109.09, 111.01)</font>
 
 6. A friend of yours claims that students have 2.5 siblings on average. Test this claim with a one-sample t-test.
 
@@ -179,12 +179,17 @@ t.test(x = survey$siblings,
        mu = 2.5)
 ```
 
+<font color='blue'>I do not find significant evidence that these participants have an average number of siblings different from 2.5, t(99) = -0.91, p = 0.37, 95% CI = (2.18, 2.62)</font>
+
 7. Do students that have smoked marijuana have different IQ levels than those who have never smoked marijuana? Test this claim with a two-sample t-test (you can either use the vector or the formula notation for a t-test)
 
 ```{r}
 t.test(iq ~ marijuana, 
        data = survey)
 ```
+
+<font color='blue'>I do not find significant evidence that the mean IQ of people who have ever smoked marijuana is different from those who have smoked marijuana, t(96.08) = -0.72, p = 0.47, 95% CI = (-2.61, 1.21)</font>
+
 
 #### correlation test
 
@@ -195,12 +200,17 @@ cor.test(formula = ~ multitasking + partners,
        data = survey)
 ```
 
+<font color='blue'>I do not find significant evidence that there is a correlation between multitasking and the number of romantic partners one has had, t(98) = -0.79, p = 0.43, 95% CI = (-0.27, 0.12)</font>
+
 9. Do people with higher IQs perform faster on the logic test? Answer this question with a correlation test.
 
 ```{r}
 cor.test(formula = ~ iq + logic,
          data = survey)
 ```
+
+<font color='blue'>I do not find significant evidence that people with higher IQs perform faster on a logic test than those with lower IQs, t(98) = 1.21, p = 0.23, 95% CI = (-0.08, 0.31)</font>
+
 
 #### chi-square test
 
@@ -210,11 +220,18 @@ cor.test(formula = ~ iq + logic,
 chisq.test(table(survey$major))
 ```
 
+<font color='blue'>I do find significant evidence that some majors are more common than others, X(3, N = 100) = 130.96, p < 0.01</font>
+
+
 11. In general, were students more likely to take a risk than not? Answer this question with a one-sample chi-square test
 
 ```{r}
 chisq.test(table(survey$risk))
+
+table(survey$risk) # To see see which value was more likely!
 ```
+
+<font color='blue'>I do find significant evidence that students were LESS likely to take a risk than to not take a risk, X(1, N = 100) = 17.64, p < 0.01</font>
 
 12. Is there a relationship between hair color and students' academic major? Answer this with a two-sample chi-square test
 
@@ -222,23 +239,52 @@ chisq.test(table(survey$risk))
 chisq.test(table(survey$major, survey$haircolor))
 ```
 
+<font color='blue'>I do not find significant evidence that there is a relationship between hair color and students' academic major, X(9, N = 100) = 5.92, p = 0.75</font>
+
 
 #### You pick the test!
 
 13. Is there a relationship between whether a student has ever smoked marijuana and his/her decision to accept or reject the risky gamble?
 
+```{r}
+chisq.test(table(survey$marijuana, survey$risk))
+```
+
+<font color='blue'>I do NOT find significant evidence that there is a relationship between marijuana use and people's decision to accept a risky gamble, X(1, N = 100) = 0.57, p = 0.45</font>
+
 14. Do males and females have different numbers of sexual partners on average?
+
+```{r}
+t.test(formula = partners ~ sex,
+       data = survey)
+```
+
+<font color='blue'>I do NOT find significant evidence that men and women have different numbers of sexual partners on average, t(93.77) = 0.92, p = 0.36</font>
 
 15. Do males and females differ in how likely they are to have smoked marijuana?
 
+```{r}
+chisq.test(table(survey$marijuana, survey$sex))
+```
+
+<font color='blue'>I do NOT find significant evidence that men and women differ in their likelihood to smoke marijuana, X(1, N = 100) = 0.16, p = 0.69</font>
+
+
 16. Do people who have smoked marijuana have different logic scores on average than those who never have smoked marijuana?
+
+```{r}
+t.test(formula = logic ~ marijuana,
+       data = survey)
+```
+
+<font color='blue'>I do NOT find significant evidence that people who have smoked marijuana have different logic scores than those who have never smoked marijuana, t(90.88) = 0.96, p = 0.34</font>
+
 
 # Checkpoint!!!
 
 ```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
 knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
 ```
-
 
 ### Anscombe's Famous data quartet
 
@@ -262,9 +308,33 @@ anscombe <- data.frame(x = c(c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
 
 18. Look at the `anscombe` dataframe to see how it is structured. Then, calculate the correlation between x and y separately for each dataset. That is, what is the correlation between x and y for dataset A? What about for datasets B, C and then D? You don't need to report full APA style for these tests, just make a note of the correlation coefficients. What do you notice about the correlation coefficients for each dataset? Would you conclude that these datasets are very similar or very different?
 
+```{r}
+# Correlation for A
+cor.test(formula = ~ x + y,
+         data = anscombe,
+         subset = set == "A")
+
+# Correlation for B
+cor.test(formula = ~ x + y,
+         data = anscombe,
+         subset = set == "B")
+
+# Correlation for C
+cor.test(formula = ~ x + y,
+         data = anscombe,
+         subset = set == "C")
+
+# Correlation for D
+cor.test(formula = ~ x + y,
+         data = anscombe,
+         subset = set == "D")
+```
+
+<font color = 'blue'>All of the correlations are identical at r = 0.83!</font>
+
 19. Now it's time to actually look at the data and see if your prediction holds up! Run the following code to generate a scatterplot of each data pair, what do you find?
 
-```{r eval = FALSE, echo = TRUE}
+```{r eval = TRUE, echo = TRUE, fig.width = 6, fig.height = 5}
 # JUST COPY, PASTE, AND RUN!
 library(ggplot2)    # Load ggplot2
 
@@ -285,7 +355,17 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 
 20. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
 
+```{r}
+cor.test(~ iq + logic,
+         data = survey)
+```
+
+<font color='blue'>I do not find significant evidence that people with higher IQs perform better on a logic test than those with lower IQs, t(98) = 1.21, p = 0.23, 95% CI = (-0.08, 0.31)</font>
+
 21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
+
+
+
 
 22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
 

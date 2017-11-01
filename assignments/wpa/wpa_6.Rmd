@@ -283,7 +283,7 @@ What you have just seen is the famous **Anscombe's quartet** a dataset designed 
 
 20. Do people with higher iq scores tend to perform better on the logic test that those with lower iq scores?
 
-21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test with a `subset` argument)
+21. Are Germans more likely than not to have tried marijuana? (Hint: this is a one-sample chi-square test on a subset of the original data).
 
 22. Does the IQ of people with brown hair differ from blondes? (Hint: This is a two-sample t-test that requires you to use the `subset()` argument to tell R which two groups you want to compare)
 
