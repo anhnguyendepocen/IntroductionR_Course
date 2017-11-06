@@ -420,7 +420,7 @@ summary(aov(model_lm))
 # In this case, all three tests give virtually the same answers (thankfully)
 ```
 
-Now, answer the question: "Is there an interaction between shirtless and sex on dating desireability?" by conducting three separate ANOVAS, one that is Type I (using `aov()`), one that is Type II (using `Anova()`), and one that is Type III (using `Anova()`). Do you get the same or different answers?
+Now, answer the question: "Is there an interaction between shirtless and sex on dating desireability?" by conducting three separate ANOVAS, one that is Type I (using `aov()`), one that is Type II (using `Anova()`), and one that is Type III (using `Anova()`). Do you get the same or different answers? To learn more about how the different ANOVA types work, look at this post by Falk Scholer: [http://goanna.cs.rmit.edu.au/~fscholer/anova.php](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).
 
 22. Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?
 
