@@ -310,7 +310,7 @@ summary(t12_aov)
 
 ## ANOVAs on subsets of data
 
-13. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: in the `data` argument, instead of using the entire `facebook` data, subset the data using `subset(facebook, session > 30)`). Do your conclusions change compared to when you analyzed the data from all sessions?
+13. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: Make the changes to the `data` argument). Do your conclusions change compared to when you analyzed the data from all sessions?
 
 ```{r, eval = FALSE, echo = FALSE}
 t13_aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
@@ -375,7 +375,6 @@ summary(t17_aov)
 
 18. Repeat the test from the previous question, but **only** include males over the age of 25. Do you get the same answer?.
 
-
 ### Learn more
 
 19. You can print an `aov` object to visualize things like the model residuals. Try plotting the results of your anova from question 17 (e.g.; `plot(t17_aov)`) and look at the resulting plots. 
@@ -390,7 +389,16 @@ library("papaja")                       # Load the papaja package
 
 Now that you've got it, try evaluating `apa_print()` on some of your previous `aov` objects to see what happens. You may notice that the results have special characters like `$` and `\\`. This is because the output contains formatting code for LaTeX.
 
-21. There are different "types" of ANOVAS. The `aov()` function in R calculates what is known as a type I ANOVA. If your data are severely imbalanced, that is, where the number of observations in each group are not similar, then using a Type I ANOVA can lead to misleading results. In this case, it's better to use a Type II or Type III ANOVA. The `Anova()` function from the `car` package allows you to conduct these types of ANOVAs. Here's how to use the `Anova()` function:
+21. You can use the `predict()` function to use a model (like an ANOVA) to predict the values of new data using the notation `predict(MODEL, newdata)`. Using your ANOVA from question 8, predict the dateability of the following 5 students:
+
+```{r, echo = TRUE}
+newdata <- data.frame("id" = c(1, 2, 3, 4, 5),
+                      "haircolor" = c("brown", "brown", "blonde", "blonde", "brown"),
+                      "university" = c("1.Basel", "1.Basel", "2.Zurich", "3.Geneva", "3.Geneva"),
+                      stringsAsFactors = FALSE)
+```
+
+22. There are different "types" of ANOVAS. The `aov()` function in R calculates what is known as a type I ANOVA. If your data are severely imbalanced, that is, where the number of observations in each group are not similar, then using a Type I ANOVA can lead to misleading results. In this case, it's better to use a Type II or Type III ANOVA. The `Anova()` function from the `car` package allows you to conduct these types of ANOVAs. Here's how to use the `Anova()` function:
 
 ```{r, echo = TRUE}
 install.packages("car")  # Only if you don't have the car package yet
@@ -422,7 +430,7 @@ summary(aov(model_lm))
 
 Now, answer the question: "Is there an interaction between shirtless and sex on dating desireability?" by conducting three separate ANOVAS, one that is Type I (using `aov()`), one that is Type II (using `Anova()`), and one that is Type III (using `Anova()`). Do you get the same or different answers? To learn more about how the different ANOVA types work, look at this post by Falk Scholer: [http://goanna.cs.rmit.edu.au/~fscholer/anova.php](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).
 
-22. Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?
+23. Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?
 
 ## Submit!
 

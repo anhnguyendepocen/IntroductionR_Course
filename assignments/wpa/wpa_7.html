@@ -345,7 +345,7 @@ TukeyHSD(t0_aov)</code></pre>
 <div id="anovas-on-subsets-of-data" class="section level2">
 <h2>ANOVAs on subsets of data</h2>
 <ol start="13" style="list-style-type: decimal">
-<li>It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can’t trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: in the <code>data</code> argument, instead of using the entire <code>facebook</code> data, subset the data using <code>subset(facebook, session &gt; 30)</code>). Do your conclusions change compared to when you analyzed the data from all sessions?</li>
+<li>It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can’t trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: Make the changes to the <code>data</code> argument). Do your conclusions change compared to when you analyzed the data from all sessions?</li>
 </ol>
 </div>
 <div id="checkpoint" class="section level1">
@@ -372,6 +372,13 @@ devtools::install_github(&quot;crsh/papaja&quot;) # Install the papaja package f
 library(&quot;papaja&quot;)                       # Load the papaja package</code></pre>
 <p>Now that you’ve got it, try evaluating <code>apa_print()</code> on some of your previous <code>aov</code> objects to see what happens. You may notice that the results have special characters like <code>$</code> and <code>\\</code>. This is because the output contains formatting code for LaTeX.</p>
 <ol start="21" style="list-style-type: decimal">
+<li>You can use the <code>predict()</code> function to use a model (like an ANOVA) to predict the values of new data using the notation <code>predict(MODEL, newdata)</code>. Using your ANOVA from question 8, predict the dateability of the following 5 students:</li>
+</ol>
+<pre class="r"><code>newdata &lt;- data.frame(&quot;id&quot; = c(1, 2, 3, 4, 5),
+                      &quot;haircolor&quot; = c(&quot;brown&quot;, &quot;brown&quot;, &quot;blonde&quot;, &quot;blonde&quot;, &quot;brown&quot;),
+                      &quot;university&quot; = c(&quot;1.Basel&quot;, &quot;1.Basel&quot;, &quot;2.Zurich&quot;, &quot;3.Geneva&quot;, &quot;3.Geneva&quot;),
+                      stringsAsFactors = FALSE)</code></pre>
+<ol start="22" style="list-style-type: decimal">
 <li>There are different “types” of ANOVAS. The <code>aov()</code> function in R calculates what is known as a type I ANOVA. If your data are severely imbalanced, that is, where the number of observations in each group are not similar, then using a Type I ANOVA can lead to misleading results. In this case, it’s better to use a Type II or Type III ANOVA. The <code>Anova()</code> function from the <code>car</code> package allows you to conduct these types of ANOVAs. Here’s how to use the <code>Anova()</code> function:</li>
 </ol>
 <pre class="r"><code>install.packages(&quot;car&quot;)  # Only if you don't have the car package yet
@@ -400,7 +407,7 @@ summary(aov(model_lm))
 
 # In this case, all three tests give virtually the same answers (thankfully)</code></pre>
 <p>Now, answer the question: “Is there an interaction between shirtless and sex on dating desireability?” by conducting three separate ANOVAS, one that is Type I (using <code>aov()</code>), one that is Type II (using <code>Anova()</code>), and one that is Type III (using <code>Anova()</code>). Do you get the same or different answers? To learn more about how the different ANOVA types work, look at this post by Falk Scholer: <a href="http://goanna.cs.rmit.edu.au/~fscholer/anova.php" class="uri">http://goanna.cs.rmit.edu.au/~fscholer/anova.php</a>.</p>
-<ol start="22" style="list-style-type: decimal">
+<ol start="23" style="list-style-type: decimal">
 <li>Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?</li>
 </ol>
 </div>
