@@ -1,0 +1,511 @@
+---
+title: "WPA #7  -- ANOVA"
+output: html_document
+---
+
+```{r global_options, include=FALSE, echo = FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align = 'center', out.width = "70%")
+
+
+library(yarrr)
+
+
+facebook <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt", sep = "\t", header = TRUE)
+```
+
+
+
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr: [14](https://bookdown.org/ndphillips/YaRrr/anova.html)
+
+## Assignment Goals
+
+- Conduct ANOVAs (Analysis of Variance) with `aov()`
+- Conduct post-hoc tests with `TukeyHSD()`
+- Write APA style conclusions from ANOVAs
+
+## Examples
+
+```{r, echo = TRUE, eval = FALSE}
+library(yarrr) # Load yarrr for the pirates dataframe
+
+# ------------------
+#  ONE WAY ANOVA
+# ------------------
+
+# Do pirates from different colleges have different beard lengths?
+
+col_beard_aov <- aov(formula = beard.length ~ college,
+                     data = pirates)
+
+# What is in the object?
+class(col_beard_aov)     # Result is of class 'aov' and 'lm'
+names(col_beard_aov)     # All of the named elements in the object
+
+# Look at specific elements of the object
+
+col_beard_aov$coefficients   # Coeffients
+col_beard_aov$residuals      # Residuals (should be normally distributed)
+
+# Look at results
+summary(col_beard_aov)   # We do find a significant effect of college on beard length!
+TukeyHSD(col_beard_aov)  # Post-hoc tests
+
+# ------------------
+# TWO WAY ANOVA
+# ------------------
+
+# Is there a relationship between sex and headband on weight
+
+sexhead_weight_aov <- aov(formula = weight ~ sex + headband,
+                     data = pirates)
+
+summary(sexhead_weight_aov)   # There is an effect of sex, but not headband
+TukeyHSD(sexhead_weight_aov)  # Post-hoc tests
+
+# ------------------
+# TWO WAY ANOVA WITH INTERACTIONS
+# ------------------
+
+# Is there an interaction between sex and headband on weight
+
+sexhead_int_weight_aov <- aov(formula = weight ~ sex * headband,   # Use * instead of + for interactions!
+                              data = pirates)
+
+summary(sexhead_int_weight_aov)   # Nope, no interaction
+
+
+# ------------------
+# More fun!
+# ------------------
+
+# Plot an ANOVA object to visualize several statistics
+plot(col_beard_aov)
+
+# Use the papaja package to print apa style results
+devtools::install_github("crsh/papaja", include_vignettes = TRUE)   # Install the papaja package from github
+library("papaja")   # Load the papaja package
+
+# Print apa style conclusions from aov objects
+apa_print(col_beard_aov)
+apa_print(sexhead_int_weight_aov)
+
+# Easily plot group effects with yarrr::pirateplot()
+
+library(yarrr)
+pirateplot(formula = weight ~ sex + headband, 
+           data = pirates)
+
+# Or use ggplot2
+library(tidyverse) # Contains ggplot2 and dplyr
+
+# First, calculate aggregate data to be plotted
+
+pirates_agg <- pirates %>% 
+  group_by(headband, sex) %>%
+  summarise(
+    weight_mean = mean(weight),
+    weight_lb = t.test(weight)$conf.int[1],
+    weight_ub = t.test(weight)$conf.int[2]
+  )
+
+ggplot(data = pirates_agg,
+       aes(x = headband, y = weight_mean, fill = sex)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.9), col = "white") + 
+  geom_errorbar(aes(ymax = weight_lb,
+                    ymin = weight_ub), 
+                position = position_dodge(0.9), 
+                width = 0.25) + 
+  labs(y = "Treasure chests found")
+
+```
+
+
+## Facebook Attraction
+
+<img src="http://2.bp.blogspot.com/_MJBBFCOksCY/S_jHGyMkoUI/AAAAAAAAAA0/-DnFV_1bu1Y/s1600/Douche.jpg" style="height:400px;" />
+
+
+In this WPA, you will analyze data from a (again...fake) study on attraction. In the study, 500 heterosexual University students viewed the Facebook profile of another student (the "target") of the opposite sex. Based on a target's profile, each participant made three judgments about the target - intelligence, attractiveness, and dateability. The primary judgement was a *dateability* rating indicating how dateable the person was on a scale of 0 to 100.
+
+
+The data are located in a tab-delimited text file at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt. Here is how the first few rows of the data should look:
+
+```{r, echo = FALSE, eval = TRUE}
+head(facebook)
+```
+
+## Datafile description
+
+The data file has 500 rows and 10 columns. Here are the columns
+
+- `session`: The experiment session in which the study was run. There were 50 total sessions.
+
+- `sex`: The sex of the target
+
+- `age`: The age of the target
+
+- `haircolor`: The haircolor of the target
+
+- `university`: The university that the target attended.
+
+- `education`: The highest level of education obtained by the target.
+
+- `shirtless`: Did the target have a shirtless profile picture? 1.No v 2.Yes
+
+- `intelligence`: How intelligent do you find this target? 1.Low, 2.Medium, 3.High
+
+- `attractiveness`: How physically attractive do you find this target? 1.Low, 2.Medium, 3.High
+
+- `dateability`: How dateable is this target? 0 to 100.
+
+## Data loading and preparation
+
+1. <font color = "red">Open your class R project</font>. This project should have (at least) two folders, one called `data` and one called `R`. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_7_LastFirst.R`, where Last and First are your last and first names. 
+
+2. The data are stored in a tab--delimited text file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt. Using `read.table()` load this data into R as a new object called `facebook`
+
+```{r}
+facebook <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt",
+                       header = TRUE, 
+                       sep = "\t")
+```
+
+
+## Understand the data
+
+3. Look at the first few rows of the dataframe with the `head()` and `View()` functions to make sure it loaded correctly. 
+
+```{r, eval = FALSE, echo = FALSE}
+head(facebook)
+```
+
+4. Using the `names()` and `str()` functions, look at the names and structure of the dataframe to make sure everything looks ok. If the data look strange, you did something wrong with `read.table()` diagnose the problem!
+
+```{r, eval = FALSE, echo = FALSE}
+str(facebook)
+```
+
+5. Using `write.table()`, save a local copy of the facebook data to a text file called `facebook.txt` in the data folder of your project. Now, you'll always have access to the data.
+
+```{r, eval = FALSE}
+write.table(facebook, 
+            file = "data/facebook.txt",
+            sep = "\t")
+```
+
+
+## Answer guidelines Read carefully to save yourself time!
+
+- For each question, conduct the appropriate ANOVA by creating an object called `tX_aov`, where X is the task number. Look at the results using `summary()`. Then, write the conclusion in APA style. To summarize an effect in an ANOVA, use the format F(XXX, YYY) = FFF, p = PPP, where XXX is the degrees of freedom of the variable you are testing, YYY is the degrees of freedom of the residuals, FFF is the F value for the variable you are testing, and PPP is the p-value (if the p-value is less than .01, just write p < .01).
+
+- If the p-value of the ANOVA is less than .05, conduct post-hoc tests. If you are only testing one independent variable, write APA conclusions for the post-hoc test. If you are testing more than one independent variable in your ANOVA, you do not need to write APA style conclusions for post-hoc tests.
+
+For example, here is how I would analyze and answer the question: "Was there an effect of diets on Chicken Weights?""
+
+```{r, eval = TRUE, echo = TRUE}
+# ANOVA on Chicken Weights
+#   IV = Diet, DV = weight
+
+# ANOVA
+t0_aov <- aov(formula = weight ~ Diet,
+              data = ChickWeight)
+
+# Look at summary results
+summary(t0_aov)
+
+# ANOVA was significant (p < .01), so I'll conduct post-hoc tests
+
+# Tukey post-hoc tests
+TukeyHSD(t0_aov)
+
+# Conclusion
+#  There was a significant main effect of diets on chicken weights (F(3, 574) = 10.81, p < .01). Pairwise Tukey HSD tests showed significant differences between diets 1 and 3 (diff = 40.30, p < .01) and diets 1 and 4 (diff = 32.62, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.
+```
+
+## One-way ANOVAS
+
+6. Was there a main effect of the university on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
+
+```{r, eval = FALSE, echo = FALSE}
+t6_aov <- aov(formula = dateability ~ university,
+            data = facebook)
+
+summary(t6_aov)
+
+TukeyHSD(t6_aov)
+
+#Answer: There was a significant main effect of university on dateability (F(2, 497) = 5.26, p < .01). Pairwise Tukey HSD tests showed significant differences between Geneva and Basel (diff = -9.23, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+```
+
+
+
+7. Was there a main effect of intelligence on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
+
+```{r, eval = FALSE, echo = FALSE}
+t7_aov <- aov(formula = dateability ~ intelligence,
+              data = facebook)
+
+summary(t7_aov)
+
+TukeyHSD(t7_aov)
+
+# Answer: There was not a significant main effect of intelligence on dateability (F(2, 497) = 1.59, p = 0.21).
+```
+
+
+
+8. Was there a main effect of haircolor on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
+
+```{r, eval = FALSE, echo = FALSE}
+t8_aov <- aov(formula = dateability ~ haircolor,
+              data = facebook)
+
+summary(t8_aov)
+
+# *Answer: There was no significant main effect of haircolor on dateability (F(1, 498) = 0.08, p = 0.77).*
+```
+
+
+## Multi way, independent ANOVAs
+
+9. Conduct a three-way ANOVA on dateability with both intelligence, university and haircolor as IVs. Do your results for each variable change compared to your previous one-way ANOVAs on these variables? (You do not need to give APA results or conduct post-hoc tests, just answer the question verbally).
+
+```{r, eval = FALSE, echo = FALSE}
+t9_aov <- aov(formula = dateability ~ intelligence + university + haircolor,
+              data = facebook)
+
+summary(t9_aov)
+
+# Answer: Yes the results are (generally) the same. Only the effect of University is significant at the 0.05 level.
+```
+
+
+10. Conduct a multi-way anova including sex, haircolor, university, education, shirtless, intelligence and attractiveness as independent variables predicting dateability. Which variables are significantly related to dateability? <font color="red">*Do* write APA results for each variable but do *not* conduct post-hoc tests</font>.
+
+```{r, eval = FALSE, echo = FALSE}
+t10_aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
+               data = facebook)
+
+summary(t10_aov)
+
+# *Answer: There were significant effects of sex (F(1, 487) = 60.75, p < .01), university (F(487) = 6.11, p < .01), intelligence (F(2, 487) = 3.21, p = .04) and attractiveness (F(2, 487) = 49.35, p < .01).*
+```
+
+
+
+## Interactions
+
+11. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: sex and shirtless. Based on what you see in the plot, do you expect there to be an interaction between sex and shirtless? Why or why not?
+
+```{r, echo = FALSE, eval = FALSE, message = FALSE}
+library(yarrr)
+pirateplot(dateability ~ sex + shirtless, 
+           data = facebook)
+
+# Yes there looks like an intereaction!
+```
+
+
+12.  Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
+```{r, echo = FALSE, eval = FALSE}
+t12_aov <- aov(dateability ~ sex * shirtless, 
+               data = facebook)
+            
+summary(t12_aov)
+
+# There is a sigificant interaction between sex and shirtless F(1, 496) = 66.15, p < .01.
+```
+
+
+## ANOVAs on subsets of data
+
+13. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: Make the changes to the `data` argument). Do your conclusions change compared to when you analyzed the data from all sessions?
+
+```{r, eval = FALSE, echo = FALSE}
+t13_aov <- aov(formula = dateability ~ intelligence + university + haircolor,
+               data = subset(facebook, session > 30))
+
+summary(t13_aov)
+
+# Now no effects are significant!
+```
+
+
+# CHECKPOINT!
+
+```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
+```
+
+
+### More interactions
+
+14. Create a plot (e.g.; using `ggplot` or the `yarrr::pirateplot()` function shown in the examples above) showing the distribution of dateability based on two independent variables: university and education. Based on what you see in the plot, do you expect there to be an interaction between university and education? Why or why not?
+
+```{r}
+pirateplot(dateability ~ university + education, 
+           data = facebook)
+
+# No there doesn't look like an interaction to me. The effect of university is the same in each level of education.
+```
+
+15. Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
+
+```{r}
+t15_aov <- aov(dateability ~ university * education, 
+               data = facebook)
+
+summary(t15_aov)
+
+# Yep! No significant interaction between university and education F(6, 488) = 0.48, p = 0.82.
+```
+    
+    
+16. Create a plot showing the distribution of dateability based on two independent variables: university and haircolor. Based on what you see in the plot, do you expect there to be an interaction between university and intelligence? Why or why not?
+
+```{r, eval = FALSE, echo = FALSE}
+pirateplot(dateability ~ university + haircolor, 
+           data = facebook)
+
+# There does not look like an interaction
+```
+
+17. Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
+
+```{r}
+t17_aov <- aov(dateability ~ university * haircolor, 
+               data = facebook)
+
+summary(t17_aov)
+
+# Yep! no significant interaction! F(2, 494) = 0.49, p = 0.61
+```
+
+
+18. Repeat the test from the previous question, but **only** include males over the age of 25. Do you get the same answer?.
+
+
+```{r}
+t18_aov <- aov(dateability ~ university * haircolor, 
+               data = subset(facebook, sex == "m" & age > 25))
+
+summary(t18_aov)
+
+# Yep! Still no interaction, F(2, 22) = 2.73, p = .09
+```
+
+### Learn more
+
+19. You can print an `aov` object to visualize things like the model residuals. Try plotting the results of your anova from question 17 (e.g.; `plot(t17_aov)`) and look at the resulting plots. 
+
+```{r, eval = FALSE}
+plot(t18_aov)
+# Cool plots!
+```
+
+
+20. You can use the `apa_print()` function from the `papaja` package to print apa style conclusions from `aov` objects. The `papaja` package is on GitHub (not on CRAN), so to install it you'll need to use the `install_github()` function from the `devtools` package as follows:
+
+```{r, eval = FALSE, echo = TRUE}
+install.packages("devtools")            # Only if you don't have the devtools package
+devtools::install_github("crsh/papaja") # Install the papaja package from GitHub
+library("papaja")                       # Load the papaja package
+```
+
+Now that you've got it, try evaluating `apa_print()` on some of your previous `aov` objects to see what happens. You may notice that the results have special characters like `$` and `\\`. This is because the output contains formatting code for LaTeX.
+
+```{r}
+papaja::apa_print(t18_aov)
+```
+
+
+21. You can use the `predict()` function to use a model (like an ANOVA) to predict the values of new data using the notation `predict(MODEL, newdata)`. Using your ANOVA from question 8, predict the dateability of the following 5 students:
+
+```{r, echo = TRUE}
+newdata <- data.frame("id" = c(1, 2, 3, 4, 5),
+                      "haircolor" = c("brown", "brown", "blonde", "blonde", "brown"),
+                      "university" = c("1.Basel", "1.Basel", "2.Zurich", "3.Geneva", "3.Geneva"),
+                      stringsAsFactors = FALSE)
+```
+
+
+```{r}
+predict(t18_aov, newdata)
+```
+
+
+22. There are different "types" of ANOVAS. The `aov()` function in R calculates what is known as a type I ANOVA. If your data are severely imbalanced, that is, where the number of observations in each group are not similar, then using a Type I ANOVA can lead to misleading results. In this case, it's better to use a Type II or Type III ANOVA. The `Anova()` function from the `car` package allows you to conduct these types of ANOVAs. Here's how to use the `Anova()` function:
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages("car")  # Only if you don't have the car package yet
+library("car")           # Load the car package
+
+# Is there a relationship between sex and college on tattoos?
+
+# First, create an lm() object, the Anova() function needs this:
+
+model_lm <- lm(formula = tattoos ~ sex + college, 
+         data = pirates)
+
+# Type II anova
+
+Anova(model_lm, 
+      type = "II")   # Type II
+
+# Type III anova
+
+Anova(model_lm, 
+      type = "III")  # Type III
+
+# Type I anova using the aov() function
+
+summary(aov(model_lm))
+
+# In this case, all three tests give virtually the same answers (thankfully)
+```
+
+Now, answer the question: "Is there an interaction between shirtless and sex on dating desireability?" by conducting three separate ANOVAS, one that is Type I (using `aov()`), one that is Type II (using `Anova()`), and one that is Type III (using `Anova()`). Do you get the same or different answers? To learn more about how the different ANOVA types work, look at this post by Falk Scholer: [http://goanna.cs.rmit.edu.au/~fscholer/anova.php](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).
+
+
+```{r, message = FALSE}
+library(car)
+
+summary(aov(dateability ~ shirtless + sex, data = facebook))
+
+car::Anova(lm(formula = dateability ~ shirtless + sex, 
+           data = facebook), type = "II")
+
+car::Anova(lm(formula = dateability ~ shirtless + sex, 
+           data = facebook), type = "III")
+
+# The p-value for the type I test (using aov()) is much smaller than the p-value for the type II and type III tests (which are virtually identical).
+```
+
+
+23. Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?
+
+```{r}
+# Add standardized dateability score to facebook dataframe
+facebook$dateability_z <- (facebook$dateability - mean(facebook$dateability)) / sd(facebook$dateability)
+
+# Anova for original (non-standardized) variable
+summary(aov(formula = dateability ~ attractiveness, data = facebook))
+
+# Anova for non-standardized variable
+summary(aov(formula = dateability_z ~ attractiveness, data = facebook))
+
+# The results are identical! This means that you can always standardize your dependent variable and it won't affect the test.
+```
+
+
+
+## Submit!
+
+- Save and email your `wpa_7_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
+
