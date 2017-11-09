@@ -1,501 +1,501 @@
 "session"	"sex"	"age"	"haircolor"	"university"	"education"	"shirtless"	"intelligence"	"attractiveness"	"dateability"
-1	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	45
-1	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	63
-1	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	58
-1	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	86
-1	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	96
-1	"m"	28	"brown"	"1.Basel"	"4.PhD"	"1.No"	"3.high"	"3.high"	90
-1	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	66
-1	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	72
-1	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	39
-1	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
-2	"f"	22	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	90
-2	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"1.low"	69
-2	"f"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	39
-2	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-2	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	53
-2	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	48
-2	"f"	26	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"1.low"	0
-2	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	31
-2	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	48
-2	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"1.low"	64
-3	"f"	20	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	56
-3	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"3.high"	79
-3	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	36
-3	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	69
-3	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	35
-3	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	39
-3	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	15
-3	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	82
-3	"m"	23	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	68
-3	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	95
-4	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	58
-4	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	42
-4	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	61
-4	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	23
-4	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
-4	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	61
-4	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	39
-4	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
-4	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	45
-4	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	71
-5	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	42
-5	"m"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	0
-5	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
-5	"m"	23	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	43
-5	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	46
-5	"m"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	29
-5	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	34
-5	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"2.medium"	91
-5	"f"	29	"blonde"	"2.Zurich"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	100
-5	"m"	29	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"1.low"	"2.medium"	6
-6	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	20
-6	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	78
-6	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	31
-6	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
-6	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	19
-6	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	47
-6	"f"	29	"blonde"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	83
-6	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
-6	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-6	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	52
-7	"f"	18	"blonde"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	86
-7	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	46
-7	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	53
-7	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	46
-7	"f"	28	"blonde"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	100
-7	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	77
-7	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	70
-7	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	63
-7	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	45
-7	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"2.medium"	"2.medium"	27
-8	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	17
-8	"f"	26	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"3.high"	11
-8	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"2.medium"	"2.medium"	91
-8	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"1.low"	26
-8	"f"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	32
-8	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	56
-8	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	51
-8	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	35
-8	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	31
-8	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
-9	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	47
-9	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-9	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	39
-9	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	91
-9	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	64
-9	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	81
-9	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	34
-9	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	45
-9	"m"	27	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"1.low"	38
-9	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	58
-10	"f"	30	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	100
-10	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
-10	"f"	25	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	46
-10	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	6
-10	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	51
-10	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	26
-10	"m"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	37
-10	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	92
-10	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	17
-10	"m"	30	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"3.high"	46
-11	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	26
-11	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	60
-11	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	73
-11	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	87
-11	"f"	18	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	7
-11	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	55
-11	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	78
-11	"m"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	34
-11	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	64
-11	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	0
-12	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	55
-12	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	14
-12	"f"	29	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	19
-12	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	100
-12	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	56
-12	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	49
-12	"f"	25	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	58
-12	"f"	29	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"1.low"	64
-12	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	50
-12	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-13	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	12
-13	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	10
-13	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	33
-13	"f"	18	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"3.high"	"1.low"	39
-13	"m"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"2.medium"	49
-13	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	28
-13	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	38
-13	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	93
-13	"f"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	64
-13	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	29
-14	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-14	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	10
-14	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	94
-14	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	31
-14	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	36
-14	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	27
-14	"m"	20	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	25
-14	"f"	20	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
-14	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"1.low"	14
-14	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	52
-15	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-15	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	58
-15	"f"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	69
-15	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	30
-15	"f"	24	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
-15	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	49
-15	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	51
-15	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	76
-15	"m"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	3
-15	"m"	29	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	68
-16	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	40
-16	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	74
-16	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	68
-16	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
-16	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	61
-16	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	62
-16	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	77
-16	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	99
-16	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	82
-16	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	35
-17	"f"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	18
-17	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	46
-17	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-17	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	25
-17	"m"	21	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	39
-17	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	20
-17	"m"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"2.medium"	22
-17	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"3.high"	44
-17	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	25
-17	"f"	26	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"3.high"	"3.high"	72
-18	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	11
-18	"f"	17	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-18	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	39
-18	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	37
-18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	32
-18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	0
-18	"f"	20	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	95
-18	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	60
-18	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	71
-19	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	79
-19	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	65
-19	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	45
-19	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	27
-19	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
-19	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	17
-19	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"1.low"	37
-19	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	55
-19	"f"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	60
-19	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	52
-20	"m"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	58
-20	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	67
-20	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	66
-20	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	27
-20	"f"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
-20	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	64
-20	"f"	29	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	57
-20	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
-20	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	41
-20	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	49
-21	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	65
-21	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	90
-21	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	72
-21	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	32
-21	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-21	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	73
-21	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	31
-21	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	65
-21	"f"	23	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	96
-21	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	64
-22	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	48
-22	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	78
-22	"f"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"1.low"	25
-22	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	69
-22	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	63
-22	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-22	"m"	23	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	67
-22	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	76
-22	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	52
-22	"m"	30	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	60
-23	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	47
-23	"m"	26	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	36
-23	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	61
-23	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	18
-23	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	76
-23	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	100
-23	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	39
-23	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	78
-23	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	94
-23	"f"	22	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"1.low"	44
-24	"m"	18	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	62
-24	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	39
-24	"m"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	49
-24	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	39
-24	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	47
-24	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	13
-24	"m"	30	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	31
-24	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	40
-24	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	92
-24	"m"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	46
-25	"m"	25	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	19
-25	"f"	29	"brown"	"1.Basel"	"4.PhD"	"1.No"	"1.low"	"3.high"	100
-25	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	40
-25	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	38
-25	"m"	29	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	61
-25	"m"	27	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	57
-25	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	48
-25	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	59
-25	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	53
-25	"m"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	30
-26	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	83
-26	"m"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	69
-26	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	53
-26	"f"	22	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	76
-26	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	21
-26	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	52
-26	"f"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	67
-26	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	34
-26	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	33
-26	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	44
-27	"m"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	26
-27	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
-27	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	73
-27	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	39
-27	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	63
-27	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	94
-27	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	64
-27	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	46
-27	"f"	24	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	47
-27	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	65
-28	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"2.medium"	24
-28	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	58
-28	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	60
-28	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	29
-28	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	25
-28	"m"	27	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"1.low"	46
-28	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	44
-28	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	0
-28	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	58
-28	"m"	24	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	96
-29	"m"	21	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	20
-29	"m"	24	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	34
-29	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	31
-29	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	59
-29	"m"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	48
-29	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	37
-29	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	86
-29	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-29	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	6
-29	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	95
-30	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	35
-30	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	29
-30	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	99
-30	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
-30	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	40
-30	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	61
-30	"m"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	71
-30	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"2.medium"	"2.medium"	84
-30	"m"	26	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"1.low"	72
-30	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	38
-31	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	45
-31	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	51
-31	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-31	"m"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	47
-31	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	35
-31	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	26
-31	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	34
-31	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	45
-31	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	35
-31	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	51
-32	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	56
-32	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	21
-32	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-32	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	78
-32	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	66
-32	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	36
-32	"m"	23	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	76
-32	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	41
-32	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	14
-32	"f"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	49
-33	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-33	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	24
-33	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-33	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-33	"m"	22	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	57
-33	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	76
-33	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	75
-33	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	81
-33	"m"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	54
-33	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	53
-34	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	0
-34	"f"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	75
-34	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	53
-34	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	54
-34	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	59
-34	"m"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	11
-34	"m"	20	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	33
-34	"f"	30	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"3.high"	91
-34	"m"	24	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"1.low"	29
-34	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	2
-35	"f"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	26
-35	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	19
-35	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	34
-35	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"1.low"	37
-35	"f"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"3.high"	"3.high"	27
-35	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	38
-35	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	86
-35	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"2.medium"	57
-35	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
-35	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	90
-36	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"1.low"	24
-36	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	49
-36	"m"	22	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	74
-36	"m"	29	"brown"	"1.Basel"	"4.PhD"	"1.No"	"1.low"	"3.high"	27
-36	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	58
-36	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	64
-36	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	35
-36	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	100
-36	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	12
-36	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	0
-37	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	23
-37	"m"	30	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	61
-37	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	69
-37	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	40
-37	"f"	19	"blonde"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
-37	"f"	27	"brown"	"1.Basel"	"4.PhD"	"1.No"	"3.high"	"3.high"	19
-37	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	39
-37	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	56
-37	"f"	27	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"3.high"	66
-37	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	97
-38	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	55
-38	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	29
-38	"m"	22	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	87
-38	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	35
-38	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	83
-38	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-38	"m"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	22
-38	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	85
-38	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"1.low"	49
-38	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	54
-39	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	48
-39	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	68
-39	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	41
-39	"m"	28	"brown"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	83
-39	"f"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
-39	"f"	22	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	74
-39	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	75
-39	"m"	26	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	26
-39	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	60
-39	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	77
-40	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	24
-40	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	52
-40	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	47
-40	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	50
-40	"f"	25	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
-40	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-40	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	18
-40	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	14
-40	"m"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	31
-40	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	51
-41	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	0
-41	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-41	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	37
-41	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	62
-41	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	22
-41	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	95
-41	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	55
-41	"f"	25	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	70
-41	"f"	25	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"1.low"	76
-41	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	14
-42	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	81
-42	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	82
-42	"m"	29	"blonde"	"3.Geneva"	"4.PhD"	"2.Yes"	"2.medium"	"3.high"	43
-42	"m"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	38
-42	"f"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	51
-42	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
-42	"f"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	37
-42	"m"	22	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	46
-42	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	37
-42	"m"	25	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	37
-43	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
-43	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
-43	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	44
-43	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	30
-43	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	100
-43	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	34
-43	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	49
-43	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	14
-43	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
-43	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
-44	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	69
-44	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	0
-44	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	51
-44	"m"	22	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	63
-44	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	42
-44	"f"	23	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
-44	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	75
-44	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	71
-44	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	42
-44	"m"	22	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	46
-45	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	52
-45	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	90
-45	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	61
-45	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-45	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	61
-45	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
-45	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	72
-45	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	72
-45	"m"	19	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	56
-45	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	54
-46	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	22
-46	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	72
-46	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	38
-46	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	32
-46	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
-46	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	81
-46	"f"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-46	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	57
-46	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	32
-46	"m"	30	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"1.low"	"2.medium"	41
-47	"f"	27	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"1.low"	41
-47	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	32
-47	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	47
-47	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	59
-47	"m"	23	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	100
-47	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	47
-47	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	43
-47	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	51
-47	"f"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	60
-47	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	86
-48	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	40
-48	"m"	28	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	38
-48	"f"	28	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"3.high"	94
-48	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	42
-48	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	48
-48	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	27
-48	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-48	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	7
-48	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	80
-48	"m"	29	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	66
-49	"f"	18	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
-49	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	14
-49	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	30
-49	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	25
-49	"m"	26	"blonde"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	0
-49	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	86
-49	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	41
-49	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	67
-49	"m"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	63
-49	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	55
-50	"m"	25	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	46
-50	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	63
-50	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	35
-50	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	28
-50	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
-50	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	72
-50	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	40
-50	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	33
-50	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	12
-50	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	44
+"1"	1	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	45
+"2"	1	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	63
+"3"	1	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	58
+"4"	1	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	86
+"5"	1	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	96
+"6"	1	"m"	28	"brown"	"1.Basel"	"4.PhD"	"1.No"	"3.high"	"3.high"	90
+"7"	1	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	66
+"8"	1	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	72
+"9"	1	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	39
+"10"	1	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
+"11"	2	"f"	22	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	90
+"12"	2	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"1.low"	69
+"13"	2	"f"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	39
+"14"	2	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"15"	2	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	53
+"16"	2	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	48
+"17"	2	"f"	26	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"1.low"	0
+"18"	2	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	31
+"19"	2	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	48
+"20"	2	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"1.low"	64
+"21"	3	"f"	20	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	56
+"22"	3	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"3.high"	79
+"23"	3	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	36
+"24"	3	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	69
+"25"	3	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	35
+"26"	3	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	39
+"27"	3	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	15
+"28"	3	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	82
+"29"	3	"m"	23	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	68
+"30"	3	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	95
+"31"	4	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	58
+"32"	4	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	42
+"33"	4	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	61
+"34"	4	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	23
+"35"	4	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
+"36"	4	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	61
+"37"	4	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	39
+"38"	4	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
+"39"	4	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	45
+"40"	4	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	71
+"41"	5	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	42
+"42"	5	"m"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	0
+"43"	5	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
+"44"	5	"m"	23	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	43
+"45"	5	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	46
+"46"	5	"m"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	29
+"47"	5	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	34
+"48"	5	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"2.medium"	91
+"49"	5	"f"	29	"blonde"	"2.Zurich"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	100
+"50"	5	"m"	29	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"1.low"	"2.medium"	6
+"51"	6	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	20
+"52"	6	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	78
+"53"	6	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	31
+"54"	6	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
+"55"	6	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	19
+"56"	6	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	47
+"57"	6	"f"	29	"blonde"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	83
+"58"	6	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
+"59"	6	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"60"	6	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	52
+"61"	7	"f"	18	"blonde"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	86
+"62"	7	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	46
+"63"	7	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	53
+"64"	7	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	46
+"65"	7	"f"	28	"blonde"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	100
+"66"	7	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	77
+"67"	7	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	70
+"68"	7	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	63
+"69"	7	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	45
+"70"	7	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"2.medium"	"2.medium"	27
+"71"	8	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	17
+"72"	8	"f"	26	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"3.high"	11
+"73"	8	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"2.medium"	"2.medium"	91
+"74"	8	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"1.low"	26
+"75"	8	"f"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	32
+"76"	8	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	56
+"77"	8	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	51
+"78"	8	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	35
+"79"	8	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	31
+"80"	8	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
+"81"	9	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	47
+"82"	9	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"83"	9	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	39
+"84"	9	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	91
+"85"	9	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	64
+"86"	9	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	81
+"87"	9	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	34
+"88"	9	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	45
+"89"	9	"m"	27	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"1.low"	38
+"90"	9	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	58
+"91"	10	"f"	30	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	100
+"92"	10	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	100
+"93"	10	"f"	25	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	46
+"94"	10	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	6
+"95"	10	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	51
+"96"	10	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	26
+"97"	10	"m"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	37
+"98"	10	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	92
+"99"	10	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	17
+"100"	10	"m"	30	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"3.high"	46
+"101"	11	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	26
+"102"	11	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	60
+"103"	11	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	73
+"104"	11	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	87
+"105"	11	"f"	18	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	7
+"106"	11	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	55
+"107"	11	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	78
+"108"	11	"m"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	34
+"109"	11	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	64
+"110"	11	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	0
+"111"	12	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	55
+"112"	12	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	14
+"113"	12	"f"	29	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	19
+"114"	12	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	100
+"115"	12	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	56
+"116"	12	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	49
+"117"	12	"f"	25	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	58
+"118"	12	"f"	29	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"1.low"	64
+"119"	12	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	50
+"120"	12	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"121"	13	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	12
+"122"	13	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	10
+"123"	13	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	33
+"124"	13	"f"	18	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"3.high"	"1.low"	39
+"125"	13	"m"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"2.medium"	49
+"126"	13	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	28
+"127"	13	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	38
+"128"	13	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	93
+"129"	13	"f"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	64
+"130"	13	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	29
+"131"	14	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"132"	14	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	10
+"133"	14	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	94
+"134"	14	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	31
+"135"	14	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	36
+"136"	14	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	27
+"137"	14	"m"	20	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	25
+"138"	14	"f"	20	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
+"139"	14	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"1.low"	14
+"140"	14	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	52
+"141"	15	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"142"	15	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	58
+"143"	15	"f"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	69
+"144"	15	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	30
+"145"	15	"f"	24	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
+"146"	15	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	49
+"147"	15	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	51
+"148"	15	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	76
+"149"	15	"m"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	3
+"150"	15	"m"	29	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	68
+"151"	16	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	40
+"152"	16	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	74
+"153"	16	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	68
+"154"	16	"f"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
+"155"	16	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	61
+"156"	16	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	62
+"157"	16	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	77
+"158"	16	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	99
+"159"	16	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	82
+"160"	16	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	35
+"161"	17	"f"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	18
+"162"	17	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	46
+"163"	17	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"164"	17	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	25
+"165"	17	"m"	21	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	39
+"166"	17	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	20
+"167"	17	"m"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"2.medium"	22
+"168"	17	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"3.high"	44
+"169"	17	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	25
+"170"	17	"f"	26	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"3.high"	"3.high"	72
+"171"	18	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	11
+"172"	18	"f"	17	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"173"	18	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	39
+"174"	18	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	37
+"175"	18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	32
+"176"	18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	0
+"177"	18	"f"	20	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"178"	18	"f"	18	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	95
+"179"	18	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	60
+"180"	18	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	71
+"181"	19	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	79
+"182"	19	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	65
+"183"	19	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	45
+"184"	19	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	27
+"185"	19	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
+"186"	19	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	17
+"187"	19	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"1.low"	37
+"188"	19	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	55
+"189"	19	"f"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	60
+"190"	19	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	52
+"191"	20	"m"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	58
+"192"	20	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	67
+"193"	20	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	66
+"194"	20	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	27
+"195"	20	"f"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
+"196"	20	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	64
+"197"	20	"f"	29	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	57
+"198"	20	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
+"199"	20	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	41
+"200"	20	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	49
+"201"	21	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	65
+"202"	21	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	90
+"203"	21	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	72
+"204"	21	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	32
+"205"	21	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"206"	21	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	73
+"207"	21	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	31
+"208"	21	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	65
+"209"	21	"f"	23	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	96
+"210"	21	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	64
+"211"	22	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	48
+"212"	22	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	78
+"213"	22	"f"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"1.low"	25
+"214"	22	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	69
+"215"	22	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	63
+"216"	22	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"217"	22	"m"	23	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	67
+"218"	22	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	76
+"219"	22	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	52
+"220"	22	"m"	30	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	60
+"221"	23	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	47
+"222"	23	"m"	26	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	36
+"223"	23	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	61
+"224"	23	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	18
+"225"	23	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	76
+"226"	23	"m"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	100
+"227"	23	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	39
+"228"	23	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	78
+"229"	23	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	94
+"230"	23	"f"	22	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"1.low"	44
+"231"	24	"m"	18	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	62
+"232"	24	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	39
+"233"	24	"m"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	49
+"234"	24	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	39
+"235"	24	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	47
+"236"	24	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	13
+"237"	24	"m"	30	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	31
+"238"	24	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	40
+"239"	24	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	92
+"240"	24	"m"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	46
+"241"	25	"m"	25	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	19
+"242"	25	"f"	29	"brown"	"1.Basel"	"4.PhD"	"1.No"	"1.low"	"3.high"	100
+"243"	25	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	40
+"244"	25	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	38
+"245"	25	"m"	29	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	61
+"246"	25	"m"	27	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	57
+"247"	25	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	48
+"248"	25	"m"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	59
+"249"	25	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	53
+"250"	25	"m"	28	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	30
+"251"	26	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	83
+"252"	26	"m"	23	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	69
+"253"	26	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	53
+"254"	26	"f"	22	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	76
+"255"	26	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"1.low"	21
+"256"	26	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	52
+"257"	26	"f"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	67
+"258"	26	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	34
+"259"	26	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	33
+"260"	26	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	44
+"261"	27	"m"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	26
+"262"	27	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
+"263"	27	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	73
+"264"	27	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	39
+"265"	27	"m"	23	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	63
+"266"	27	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	94
+"267"	27	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	64
+"268"	27	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	46
+"269"	27	"f"	24	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	47
+"270"	27	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	65
+"271"	28	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"2.medium"	24
+"272"	28	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	58
+"273"	28	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	60
+"274"	28	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	29
+"275"	28	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	25
+"276"	28	"m"	27	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"1.low"	46
+"277"	28	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	44
+"278"	28	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	0
+"279"	28	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	58
+"280"	28	"m"	24	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	96
+"281"	29	"m"	21	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	20
+"282"	29	"m"	24	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	34
+"283"	29	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	31
+"284"	29	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	59
+"285"	29	"m"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	48
+"286"	29	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"3.high"	37
+"287"	29	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	86
+"288"	29	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"289"	29	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	6
+"290"	29	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	95
+"291"	30	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	35
+"292"	30	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	29
+"293"	30	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	99
+"294"	30	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
+"295"	30	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	40
+"296"	30	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	61
+"297"	30	"m"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	71
+"298"	30	"f"	28	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"2.medium"	"2.medium"	84
+"299"	30	"m"	26	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"1.low"	72
+"300"	30	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	38
+"301"	31	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	45
+"302"	31	"m"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	51
+"303"	31	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"304"	31	"m"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	47
+"305"	31	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	35
+"306"	31	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"1.low"	26
+"307"	31	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	34
+"308"	31	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	45
+"309"	31	"m"	23	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	35
+"310"	31	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	51
+"311"	32	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	56
+"312"	32	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	21
+"313"	32	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"314"	32	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	78
+"315"	32	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	66
+"316"	32	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	36
+"317"	32	"m"	23	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"2.medium"	76
+"318"	32	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	41
+"319"	32	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	14
+"320"	32	"f"	20	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	49
+"321"	33	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"322"	33	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	24
+"323"	33	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"324"	33	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"325"	33	"m"	22	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	57
+"326"	33	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	76
+"327"	33	"m"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	75
+"328"	33	"f"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	81
+"329"	33	"m"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	54
+"330"	33	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	53
+"331"	34	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	0
+"332"	34	"f"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	75
+"333"	34	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	53
+"334"	34	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"3.high"	"3.high"	54
+"335"	34	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	59
+"336"	34	"m"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	11
+"337"	34	"m"	20	"blonde"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	33
+"338"	34	"f"	30	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"1.low"	"3.high"	91
+"339"	34	"m"	24	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"1.low"	29
+"340"	34	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	2
+"341"	35	"f"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"1.low"	26
+"342"	35	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	19
+"343"	35	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	34
+"344"	35	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"1.low"	37
+"345"	35	"f"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"3.high"	"3.high"	27
+"346"	35	"f"	21	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	38
+"347"	35	"f"	28	"brown"	"3.Geneva"	"4.PhD"	"2.Yes"	"3.high"	"2.medium"	86
+"348"	35	"m"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"1.low"	"2.medium"	57
+"349"	35	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
+"350"	35	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	90
+"351"	36	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"1.low"	24
+"352"	36	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	49
+"353"	36	"m"	22	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	74
+"354"	36	"m"	29	"brown"	"1.Basel"	"4.PhD"	"1.No"	"1.low"	"3.high"	27
+"355"	36	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	58
+"356"	36	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	64
+"357"	36	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	35
+"358"	36	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	100
+"359"	36	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	12
+"360"	36	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"1.low"	"1.low"	0
+"361"	37	"f"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	23
+"362"	37	"m"	30	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	61
+"363"	37	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	69
+"364"	37	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	40
+"365"	37	"f"	19	"blonde"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
+"366"	37	"f"	27	"brown"	"1.Basel"	"4.PhD"	"1.No"	"3.high"	"3.high"	19
+"367"	37	"f"	23	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	39
+"368"	37	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	56
+"369"	37	"f"	27	"blonde"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"3.high"	66
+"370"	37	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	97
+"371"	38	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	55
+"372"	38	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"1.low"	29
+"373"	38	"m"	22	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"3.high"	87
+"374"	38	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"3.high"	"1.low"	35
+"375"	38	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	83
+"376"	38	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"377"	38	"m"	19	"blonde"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	22
+"378"	38	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	85
+"379"	38	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"2.Yes"	"2.medium"	"1.low"	49
+"380"	38	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	54
+"381"	39	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	48
+"382"	39	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	68
+"383"	39	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	41
+"384"	39	"m"	28	"brown"	"1.Basel"	"4.PhD"	"1.No"	"2.medium"	"3.high"	83
+"385"	39	"f"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"2.medium"	"3.high"	100
+"386"	39	"f"	22	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	74
+"387"	39	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	75
+"388"	39	"m"	26	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	26
+"389"	39	"m"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	60
+"390"	39	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	77
+"391"	40	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	24
+"392"	40	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	52
+"393"	40	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	47
+"394"	40	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"3.high"	50
+"395"	40	"f"	25	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
+"396"	40	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"397"	40	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"1.No"	"1.low"	"2.medium"	18
+"398"	40	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	14
+"399"	40	"m"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	31
+"400"	40	"m"	18	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	51
+"401"	41	"m"	24	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	0
+"402"	41	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"403"	41	"m"	24	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"2.medium"	"3.high"	37
+"404"	41	"f"	21	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	62
+"405"	41	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	22
+"406"	41	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	95
+"407"	41	"m"	23	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	55
+"408"	41	"f"	25	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	70
+"409"	41	"f"	25	"blonde"	"3.Geneva"	"3.Masters"	"2.Yes"	"1.low"	"1.low"	76
+"410"	41	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	14
+"411"	42	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	81
+"412"	42	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	82
+"413"	42	"m"	29	"blonde"	"3.Geneva"	"4.PhD"	"2.Yes"	"2.medium"	"3.high"	43
+"414"	42	"m"	20	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"1.low"	38
+"415"	42	"f"	27	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	51
+"416"	42	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	100
+"417"	42	"f"	21	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	37
+"418"	42	"m"	22	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"3.high"	46
+"419"	42	"m"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"2.medium"	"1.low"	37
+"420"	42	"m"	25	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	37
+"421"	43	"f"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
+"422"	43	"f"	24	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	100
+"423"	43	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"2.medium"	"2.medium"	44
+"424"	43	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	30
+"425"	43	"f"	19	"blonde"	"3.Geneva"	"1.HighSchool"	"2.Yes"	"2.medium"	"2.medium"	100
+"426"	43	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	34
+"427"	43	"f"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	49
+"428"	43	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	14
+"429"	43	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	46
+"430"	43	"f"	18	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"1.low"	"3.high"	100
+"431"	44	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"3.high"	69
+"432"	44	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	0
+"433"	44	"f"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	51
+"434"	44	"m"	22	"brown"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	63
+"435"	44	"m"	19	"brown"	"3.Geneva"	"1.HighSchool"	"1.No"	"1.low"	"2.medium"	42
+"436"	44	"f"	23	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	100
+"437"	44	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	75
+"438"	44	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"2.medium"	71
+"439"	44	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	42
+"440"	44	"m"	22	"brown"	"1.Basel"	"3.Masters"	"2.Yes"	"3.high"	"3.high"	46
+"441"	45	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	52
+"442"	45	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	90
+"443"	45	"f"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	61
+"444"	45	"f"	19	"brown"	"2.Zurich"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"445"	45	"m"	22	"blonde"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	61
+"446"	45	"f"	19	"brown"	"1.Basel"	"1.HighSchool"	"2.Yes"	"2.medium"	"3.high"	100
+"447"	45	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	72
+"448"	45	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	72
+"449"	45	"m"	19	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	56
+"450"	45	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	54
+"451"	46	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"1.low"	22
+"452"	46	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"2.Yes"	"3.high"	"3.high"	72
+"453"	46	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	38
+"454"	46	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	32
+"455"	46	"f"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"3.high"	100
+"456"	46	"m"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	81
+"457"	46	"f"	21	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"458"	46	"f"	24	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"2.medium"	"2.medium"	57
+"459"	46	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"2.medium"	32
+"460"	46	"m"	30	"brown"	"2.Zurich"	"4.PhD"	"2.Yes"	"1.low"	"2.medium"	41
+"461"	47	"f"	27	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"1.low"	41
+"462"	47	"m"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	32
+"463"	47	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	47
+"464"	47	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"3.high"	"2.medium"	59
+"465"	47	"m"	23	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	100
+"466"	47	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	47
+"467"	47	"f"	25	"brown"	"1.Basel"	"3.Masters"	"1.No"	"3.high"	"3.high"	43
+"468"	47	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	51
+"469"	47	"f"	28	"blonde"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"1.low"	60
+"470"	47	"m"	28	"brown"	"3.Geneva"	"4.PhD"	"1.No"	"3.high"	"2.medium"	86
+"471"	48	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"2.medium"	40
+"472"	48	"m"	28	"brown"	"1.Basel"	"4.PhD"	"2.Yes"	"1.low"	"3.high"	38
+"473"	48	"f"	28	"blonde"	"3.Geneva"	"4.PhD"	"1.No"	"1.low"	"3.high"	94
+"474"	48	"f"	25	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"2.medium"	42
+"475"	48	"m"	22	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"2.medium"	"2.medium"	48
+"476"	48	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"3.high"	"3.high"	27
+"477"	48	"f"	22	"blonde"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"478"	48	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	7
+"479"	48	"m"	21	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	80
+"480"	48	"m"	29	"brown"	"2.Zurich"	"4.PhD"	"1.No"	"2.medium"	"2.medium"	66
+"481"	49	"f"	18	"blonde"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	100
+"482"	49	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	14
+"483"	49	"m"	21	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	30
+"484"	49	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"3.high"	"2.medium"	25
+"485"	49	"m"	26	"blonde"	"1.Basel"	"3.Masters"	"2.Yes"	"1.low"	"3.high"	0
+"486"	49	"f"	22	"brown"	"3.Geneva"	"2.Bachelors"	"1.No"	"2.medium"	"3.high"	86
+"487"	49	"f"	23	"brown"	"2.Zurich"	"3.Masters"	"1.No"	"1.low"	"1.low"	41
+"488"	49	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"2.medium"	"3.high"	67
+"489"	49	"m"	24	"blonde"	"1.Basel"	"3.Masters"	"1.No"	"1.low"	"3.high"	63
+"490"	49	"f"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	55
+"491"	50	"m"	25	"brown"	"2.Zurich"	"3.Masters"	"2.Yes"	"1.low"	"2.medium"	46
+"492"	50	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"3.high"	"1.low"	63
+"493"	50	"m"	22	"blonde"	"2.Zurich"	"2.Bachelors"	"2.Yes"	"2.medium"	"1.low"	35
+"494"	50	"f"	23	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"1.low"	28
+"495"	50	"f"	22	"brown"	"1.Basel"	"2.Bachelors"	"1.No"	"1.low"	"3.high"	100
+"496"	50	"f"	25	"brown"	"3.Geneva"	"3.Masters"	"1.No"	"3.high"	"2.medium"	72
+"497"	50	"f"	23	"blonde"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	40
+"498"	50	"m"	22	"brown"	"2.Zurich"	"2.Bachelors"	"1.No"	"2.medium"	"2.medium"	33
+"499"	50	"m"	23	"brown"	"3.Geneva"	"2.Bachelors"	"2.Yes"	"1.low"	"2.medium"	12
+"500"	50	"m"	19	"brown"	"1.Basel"	"1.HighSchool"	"1.No"	"1.low"	"3.high"	44

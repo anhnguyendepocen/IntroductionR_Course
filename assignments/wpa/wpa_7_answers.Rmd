@@ -135,7 +135,7 @@ In this WPA, you will analyze data from a (again...fake) study on attraction. In
 
 The data are located in a tab-delimited text file at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt. Here is how the first few rows of the data should look:
 
-```{r, echo = FALSE, eval = TRUE}
+```{r, echo = TRUE, eval = TRUE}
 head(facebook)
 ```
 
@@ -180,19 +180,19 @@ facebook <- read.table(file = "https://raw.githubusercontent.com/ndphillips/Intr
 
 3. Look at the first few rows of the dataframe with the `head()` and `View()` functions to make sure it loaded correctly. 
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 head(facebook)
 ```
 
 4. Using the `names()` and `str()` functions, look at the names and structure of the dataframe to make sure everything looks ok. If the data look strange, you did something wrong with `read.table()` diagnose the problem!
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 str(facebook)
 ```
 
 5. Using `write.table()`, save a local copy of the facebook data to a text file called `facebook.txt` in the data folder of your project. Now, you'll always have access to the data.
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 write.table(facebook, 
             file = "data/facebook.txt",
             sep = "\t")
@@ -231,7 +231,7 @@ TukeyHSD(t0_aov)
 
 6. Was there a main effect of the university on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t6_aov <- aov(formula = dateability ~ university,
             data = facebook)
 
@@ -246,7 +246,7 @@ TukeyHSD(t6_aov)
 
 7. Was there a main effect of intelligence on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t7_aov <- aov(formula = dateability ~ intelligence,
               data = facebook)
 
@@ -261,7 +261,7 @@ TukeyHSD(t7_aov)
 
 8. Was there a main effect of haircolor on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t8_aov <- aov(formula = dateability ~ haircolor,
               data = facebook)
 
@@ -275,7 +275,7 @@ summary(t8_aov)
 
 9. Conduct a three-way ANOVA on dateability with both intelligence, university and haircolor as IVs. Do your results for each variable change compared to your previous one-way ANOVAs on these variables? (You do not need to give APA results or conduct post-hoc tests, just answer the question verbally).
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t9_aov <- aov(formula = dateability ~ intelligence + university + haircolor,
               data = facebook)
 
@@ -287,7 +287,7 @@ summary(t9_aov)
 
 10. Conduct a multi-way anova including sex, haircolor, university, education, shirtless, intelligence and attractiveness as independent variables predicting dateability. Which variables are significantly related to dateability? <font color="red">*Do* write APA results for each variable but do *not* conduct post-hoc tests</font>.
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t10_aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
                data = facebook)
 
@@ -302,7 +302,7 @@ summary(t10_aov)
 
 11. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: sex and shirtless. Based on what you see in the plot, do you expect there to be an interaction between sex and shirtless? Why or why not?
 
-```{r, echo = FALSE, eval = FALSE, message = FALSE}
+```{r, echo = TRUE, eval = FALSE, message = FALSE}
 library(yarrr)
 pirateplot(dateability ~ sex + shirtless, 
            data = facebook)
@@ -312,7 +312,7 @@ pirateplot(dateability ~ sex + shirtless,
 
 
 12.  Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = TRUE, eval = FALSE}
 t12_aov <- aov(dateability ~ sex * shirtless, 
                data = facebook)
             
@@ -326,7 +326,7 @@ summary(t12_aov)
 
 13. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: Make the changes to the `data` argument). Do your conclusions change compared to when you analyzed the data from all sessions?
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 t13_aov <- aov(formula = dateability ~ intelligence + university + haircolor,
                data = subset(facebook, session > 30))
 
@@ -338,7 +338,7 @@ summary(t13_aov)
 
 # CHECKPOINT!
 
-```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
+```{r, eval = TRUE, echo = TRUE, out.width = "20%"}
 knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
 ```
 
@@ -368,7 +368,7 @@ summary(t15_aov)
     
 16. Create a plot showing the distribution of dateability based on two independent variables: university and haircolor. Based on what you see in the plot, do you expect there to be an interaction between university and intelligence? Why or why not?
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 pirateplot(dateability ~ university + haircolor, 
            data = facebook)
 
