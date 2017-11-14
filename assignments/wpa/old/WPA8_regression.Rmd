@@ -14,11 +14,9 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
 
 
 
-
 ## Student Performance
 
 <img src="http://www.funnfun.in/wp-content/uploads/2013/03/love-for-study-funny-student-450x329.jpg" style="height:400px;" />
-
 
 
 In this WPA, you will analyze data from a study on student performance in two classes: math and Portuguese. These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
@@ -289,7 +287,6 @@ Based on this code, what do you expect the estimated regression coefficients to 
 22. Now, adjust the code so that the regression coefficients will be 3, 7, 2, and 0.
 
 23. Test your adjusted code to see if it worked!
-
 
 # Submit!
 

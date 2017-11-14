@@ -7,15 +7,14 @@ output: html_document
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
                       echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE, fig.align = 'center', out.width = "70%")
 
-student.math <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/11/studentmath.txt",
+student_m <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt",
                       sep = "\t",
                       header = TRUE)
 
-student.por <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/11/studentpor.txt",
+student_p <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt",
                       sep = "\t",
                       header = TRUE)
 ```
-
 
 
 ## Readings
@@ -28,30 +27,74 @@ This assignment is based on the following readings:
 
 - Create regression objects (`lm` and `glm`) with the `lm()` and `glm()` functions
 - Understand the contents of regression objects and interpret outputs.
-- Use the `predict()`, `names()` and `summary()` functions to access specific elements of regression objects.
-- Create APA tables from regression objects with `
+- Use the `names()` and `summary()` functions to access specific elements of regression objects.
 
 ## Examples
 
 ```{r, echo = TRUE, eval = FALSE}
 
-```
+library(yarrr)   #Load the yarrr package for the pirates dataframe
 
+# Predict beard.length as a function of sex, age, weight and tattoos
+
+beard_lm <- lm(formula = beard.length ~ sex + age + weight + tattoos,
+               data = pirates)
+
+summary(beard_lm)          # Look at summary results
+names(beard_lm)            # Named elements in the object
+beard_lm$coefficients      # Get coefficients
+
+# Predict tattoos as a function of ALL variables in the pirates dataframe
+
+tattoos_lm <- lm(formula = tattoos ~.,
+                 data = pirates)
+
+# Calculate model fits
+
+# Directly from lm object
+tattoos_fits <- tattoos_lm$fitted.values
+
+# or calculate manually using predict()
+tattoos_fits <- predict(tattoos_lm, newdata = pirates)
+
+# Calculate residuals
+
+# Directly from lm object
+tattoos_resid <- tattoos_lm$residuals
+
+# or calculate manually
+tattoos_resid <- pirates$tattoos - predict(tattoos_lm, newdata = pirates)
+
+
+# Binary logistic regression
+
+# Create a logical vector indicating which pirates like "hook"
+pirates$like_hook <- pirates$favorite.pirate == "Hook"
+
+# Conduct binary logistic regression predicting which pirates like hook
+
+hook_glm <- glm(formula = like_hook ~ . -favorite.pirate,   # exclude favorite.pirate
+                data = pirates, 
+                family = "binomial")
+
+summary(hook_glm)  # summary of results
+```
 
 
 
 ## Student Performance
 
-<img src="http://www.funnfun.in/wp-content/uploads/2013/03/love-for-study-funny-student-450x329.jpg" style="height:400px;" />
+```{r, out.width = "70%", echo = FALSE, eval = TRUE}
+knitr::include_graphics("http://fssd.org/wp-content/uploads/2015/07/IMG_2858.jpg")
+```
 
-
-In this WPA, you will analyze data from a study on student performance in two classes: math and Portuguese. These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
+In this WPA, you will analyze data from a study on student performance in two classes: math and portuguese. These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
 
 Here is the data description (taken directly from the original website
 
 *This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). In [Cortez and Silva, 2008], the two datasets were modeled under binary/five-level classification and regression tasks. Important note: the target attribute G3 has a strong correlation with attributes G2 and G1. This occurs because G3 is the final year grade (issued at the 3rd period), while G1 and G2 correspond to the 1st and 2nd period grades. It is more difficult to predict G3 without G2 and G1, but such prediction is much more useful (see paper source for more details).*
 
-The data are located in two tab-delimited text files at http://nathanieldphillips.com/wp-content/uploads/2016/11/studentmath.txt (the math data), and http://nathanieldphillips.com/wp-content/uploads/2016/11/studentpor.txt (the portugese data).
+The data are located in two separate tab-delimited text files at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data), and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data).
 
 
 ## Datafile description
@@ -127,275 +170,183 @@ Both datafiles have 33 columns. Here they are:
 
 ## Data loading and preparation
 
-1. <font color = "red">Open your class R project</font>. This project should have (at least) two folders, one called `data` and one called `R`. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_7_LastFirst.R`, where Last and First are your last and first names. 
+1. <font color = "red">OPEN YOUR CLASS R PROJECT!!!</font>. This project should have (at least) two folders, one called `data` and one called `R`. If you do not have these folders already, create them! Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_8_LastFirst.R`, where Last and First are your last and first names. 
 
-2. The data are stored in a tab--delimited text file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt. Using `read.table()` load this data into R as a new object called `facebook`
+2. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data). Using `read.table()` load this two data files into R as two objects, one called `student_m`, and one called `student_p`
 
 ## Understand the data
 
-3. Look at the first few rows of the dataframe with the `head()` and `View()` functions to make sure it loaded correctly. 
+3. Look at the first few rows of the dataframes with the `head()` and `View()` functions to make sure they loaded correctly. 
 
 ```{r, eval = FALSE, echo = FALSE}
-head(facebook)
+head(student_m)
+head(student_p)
 ```
 
-4. Using the `names()` and `str()` functions, look at the names and structure of the dataframe to make sure everything looks ok. If the data look strange, you did something wrong with `read.table()` diagnose the problem!
+4. Using the `names()` and `str()` functions, look at the names and structure of the dataframes to make sure everything looks ok. If the data look strange, you did something wrong with `read.table()`, diagnose the problem!
 
 ```{r, eval = FALSE, echo = FALSE}
-str(facebook)
+str(student_m)
+str(student_p)
 ```
 
-5. Using `write.table()`, save a local copy of the facebook data to a text file called `facebook.txt` in the data folder of your project. Now, you'll always have access to the data.
+5. Using `write.table()`, save a local copy of the two dataframes to text files called `student_m` and `student_p` in the data folder of your project. Now, you'll always have access to the data.
 
-## Answer guidelines Read carefully to save yourself time!
 
-- For each question, conduct the appropriate ANOVA by creating an object called `tX_aov`, where X is the task number. Look at the results using `summary()`. Then, write the conclusion in APA style. To summarize an effect in an ANOVA, use the format F(XXX, YYY) = FFF, p = PPP, where XXX is the degrees of freedom of the variable you are testing, YYY is the degrees of freedom of the residuals, FFF is the F value for the variable you are testing, and PPP is the p-value (if the p-value is less than .01, just write p < .01).
+# Standard Regression with lm()
 
-- If the p-value of the ANOVA is less than .05, conduct post-hoc tests. If you are only testing one independent variable, write APA conclusions for the post-hoc test. If you are testing more than one independent variable in your ANOVA, you do not need to write APA style conclusions for post-hoc tests.
+## One IV
 
-For example, here is how I would analyze and answer the question: "Was there an effect of diets on Chicken Weights?""
+6. For the math data, create a regression object called `lm_6` predicting first period grade (G1) based on age.
 
-```{r, eval = TRUE, echo = TRUE}
-# ANOVA on Chicken Weights
-#   IV = Diet, DV = weight
-
-# ANOVA
-t0_aov <- aov(formula = weight ~ Diet,
-              data = ChickWeight)
-
-# Look at summary results
-summary(t0_aov)
-
-# ANOVA was significant (p < .01), so I'll conduct post-hoc tests
-
-# Tukey post-hoc tests
-TukeyHSD(t0_aov)
-
-# Conclusion
-#  There was a significant main effect of diets on chicken weights (F(3, 574) = 10.81, p < .01). Pairwise Tukey HSD tests showed significant differences between diets 1 and 3 (diff = 40.30, p < .01) and diets 1 and 4 (diff = 32.62, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.
+```{r}
+lm_5 <- lm(G1 ~ age, 
+           data = student_m)
 ```
 
-## One-way ANOVAS
+7. Run `names()` and `summary()` on `lm_5` to see additional information from your regression object. Now, return a vector of the coefficients by running `lm_5$coefficients`
 
-6. Was there a main effect of the university on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
-
-```{r, eval = FALSE, echo = FALSE}
-t6_aov <- aov(formula = dateability ~ university,
-            data = facebook)
-
-summary(t6_aov)
-
-TukeyHSD(t6_aov)
-
-#Answer: There was a significant main effect of university on dateability (F(2, 997) = 13.99, p < .01). Pairwise Tukey HSD tests showed significant differences between Zurich and Basel (diff = -10.27, p < .01) and Geneva and Basel (diff = -8.64, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+```{r}
+summary(lm_5)
+names(lm_5)
+lm_5$coefficients
 ```
 
+8. How do you interpret the relationship between age and first period grade? Give an APA style conclusion.
 
+```{r}
+# There is a slight negative relationship between age and first period grade (b = -0.17), however the relationship is not significant
+```
 
-7. Was there a main effect of intelligence on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
+9. By hand (that is, typing the calculation manually), calculate the predicted first period math grade of a student who is 18 years old based on the regression equation (if the coefficient is non-significant, just use it anyway).
 
-```{r, eval = FALSE, echo = FALSE}
-t7_aov <- aov(formula = dateability ~ intelligence,
-              data = facebook)
+10. For the portugese data, create a regression object called `lm_10` predicting each student's period 3 grade (G3) based on their period 1 grade (G1). Look at the results of the regression analysis with `summary()`.
 
-summary(t7_aov)
+```{r}
+lm_10 <- lm(G3 ~ G1, 
+            data = student_p)
+```
 
-TukeyHSD(t7_aov)
+11. What is the relationship between first and third period portugese grades? Give an APA style conclusion.
 
-# *Answer: There was a significant main effect of intelligence on dateability (F(2, 997) = 4.97, p < .01). Pairwise Tukey HSD tests showed significant differences between Medium and Low intelligence (diff = 6.53, p < .01). All other pairwise differences were not significant at the 0.05 significance threshold.*
+```{r}
+# There is a strong positive relationship between first period grade and third period grade (b = 1.1, p < .01)
+```
+
+12. By hand, calculate the calculate the predicted third period grade of a student who had a first period grade of 10.
+
+## Regression vs. Correlation
+
+13. In task 10 you calculated a regression equation predicting students' third period portugese grades by their first period grades. Now let's see if a simple correlation test gives you the same answer. Conduct a correlation test between first and third period portugese grades. (Hint: Refer to WPA 6 https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_6_answers.html). Compare the t-value for this test to the regression analysis you did in question 10. What do you see?
+
+```{r}
+cor.test(~ G1 + G3, 
+         data = student_p)
 ```
 
 
+14. Now conduct a correlation test testing the relationship between age and first period grade for the math data. Compare the t-value from this test to the result you obtained in the regression analysis in question 7. What do you see?
 
-8. Was there a main effect of haircolor on dateability? Conduct a one-way ANOVA. If the result is significant (p < .05), conduct post-hoc tests. <font color="red">Report full APA style conclusions</font>
+# Multiple IVs
 
-```{r, eval = FALSE, echo = FALSE}
-t8_aov <- aov(formula = dateability ~ haircolor,
-              data = facebook)
+15. For the math data, create a regression object called `lm_15` predicting third period math grade (G3) based on sex, age, internet, and failures. Then, use the `summary()` function to see a summary table of the output
 
-summary(t8_aov)
-
-# *Answer: There was no significant main effect of haircolor on dateability (F(2, 997) = 1.23, p = 0.29).*
+```{r}
+lm_15 <- lm(G3 ~ sex + age + internet + failures, 
+            data = student_m)
 ```
 
+16. Interpret the results!
 
-## Multi way, independent ANOVAs
-
-9. Conduct a three-way ANOVA on dateability with both intelligence, university and haircolor as IVs. Do your results for each variable change compared to your previous one-way ANOVAs on these variables? (You do not need to give APA results or conduct post-hoc tests, just answer the question verbally).
-
-```{r, eval = FALSE, echo = FALSE}
-t9_aov <- aov(formula = dateability ~ intelligence + university + haircolor,
-              data = facebook)
-
-summary(t9_aov)
-
-# *Answer: Yes the results are the same!*
+```{r}
+# sex and failures predict third period grade. Men perform better than women, and the more failures a person has the lower their grade.
 ```
 
+17. Create a new regression object called `lm_17` using the same variables as question 15, however, this time predict third period scores in the portugese dataset dataset. Use the `summary()` function to understand the results.
 
-10. Conduct a multi-way anova including sex, haircolor, university, education, shirtless, intelligence and attractiveness as independent variables predicting dateability. Which variables are significantly related to dateability? <font color="red">*Do* write APA results for each variable but do *not* conduct post-hoc tests</font>.
-
-```{r, eval = FALSE, echo = FALSE}
-t10_aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
-               data = facebook)
-
-summary(t10_aov)
-
-# *Answer: There were significant effects of sex (F(1, 986) = 66.10, p < .01), university (F(2, 986) = 17.35, p < .01), intelligence (F(2, 986) = 5.34, p < .01) and attractiveness (F(2, 986) = 101.87, p < .01).*
+```{r}
+lm_17 <- lm(G3 ~ sex + age + internet + failures, 
+            data = student_p)
 ```
 
+18. What are the key differences between the math and portugese datasets in which variables predict third period scores?
 
-
-## Interactions
-
-11. Create a plot (e.g.; `pirateplot()`, `barplot()`, `boxplot()`) showing the distribution of dateability based on two independent variables: sex and shirtless. Based on what you see in the plot, do you expect there to be an interaction between sex and shirtless? Why or why not?
-
-```{r, echo = FALSE, eval = FALSE}
-library(yarrr)
-pirateplot(dateability ~ sex + shirtless, 
-           data = facebook)
-
-# Yes there looks like an intereaction!
+```{r}
+# in the portugese datset, men do worse than women, and internet actually helps performance!
 ```
 
+19. Now, create a regression analysis predicting first period math grades using *all* variables in the dataset (Hint: use the notation `formula = y ~ .` to include all variables!). Which variables are significant? Are any of the variables that were significant before no longer significant.
 
-12.  Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
-```{r, echo = FALSE, eval = FALSE}
-t12_aov <- aov(dateability ~ sex * shirtless, 
-               data = facebook)
-            
-summary(t12_aov)
-
-# Yep I was right!
-```
-
-
-## ANOVAs on subsets of data
-
-13. It turns out that the experimenter who ran sessions 1 through 30 (a man) was trying to score a date and slipped in his own profile picture into the study. We can't trust these data. Repeat your multi anova from question 9 ONLY for sessions larger than 30 (Hint: Make the changes to the `data` argument). Do your conclusions change compared to when you analyzed the data from all sessions?
-
-```{r, eval = FALSE, echo = FALSE}
-t13_aov <- aov(formula = dateability ~ sex + haircolor + university + education + shirtless + intelligence + attractiveness,
-               data = subset(facebook, session > 30))
-
-summary(t13_aov)
-
-# The results look the same
-```
-
-
-# CHECKPOINT!
+# Checkpoint!!!
 
 ```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
 knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
 ```
 
 
-### More interactions
+## Interactions
 
-14. Create a plot (e.g.; using `ggplot` or the `yarrr::pirateplot()` function shown in the examples above) showing the distribution of dateability based on two independent variables: university and education. Based on what you see in the plot, do you expect there to be an interaction between university and education? Why or why not?
+20. Is the relationship bewteen whether or not students go out with friends and period 1 math scores different between the two schools (BP or MS)? Answer this by conducting a regression analysis with the appropriate interaction term.
 
-```{r}
-pirateplot(dateability ~ shirtless + sex, 
-           data = facebook)
+21. Is the relationship you found above the same for the portugese period 1 grades?
 
-# Yes there looks like an interaction!
-```
+# Binary Logistic regression
 
-15. Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
+22. Let's create a logistic regression analysis that answers the question: "What predicts whether or not a student *improves* his/her math grade from period 1 to period 3?" To do this, we need to start by creating a new logical variable which indicates whether or not a student's period 3 grade is larger than his/her period 1 grade. Add a new variable to the math dataframe called `grade_improve` that shows this (Hint: You can easily do this by creating a logical vector comparing period 1 and period 3 grades).
 
-```{r}
-t15_aov <- aov(dateability ~ shirtless * sex, 
-               data = facebook)
+23. Using the `glm()` function, conduct a binary logistic regression analysis that answers the main research question above. Use the `summary()` function to understand the results. What do you conclude?
 
-summary(t15_aov)
+24. Repeat this analyses, but now use the portugese data. Do you find differences in which variables predict grade improvement between the two datasets?
 
-# I was right again!
-```
-    
-    
-16. Create a plot showing the distribution of dateability based on two independent variables: university and haircolor. Based on what you see in the plot, do you expect there to be an interaction between university and intelligence? Why or why not?
+# Predicting values
 
-```{r, eval = FALSE, echo = FALSE}
-pirateplot(dateability ~ university + haircolor, 
-           data = facebook)
-
-# There does not look like an interaction
-```
-
-17. Test your prediction with the appropriate ANOVA. <font color="red">Report full APA style conclusions</font>
+25. For the math dataset, create a regression object called `lm_25` predicting a student's first period math grades based on *all* variables in the dataset.
 
 ```{r}
-t17_aov <- aov(dateability ~ university * haircolor, 
-               data = facebook)
-
-summary(t17_aov)
-
-# Yep! no significant interaction!
+lm_25 <- lm(absences ~., 
+            data = student.math)
 ```
 
+26. By looking at the `names()` of the elements in the `lm_25` object, find the vector of fitted values from the regression object. This is a vector of the predicted first period grades of all students based on the regression analysis. Add these predictions as a new column in the `student_m` dataframe called `G1_predicted`.
 
-18. Repeat the test from the previous question, but **only** include males over the age of 25. Do you get the same answer?.
+27. On average, how far away were the regression model predictions from the true first period math grades? To answer this, do basic arithmetic operations on the `G1` and `G1_predicted` vectors. You may want to use the `abs()` function, which will return the absolute value of a vector of values.
 
-### Learn more
+28. Create a scatterplot showing the relationship between the true first period math grades and the *predicted* first period math grades. How well does the regression model capture the true first period math grades?
 
-19. You can print an `aov` object to visualize things like the model residuals. Try plotting the results of your anova from question 17 (e.g.; `plot(t17_aov)`) and look at the resulting plots. 
+# Simulating results
 
-20. You can use the `apa_print()` function from the `papaja` package to print apa style conclusions from `aov` objects. The `papaja` package is on GitHub (not on CRAN), so to install it you'll need to use the `install_github()` function from the `devtools` package as follows:
+29. In the following code chunk, I will create a dataframe called `df` that contains four predictors (A, B, C, D) and some random noise (noise). I will then create dv, a dependent variable that is a linear combination of the four predictors, plus the noise. Run the following chunk. 
 
-```{r, eval = FALSE, echo = TRUE}
-install.packages("devtools")            # Only if you don't have the devtools package
-devtools::install_github("crsh/papaja") # Install the papaja package from GitHub
-library("papaja")                       # Load the papaja package
+```{r, echo = TRUE, message = FALSE}
+library(tidyverse) # For dplyr
+
+set.seed(100)  # Fix the randomisation
+
+# Create a dataframe with 4 predictors (A, B, C and D) and noise
+
+df <- data.frame(A = rnorm(n = 100, mean = 0, sd = 1),
+                 B = rnorm(n = 100, mean = 0, sd = 1),
+                 C = rnorm(n = 100, mean = 0, sd = 1),
+                 D = rnorm(n = 100, mean = 0, sd = 1),
+                 noise = rnorm(n = 100, mean = 0, sd = 10))
+
+# Calculate y, a linear combination of A, B, C plus noise
+
+df <- df %>%
+  mutate(
+    dv = 20 + A + 5 * B - 4 * C + 0 * C + noise
+  )
 ```
 
-Now that you've got it, try evaluating `apa_print()` on some of your previous `aov` objects to see what happens. You may notice that the results have special characters like `$` and `\\`. This is because the output contains formatting code for LaTeX.
+30. If you were to conduct a regression analysis predicting `dv` as a function of the 4 predictors, what coefficients would you expect to get from the regression?
 
-21. You can use the `predict()` function to use a model (like an ANOVA) to predict the values of new data using the notation `predict(MODEL, newdata)`. Using your ANOVA from question 8, predict the dateability of the following 5 students:
+31. Test your prediction by conducting the appropriate analysis (*don't* include the noise). Were you correct?
 
-```{r, echo = TRUE}
-newdata <- data.frame("id" = c(1, 2, 3, 4, 5),
-                      "haircolor" = c("brown", "brown", "blonde", "blonde", "brown"),
-                      "university" = c("1.Basel", "1.Basel", "2.Zurich", "3.Geneva", "3.Geneva"),
-                      stringsAsFactors = FALSE)
-```
+32. Now repeat the analysis, but first change the standard deviation of the noise to something really small, like 0.01. What happens to the final regression coefficients?
 
-22. There are different "types" of ANOVAS. The `aov()` function in R calculates what is known as a type I ANOVA. If your data are severely imbalanced, that is, where the number of observations in each group are not similar, then using a Type I ANOVA can lead to misleading results. In this case, it's better to use a Type II or Type III ANOVA. The `Anova()` function from the `car` package allows you to conduct these types of ANOVAs. Here's how to use the `Anova()` function:
-
-```{r, echo = TRUE}
-install.packages("car")  # Only if you don't have the car package yet
-library("car")           # Load the car package
-
-# Is there a relationship between sex and college on tattoos?
-
-# First, create an lm() object, the Anova() function needs this:
-
-model_lm <- lm(formula = tattoos ~ sex + college, 
-         data = pirates)
-
-# Type II anova
-
-Anova(model_lm, 
-      type = "II")   # Type II
-
-# Type III anova
-
-Anova(model_lm, 
-      type = "III")  # Type III
-
-# Type I anova using the aov() function
-
-summary(aov(model_lm))
-
-# In this case, all three tests give virtually the same answers (thankfully)
-```
-
-Now, answer the question: "Is there an interaction between shirtless and sex on dating desireability?" by conducting three separate ANOVAS, one that is Type I (using `aov()`), one that is Type II (using `Anova()`), and one that is Type III (using `Anova()`). Do you get the same or different answers? To learn more about how the different ANOVA types work, look at this post by Falk Scholer: [http://goanna.cs.rmit.edu.au/~fscholer/anova.php](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).
-
-23. Does it affect an ANOVA to standardize the dependent variable? Test this by conducting an ANOVA testing the effect of attractiveness on dateability. Do this once using the raw dateability scores, and once again after standardizing the dateability scores (Hint: To standardize a variable, subtract its mean then divide by its standard deviation). Do you get the same or different results?
 
 ## Submit!
 
-- Save and email your `wpa_7_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Save and email your `wpa_8_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
 - Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 
