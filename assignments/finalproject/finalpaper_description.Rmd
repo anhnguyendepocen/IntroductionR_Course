@@ -1,37 +1,32 @@
 ---
 title: "Winter 2017 R Course Final Paper Description"
-output:
-  prettydoc::html_pretty:
-    theme: lumen
-    highlight: github
 ---
 
+### Deadline: 5 January 2018 at 23:59
 
+In your final paper, you will conduct and interpret analyses with R on a dataset of your choice.
 
-## Due on or before 16 June 2017 at 23:59
+### Why do we have to write a final paper?
 
-In your final paper, you will conduct and interpret analyses in R on a dataset of your choice. The goal of this assignment is to reinforce the main topics in the course, and to give you one document that you can look back on to help you in your future R adventures.
+The goal of this assignment is to reinforce the main topics in the course, and to give you one document that you can look back on to help you in your future R adventures. This is *not* a test -- it is an opportunity for you to continue learning R.
 
-Our last few class periods are entirely dedicated to giving you time to work on your papers in class. I encourage you to use this time to work on your papers and get help from me and your fellow R pirates.
-
-
-## What data can I analyse?
+### What data can I analyse?
 
 You need to analyze one *new* dataset that we have *not* already used in class. Ideally, your dataset should have at least 100 rows and 5 columns, where at least two columns are numeric and continuous (like height and age), and two columns are categorical (like sex and favorite movie). If you have a dataset you really want to analyze that does not satisfy these criteria, come talk to me and we'll find a solution.
 
 You can obtain a dataset from one of the following three methods:
 
-### Method 1: Use your own dataset
+*Method 1: Use your own dataset*
 
 If you have data for a Bachelor's or Master's thesis, you are very welcome to use that. I don't care if you have analyzed it in the past.
 
-### Method 2: Ask me for a randomly generated dataset
+*Method 2: Ask me for a randomly generated dataset*
 
 Send me an email with the subject "Please send me a dataset for my final paper!". I will email a randomly generated dataset to you.
 
-### Method 3: Find a real dataset online
+*Method 3: Find a real dataset online*
 
-Ifyou would like to analyze a real dataset, here are a few places to get one. Note: I recommend you look for data in `.csv` or `.txt` format as these will be much easier to read than `.xls` or `.sav` files.
+If you would like to analyze a real dataset, here are a few places to get one. Note: I recommend you look for data in `.csv` or `.txt` format as these will be much easier to read than `.xls` or `.sav` files.
 
 1. Journal of Judgment and Decision Making: http://journal.sjdm.org/. The Journal of Judgment and Decision Making requires all recent authors to publish their data. If you look at issues after 2014, you should find raw data for most if not all published articles. 
 
@@ -43,70 +38,125 @@ Ifyou would like to analyze a real dataset, here are a few places to get one. No
 
 5. Financial datasets: http://www.r-bloggers.com/financial-data-accessible-from-r-part-iii/. Several financial datasets are available here.
 
-
 *Do not spend too long trying to find a dataset!* Many students in past years have spent most of their final class periods just finding data, rather than using that time to write their papers and get help. This is not the best use of your time. Instead, spend an hour or two outside of class looking for a dataset. 
 
-**If you are unsuccessful finding a good dataset that you can get into R and understand, ask me for one!**
+### What do I need to submit?
+
+You need to submit three separate documents in your final project
+
+| Documents| Description|
+|:------------------|:-----------------------------------|
+|     `Final_LastFirst.pdf` (or .doc)|    A **text document** without code (e.g.; a Word document, or PDF output from RMarkdown or papaja) containing the three sections Introduction, Analyses and Conclusion.<br><br>Your text document does not need to be formatted in any particular style. However, you **must include your name, date, and a paper title at the top of your document!** I recommend trying to replicate the overall look of APA style (e.g.; double spaced, with a title page), but you don't need to. You don't need to cite any papers or include a bibliography (but you can if you'd like to). |
+|     `Final_LastFirst.R` (or .Rmd)|    A **code document** containing all the R code relevant to the tasks.<br><br> Your code document should contain all of the code that produced the output in your text document, from the statistical analyses to the plots. Ideally, your code should be *entirely self-contained and replicable*. What does this mean? This means that when I receive your code, I should be able to run all of your code without any errors.|
+|     `*.txt`|    Any data files (e.g. mydata.txt, survey.csv) referred to in your `Final_LastFirst.R` script.|
 
 
-#### Can I work with someone else on the same dataset?
+### What should be in my `Final_LastFirst.pdf` document?
 
-Yes! You are welcome to use the same dataset as another student in the class, and you are welcome to work together on your analyses. However, you *must* each write your own code and text and turn in your own work! If I suspect that you did not write your paper / code, I reserve the right to ask you to explain it to me personally. If you cannot convince me that your code is your own, you will not pass the class.
+There should be three sections in your `Final_LastFirst.pdf` (or .doc) text document: Introduction, Analyses, and Conclusion. Please write the document in paragraph style (e.g.; not just a list of bullet points).
+**Introduction (1-2 paragraphs)**
 
-#### How should I write and format my paper?
+Your paper should start with an introduction where you briefly describe your dataset. Where did you get it? For what purpose was the data collected? How was it collected? Be as descriptive as you can, but if you don't know exactly how the data were collected (perhaps because you got it online) that's ok.
 
-Your paper will be a combination of text, R code, and R output. Your paper does not need to be formatted in any particular style - though it would be good practice for you to try to approximate APA style using `papaja`. However, you do need to include your name, date, and a title of your paper at the beginning of the document.
+In addition to describing the dataset, briefly describe the 1-5 main research questions you want to answer with these data. You can frame them as explicit hypotheses, or just exploratory questions. 
 
-Here are three ways you can write your paper (in order of my recommendation)
+**Analyses (however long it takes)**
 
-1. Markdown, either regular markdown or in APA format using `papaja`. The result will be a pdf file in pseudo-APA format.
+This is the main section of your document. In this section, you should report the results of all the programming tasks (see below) that are relevant to your research questions. 
 
-2. Word. This is the least elegant solution. It will require you to copy and paste all of your code and and results from R to Word. However, if you insist on using it you can.
+<font color = "blue">Label your tasks with [TX]</font>
 
-#### Including R code and output
+Any time that you are reporting results from a specific task in your paper, include the [TX] tag, where X is the task number, so I (and you) can quickly find them in your paper. For example, here's how a paragraph in your analysis section could look when you complete tasks 16 (a t-test) and 14 (a plot).
 
-When you refer to an analysis in your text, you *must* display both your R code and R output at the same location. If you use Markdown, this will happen automatically. 
+> In order to test if there was a significant difference in the weights of chicks given diets 1 and 2, I conducted a two-sample t-test. The test showed that, indeed, chicks on diet 1 had significantly higher weights than those on diet 2, t(201.38) = -2.64, p < .01 [T16]. A barplot showing the distribution of weights for different diets is shown in Figure 1 [T14].
+> Next, I conducted an ANOVA to test if there were differences in weights in the different time periods. An ANOVA was significant F(1, 576) = 1349, p < 0.01 [T21]. To see which groups differed, I conducted post-hoc tests...
 
-If you use Word, you will need to take a screenshot of *both* your R code and your output from RStudio, and paste it into your Word document. This will be a pain in the ass, I recommend using Markdown instead!!
+You only need to report tasks in your paper that provide real interpretable results. Some tasks with the <font color ="red">Outside</font> and  <font color ="blue">R Only</font> labels ask you to do some programming or organisation that you don't need to include in your final text document. For example, task 1 asks you to open a new R project, obviously you don't need to report this in your paper.
 
-## What should be in my paper?
+**Conclusion (1-2 paragraphs)**
 
-There should be four sections in your paper: Dataset description, Questions, Analyses, and Conclusion.
+Write a brief summary of your main conclusions in 1-3 paragraphs. You don't need to go nuts here. Just write a few paragraphs that summarize the main conclusions from your results.
 
-### Section 1: Dataset Description
 
-Your paper should start with a description of the dataset. In describing your data, you must answer the following questions (in paragraph form). Be as descriptive as you can, but if you don't know exactly how the data were collected (perhaps because you got it online) that's ok. Just say as much as you can.
+### What should be in my `Final_LastFirst.R` document?
 
-1. How did you obtain the dataset?
-2. How were the data originally collected?
+Your code document `Final_LastFirst.R` should be well formatted, contain your name and the date at the top, and include all of the R code necessary to produce your results. When you complete a task, you should include the [TX] tag so you and I can quickly see when you complete each task. Use comments to explain your code!
 
-### Section 2: Questions
+Here is an example of how your `Final_LastFirst.R` document could look:
 
-Next you should list 5-10 questions that you would like to answer. For example, if I was analyzing the ChickWeight dataset, I could ask the following:
+```{r, eval = FALSE}
+# Final_Phillips.Nathaniel.R
+# Nathaniel Phillips
+# 15 November, 2017
+# Introduction to Statistics with R, Final Paper
 
-1. How did the chicken weights generally change over time?
-2. Was there a difference in the the average chicken weights as a result of the different diets?
-3. Were the chicken weights at time 1 normally distributed?
-4. Was there a difference in weights between time 2 and time 4?
-5. Did more chickens die in one diet than another?
 
-You don't need to go nuts here, just show me that you have some questions you want to answer before diving into analysing data.
+# Set up libraries
+library(tidyverse)
+library(yarrr)
 
-### Section 3: Analyses (including Tasks)
+# [T1]
+# Set up project
 
-This is the main section of your document. In this section, you should conduct the relevant tasks to answer each of your 5-10 research questions. You need to complete *each* of the following tasks at some point in your paper. However, you can complete them in any order you wish, and you do not need to restrict yourself to one task for each question.
+# [T2]
+# Created Final_PhillipsNathaniel.R file
 
-## Task Checklist
+# [T3]
+# Load mydata.txt as a new dataframe data
 
-1. Read the data into R from a text file using `read.table()`
+data <- read.table(___)
 
-2. Show summary statistics of your dataframe using `summary()` or `str()`.
+# ----------------
+# More tasks....
+# ----------------
 
-3. Print the names of the columns in the dataframe with `names()`
+# [T15]
 
-4. Recode the values of at least one column using indexing and assignment. For example, in a column of sex data, you could change "female" to 1, and "male" to 0.
+# Calculate mean X for each level of Y
 
-```{r}
+ChickWeight %>% 
+  group_by(__) 
+%>% summarise(
+ __
+ __
+)
+
+# [T16]
+
+# T-test comparing the weights of chickens on diet 1 versus 2
+
+t.test(weight ~ Diet,
+       data = subset(ChickWeight, Diet %in% c(1, 2)))
+
+# Result: t(201.38) = -2.64, p < 0.01
+```
+
+
+# Task Checklist
+
+Here is the task checklist. You need to complete all tasks. Tasks with the label <font color ="red">Outside</font> don't require any code, you just need to make sure to do them. Tasks with the label <font color ="blue">R Only</font> are programming tasks that you need to include in your `.R` script, but that you do *not* need to report in your text document. All other tasks should appear *both* in your `.R` script and in your final document.
+
+1. <font color ="red">Outside</font>: Open a new project called `R_FinalPaper.Rproj`. In the main directory of the project, include two folders: `R` and `data`.
+
+2. <font color ="red">Outside</font>: Create a new R script called `Final_LastFirst.R`, where Last and First are your last and first names. Save the file in your `R` folder. Add your name and the date as comments at the top of the script.
+
+3. <font color ="red">Outside</font>: Put the raw data for your project (probably a `.txt` or `.csv` file) in the data folder of your project.
+
+4. <font color ="blue">R Only</font>: Load all of the packages you need for your analyses.
+
+5. <font color ="blue">R Only</font>: Read data into R from your text file using `read.table()` (or a similar function).
+
+6. Using `summary()`, `str()`, `nrow()` and `ncol()`, Report summary statistics from your data generated by applying the `summary()` or `str()` function to your data. How many rows and columns are in your data? What are the names of the columns?
+
+7. <font color ="blue">R Only</font>: Change the name of at least one column in your data.
+
+8. Calculate at least one standard deviation with `sd()`, one mean with `mean()`, and one median with `median()`.
+
+9. Print a table of the frequencies of outcomes of a categorical variable with `table()`.
+
+10. <font color ="blue">R Only</font>: Recode the values of at least one column using indexing and assignment (or the `case_when()` function in `dplyr`). For example, in a column of sex data, you could change "female" to 1, and "male" to 0.
+
+```{r, echo = FALSE}
 # Hint: 
 data <- data.frame(sex = c(1, 2, 1, 1, 2),
                    age = c(20, 32, 19, 22, 24))
@@ -119,119 +169,71 @@ data$sex.2[data$sex == 1] <- "male"
 data$sex.2[data$sex == 2] <- "female"
 ```
 
+11. Count the number of outliers in one numerical vector. Define an outlier as any datapoint that is more than 3 standard deviations away from the mean.
 
-5. Calculate at least one standard deviation with `sd()`, one mean with `mean()`, and one median with `median()`.
-
-6. Print a table of the frequencies of outcomes of a categorical variable with `table()`.
-
-7. Count the number of outliers in one numerical vector. Define an outlier as any datapoint that is more than 3 standard deviations away from the mean.
-
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 ## Hint:
 outliers <- sum(data$x > ___ | data$x < __)
 ```
 
-8. Create at least one scatterplot with `plot()`. Include a regression line.
+*Note: In all plots, make sure to include appropriate axis labels and plot titles*
 
-9. Create at least one histogram with `hist()`
+12. Create at least one plot showing the relationship between a numeric independent variable and a numeric dependent variable (maybe a scatterplot?). Include a regression line. If you'd like, show different plots for different groups of data (e.g.; different colored points for different groups).
 
-10. Create at least one pirateplot with `pirateplot()`
+13. Create at least plot showing the distribution of a numeric variable. Maybe a histogram?
 
-11. Use `aggregate()` or `dplyr` to calculate descriptive statistics across groups of data.
+14. Create at least one plot showing the relationship between one or more categorical independent variables (e.g.; sex, eye color) and one numeric dependent variable (e.g.; height). Consider including error bars representing confidence intervals.
 
-12. Calculate at least one t-test with `t.test()`. Write your results in APA format.
+15. Use `aggregate()` or `dplyr` to calculate descriptive statistics across groups of data. For example, you could calculate the mean of a numeric variable for each level of a categorical variable.
 
-13. Calculate at least one t-test test on a *subset* of data by combining `subset()` with `t.test()`. For example, you could conduct a t-test comparing results from a performance test between two experimental groups, but *only* for females. Write your results in APA format.
+16. Calculate at least one t-test with `t.test()`. Write your results in APA format.
 
-14. Calculate at least one correlation test with `cor.test()`. Write your results in APA format.
+17. Calculate at least one t-test test on a *subset* of data by combining `subset()` with `t.test()`. For example, you could conduct a t-test comparing results from a performance test between two experimental groups, but *only* for females. Write your results in APA format.
 
-15. Calculate at least one correlation test on a *subset* of data by combining `subset()` with  `cor.test()`. For example, you could conduct a correlation between height and weight but only for males. Write your results in APA format.
+18. Calculate at least one correlation test with `cor.test()`. Write your results in APA format.
 
-16. Calculate at least one chi-square test with `chisq.test()`. Write your results in APA format.
+19. Calculate at least one correlation test on a *subset* of data by combining `subset()` with  `cor.test()`. For example, you could conduct a correlation between height and weight but only for males. Write your results in APA format.
 
-17. Calculate at least one one-way ANOVA analysis with `aov()` with 1 independent variable. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than 4 paired comparisons in your analysis, you don't need to describe every paired difference, just explain the most important ones.
+20. Calculate at least one chi-square test with `chisq.test()`. Write your results in APA format.
 
-18. Calculate at least one multiple-variable ANOVA analysis with `aov()` with 2 or more independent variables. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than than 4 paired comparisons in your analysis, you don't need to describe every paired difference, just explain the most important ones.
+21. Calculate at least one one-way ANOVA analysis with `aov()` (or another ANOVA function such as `Anova()`) with 1 independent variable. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than 4 paired comparisons in your analysis, you don't need to describe every paired difference, just explain the most important ones.
 
-19. Calculate at least one regression analysis with `lm()` or `glm()`. Write your results in APA format.
+22. Calculate at least one multiple-variable ANOVA analysis with 2 or more independent variables. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than than 4 paired comparisons in your analysis, you don't need to describe every paired difference, just explain the most important ones.
 
-20. Create (and use!) at least one custom function. For example, you could create a function called `my.histogram()` that creates a histogram with colors that you like. Or you could create a function called `find.outliers()` that looks for outliers in a vector and then tells you where they are in that vector.
+23. Repeat your ANOVA from task 20, but now include interaction terms. Write your results in APA format. Do you find an interaction?
 
-21. Create one loop (e.g.; to create multiple plots or to do calculations across several rows or columns)
+24. Calculate at least one regression analysis with `lm()` or `glm()`. Write your results in APA format.
 
+25. Report summary statistics of the *residuals* from your regression analysis in task 22. That is, on average, how far away are the model fits from the true values? What is the standard deviation of these residuals?
 
-### An Example of completing some tasks in the form of a question
+## FAQ
 
-Here's how to stay organized in completing your tasks. 
+Here are my answers to frequently asked questions
 
-1. Write what you are going to do: (e.g.; "I will calculate the mean age for each time period").
-
-1. Display your nicely formatted R code with appropriate comments.
-
-1. Display the output from your R code.
-
-1. Interpret what you found. (e.g.; "The mean age at time period 2 was XX"). If the task involves a statistical test, report a full APA style conclusion in your text (either by typing it manually, or by using mini-chunks in Markdown).
-
-For example, in the following, I will ask questions about chicken weights, run the appropriate R code, display the results, and then interpret them.
-
-*Was there an effect of diet on Chicken weights? To start my analysis, I calculated the mean weight of chickens separately for each diet.*
-
-```{r, eval = T}
-# Calculate mean weight for each diet
-aggregate(formula = weight ~ Diet, 
-          data = ChickWeight,
-          FUN = mean)
-```
-
-*My results showed that chickens on Diet 1 had the smallest mean weight (102.65), and chickens on Diet 3 had the highest mean weight (142.95). To see if this effect was significant, I conducted a one-way ANOVA*
-
-```{r}
-# One-way ANOVA of weight on Diet
-weight.aov <- aov(formula = weight ~ Diet, data = ChickWeight)
-
-# Print the results
-summary(weight.aov)
-```
-
-*The one-way ANOVA was significant F(3, 574) = 10.81, p < .01, suggesting that diet did affect weights. To understand the nature of this difference, I conducted a post-hoc test*
-
-```{r}
-# Post-hoc test on anova
-
-TukeyHSD(weight.aov)
-```
-
-*Post-hoc tests revealed a significant difference between diets 1 and 3 (p < .05), and diets 1 and 4 (p < .05). No other comparisons were significant at the .05 level.*
-
----
----
-
-#### What if some of these tasks don't make sense for my data?
-
-If some of these tasks don't make sense for your data, explain why, then replace the task with another one at the appropriate level of difficulty that displays your R knowledge.
-
-#### Section 4: Conclusion
-
-Write a brief summary of your main conclusions in 1-3 paragraphs. You don't need to go nuts here. Just write a few paragraphs that summarize the main conclusions from your results.
+| Question| Answer|
+|:------------------------|:-----------------------------------|
+|Can I work with someone else on the same dataset? |Yes! You are welcome to use the same dataset as another student in the class, and you are welcome to work together on your analyses. However, you *must* each write your own code and text and turn in your own work! If I suspect that you did not write your paper / code, I reserve the right to ask you to explain it to me personally. If you cannot convince me that your code is your own, you will not pass the class.|
+| Do I have to refer to all tasks in the final text document?| No. Some tasks (like task 1) are for setting up your analyses, or manipulating your data in R. You don't need to mention these in your text document. However, any R code should be in your R document.|
+| Do I have to complete the tasks in order?| No. If it makes more sense for you to do the tasks in a different order, that's fine. But do make sure to label them with the [TX] tag.|
+| How do I submit my final assignemnt? | Submit your paper like a regular WPA by completing the WPA submission page, and emailing me all your documents.|
+| Does my document need to be in APA style? |No. You can use any style you want. However, I would prefer that you write your document in paragraph style, as it would generally look in a real manuscript, rather than simply a list of all the tasks.|
+| Can I turn in the assignment *before* the deadline? | Yes, of course. In the past, many students have even finished their final assignment in the final class periods.|
+| What do I do if I can't turn in the paper before the deadline? |You have lots of time to finish your assignment, so this should not be an issue. However if you tell me well before the deadline that you won't be able to turn it in on time, let me know your reason and we may be able to arrange something. If you tell me shortly before the deadline, it is unlikely that I will give you more time (unless of course there was a serious emergency).|
+|     What if some of these tasks don't make sense for my data? Do I still have to do them or can I skip them?|If some of these tasks don't make sense for your data, explain why, then replace the task with another one at the appropriate level of difficulty that displays your R knowledge.|
+|     What if I don't know how to complete a task, or I'm not sure if I did it correctly?| Just ask for help! The final project is not a test of your knowlege, it's an opportunity for you to continue learning. Ask your colleagues, or come to my office and ask for help directly.|
+| The paper is due tomorrow and I have an error! Can you help me? | No. I won't be able to help you the day before the assignment is due.|
+| Do I have to complete all tasks perfectly to get a good grade? | No. If you can convince me that you worked hard on your project, and asked for help when you needed it, you'll be fine, even if you did not successfully complete all tasks. |
+| I want to include some additional analyses in my document that aren't listed as one of the tasks. Can I include them?| Of course, yes!|
 
 
-### Example Final Paper
-
-Here is an example of a final paper written on the ChickWeight dataset
-
-`HTML`: [http://rpubs.com/YaRrr/finalpaper_example_2017](http://rpubs.com/YaRrr/finalpaper_example_2017)
-
-### How do I submit my paper?
-
-Submit your paper like a regular WPA by emailing your documents (ie., in .R, .Rmd, .doc, or .pdf format) to me by 16 June 2017 at 23:59.
 
 ### How will I be graded?
 
 I will grade your paper based on how well you followed the instructions above. Here is a checklist I will use when grading your paper.
 
-- Are all four sections present?
-- Were all tasks completed (assuming they make sense for your data)? If not, the did author ask me for help (before the final deadline)?
-- Is the *code* properly formatted and commented -- that is, can I read it and understand it?
-- Is the *paper* nicely formatted? That is, does it look like the student put effort into making a nice document that (s)he will be proud to show to his/her grandchildren?
+- Did you send me all text, code and data documents?
+- Were all tasks completed (assuming they make sense for your data)? If not, the did you ask me for help (well before the final deadline)?
+- Is your *code* properly formatted and commented -- that is, can I read it and understand it?
+- Is the *paper* nicely formatted? That is, does it look like the you put effort into making a nice document that you will be proud to look at in the future?
 
 If the answer to all these questions is "Yes" (or "Mostly Yes"), you will be just fine.

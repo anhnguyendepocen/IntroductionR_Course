@@ -57,10 +57,10 @@ Week - Date |  Topic | Reading | Assignment
 9 - 15 Nov | Linear regression with `lm()`, `glm()` | YaRrr Ch: [15](https://bookdown.org/ndphillips/YaRrr/regression.html) | [WPA #8](https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_8.html)
 10 - 22 Nov | Writing Functions and Loops | YaRrr Ch: [16](https://bookdown.org/ndphillips/YaRrr/functions.html), [17](https://bookdown.org/ndphillips/YaRrr/loops.html) | 
 11 - 29 Nov | R Markdown and papaja | [Markdown Video](https://www.youtube.com/watch?v=7qTvOZfK6Cw)<br>[Markdown Guide](http://www.rpubs.com/YaRrr/markdownbasics)<br>[RStudio Lessons](http://rmarkdown.rstudio.com/lesson-1.html)<br>[papaja Guide](http://www.rpubs.com/YaRrr/papaja_guide) | -
-12 - 6 Dec | Final project work | - | - 
+12 - 6 Dec | Final project work | | [Final Project Description](https://ndphillips.github.io/IntroductionR_Course/assignments/finalproject/finalpaper_description.html)  
 13 - 13 Dec | Final project work | - | - 
 14 - 20 Dec | Final project work | -| - 
-End - 5 Jan | Final Project Due!!! | -| - 
+End - 5 Jan | Final project Due!!! | -| - 
 
 
 
