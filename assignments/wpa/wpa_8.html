@@ -245,6 +245,30 @@ summary(hook_glm)  # summary of results</code></pre>
 </div>
 <div id="standard-regression-with-lm" class="section level1">
 <h1>Standard Regression with lm()</h1>
+<p>When reporting APA style results from a regression analysis, use the following format: <strong>STATEMENT, b = X, t(df) = X, p = X</strong>: For example:</p>
+<pre class="r"><code>x &lt;- lm(weight ~ Time,
+        data = ChickWeight)
+
+summary(x)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = weight ~ Time, data = ChickWeight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -138.331  -14.536    0.926   13.533  160.669 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  27.4674     3.0365   9.046   &lt;2e-16 ***
+## Time          8.8030     0.2397  36.725   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 38.91 on 576 degrees of freedom
+## Multiple R-squared:  0.7007, Adjusted R-squared:  0.7002 
+## F-statistic:  1349 on 1 and 576 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code># There is a significant positive relationship between time and weight, b = 8.80, t(576) = 36.73, p &lt; 0.01.</code></pre>
 <div id="one-iv" class="section level2">
 <h2>One IV</h2>
 <ol start="6" style="list-style-type: decimal">

@@ -195,6 +195,18 @@ str(student_p)
 
 # Standard Regression with lm()
 
+When reporting APA style results from a regression analysis, use the following format: **STATEMENT, b = X, t(df) = X, p = X**: For example:
+
+```{r, echo = TRUE, eval = TRUE}
+x <- lm(weight ~ Time,
+        data = ChickWeight)
+
+summary(x)
+
+# There is a significant positive relationship between time and weight, b = 8.80, t(576) = 36.73, p < 0.01.
+```
+
+
 ## One IV
 
 6. For the math data, create a regression object called `lm_6` predicting first period grade (G1) based on age.
