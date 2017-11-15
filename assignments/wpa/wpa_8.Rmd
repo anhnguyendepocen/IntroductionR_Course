@@ -204,7 +204,7 @@ lm_5 <- lm(G1 ~ age,
            data = student_m)
 ```
 
-7. Run `names()` and `summary()` on `lm_5` to see additional information from your regression object. Now, return a vector of the coefficients by running `lm_5$coefficients`
+7. Run `names()` and `summary()` on `lm_6` to see additional information from your regression object. Now, return a vector of the coefficients by running `lm_5$coefficients`
 
 ```{r}
 summary(lm_5)
