@@ -179,7 +179,11 @@ $(document).ready(function () {
 </div>
 <div id="what-should-be-in-my-final_lastfirst.pdf-document" class="section level3">
 <h3>What should be in my <code>Final_LastFirst.pdf</code> document?</h3>
-<p>There should be three sections in your <code>Final_LastFirst.pdf</code> (or .doc) text document: Introduction, Analyses, and Conclusion. Please write the document in paragraph style (e.g.; not just a list of bullet points). <strong>Introduction (1-2 paragraphs)</strong></p>
+<p>You can create your final text document in one of three ways: (standard) R Markdown, APA format with <code>papaja</code>, or writing it directly in Word (or your other favorite word processor).</p>
+<p>There should be three sections in your <code>Final_LastFirst.pdf</code> (or .doc) text document: Introduction, Analyses, and Conclusion. Please write the document in paragraph style (e.g.; not just a list of bullet points).</p>
+<p><strong>Title</strong></p>
+<p>Include a title, your name, and the date at the top of the document.</p>
+<p><strong>Introduction (1-2 paragraphs)</strong></p>
 <p>Your paper should start with an introduction where you briefly describe your dataset. Where did you get it? For what purpose was the data collected? How was it collected? Be as descriptive as you can, but if you don’t know exactly how the data were collected (perhaps because you got it online) that’s ok.</p>
 <p>In addition to describing the dataset, briefly describe the 1-5 main research questions you want to answer with these data. You can frame them as explicit hypotheses, or just exploratory questions.</p>
 <p><strong>Analyses (however long it takes)</strong></p>
@@ -196,6 +200,7 @@ $(document).ready(function () {
 <div id="what-should-be-in-my-final_lastfirst.r-document" class="section level3">
 <h3>What should be in my <code>Final_LastFirst.R</code> document?</h3>
 <p>Your code document <code>Final_LastFirst.R</code> should be well formatted, contain your name and the date at the top, and include all of the R code necessary to produce your results. When you complete a task, you should include the [TX] tag so you and I can quickly see when you complete each task. Use comments to explain your code!</p>
+<p><strong>Important!</strong> Your code document should be complete, and without errors or bugs. You should be able to run all of your code without errors in a clean working directory. To test this yourself, I recommend clearing your workspace by running <code>rm(list = ls())</code>, and then running <em>all</em> of your code. It should run without errors!</p>
 <p>Here is an example of how your <code>Final_LastFirst.R</code> document could look:</p>
 <pre class="r"><code># Final_Phillips.Nathaniel.R
 # Nathaniel Phillips
@@ -244,7 +249,7 @@ t.test(weight ~ Diet,
 </div>
 <div id="task-checklist" class="section level1">
 <h1>Task Checklist</h1>
-<p>Here is the task checklist. You need to complete all tasks. Tasks with the label <font color="red">Outside</font> don’t require any code, you just need to make sure to do them. Tasks with the label <font color="blue">R Only</font> are programming tasks that you need to include in your <code>.R</code> script, but that you do <em>not</em> need to report in your text document. All other tasks should appear <em>both</em> in your <code>.R</code> script and in your final document.</p>
+<p>You need to complete each of the following tasks. Tasks with the label <font color="red">Outside</font> don’t require any code, you just need to make sure to do them. Tasks with the label <font color="blue">R Only</font> are programming tasks that you need to include in your <code>.R</code> script, but that you do <em>not</em> need to report in your text document. All other tasks should appear <em>both</em> in your <code>.R</code> script and in your final document.</p>
 <ol style="list-style-type: decimal">
 <li><p><font color="red">Outside</font>: Open a new project called <code>R_FinalPaper.Rproj</code>. In the main directory of the project, include two folders: <code>R</code> and <code>data</code>.</p></li>
 <li><p><font color="red">Outside</font>: Create a new R script called <code>Final_LastFirst.R</code>, where Last and First are your last and first names. Save the file in your <code>R</code> folder. Add your name and the date as comments at the top of the script.</p></li>

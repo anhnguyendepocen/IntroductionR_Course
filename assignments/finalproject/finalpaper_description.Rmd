@@ -53,7 +53,14 @@ You need to submit three separate documents in your final project
 
 ### What should be in my `Final_LastFirst.pdf` document?
 
+You can create your final text document in one of three ways: (standard) R Markdown, APA format with `papaja`, or writing it directly in Word (or your other favorite word processor).
+
 There should be three sections in your `Final_LastFirst.pdf` (or .doc) text document: Introduction, Analyses, and Conclusion. Please write the document in paragraph style (e.g.; not just a list of bullet points).
+
+**Title**
+
+Include a title, your name, and the date at the top of the document.
+
 **Introduction (1-2 paragraphs)**
 
 Your paper should start with an introduction where you briefly describe your dataset. Where did you get it? For what purpose was the data collected? How was it collected? Be as descriptive as you can, but if you don't know exactly how the data were collected (perhaps because you got it online) that's ok.
@@ -81,6 +88,8 @@ Write a brief summary of your main conclusions in 1-3 paragraphs. You don't need
 ### What should be in my `Final_LastFirst.R` document?
 
 Your code document `Final_LastFirst.R` should be well formatted, contain your name and the date at the top, and include all of the R code necessary to produce your results. When you complete a task, you should include the [TX] tag so you and I can quickly see when you complete each task. Use comments to explain your code!
+
+**Important!** Your code document should be complete, and without errors or bugs. You should be able to run all of your code without errors in a clean working directory. To test this yourself, I recommend clearing your workspace by running `rm(list = ls())`, and then running *all* of your code. It should run without errors!
 
 Here is an example of how your `Final_LastFirst.R` document could look:
 
@@ -132,9 +141,10 @@ t.test(weight ~ Diet,
 ```
 
 
+
 # Task Checklist
 
-Here is the task checklist. You need to complete all tasks. Tasks with the label <font color ="red">Outside</font> don't require any code, you just need to make sure to do them. Tasks with the label <font color ="blue">R Only</font> are programming tasks that you need to include in your `.R` script, but that you do *not* need to report in your text document. All other tasks should appear *both* in your `.R` script and in your final document.
+You need to complete each of the following tasks. Tasks with the label <font color ="red">Outside</font> don't require any code, you just need to make sure to do them. Tasks with the label <font color ="blue">R Only</font> are programming tasks that you need to include in your `.R` script, but that you do *not* need to report in your text document. All other tasks should appear *both* in your `.R` script and in your final document.
 
 1. <font color ="red">Outside</font>: Open a new project called `R_FinalPaper.Rproj`. In the main directory of the project, include two folders: `R` and `data`.
 
