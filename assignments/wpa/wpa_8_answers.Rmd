@@ -1,0 +1,575 @@
+---
+title: "WPA #8  -- Regression"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8,
+                      echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align = 'center', out.width = "70%")
+
+student_m <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt",
+                      sep = "\t",
+                      header = TRUE)
+
+student_p <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt",
+                      sep = "\t",
+                      header = TRUE)
+```
+
+
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr: [15](https://bookdown.org/ndphillips/YaRrr/regression.html)
+
+## Assignment Goals
+
+- Create regression objects (`lm` and `glm`) with the `lm()` and `glm()` functions
+- Understand the contents of regression objects and interpret outputs.
+- Use the `names()` and `summary()` functions to access specific elements of regression objects.
+
+## Examples
+
+```{r, echo = TRUE, eval = FALSE}
+
+library(yarrr)   #Load the yarrr package for the pirates dataframe
+
+# Predict beard.length as a function of sex, age, weight and tattoos
+
+beard_lm <- lm(formula = beard.length ~ sex + age + weight + tattoos,
+               data = pirates)
+
+summary(beard_lm)          # Look at summary results
+names(beard_lm)            # Named elements in the object
+beard_lm$coefficients      # Get coefficients
+
+# Predict tattoos as a function of ALL variables in the pirates dataframe
+
+tattoos_lm <- lm(formula = tattoos ~.,
+                 data = pirates)
+
+# Calculate model fits
+
+# Directly from lm object
+tattoos_fits <- tattoos_lm$fitted.values
+
+# or calculate manually using predict()
+tattoos_fits <- predict(tattoos_lm, newdata = pirates)
+
+# Calculate residuals
+
+# Directly from lm object
+tattoos_resid <- tattoos_lm$residuals
+
+# or calculate manually
+tattoos_resid <- pirates$tattoos - predict(tattoos_lm, newdata = pirates)
+
+
+# Binary logistic regression
+
+# Create a logical vector indicating which pirates like "hook"
+pirates$like_hook <- pirates$favorite.pirate == "Hook"
+
+# Conduct binary logistic regression predicting which pirates like hook
+
+hook_glm <- glm(formula = like_hook ~ . -favorite.pirate,   # exclude favorite.pirate
+                data = pirates, 
+                family = "binomial")
+
+summary(hook_glm)  # summary of results
+```
+
+
+
+## Student Performance
+
+```{r, out.width = "70%", echo = FALSE, eval = TRUE}
+knitr::include_graphics("http://fssd.org/wp-content/uploads/2015/07/IMG_2858.jpg")
+```
+
+In this WPA, you will analyze data from a study on student performance in two classes: math and portuguese. These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
+
+Here is the data description (taken directly from the original website
+
+*This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). In [Cortez and Silva, 2008], the two datasets were modeled under binary/five-level classification and regression tasks. Important note: the target attribute G3 has a strong correlation with attributes G2 and G1. This occurs because G3 is the final year grade (issued at the 3rd period), while G1 and G2 correspond to the 1st and 2nd period grades. It is more difficult to predict G3 without G2 and G1, but such prediction is much more useful (see paper source for more details).*
+
+The data are located in two separate tab-delimited text files at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data), and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data).
+
+
+## Datafile description
+
+Both datafiles have 33 columns. Here they are:
+
+1 school - student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira) 
+
+2 sex - student's sex (binary: 'F' - female or 'M' - male) 
+
+3 age - student's age (numeric: from 15 to 22) 
+
+4 address - student's home address type (binary: 'U' - urban or 'R' - rural) 
+
+5 famsize - family size (binary: 'LE3' - less or equal to 3 or 'GT3' - greater than 3) 
+
+6 Pstatus - parent's cohabitation status (binary: 'T' - living together or 'A' - apart) 
+
+7 Medu - mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education) 
+
+8 Fedu - father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education) 
+
+9 Mjob - mother's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other') 
+
+10 Fjob - father's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other') 
+
+11 reason - reason to choose this school (nominal: close to 'home', school 'reputation', 'course' preference or 'other') 
+
+12 guardian - student's guardian (nominal: 'mother', 'father' or 'other') 
+
+13 traveltime - home to school travel time (numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour) 
+
+14 studytime - weekly study time (numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours) 
+
+15 failures - number of past class failures (numeric: n if 1<=n<3, else 4) 
+
+16 schoolsup - extra educational support (binary: yes or no) 
+
+17 famsup - family educational support (binary: yes or no) 
+
+18 paid - extra paid classes within the course subject (Math or Portuguese) (binary: yes or no) 
+
+19 activities - extra-curricular activities (binary: yes or no) 
+
+20 nursery - attended nursery school (binary: yes or no) 
+
+21 higher - wants to take higher education (binary: yes or no) 
+
+22 internet - Internet access at home (binary: yes or no) 
+
+23 romantic - with a romantic relationship (binary: yes or no) 
+
+24 famrel - quality of family relationships (numeric: from 1 - very bad to 5 - excellent) 
+
+25 freetime - free time after school (numeric: from 1 - very low to 5 - very high) 
+
+26 goout - going out with friends (numeric: from 1 - very low to 5 - very high) 
+
+27 Dalc - workday alcohol consumption (numeric: from 1 - very low to 5 - very high) 
+
+28 Walc - weekend alcohol consumption (numeric: from 1 - very low to 5 - very high) 
+
+29 health - current health status (numeric: from 1 - very bad to 5 - very good) 
+
+30 absences - number of school absences (numeric: from 0 to 93) 
+
+31 G1 - first period grade (numeric: from 0 to 20) 
+
+31 G2 - second period grade (numeric: from 0 to 20) 
+
+32 G3 - final grade (numeric: from 0 to 20, output target)
+
+
+## Data loading and preparation
+
+1. <font color = "red">OPEN YOUR CLASS R PROJECT!!!</font>. This project should have (at least) two folders, one called `data` and one called `R`. If you do not have these folders already, create them! Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_8_LastFirst.R`, where Last and First are your last and first names. 
+
+```{r}
+# Done!
+```
+
+
+2. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data). Using `read.table()` load this two data files into R as two objects, one called `student_m`, and one called `student_p`
+
+```{r}
+student_m <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt",
+                      sep = "\t",
+                      header = TRUE)
+
+student_p <- read.table(file = "https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt",
+                      sep = "\t",
+                      header = TRUE)
+```
+
+
+## Understand the data
+
+3. Look at the first few rows of the dataframes with the `head()` and `View()` functions to make sure they loaded correctly. 
+
+```{r, eval = TRUE, echo = TRUE}
+head(student_m)
+head(student_p)
+```
+
+4. Using the `names()` and `str()` functions, look at the names and structure of the dataframes to make sure everything looks ok. If the data look strange, you did something wrong with `read.table()`, diagnose the problem!
+
+```{r, eval = TRUE, echo = TRUE}
+str(student_m)
+str(student_p)
+
+names(student_m)
+names(student_p)
+```
+
+5. Using `write.table()`, save a local copy of the two dataframes to text files called `student_m` and `student_p` in the data folder of your project. Now, you'll always have access to the data.
+
+```{r, eval = FALSE}
+# Write student_m and student_p to text files in the data folder of my working directory
+
+write.table(student_m, file = "data/student_m.txt", sep = "\t")
+write.table(student_p, file = "data/student_m.txt", sep = "\t")
+```
+
+
+
+# Standard Regression with lm()
+
+When reporting APA style results from a regression analysis, use the following format: **STATEMENT, b = X, t(df) = X, p = X**: For example:
+
+```{r, echo = TRUE, eval = TRUE}
+x <- lm(weight ~ Time,
+        data = ChickWeight)
+
+summary(x)
+
+# There is a significant positive relationship between time and weight, b = 8.80, t(576) = 36.73, p < 0.01.
+```
+
+
+## One IV
+
+6. For the math data, create a regression object called `lm_6` predicting first period grade (G1) based on age.
+
+```{r}
+# Predict G1 as a function of age
+
+lm_6 <- lm(G1 ~ age, 
+           data = student_m)
+```
+
+7. Run `names()` and `summary()` on `lm_6` to see additional information from your regression object. Now, return a vector of the coefficients by running `lm_5$coefficients`
+
+```{r}
+summary(lm_6)
+names(lm_6)
+lm_6$coefficients
+```
+
+8. How do you interpret the relationship between age and first period grade? Give an APA style conclusion.
+
+```{r}
+# There is a slight negative relationship between age and first period grade (b = -0.17), however the relationship is not significant t(393) = -1.27, p = 0.20
+```
+
+9. By hand (that is, typing the calculation manually), calculate the predicted first period math grade of a student who is 18 years old based on the regression equation (if the coefficient is non-significant, just use it anyway).
+
+```{r}
+13.6919 + (-0.1667) * 18
+```
+
+
+10. For the portugese data, create a regression object called `lm_10` predicting each student's period 3 grade (G3) based on their period 1 grade (G1). Look at the results of the regression analysis with `summary()`.
+
+```{r}
+lm_10 <- lm(G3 ~ G1, 
+            data = student_p)
+
+summary(lm_10)
+```
+
+11. What is the relationship between first and third period portugese grades? Give an APA style conclusion.
+
+```{r}
+# There is a strong positive relationship between first period grade and third period grade, b = 0.97, t(647) = 37.33, p < .01.
+```
+
+12. By hand, calculate the calculate the predicted third period grade of a student who had a first period grade of 10.
+
+```{r}
+0.8204 + 0.9725 * 10
+```
+
+
+## Regression vs. Correlation
+
+13. In task 10 you calculated a regression equation predicting students' third period portugese grades by their first period grades. Now let's see if a simple correlation test gives you the same answer. Conduct a correlation test between first and third period portugese grades. (Hint: Refer to WPA 6 https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_6_answers.html). Compare the t-value for this test to the regression analysis you did in question 10. What do you see?
+
+```{r}
+cor.test(~ G1 + G3, 
+         data = student_p)
+
+
+# The test statistic is exactly the same!! t(647) = 37.329
+```
+
+
+14. Now conduct a correlation test testing the relationship between age and first period grade for the math data. Compare the t-value from this test to the result you obtained in the regression analysis in question 7. What do you see?
+
+
+```{r}
+cor.test(~ age + G1, 
+         data = student_m)
+
+
+# Once again the test statistic is exactly the same!! t(393) = -1.273.
+# Apparently correlating two variables is, statistically, exactly the same as performing a regression analysis.
+```
+
+
+# Multiple IVs
+
+15. For the math data, create a regression object called `lm_15` predicting third period math grade (G3) based on sex, age, internet, and failures. Then, use the `summary()` function to see a summary table of the output
+
+```{r}
+lm_15 <- lm(G3 ~ sex + age + internet + failures, 
+            data = student_m)
+
+
+summary(lm_15)
+```
+
+16. Interpret the results!
+
+```{r}
+# Men have significantly higher third period math grades than women (b = 1.05, t(390) = 2.441, p = 0.02), there is a sigificant negative relationship between the number of past class failures and third period math grades (b = -2.13, t(390) = -7.17, p < .01). There are no significant relationships for age or internet (ps > 0.05).
+```
+
+17. Create a new regression object called `lm_17` using the same variables as question 15, however, this time predict third period scores in the portugese dataset dataset. Use the `summary()` function to understand the results.
+
+```{r}
+lm_17 <- lm(G3 ~ sex + age + internet + failures, 
+            data = student_p)
+
+summary(lm_17)
+```
+
+18. What are the key differences between the math and portugese datasets in which variables predict third period scores?
+
+```{r}
+# In the portugese datset, men do worse than women, and internet actually helps performance!
+```
+
+19. Now, create a regression analysis predicting third period portugese grades using *all* variables in the dataset (Hint: use the notation `formula = y ~ .` to include all variables!). Which variables are significant? Are any of the variables that were significant before no longer significant.
+
+```{r}
+lm_19 <- lm(G3 ~ ., 
+            data = student_p)
+
+summary(lm_19)
+
+
+# Compared to the analysis in question 17, sex is no longer significant, internet is no longer significant, but failures is still significant.
+
+# Note: The original version of this question asked for predicting FIRST period grades for the MATH data. I've now changed it to the third period grade for the portugese data as that's the last analysis we did in question 17.
+```
+
+
+# Checkpoint!!!
+
+```{r, eval = TRUE, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("https://www.mariowiki.com/images/thumb/6/65/CheckpointSM3DL.png/115px-CheckpointSM3DL.png")
+```
+
+
+## Interactions
+
+20. Is the relationship between whether or not students go out with friends and period 1 math scores different between the two schools (BP or MS)? Answer this by conducting a regression analysis with the appropriate interaction term.
+
+```{r}
+lm_20 <- lm(G1 ~ goout * school,
+            data = student_m)
+
+summary(lm_20)
+
+
+# yes there is a significant interaction! b = 1.15, t(391) = 1.15, p = 0.02
+```
+
+21. Is the relationship you found above the same for the portugese period 1 grades?
+
+```{r}
+lm_21 <- lm(G1 ~ goout * school,
+            data = student_p)
+
+summary(lm_21)
+
+
+# Nope. For the portugese grades there is no significant interaction, b = 0.09, t(645) = 0.48, p = 0.63
+```
+
+# Binary Logistic regression
+
+22. Let's create a logistic regression analysis that answers the question: "What predicts whether or not a student *improves* his/her math grade from period 1 to period 3?" To do this, we need to start by creating a new logical variable which indicates whether or not a student's period 3 grade is larger than his/her period 1 grade. Add a new variable to the math dataframe called `grade_improve` that shows this (Hint: You can easily do this by creating a logical vector comparing period 1 and period 3 grades).
+
+```{r}
+student_m$grade_improve <- student_m$G3 > student_m$G1
+```
+
+23. Using the `glm()` function, conduct a binary logistic regression analysis that answers the main research question above. Use the `summary()` function to understand the results. What do you conclude?
+
+```{r}
+glm_23 <- glm(grade_improve ~ .,
+              data = student_m,
+              family = "binomial")
+
+summary(glm_23)
+
+# Actually we have a problem here! The problem is that the model can perfectly predict grade improvement because it currently has access to both G1 and G3. We need to rerun the analysis but EXCLUDING G1 and G3...
+
+glm_23 <- glm(grade_improve ~ .,
+              data = subset(student_m, select = c(-G1, -G3)),   # Exclude columns G1 and G3!
+              family = "binomial")
+
+summary(glm_23)
+
+# Now that looks better!
+
+# Men improve their scores LESS than women (b = -0.61, t(354) = -2.11, p = 0.04), people whose reason to choose the school is "other" improve more than those with another reason to choose the school (b = 0.96, t(354) = 2.11, p = 0.03), the more absences a student has the less they improve their scores (b = -0.05, t(354) = -2.45, p = 0.01), and the higher their period 2 grades, the more they improve their scores (b = 0.19, t(354) = 4.55, p < .01).
+
+```
+
+24. Repeat this analyses, but now use the portugese data. Do you find differences in which variables predict grade improvement between the two datasets?
+
+```{r}
+student_p$grade_improve <- student_p$G3 > student_p$G1
+
+glm_24 <- glm(grade_improve ~ .,
+              data = student_p,
+              family = "binomial")
+
+summary(glm_24)
+
+# Same problem as before, We'll need to rerun the analysis but EXCLUDING G1 and G3...
+
+glm_24 <- glm(grade_improve ~ .,
+              data = subset(student_p, select = c(-G1, -G3)),   # Exclude columns G1 and G3!
+              family = "binomial")
+
+summary(glm_24)
+
+#  There are some differences. For the portugese class, age, fathers job, how often students go out with friends and current health status each significantly predict score improvement. Sex, reason to choose the school, and absences are no longer significant. Period 2 scores are still significant.
+
+```
+
+# Predicting values
+
+25. For the math dataset, create a regression object called `lm_25` predicting a student's first period math grades based on *all* variables in the dataset.
+
+```{r}
+lm_25 <- lm(G1 ~., 
+            data = student_m)
+```
+
+26. By looking at the `names()` of the elements in the `lm_25` object, find the vector of fitted values from the regression object. This is a vector of the predicted first period grades of all students based on the regression analysis. Add these predictions as a new column in the `student_m` dataframe called `G1_predicted`.
+
+```{r}
+names(lm_25)
+
+# it's fitted.values!
+
+lm_25$fitted.values[1:10]
+
+student_m$G1_predicted <- lm_25$fitted.values
+```
+
+
+
+27. On average, how far away were the regression model predictions from the true first period math grades? To answer this, do basic arithmetic operations on the `G1` and `G1_predicted` vectors. You may want to use the `abs()` function, which will return the absolute value of a vector of values.
+
+```{r}
+mean(abs(student_m$G1 - student_m$G1_predicted))
+```
+
+28. Create a scatterplot showing the relationship between the true first period math grades and the *predicted* first period math grades. How well does the regression model capture the true first period math grades?
+
+```{r, fig.width = 6, fig.height = 4, out.width = "80%"}
+library(ggplot2)
+
+ggplot(data = student_m, 
+       mapping = aes(x = G1, y = G1_predicted)) + 
+  geom_point(alpha = .4) +   # Slightly transparent points
+  theme_bw() +               # Use the black and white theme
+  labs(title = 'Predicted versus actual Period 1 math grades',
+       y = "Predicted Grades",
+       x = "Actual Grades")
+
+# The model does a pretty good job I think
+```
+
+
+# Simulating results
+
+29. In the following code chunk, I will create a dataframe called `df` that contains four predictors (A, B, C, D) and some random noise (noise). I will then create dv, a dependent variable that is a linear combination of the four predictors, plus the noise. Run the following chunk. 
+
+```{r, echo = TRUE, message = FALSE}
+library(tidyverse) # For dplyr
+
+set.seed(100)  # Fix the randomisation
+
+# Create a dataframe with 4 predictors (A, B, C and D) and noise
+
+df <- data.frame(A = rnorm(n = 100, mean = 0, sd = 1),
+                 B = rnorm(n = 100, mean = 0, sd = 1),
+                 C = rnorm(n = 100, mean = 0, sd = 1),
+                 D = rnorm(n = 100, mean = 0, sd = 1),
+                 noise = rnorm(n = 100, mean = 0, sd = 10))
+
+# Calculate y, a linear combination of A, B, C plus noise
+
+df <- df %>%
+  mutate(
+    dv = 20 + A + 5 * B - 4 * C + 0 * D + noise
+  )
+```
+
+30. If you were to conduct a regression analysis predicting `dv` as a function of the 4 predictors, what coefficients would you expect to get from the regression?
+
+```{r}
+# I would expect to get 20, 1, 5, -4 and 0
+```
+
+31. Test your prediction by conducting the appropriate analysis (*don't* include the noise). Were you correct?
+
+```{r}
+lm_31 <- lm(dv ~ A + B + C + D,
+            data = df)
+
+summary(lm_31)
+
+# I wasn't perfectly correct, but the numbers aren't too far off. The reason why they aren't perfect is because there is a lot of noise in the data.
+```
+
+32. Now repeat the analysis, but first change the standard deviation of the noise to something really small, like 0.01. What happens to the final regression coefficients?
+
+```{r, echo = TRUE, message = FALSE}
+library(tidyverse) # For dplyr
+
+set.seed(100)  # Fix the randomisation
+
+# Create a dataframe with 4 predictors (A, B, C and D) and noise
+
+df <- data.frame(A = rnorm(n = 100, mean = 0, sd = 1),
+                 B = rnorm(n = 100, mean = 0, sd = 1),
+                 C = rnorm(n = 100, mean = 0, sd = 1),
+                 D = rnorm(n = 100, mean = 0, sd = 1),
+                 noise = rnorm(n = 100, mean = 0, sd = .01))
+
+# Calculate y, a linear combination of A, B, C plus noise
+
+df <- df %>%
+  mutate(
+    dv = 20 + A + 5 * B - 4 * C + 0 * D + noise
+  )
+
+lm_32 <- lm(dv ~ A + B + C + D,
+            data = df)
+
+summary(lm_32)
+
+
+# Now they are almost exactly as I predicted! That's because there's almost no noise in the data now...
+```
+
+## Submit!
+
+- Save and email your `wpa_8_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
+
