@@ -94,74 +94,57 @@ is.even(3, print.result = TRUE)
 
 ### Loops
 
-1. Write a loop that prints the integers from 1 to 50 to the console using either the `print()` or `message()` function.
+1. Write a loop that prints the integers from 1 to 50 to the console:
+
+```{r, eval = FALSE, echo = TRUE}
+for (i in X:X) {
+  
+  message(X)
+  
+}
+```
+
 
 2. Now repeat the loop, but now print the square of every integer from 1 to 50. That is, it should print 1, 4, 9, 16, ...
 
-3. I have a large dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. The dataset contains responses from 10 participants on 100 problems. Load the data into R as a new object caled `large_data`. 
+3. A participant in one of your studies answered 10 trivia questions. Her score on each question can range anywhere from 0 to 2. The vector 0, 1, 0, 1, 1, 2, 0, 1, 1, 2 represents her score on each of the 10 questions. You want to create a vector that shows the *cumulative* number of correct questions she answered. The following table shows what I mean
 
-```{r}
-set.seed(100)
-outlier_data <- as.data.frame(matrix(round(rnorm(1000, mean = 80, sd = 10), 0), nrow = 100, ncol = 10))
+| Question| Original Score| **Cumulative Score**|
+|:-----|------:|----:|
+|     1|0|    0|
+|     2|1|    1|
+|     3|0|    1|
+|   4|  1|    2|
+|   5|  1|   3|
+|   6|  2|    5|
+|   7|  0|    5|
+|   8|  1|   6|
+|   9|  1|   7|
+|   10|  2|   8|
 
-names(outlier_data) <- paste0("p", 1:10)
-write.table(x = outlier_data, file = "data/outlier_data.txt", sep = "\t")
-```
+Using the following loop, create the vector `cumulative_scores` that count the cumulative sum of the original scores.
 
-4. None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:
+```{r, echo = TRUE, eval = FALSE}
+# Vector of original scores on the 10 questions
+original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 
-```{r}
-# REPLACE X WITH THE CORRECT VALUE(S)!
+# Create a vector of NAs where the cumulative scores will go
+cumulative_scores <- rep(NA, 10)
 
-# Loop over columns
-for(i in 1:ncol(X)) {
+# Loop over each of the 10 questions
+for(i in X:X) {
   
-  # Get data from column i
-  data.i <- outlier_data[,i]
-  
-  # Count number of responses over 100
-  count_over_100 <- sum(data.i > X)
-  
-  # Print message
-  message(paste0("In column ", X, "I found ", X, "values over 100"))
-
-}
-
-```
-
-5. Now, use the following loop to not only count the number of invalid valus, but also to *replace* the values with NAs
-
-```{r}
-# REPLACE X WITH THE CORRECT VALUE(S)!
-
-# Loop over columns
-for(i in 1:ncol(X)) {
-  
-  # Get data from column i
-  data.i <- outlier_data[,i]
-  
-  # Count number of responses over 100
-  count_over_100 <- sum(data.i > X)
-  
-  # Print message
-  message(paste0("In column ", X, "I found ", X, "values over 100. I will replace them with NA values!"))
-
-  # Replace values greater than 100 with NA
-  data.i[data.i > X] <- NA
-
-  # Assign data.i back to the ith column of the data
-  X[,i] <- data.i
+    cumulative_scores[X] <- sum(original_answers[1:X])
   
 }
-
 ```
 
-6. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
+4. R has a function called `cumsum()` that does exactly what your loop does! Try applying `cumsum()` to the original scores and see if you get the same answer as your loop.
 
 
 ## Custom Functions
 
-5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat ___". Try your function by running `feed.me("apples")`.
+5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat ___".
 
 ```{r, eval = FALSE, echo = TRUE}
 feed.me <- function(___) {
@@ -172,7 +155,9 @@ feed.me <- function(___) {
 }
 ```
 
-6. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
+6. Try your function by running `feed.me("apples")`.
+
+7. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
 
 ```{r, eval = FALSE, echo = TRUE}
 my.mean <- function(___) {
@@ -184,9 +169,9 @@ my.mean <- function(___) {
 }
 ```
 
-7. Try your `my.mean()` function to calculate the mean age of pirates in the `pirate` data frame and compare your results to what you get from using the `mean() function.
+8. Try your `my.mean()` function to calculate the mean age of pirates in the `pirate` data frame and compare your results to what you get from using the `mean() function.
 
-8. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector:
+9. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector:
 
 ```{r eval = FALSE, echo = TRUE}
 how.many.na <- function(x) {
@@ -197,9 +182,12 @@ how.many.na <- function(x) {
 }
 ```
 
-9. Test your `how.many.na()` function to the vector `x = c(4, 7, 3, NA, NA, 1)`
+10. Test your `how.many.na()` function to the vector `x = c(4, 7, 3, NA, NA, 1)`
 
-15. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
+
+# Checkpoint!
+
+11. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
 
 ```{r eval = FALSE}
 ttest.apa <- function(x, mu) {
@@ -234,44 +222,76 @@ ttest.apa <- function(x, mu) {
 }
 ```
 
-16. Test your `ttest.apa()` function on the the dateability of participants in the facebook study (available at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/facebook.txt). Specifically, test if their mean dateability rating is different from 50
+12. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10: 
 
+```{r}
+# Is the mean of these values significantly different from 10?
+x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
+```
 
+13. I have a large dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. The dataset contains responses from 10 participants on 100 problems. Load the data into R as a new object caled `large_data`. 
 
-# Simulation!
+```{r, eval = FALSE, echo = FALSE}
+set.seed(100)
+outlier_data <- as.data.frame(matrix(round(rnorm(1000, mean = 80, sd = 10), 0), nrow = 100, ncol = 10))
 
-18. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
+names(outlier_data) <- paste0("p", 1:10)
+write.table(x = outlier_data, file = "data/outlier_data.txt", sep = "\t")
+```
 
-  - Create a vector called `p.values` with 100 NA values. 
-  - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
-  - Do a one-sample t-test testing if the mean of the distribution is different from 0. Save the p-value from this test in the 1st position of `p.values`.
-  - Repeat these steps with a loop to fill `p.values` with 100 p-values.
-  - Create a histogram of `p.values` and calculate the proportion of `p-values` that are significant at the .05 level.
+14. None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE X WITH THE CORRECT VALUE(S)!
+
+# Loop over columns
+for(i in 1:ncol(X)) {
   
-```{r eval = FALSE}
-p.values <- rep(NA, ___)
-
-for(i in ___) {
-
-x <- rnorm(n = ___, mean = ___, sd = ___)
-
-result <- t.test(___)$___
-
-p.values[___] <- ___
+  # Get data from column i
+  data.i <- outlier_data[,i]
+  
+  # Count number of responses over 100
+  count_over_100 <- sum(data.i > X)
+  
+  # Print message
+  message(paste0("In column ", X, "I found ", X, "values over 100"))
 
 }
+
 ```
+
+15. Now, use the following loop to not only count the number of invalid valus, but also to *replace* the values with NAs
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE X WITH THE CORRECT VALUE(S)!
+
+# Loop over columns
+for(i in 1:ncol(X)) {
   
+  # Get data from column i
+  data.i <- outlier_data[,i]
   
-19. Create a function called `psimulation` with 4 arguments: `sim`: the number of simulations, `samplesize`: the sample size, `mu.true`: the true mean, and `sd.true`: the true standard deviation. Your function should repeat the simulation from the previous question with the given arguments. That is, it should calculate `sim` p-values testing whether `samplesize` samples from a normal distribution with mean = `mu.true` and standard deviation = `sd.true` is significantly different from 0. The function should return a vector of p-values. 
+  # Count number of responses over 100
+  count_over_100 <- sum(data.i > X)
+  
+  # Print message
+  message(paste0("In column ", X, "I found ", X, "values over 100. I will replace them with NA values!"))
 
+  # Replace values greater than 100 with NA
+  data.i[data.i > X] <- NA
 
-# Checkpoint!
+  # Assign data.i back to the ith column of the data
+  X[,i] <- data.i
+  
+}
 
+```
+
+16. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
 
 #### Use a loop to look for strange data
 
-3. I have a large data file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. This data has 100 rows and 100 columns. Almost all of the data are are integers between 1 and 9. However, there is one value of 100 somewhere in the data. Load the data into R as a new object called `large_data`. Then, using a loop, figure out which column contains the value of 100
+17. I have a large data file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. This data has 100 rows and 100 columns. Almost all of the data are are integers between 1 and 9. However, there is one value of 100 somewhere in the data. Load the data into R as a new object called `large_data`. Then, using a loop, figure out which column contains the value of 100
 
 ```{r}
 # REPLACE ALL VALUES OF X WITH THE CORRECT VALUES!
@@ -292,11 +312,11 @@ for (i in 1:ncol(large_data)) {
 }
 ```
 
-4. Repeat the loop from the previous question, but now, have the loop indicate which **row** the value of 100 is in.
+18. Repeat the loop from the previous question, but now, have the loop indicate which **row** the value of 100 is in.
 
 #### Use a loop to read and write data files
 
-3. The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!
+19. The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!
 
 ```{r, eval = FALSE}
 for (i in 1:100) {
@@ -312,7 +332,7 @@ for (i in 1:100) {
 }
 ```
 
-4. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+20. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
 
 ```{r}
 for (i in 1:100) {
@@ -328,7 +348,7 @@ for (i in 1:100) {
 }
 ```
 
-5. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+21. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
 
 ```{r}
 for (i in 1:100) {
@@ -352,14 +372,35 @@ for (i in 1:100) {
 }
 ```
 
+#### Conduct a simulation!
 
+22. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
 
+  - Create a vector called `p.values` with 1,000 NA values. 
+  - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
+  - Do a one-sample t-test testing if the mean of the distribution is different from 0. Save the p-value from this test in the ith position of `p.values`.
+  - Repeat these steps with a loop to fill `p.values` with 1,000 p-values.
 
+```{r eval = FALSE}
+p.values <- rep(NA, ___)
 
-# More loops!
+for(i in ___) {
 
+x <- rnorm(n = ___, mean = ___, sd = ___)
 
-17. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+result <- t.test(___)$___
+
+p.values[___] <- ___
+
+}
+```
+  
+  
+23. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
+
+### More data cleaning
+
+24. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
 
 ```{r}
 survey <- data.frame("p" = c(1, 2, 3, 4, 5),
@@ -371,22 +412,21 @@ survey <- data.frame("p" = c(1, 2, 3, 4, 5),
 ```
 
 ```{r eval = FALSE}
-survey.corrected <- survey   # COPY SURVEY
+survey_corrected <- survey   # COPY SURVEY
 
 for(column.i in ____ ) {  # LOOP OVER COLUMNS
  
   x <- ____   # COPY THE ORIGINAL COLUMN as x
   x[(x %in% ___) == FALSE] <- ___  # REPLACE
   
-  survey.corrected[,___] <- ___ # ASSIGN x back to survey.correced
+  survey_corrected[,___] <- ___ # ASSIGN x back to survey.correced
   
 }
 ```
 
-
+25. Check the values of `survey_corrected` to make sure it worked!
 
 ## Submit!
 
 - Save and email your `wpa_9_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
 - Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
-
