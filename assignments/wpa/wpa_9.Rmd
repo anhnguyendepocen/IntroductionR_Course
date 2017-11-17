@@ -92,84 +92,71 @@ is.even(3, print.result = TRUE)
 
 1. Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_9_LastFirst.R`, where Last and First are your last and first names. 
 
-
 ### Loops
 
 1. Write a loop that prints the integers from 1 to 50 to the console using either the `print()` or `message()` function.
 
 2. Now repeat the loop, but now print the square of every integer from 1 to 50. That is, it should print 1, 4, 9, 16, ...
 
-3. 
+3. I have a large dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. The dataset contains responses from 10 participants on 100 problems. Load the data into R as a new object caled `large_data`. 
 
 ```{r}
-large_data <- matrix(c(sample(1:9, size = 100 * 100 - 1, replace = TRUE), 100), 
-                     nrow = 100, 
-                     ncol = 100)
+set.seed(100)
+outlier_data <- as.data.frame(matrix(round(rnorm(1000, mean = 80, sd = 10), 0), nrow = 100, ncol = 10))
 
-
-
+names(outlier_data) <- paste0("p", 1:10)
+write.table(x = outlier_data, file = "data/outlier_data.txt", sep = "\t")
 ```
 
-
-
-#### Use a loop to read and write data files
-
-3. The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!
-
-```{r, eval = FALSE}
-for (i in 1:100) {
-  
-  # Create a random dataset from a hypothetical subject
-  data.temp <- data.frame(subject = rep(i, 10),
-                          trial = 1:10,
-                          response = sample(1:7, size = 10, replace = TRUE))
-  
-  # Write the data to a text file
-  write.table(data.temp, file = paste0("data/subject_", i, ".txt"), sep = "\t")
-  
-}
-```
-
-4. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+4. None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:
 
 ```{r}
-for (i in 1:100) {
+# REPLACE X WITH THE CORRECT VALUE(S)!
+
+# Loop over columns
+for(i in 1:ncol(X)) {
   
-  # Load the data from participant i to a temporary object x
-  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
-                  header = TRUE, 
-                  sep = "\t")
+  # Get data from column i
+  data.i <- outlier_data[,i]
   
-  # Create a new object subject_i containing the data!
-  assign(x = paste0("subject_", i), value = x)
+  # Count number of responses over 100
+  count_over_100 <- sum(data.i > X)
+  
+  # Print message
+  message(paste0("In column ", X, "I found ", X, "values over 100"))
 
 }
+
 ```
 
-5. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+5. Now, use the following loop to not only count the number of invalid valus, but also to *replace* the values with NAs
 
 ```{r}
-for (i in 1:100) {
-  
-  # Load the data from participant i to a temporary object x
-  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
-                  header = TRUE, 
-                  sep = "\t")
-  
-  # If it's the first subject, then make all_data equal to x
-  if(i == 1) {
-    
-    all_data <- x
-  
-  # If it's NOT the first subject, then add x to all_data!
-  } else {
-      
-    all_data <- rbind(all_data, x)
-  }
+# REPLACE X WITH THE CORRECT VALUE(S)!
 
+# Loop over columns
+for(i in 1:ncol(X)) {
+  
+  # Get data from column i
+  data.i <- outlier_data[,i]
+  
+  # Count number of responses over 100
+  count_over_100 <- sum(data.i > X)
+  
+  # Print message
+  message(paste0("In column ", X, "I found ", X, "values over 100. I will replace them with NA values!"))
+
+  # Replace values greater than 100 with NA
+  data.i[data.i > X] <- NA
+
+  # Assign data.i back to the ith column of the data
+  X[,i] <- data.i
+  
 }
+
 ```
 
+6. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
 
 
 ## Custom Functions
@@ -251,35 +238,6 @@ ttest.apa <- function(x, mu) {
 
 
 
-# More loops!
-
-
-17. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
-
-```{r}
-survey <- data.frame("p" = c(1, 2, 3, 4, 5),
-                     "q1" = c(5, 3, 6, 3, 5),
-                     "q2" = c(-1, 4, 3, 6, 11),
-                     "q3" = c(6, 22, 4, 6, -5),
-                     "q4" = c(6, 3, 4, -2, 4),
-                     "q5" = c(1, 1, 900, 1, 2))
-```
-
-```{r eval = FALSE}
-survey.corrected <- survey   # COPY SURVEY
-
-for(column.i in ____ ) {  # LOOP OVER COLUMNS
- 
-  x <- ____   # COPY THE ORIGINAL COLUMN as x
-  x[(x %in% ___) == FALSE] <- ___  # REPLACE
-  
-  survey.corrected[,___] <- ___ # ASSIGN x back to survey.correced
-  
-}
-```
-
-
-
 # Simulation!
 
 18. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
@@ -306,6 +264,124 @@ p.values[___] <- ___
   
   
 19. Create a function called `psimulation` with 4 arguments: `sim`: the number of simulations, `samplesize`: the sample size, `mu.true`: the true mean, and `sd.true`: the true standard deviation. Your function should repeat the simulation from the previous question with the given arguments. That is, it should calculate `sim` p-values testing whether `samplesize` samples from a normal distribution with mean = `mu.true` and standard deviation = `sd.true` is significantly different from 0. The function should return a vector of p-values. 
+
+
+# Checkpoint!
+
+
+#### Use a loop to look for strange data
+
+3. I have a large data file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. This data has 100 rows and 100 columns. Almost all of the data are are integers between 1 and 9. However, there is one value of 100 somewhere in the data. Load the data into R as a new object called `large_data`. Then, using a loop, figure out which column contains the value of 100
+
+```{r}
+# REPLACE ALL VALUES OF X WITH THE CORRECT VALUES!
+
+# Load the data
+large_data <- read.table("X", sep = "\t")
+
+# Loop over columns
+for (i in 1:ncol(large_data)) {
+  
+  # Is the value of 100 in column i?
+  if(100 %in% large_data[,X]) {
+    
+    # If so, then print the column number!
+    print(paste("It's in column", X, "!!"))
+    
+    }
+}
+```
+
+4. Repeat the loop from the previous question, but now, have the loop indicate which **row** the value of 100 is in.
+
+#### Use a loop to read and write data files
+
+3. The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!
+
+```{r, eval = FALSE}
+for (i in 1:100) {
+  
+  # Create a random dataset from a hypothetical subject
+  data.temp <- data.frame(subject = rep(i, 10),
+                          trial = 1:10,
+                          response = sample(1:7, size = 10, replace = TRUE))
+  
+  # Write the data to a text file
+  write.table(data.temp, file = paste0("data/subject_", i, ".txt"), sep = "\t")
+  
+}
+```
+
+4. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+
+```{r}
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
+                  header = TRUE, 
+                  sep = "\t")
+  
+  # Create a new object subject_i containing the data!
+  assign(x = paste0("subject_", i), value = x)
+
+}
+```
+
+5. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+
+```{r}
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
+                  header = TRUE, 
+                  sep = "\t")
+  
+  # If it's the first subject, then make all_data equal to x
+  if(i == 1) {
+    
+    all_data <- x
+  
+  # If it's NOT the first subject, then add x to all_data!
+  } else {
+      
+    all_data <- rbind(all_data, x)
+  }
+
+}
+```
+
+
+
+
+
+# More loops!
+
+
+17. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+
+```{r}
+survey <- data.frame("p" = c(1, 2, 3, 4, 5),
+                     "q1" = c(5, 3, 6, 3, 5),
+                     "q2" = c(-1, 4, 3, 6, 11),
+                     "q3" = c(6, 22, 4, 6, -5),
+                     "q4" = c(6, 3, 4, -2, 4),
+                     "q5" = c(1, 1, 900, 1, 2))
+```
+
+```{r eval = FALSE}
+survey.corrected <- survey   # COPY SURVEY
+
+for(column.i in ____ ) {  # LOOP OVER COLUMNS
+ 
+  x <- ____   # COPY THE ORIGINAL COLUMN as x
+  x[(x %in% ___) == FALSE] <- ___  # REPLACE
+  
+  survey.corrected[,___] <- ___ # ASSIGN x back to survey.correced
+  
+}
+```
 
 
 
