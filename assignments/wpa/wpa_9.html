@@ -346,35 +346,37 @@ how.many.na &lt;- function(x) {
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
 
-ttest.apa &lt;- function(x, mu) {
+ttest.apa &lt;- function(x,       # A vector of data
+                      mu) {    # The mean under the null hypothesis
   
    # Store the one-sample ttest in object a
   
-  a &lt;- t.test(x = ___, 
-              mu = ___) 
+  a &lt;- t.test(x = ___,    # The vector of data
+              mu = ___)   # The mean under the null hypothesis
   
   df &lt;- a$parameter     # Get the degrees of freedom
   test.stat &lt;- ___      # Get the test statistic
   p.value &lt;- ___        # Get the p-value
   
-  
-  # If the test is significant...
+  # If the test is significant
   if(p.value &lt;= ___) {
     
-    output &lt;- paste0(&quot;The test is significant! t(&quot;,
+    # Sentence to print for significant result
+    
+   print(paste0(&quot;The test is significant! t(&quot;,
                      df, &quot;) = &quot;, test.stat, 
                    &quot;, p = &quot;, p.value, 
-                   &quot; (H0 = &quot;, mu, &quot;)&quot;)
+                   &quot; (H0 = &quot;, mu, &quot;)&quot;))
   }
   
-  # If the test is not significant...
+  # If the test is NOT significant...
     if(p.value &gt; ___) {
-    
-    output &lt;- ___
+     
+    # Sentence to print for significant result
+      
+    print(___)
     
   }
-  
-  print(___)  
 }</code></pre>
 <ol start="12" style="list-style-type: decimal">
 <li>Test your <code>ttest.apa()</code> function to see if the following vector of values has a mean that is significantly different from 10:</li>
@@ -382,8 +384,101 @@ ttest.apa &lt;- function(x, mu) {
 <pre class="r"><code># Is the mean of these values significantly different from 10?
 x &lt;- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)</code></pre>
 <ol start="13" style="list-style-type: decimal">
-<li><p>I have a large dataset stored at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt</a>. The dataset contains responses from 10 participants on 100 problems. Load the data into R as a new object caled <code>large_data</code>.</p></li>
-<li><p>None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:</p></li>
+<li>I have a dataset stored at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt</a>. The dataset contains responses from 10 participants (columns) on 100 problems (rows). Load the data into R as a new object called <code>outlier_data</code>.</li>
+</ol>
+<p>The data should look like this</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">p1</th>
+<th align="right">p2</th>
+<th align="right">p3</th>
+<th align="right">p4</th>
+<th align="right">p5</th>
+<th align="right">p6</th>
+<th align="right">p7</th>
+<th align="right">p8</th>
+<th align="right">p9</th>
+<th align="right">p10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">77</td>
+<td align="right">80</td>
+<td align="right">61</td>
+<td align="right">67</td>
+<td align="right">66</td>
+<td align="right">99</td>
+<td align="right">85</td>
+<td align="right">77</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="right">81</td>
+<td align="right">94</td>
+<td align="right">76</td>
+<td align="right">70</td>
+<td align="right">79</td>
+<td align="right">83</td>
+<td align="right">80</td>
+<td align="right">81</td>
+<td align="right">99</td>
+<td align="right">75</td>
+</tr>
+<tr class="odd">
+<td align="right">79</td>
+<td align="right">75</td>
+<td align="right">89</td>
+<td align="right">70</td>
+<td align="right">94</td>
+<td align="right">77</td>
+<td align="right">67</td>
+<td align="right">94</td>
+<td align="right">83</td>
+<td align="right">81</td>
+</tr>
+<tr class="even">
+<td align="right">89</td>
+<td align="right">88</td>
+<td align="right">85</td>
+<td align="right">73</td>
+<td align="right">70</td>
+<td align="right">61</td>
+<td align="right">88</td>
+<td align="right">89</td>
+<td align="right">74</td>
+<td align="right">68</td>
+</tr>
+<tr class="odd">
+<td align="right">81</td>
+<td align="right">65</td>
+<td align="right">90</td>
+<td align="right">84</td>
+<td align="right">70</td>
+<td align="right">82</td>
+<td align="right">88</td>
+<td align="right">65</td>
+<td align="right">89</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="right">83</td>
+<td align="right">76</td>
+<td align="right">70</td>
+<td align="right">90</td>
+<td align="right">91</td>
+<td align="right">76</td>
+<td align="right">65</td>
+<td align="right">100</td>
+<td align="right">82</td>
+<td align="right">83</td>
+</tr>
+</tbody>
+</table>
+<ol start="14" style="list-style-type: decimal">
+<li>The responses in this study should be between 0 and 100 None of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:</li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
 
@@ -391,13 +486,13 @@ x &lt;- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)</code></pre>
 for(i in 1:ncol(__)) {
   
   # Get data from column i
-  data.i &lt;- outlier_data[,i]
+  data.i &lt;- outlier_data[, i]
   
-  # Count number of responses over 100
-  count_over_100 &lt;- sum(data.i &gt; __)
+  # Count number of responses below 0 or above 100
+  count_invalid &lt;- sum(data.i &lt; __ | data.i &gt; __)
   
   # Print message
-  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values over 100&quot;))
+  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values that were either below 0 or over 100&quot;))
 
 }</code></pre>
 <ol start="15" style="list-style-type: decimal">
@@ -411,40 +506,82 @@ for(i in 1:ncol(__)) {
   # Get data from column i
   data.i &lt;- outlier_data[,i]
   
-  # Count number of responses over 100
-  count_over_100 &lt;- sum(data.i &gt; __)
+  # Count number of responses below 0 or above 100
+  count_invalid &lt;- sum(data.i &lt; __ | data.i &gt; __)
   
   # Print message
-  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values over 100. I will replace them with NA values!&quot;))
+  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values that were either below 0 or over 100&quot;))
 
   # Replace values greater than 100 with NA
-  data.i[data.i &gt; __] &lt;- NA
+  data.i[data.i &lt; __ | data.i &gt; __] &lt;- NA
 
   # Assign data.i back to the ith column of the data
-  __[,i] &lt;- data.i
+  __[, i] &lt;- data.i
   
 }</code></pre>
 <ol start="16" style="list-style-type: decimal">
 <li>Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!</li>
 </ol>
-<div id="use-a-loop-to-look-for-strange-data" class="section level4">
-<h4>Use a loop to look for strange data</h4>
-<ol start="17" style="list-style-type: decimal">
-<li><p>I have a large data file located at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt</a>. This data has 100 rows and 100 columns. Almost all of the data are are integers between 1 and 9. However, there is one value of 100 somewhere in the data. Load the data into R as a new object called <code>large_data</code>. Then, using a loop, figure out which column contains the value of 100</p></li>
-<li><p>Repeat the loop from the previous question, but now, have the loop indicate which <strong>row</strong> the value of 100 is in.</p></li>
-</ol>
-</div>
 <div id="use-a-loop-to-read-and-write-data-files" class="section level4">
 <h4>Use a loop to read and write data files</h4>
+<ol start="17" style="list-style-type: decimal">
+<li>The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!</li>
+</ol>
+<pre class="r"><code># JUST RUN!
+
+for (i in 1:100) {
+  
+  # Create a random dataset from a hypothetical subject
+  data.temp &lt;- data.frame(subject = rep(i, 10),
+                          trial = 1:10,
+                          response = sample(1:7, size = 10, replace = TRUE))
+  
+  # Write the data to a text file
+  write.table(data.temp, file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), sep = &quot;\t&quot;)
+  
+}</code></pre>
+<ol start="18" style="list-style-type: decimal">
+<li>The following code will load each data file into your R session as 100 new objects called <code>subject_1</code>, <code>subject_2</code>, … <code>subject_100</code>. Run the code, then try looking at some of the objects such as <code>subject_40</code> and <code>subject_64</code>.</li>
+</ol>
+<pre class="r"><code># JUST RUN!
+
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  x &lt;- read.table(file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), 
+                  header = TRUE, 
+                  sep = &quot;\t&quot;)
+  
+  # Create a new object subject_i containing the data!
+  assign(x = paste0(&quot;subject_&quot;, i), value = x)
+
+}</code></pre>
 <ol start="19" style="list-style-type: decimal">
-<li><p>The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!</p></li>
-<li><p>The following code will load each data file into your R session as 100 new objects called <code>subject_1</code>, <code>subject_2</code>, … <code>subject_100</code>. Run the code, then try looking at some of the objects such as <code>subject_40</code> and <code>subject_64</code>.</p></li>
-<li><p>The code above wrote all of the data to separate objects. But wouldn’t it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the <code>rbind()</code> function. Look at the following code, and then run it to create a new dataframe object called <code>all_data</code> which contains the data from all participants!</p></li>
+<li>The code above wrote all of the data to separate objects. But wouldn’t it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the <code>rbind()</code> function. Look at the following code, and then run it to create a new dataframe object called <code>all_data</code> which contains the data from all participants!</li>
+</ol>
+<pre class="r"><code># JUST RUN!
+
+# Set up all_data object
+all_data &lt;- NULL
+
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  x &lt;- read.table(file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), 
+                  header = TRUE, 
+                  sep = &quot;\t&quot;)
+  
+  # Add x to all_data!
+  all_data &lt;- rbind(x, all_data)
+
+}</code></pre>
+<ol start="20" style="list-style-type: decimal">
+<li>Adjust your code above so, for each run of the loop, it prints the message ‘Reading subject X’ (where X is the subject number).</li>
 </ol>
 </div>
 <div id="conduct-a-simulation" class="section level4">
 <h4>Conduct a simulation!</h4>
-<ol start="22" style="list-style-type: decimal">
+<ol start="21" style="list-style-type: decimal">
 <li>What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:</li>
 </ol>
 <ul>
@@ -453,15 +590,54 @@ for(i in 1:ncol(__)) {
 <li>Do a one-sample t-test testing if the mean of the distribution is different from 0. Save the p-value from this test in the ith position of <code>p.values</code>.</li>
 <li>Repeat these steps with a loop to fill <code>p.values</code> with 1,000 p-values.</li>
 </ul>
-<ol start="23" style="list-style-type: decimal">
+<pre class="r"><code># REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+# Create a vector of 1000 NA values
+p.values &lt;- rep(NA, ___)
+
+# Loop over all 1000 values
+for(i in ___) {
+
+ # Generate a random vector of data
+x &lt;- rnorm(n = ___, mean = ___, sd = ___)
+
+# Calculate the te.test
+result &lt;- t.test(___)$___
+
+# Store p-value from test in p.values
+p.values[___] &lt;- ___
+
+}</code></pre>
+<ol start="22" style="list-style-type: decimal">
 <li>What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?</li>
 </ol>
 </div>
 <div id="more-data-cleaning" class="section level3">
 <h3>More data cleaning</h3>
+<ol start="23" style="list-style-type: decimal">
+<li>The following dataframe <code>survey</code> contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called <code>survey.corrected</code> that converts all invalid values to NA:</li>
+</ol>
+<pre class="r"><code>survey &lt;- data.frame(&quot;p&quot; = c(1, 2, 3, 4, 5),
+                     &quot;q1&quot; = c(5, 3, 6, 3, 5),
+                     &quot;q2&quot; = c(-1, 4, 3, 6, 11),
+                     &quot;q3&quot; = c(6, 22, 4, 6, -5),
+                     &quot;q4&quot; = c(6, 3, 4, -2, 4),
+                     &quot;q5&quot; = c(1, 1, 900, 1, 2))</code></pre>
+<pre class="r"><code># REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+
+survey_corrected &lt;- survey   # Copy original survey
+
+for(column.i in ____ ) {  # Loop over columns
+ 
+  x &lt;- ____   # Copy original column vector
+  x[(x %in% ___) == FALSE] &lt;- ___  # Replace any bad values
+  
+  survey_corrected[,___] &lt;- ___ # Assign x back to survey.correced
+  
+}</code></pre>
 <ol start="24" style="list-style-type: decimal">
-<li><p>The following dataframe <code>survey</code> contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called <code>survey.corrected</code> that converts all invalid values to NA:</p></li>
-<li><p>Check the values of <code>survey_corrected</code> to make sure it worked!</p></li>
+<li>Check the values of <code>survey_corrected</code> to make sure it worked!</li>
 </ol>
 </div>
 <div id="submit" class="section level2">
