@@ -255,7 +255,7 @@ ttest.apa <- function(x,       # A vector of data
    print(paste0("The test is significant! t(",
                      df, ") = ", test.stat, 
                    ", p = ", p.value, 
-                   " (H0 = ", mu, ")"))
+                   " (H0 = ", H0, ")"))
   }
   
   # If the test is NOT significant...
