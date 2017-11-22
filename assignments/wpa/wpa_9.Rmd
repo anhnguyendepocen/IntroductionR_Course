@@ -3,19 +3,6 @@ title: "WPA #9  -- Loops and Functions"
 output: html_document
 ---
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE, fig.align = 'center', out.width = "70%")
-
-student_m <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt",
-                      sep = "\t",
-                      header = TRUE)
-
-student_p <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt",
-                      sep = "\t",
-                      header = TRUE)
-```
-
 ## Readings
 
 This assignment is based on the following readings:
@@ -391,7 +378,7 @@ for (i in 1:100) {
 
 19. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
 
-```{r}
+```{r, eval = FALSE}
 # JUST RUN!
 
 for (i in 1:100) {

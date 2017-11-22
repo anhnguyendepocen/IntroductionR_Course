@@ -139,7 +139,7 @@ $(document).ready(function () {
 </div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<pre class="r"><code># print integers from 1 to 100
+<pre class="r"><code># Use a loop to print integers from 1 to 100
 
 for(i in 1:100) {
   
@@ -147,39 +147,56 @@ for(i in 1:100) {
   
 }
 
-# Define some number x
-x &lt;- 2
+# Use a loop to add the integers from 1 to 100
 
-# Test if x is even
-even.test &lt;- round(x / 2, 0) == (x / 2)
+sum_total &lt;- 0
 
-# Print 'x is even' if even.test is true, otherwose, print 'x is not even!'
-if(even.test == TRUE) {
+for(i in 1:100) {
+
+  sum_total &lt;- sum_total + i  
+
+}
+
+
+# Create a function showstat that returns a summary statistic from a vector
+
+showstat &lt;- function(x, 
+                     what = &quot;mean&quot;,
+                     na.rm = TRUE) {
   
-  print(&quot;x is even!&quot;)} else {
+  if(what == &quot;mean&quot;) {output &lt;- mean(x, na.rm = na.rm)}
+  if(what == &quot;sd&quot;) {output &lt;- sd(x, na.rm = na.rm)}
+  if(what == &quot;median&quot;) {output &lt;- median(x, na.rm = na.rm)}
+
+  if(what %in% c(&quot;mean&quot;, &quot;sd&quot;, &quot;median&quot;) == FALSE) {
     
-    print(&quot;x is not even!&quot;)}
+    stop(paste(&quot;Sorry I don't know what&quot;, what, &quot;means. Please try 'mean', 'sd', or 'median'&quot;)
+  }
   
+  return(output)
+
+}
+
 
 # Create a function is.even that tests if an input is even or not
 
-is.even &lt;- function(x,     # The number to test
-                    print.result = FALSE) {
+is.even &lt;- function(x,                      # The number to test
+                    print.result = FALSE) { # Should the result be printed?
   
   # Test if x is even
 even.test &lt;- round(x / 2, 0) == (x / 2)
 
-# Print 'x is even' if even.test is true, otherwose, print 'x is not even!'
+# Print 'x is even' if even.test is true, otherwise, print 'x is not even!'
 
 if(print.result) {
   
-if(even.test == TRUE) {
-  
-  message(&quot;x is even!&quot;)} else {
+  if(even.test == TRUE) {
     
-    message(&quot;x is not even!&quot;)}
-  
-}
+    message(&quot;x is even!&quot;)} else {
+      
+      message(&quot;x is NOT even!&quot;)}
+    
+  }
 
 return(even.test)
 
