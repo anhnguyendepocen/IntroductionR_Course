@@ -16,7 +16,6 @@ student_p <- read.table("https://raw.githubusercontent.com/ndphillips/Introducti
                       header = TRUE)
 ```
 
-
 ## Readings
 
 This assignment is based on the following readings:
@@ -25,8 +24,8 @@ This assignment is based on the following readings:
 
 ## Assignment Goals
 
-- Create loops with `for`
-- Use `if` statements
+- Create for loops
+- Use `if` statements within for loops
 - Create custom functions
 
 ## Examples
@@ -94,12 +93,12 @@ is.even(3, print.result = TRUE)
 
 ### Loops
 
-1. Write a loop that prints the integers from 1 to 50 to the console:
+1. Write a loop that prints the integers from 1 to 50 to the console (note: `message()` works similarly to `print()`):
 
 ```{r, eval = FALSE, echo = TRUE}
-for (i in X:X) {
+for (i in __:__) {
   
-  message(X)
+  message(__)
   
 }
 ```
@@ -109,7 +108,7 @@ for (i in X:X) {
 
 3. A participant in one of your studies answered 10 trivia questions. Her score on each question can range anywhere from 0 to 2. The vector 0, 1, 0, 1, 1, 2, 0, 1, 1, 2 represents her score on each of the 10 questions. You want to create a vector that shows the *cumulative* number of correct questions she answered. The following table shows what I mean
 
-| Question| Original Score| **Cumulative Score**|
+| Question| original_score| **cumulative_score**|
 |:-----|------:|----:|
 |     1|0|    0|
 |     2|1|    1|
@@ -125,6 +124,9 @@ for (i in X:X) {
 Using the following loop, create the vector `cumulative_scores` that count the cumulative sum of the original scores.
 
 ```{r, echo = TRUE, eval = FALSE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+
 # Vector of original scores on the 10 questions
 original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 
@@ -132,11 +134,15 @@ original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 cumulative_scores <- rep(NA, 10)
 
 # Loop over each of the 10 questions
-for(i in X:X) {
+for(i in __:__) {
   
-    cumulative_scores[X] <- sum(original_answers[1:X])
+    cumulative_scores[__] <- sum(original_answers[1:__])
   
 }
+
+# print the result!
+cumulative_scores
+
 ```
 
 4. R has a function called `cumsum()` that does exactly what your loop does! Try applying `cumsum()` to the original scores and see if you get the same answer as your loop.
@@ -144,9 +150,12 @@ for(i in X:X) {
 
 ## Custom Functions
 
-5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat ___".
+5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat `food`".
 
 ```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+
 feed.me <- function(___) {
   
   output <- paste0("I love to eat ", ___)
@@ -155,11 +164,14 @@ feed.me <- function(___) {
 }
 ```
 
-6. Try your function by running `feed.me("apples")`.
+6. Try your function by running `feed.me("apples")`, it should return `I love apples`
 
 7. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
 
 ```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+
 my.mean <- function(___) {
   
   result <- sum(___) / length(___)
@@ -169,11 +181,14 @@ my.mean <- function(___) {
 }
 ```
 
-8. Try your `my.mean()` function to calculate the mean age of pirates in the `pirate` data frame and compare your results to what you get from using the `mean() function.
+8. Try your `my.mean()` function to calculate the mean age of pirates in the `pirates` data frame (in the yarrr package) and compare your results to what you get from using the `mean()` function.
 
-9. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector:
+9. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector)
 
 ```{r eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+
 how.many.na <- function(x) {
   
   output <- sum(is.na(___))
@@ -189,7 +204,9 @@ how.many.na <- function(x) {
 
 11. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
 
-```{r eval = FALSE}
+```{r eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
 ttest.apa <- function(x, mu) {
   
    # Store the one-sample ttest in object a
@@ -197,7 +214,7 @@ ttest.apa <- function(x, mu) {
   a <- t.test(x = ___, 
               mu = ___) 
   
-  df <- a$parameter  # Get the degrees of freedom
+  df <- a$parameter     # Get the degrees of freedom
   test.stat <- ___      # Get the test statistic
   p.value <- ___        # Get the p-value
   
@@ -224,7 +241,7 @@ ttest.apa <- function(x, mu) {
 
 12. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10: 
 
-```{r}
+```{r, echo = TRUE}
 # Is the mean of these values significantly different from 10?
 x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
 ```
@@ -242,46 +259,46 @@ write.table(x = outlier_data, file = "data/outlier_data.txt", sep = "\t")
 14. None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:
 
 ```{r, eval = FALSE, echo = TRUE}
-# REPLACE X WITH THE CORRECT VALUE(S)!
+# REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Loop over columns
-for(i in 1:ncol(X)) {
+for(i in 1:ncol(__)) {
   
   # Get data from column i
   data.i <- outlier_data[,i]
   
   # Count number of responses over 100
-  count_over_100 <- sum(data.i > X)
+  count_over_100 <- sum(data.i > __)
   
   # Print message
-  message(paste0("In column ", X, "I found ", X, "values over 100"))
+  message(paste0("In column ", __, "I found ", __, "values over 100"))
 
 }
 
 ```
 
-15. Now, use the following loop to not only count the number of invalid valus, but also to *replace* the values with NAs
+15. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
 
 ```{r, eval = FALSE, echo = TRUE}
-# REPLACE X WITH THE CORRECT VALUE(S)!
+# REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Loop over columns
-for(i in 1:ncol(X)) {
+for(i in 1:ncol(__)) {
   
   # Get data from column i
   data.i <- outlier_data[,i]
   
   # Count number of responses over 100
-  count_over_100 <- sum(data.i > X)
+  count_over_100 <- sum(data.i > __)
   
   # Print message
-  message(paste0("In column ", X, "I found ", X, "values over 100. I will replace them with NA values!"))
+  message(paste0("In column ", __, "I found ", __, "values over 100. I will replace them with NA values!"))
 
   # Replace values greater than 100 with NA
-  data.i[data.i > X] <- NA
+  data.i[data.i > __] <- NA
 
   # Assign data.i back to the ith column of the data
-  X[,i] <- data.i
+  __[,i] <- data.i
   
 }
 
@@ -294,19 +311,19 @@ for(i in 1:ncol(X)) {
 17. I have a large data file located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt. This data has 100 rows and 100 columns. Almost all of the data are are integers between 1 and 9. However, there is one value of 100 somewhere in the data. Load the data into R as a new object called `large_data`. Then, using a loop, figure out which column contains the value of 100
 
 ```{r}
-# REPLACE ALL VALUES OF X WITH THE CORRECT VALUES!
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
 
 # Load the data
-large_data <- read.table("X", sep = "\t")
+large_data <- read.table("__", sep = "\t")
 
 # Loop over columns
 for (i in 1:ncol(large_data)) {
   
   # Is the value of 100 in column i?
-  if(100 %in% large_data[,X]) {
+  if(100 %in% large_data[,__]) {
     
     # If so, then print the column number!
-    print(paste("It's in column", X, "!!"))
+    print(paste("It's in column", __, "!!"))
     
     }
 }
@@ -351,6 +368,9 @@ for (i in 1:100) {
 21. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
 
 ```{r}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+
 for (i in 1:100) {
   
   # Load the data from participant i to a temporary object x
@@ -382,14 +402,21 @@ for (i in 1:100) {
   - Repeat these steps with a loop to fill `p.values` with 1,000 p-values.
 
 ```{r eval = FALSE}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+# Create a vector of 1000 NA values
 p.values <- rep(NA, ___)
 
+# Loop over all 1000 values
 for(i in ___) {
 
+ # Generate a random vector of data
 x <- rnorm(n = ___, mean = ___, sd = ___)
 
+# Calculate the te.test
 result <- t.test(___)$___
 
+# Store p-value from test in p.values
 p.values[___] <- ___
 
 }
@@ -412,14 +439,17 @@ survey <- data.frame("p" = c(1, 2, 3, 4, 5),
 ```
 
 ```{r eval = FALSE}
-survey_corrected <- survey   # COPY SURVEY
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
 
-for(column.i in ____ ) {  # LOOP OVER COLUMNS
+
+survey_corrected <- survey   # Copy original survey
+
+for(column.i in ____ ) {  # Loop over columns
  
-  x <- ____   # COPY THE ORIGINAL COLUMN as x
-  x[(x %in% ___) == FALSE] <- ___  # REPLACE
+  x <- ____   # Copy original column vector
+  x[(x %in% ___) == FALSE] <- ___  # Replace any bad values
   
-  survey_corrected[,___] <- ___ # ASSIGN x back to survey.correced
+  survey_corrected[,___] <- ___ # Assign x back to survey.correced
   
 }
 ```

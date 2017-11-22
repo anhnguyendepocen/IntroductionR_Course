@@ -132,8 +132,8 @@ $(document).ready(function () {
 <div id="assignment-goals" class="section level2">
 <h2>Assignment Goals</h2>
 <ul>
-<li>Create loops with <code>for</code></li>
-<li>Use <code>if</code> statements</li>
+<li>Create for loops</li>
+<li>Use <code>if</code> statements within for loops</li>
 <li>Create custom functions</li>
 </ul>
 </div>
@@ -198,11 +198,11 @@ is.even(3, print.result = TRUE)</code></pre>
 <div id="loops" class="section level3">
 <h3>Loops</h3>
 <ol style="list-style-type: decimal">
-<li>Write a loop that prints the integers from 1 to 50 to the console:</li>
+<li>Write a loop that prints the integers from 1 to 50 to the console (note: <code>message()</code> works similarly to <code>print()</code>):</li>
 </ol>
-<pre class="r"><code>for (i in X:X) {
+<pre class="r"><code>for (i in __:__) {
   
-  message(X)
+  message(__)
   
 }</code></pre>
 <ol start="2" style="list-style-type: decimal">
@@ -213,8 +213,8 @@ is.even(3, print.result = TRUE)</code></pre>
 <thead>
 <tr class="header">
 <th align="left">Question</th>
-<th align="right">Original Score</th>
-<th align="right"><strong>Cumulative Score</strong></th>
+<th align="right">original_score</th>
+<th align="right"><strong>cumulative_score</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -271,18 +271,24 @@ is.even(3, print.result = TRUE)</code></pre>
 </tbody>
 </table>
 <p>Using the following loop, create the vector <code>cumulative_scores</code> that count the cumulative sum of the original scores.</p>
-<pre class="r"><code># Vector of original scores on the 10 questions
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
+
+
+# Vector of original scores on the 10 questions
 original_scores &lt;- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 
 # Create a vector of NAs where the cumulative scores will go
 cumulative_scores &lt;- rep(NA, 10)
 
 # Loop over each of the 10 questions
-for(i in X:X) {
+for(i in __:__) {
   
-    cumulative_scores[X] &lt;- sum(original_answers[1:X])
+    cumulative_scores[__] &lt;- sum(original_answers[1:__])
   
-}</code></pre>
+}
+
+# print the result!
+cumulative_scores</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>R has a function called <code>cumsum()</code> that does exactly what your loop does! Try applying <code>cumsum()</code> to the original scores and see if you get the same answer as your loop.</li>
 </ol>
@@ -291,19 +297,25 @@ for(i in X:X) {
 <div id="custom-functions" class="section level2">
 <h2>Custom Functions</h2>
 <ol start="5" style="list-style-type: decimal">
-<li>Write a function called <code>feed.me()</code> that takes a string <code>food</code> as an argument, and returns the sentence “I love to eat ___“.</li>
+<li>Write a function called <code>feed.me()</code> that takes a string <code>food</code> as an argument, and returns the sentence “I love to eat <code>food</code>”.</li>
 </ol>
-<pre class="r"><code>feed.me &lt;- function(___) {
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
+
+
+feed.me &lt;- function(___) {
   
   output &lt;- paste0(&quot;I love to eat &quot;, ___)
   
   return(___)
 }</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Try your function by running <code>feed.me(&quot;apples&quot;)</code>.</p></li>
+<li><p>Try your function by running <code>feed.me(&quot;apples&quot;)</code>, it should return <code>I love apples</code></p></li>
 <li><p>Write a function called <code>my.mean()</code> that takes a vector <code>x</code> as an argument, and returns the mean of the vector <code>x</code>. Don’t use the <code>mean()</code> function! Use <code>sum()</code> and <code>length()</code>!</p></li>
 </ol>
-<pre class="r"><code>my.mean &lt;- function(___) {
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
+
+
+my.mean &lt;- function(___) {
   
   result &lt;- sum(___) / length(___)
   
@@ -311,10 +323,13 @@ for(i in X:X) {
   
 }</code></pre>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Try your <code>my.mean()</code> function to calculate the mean age of pirates in the <code>pirate</code> data frame and compare your results to what you get from using the `mean() function.</p></li>
-<li><p>Write a function called <code>how.many.na()</code> that takes a vector <code>x</code> as an argument, and returns the number of NA values found in the vector:</p></li>
+<li><p>Try your <code>my.mean()</code> function to calculate the mean age of pirates in the <code>pirates</code> data frame (in the yarrr package) and compare your results to what you get from using the <code>mean()</code> function.</p></li>
+<li><p>Write a function called <code>how.many.na()</code> that takes a vector <code>x</code> as an argument, and returns the number of NA values found in the vector)</p></li>
 </ol>
-<pre class="r"><code>how.many.na &lt;- function(x) {
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
+
+
+how.many.na &lt;- function(x) {
   
   output &lt;- sum(is.na(___))
   
@@ -327,48 +342,86 @@ for(i in X:X) {
 <div id="checkpoint" class="section level1">
 <h1>Checkpoint!</h1>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Write a function called <code>ttest.apa()</code> that takes a vector <code>x</code> as an argument and returns an apa style conclusion from a one-sample test of <code>x</code>.</p></li>
-<li><p>Test your <code>ttest.apa()</code> function to see if the following vector of values has a mean that is significantly different from 10:</p></li>
+<li>Write a function called <code>ttest.apa()</code> that takes a vector <code>x</code> as an argument and returns an apa style conclusion from a one-sample test of <code>x</code>.</li>
+</ol>
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
+
+ttest.apa &lt;- function(x, mu) {
+  
+   # Store the one-sample ttest in object a
+  
+  a &lt;- t.test(x = ___, 
+              mu = ___) 
+  
+  df &lt;- a$parameter     # Get the degrees of freedom
+  test.stat &lt;- ___      # Get the test statistic
+  p.value &lt;- ___        # Get the p-value
+  
+  
+  # If the test is significant...
+  if(p.value &lt;= ___) {
+    
+    output &lt;- paste0(&quot;The test is significant! t(&quot;,
+                     df, &quot;) = &quot;, test.stat, 
+                   &quot;, p = &quot;, p.value, 
+                   &quot; (H0 = &quot;, mu, &quot;)&quot;)
+  }
+  
+  # If the test is not significant...
+    if(p.value &gt; ___) {
+    
+    output &lt;- ___
+    
+  }
+  
+  print(___)  
+}</code></pre>
+<ol start="12" style="list-style-type: decimal">
+<li>Test your <code>ttest.apa()</code> function to see if the following vector of values has a mean that is significantly different from 10:</li>
+</ol>
+<pre class="r"><code># Is the mean of these values significantly different from 10?
+x &lt;- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)</code></pre>
+<ol start="13" style="list-style-type: decimal">
 <li><p>I have a large dataset stored at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/large_data.txt</a>. The dataset contains responses from 10 participants on 100 problems. Load the data into R as a new object caled <code>large_data</code>.</p></li>
 <li><p>None of the participants should have responses larger than 100 on any problem. Using the following loop, count the number of times where each participant gave a value over 100:</p></li>
 </ol>
-<pre class="r"><code># REPLACE X WITH THE CORRECT VALUE(S)!
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Loop over columns
-for(i in 1:ncol(X)) {
+for(i in 1:ncol(__)) {
   
   # Get data from column i
   data.i &lt;- outlier_data[,i]
   
   # Count number of responses over 100
-  count_over_100 &lt;- sum(data.i &gt; X)
+  count_over_100 &lt;- sum(data.i &gt; __)
   
   # Print message
-  message(paste0(&quot;In column &quot;, X, &quot;I found &quot;, X, &quot;values over 100&quot;))
+  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values over 100&quot;))
 
 }</code></pre>
 <ol start="15" style="list-style-type: decimal">
-<li>Now, use the following loop to not only count the number of invalid valus, but also to <em>replace</em> the values with NAs</li>
+<li>Now, use the following loop to not only count the number of invalid values, but also to <em>replace</em> the values with NAs</li>
 </ol>
-<pre class="r"><code># REPLACE X WITH THE CORRECT VALUE(S)!
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Loop over columns
-for(i in 1:ncol(X)) {
+for(i in 1:ncol(__)) {
   
   # Get data from column i
   data.i &lt;- outlier_data[,i]
   
   # Count number of responses over 100
-  count_over_100 &lt;- sum(data.i &gt; X)
+  count_over_100 &lt;- sum(data.i &gt; __)
   
   # Print message
-  message(paste0(&quot;In column &quot;, X, &quot;I found &quot;, X, &quot;values over 100. I will replace them with NA values!&quot;))
+  message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values over 100. I will replace them with NA values!&quot;))
 
   # Replace values greater than 100 with NA
-  data.i[data.i &gt; X] &lt;- NA
+  data.i[data.i &gt; __] &lt;- NA
 
   # Assign data.i back to the ith column of the data
-  X[,i] &lt;- data.i
+  __[,i] &lt;- data.i
   
 }</code></pre>
 <ol start="16" style="list-style-type: decimal">
