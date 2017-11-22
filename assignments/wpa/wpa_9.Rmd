@@ -236,7 +236,7 @@ how.many.na <- function(x) {
 # REPLACE __ WITH THE CORRECT VALUES!
 
 ttest.apa <- function(x,       # A vector of data
-                      H0) {    # The mean under the null hypothesis
+                      mu) {    # The mean under the null hypothesis
   
    # Store the one-sample ttest in object a
   
@@ -255,7 +255,7 @@ ttest.apa <- function(x,       # A vector of data
    print(paste0("The test is significant! t(",
                      df, ") = ", test.stat, 
                    ", p = ", p.value, 
-                   " (H0 = ", H0, ")"))
+                   " (H0 = ", mu, ")"))
   }
   
   # If the test is NOT significant...
