@@ -194,7 +194,7 @@ feed.me <- function(___) {
 ```
 
 
-7. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
+8. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
@@ -208,9 +208,9 @@ my.mean <- function(___) {
 }
 ```
 
-8. Try your `my.mean()` function to calculate the mean weights of chicks in the `ChickWeight` data frame and compare your results to what you get from using the `mean()` function.
+9. Try your `my.mean()` function to calculate the mean weights of chicks in the `ChickWeight` data frame and compare your results to what you get from using the `mean()` function.
 
-9. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector)
+10. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector)
 
 ```{r eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
@@ -223,14 +223,14 @@ how.many.na <- function(x) {
 }
 ```
 
-10. Test your `how.many.na()` function to the vector `x = c(4, 7, 3, NA, NA, 1)`
+11. Test your `how.many.na()` function to the vector `x = c(4, 7, 3, NA, NA, 1)`
 
 
 # Checkpoint!
 
 ### Create your own apa function!
 
-11. Now it's time to create your own apa function! Using the following code, write a function called `ttest.apa()` that takes a numeric vector `x`, and scaler `H0` as arugments, and returns an apa style conclusion from a one-sample test of `x` against the null hypothesis that the true mean of x is `H0`.
+12. Now it's time to create your own apa function! Using the following code, write a function called `ttest.apa()` that takes a numeric vector `x`, and scaler `H0` as arugments, and returns an apa style conclusion from a one-sample test of `x` against the null hypothesis that the true mean of x is `H0`.
 
 ```{r eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
@@ -269,18 +269,18 @@ ttest.apa <- function(x,       # A vector of data
 }
 ```
 
-12. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10. Then, do another test to see if it's significantly different from 5.
+13. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10. Then, do another test to see if it's significantly different from 5.
 
 ```{r, echo = TRUE}
 # Is the mean of these values significantly different from 10?
 x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
 ```
 
-13. Add another argument to `ttest.apa()` called `p.sig` that indicates how low a p-value needs to be to be deemed 'significant'. Then, test your function on the data above, but use the argument `p.sig = .001`, which means that a p-value must be below 0.001 to be deemed 'significant'.
+14. Add another argument to `ttest.apa()` called `p.sig` that indicates how low a p-value needs to be to be deemed 'significant'. Then, test your function on the data above, but use the argument `p.sig = .001`, which means that a p-value must be below 0.001 to be deemed 'significant'.
 
 ### Fixing invalid values
 
-14. One nice application of loops is to sequentially look through columns (or rows) of a dataframe, and make changes. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
+15. One nice application of loops is to sequentially look through columns (or rows) of a dataframe, and make changes. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
 
 The data should look like this
 
@@ -303,7 +303,7 @@ names(confidence_data) <- paste0("p", 1:10)
 write.table(x = confidence_data, file = "assignments/wpa/data/confidence_data.txt", sep = "\t")
 ```
 
-15. Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:
+16. Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -324,7 +324,7 @@ for(i in 1:ncol(__)) {
 
 ```
 
-16. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
+17. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -351,12 +351,12 @@ for(i in 1:ncol(__)) {
 
 ```
 
-17. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
+18. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
 
 
 #### Use a loop to read and write data files
 
-18. If you have many separate files you want to read into R, you can easily do this using a loop. But before we get to that, we'll create 100 text files on your computer that, later on, you will read back into R. Of cousre, we will create these 100 text files using a loop! The following loop will create write 100 text files to your working directory.  Run it and see what happens!
+19. If you have many separate files you want to read into R, you can easily do this using a loop. But before we get to that, we'll create 100 text files on your computer that, later on, you will read back into R. Of cousre, we will create these 100 text files using a loop! The following loop will create write 100 text files to your working directory.  Run it and see what happens!
 
 ```{r, eval = FALSE}
 # JUST RUN! This will create 100 text files in your working directory
@@ -376,7 +376,7 @@ for (i in 1:100) {
 }
 ```
 
-19. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+20. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
 
 ```{r, eval = FALSE}
 # JUST RUN!
@@ -395,7 +395,7 @@ for (i in 1:100) {
 }
 ```
 
-20. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, replace __ with the correct value(s), and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+21. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, replace __ with the correct value(s), and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
 
 ```{r, eval = FALSE}
 # REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -416,12 +416,12 @@ for (i in 1:100) {
 }
 ```
 
-21. Adjust your code above so, for each run of the loop, it prints the message 'Reading subject X' (where X is the subject number).
+22. Adjust your code above so, for each run of the loop, it prints the message 'Reading subject X' (where X is the subject number).
 
 
 #### Conduct a simulation!
 
-22. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
+23. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
 
   - Create a vector called `p.values` with 1,000 NA values. 
   - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
@@ -449,11 +449,11 @@ p.values[___] <- ___
 }
 ```
   
-23. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
+24. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
 
 ### More data cleaning
 
-24. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+25. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
 
 ```{r}
 survey <- data.frame("p" = c(1, 2, 3, 4, 5),
@@ -479,7 +479,7 @@ for(column.i in ____ ) {  # Loop over columns
 }
 ```
 
-25. Check the values of `survey_corrected` to make sure it worked!
+26. Check the values of `survey_corrected` to make sure it worked!
 
 ## Submit!
 
