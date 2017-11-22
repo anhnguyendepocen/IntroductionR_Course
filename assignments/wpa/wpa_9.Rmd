@@ -202,6 +202,8 @@ how.many.na <- function(x) {
 
 # Checkpoint!
 
+### Create your own apa function!
+
 11. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
 
 ```{r eval = FALSE, echo = TRUE}
@@ -241,12 +243,14 @@ ttest.apa <- function(x,       # A vector of data
 }
 ```
 
-12. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10: 
+12. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10. Then, do another test to see if it's significantly different from 5.
 
 ```{r, echo = TRUE}
 # Is the mean of these values significantly different from 10?
 x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
 ```
+
+### Fixing invalid values
 
 13. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
 
@@ -280,7 +284,7 @@ write.table(x = confidence_data, file = "assignments/wpa/data/confidence_data.tx
 for(i in 1:ncol(__)) {
   
   # Get data from column i
-  data.i <- outlier_data[, i]
+  data.i <- confidence_data[, i]
   
   # Count number of responses below 0 or above 100
   count_invalid <- sum(data.i < __ | data.i > __)
@@ -301,7 +305,7 @@ for(i in 1:ncol(__)) {
 for(i in 1:ncol(__)) {
   
   # Get data from column i
-  data.i <- outlier_data[,i]
+  data.i <- confidence_data[,i]
   
   # Count number of responses below 0 or above 100
   count_invalid <- sum(data.i < __ | data.i > __)
@@ -309,7 +313,7 @@ for(i in 1:ncol(__)) {
   # Print message
   message(paste0("In column ", __, "I found ", __, "values that were either below 0 or over 100"))
 
-  # Replace values greater than 100 with NA
+  # Replace values below 0 or above 100 with NA
   data.i[data.i < __ | data.i > __] <- NA
 
   # Assign data.i back to the ith column of the data
