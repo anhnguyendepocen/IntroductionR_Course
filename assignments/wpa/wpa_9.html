@@ -272,8 +272,6 @@ is.even(3, print.result = TRUE)</code></pre>
 </table>
 <p>Using the following loop, create the vector <code>cumulative_scores</code> that count the cumulative sum of the original scores.</p>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
-
-
 # Vector of original scores on the 10 questions
 original_scores &lt;- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 
@@ -283,7 +281,11 @@ cumulative_scores &lt;- rep(NA, 10)
 # Loop over each of the 10 questions
 for(i in __:__) {
   
-    cumulative_scores[__] &lt;- sum(original_answers[1:__])
+  # Calculate the cumulative sum for the current question
+  cumsum_i &lt;- sum(original_answers[1:__])
+  
+  # Add the value to the ith element in cumulative_scores
+  cumulative_scores[__] &lt;- cumsum_i
   
 }
 
@@ -297,23 +299,42 @@ cumulative_scores</code></pre>
 <div id="custom-functions" class="section level2">
 <h2>Custom Functions</h2>
 <ol start="5" style="list-style-type: decimal">
-<li>Write a function called <code>feed.me()</code> that takes a string <code>food</code> as an argument, and returns the sentence “I love to eat <code>food</code>”.</li>
+<li>Write a function called <code>feed.me()</code> that takes a string <code>food</code> as an argument, and prints the sentence “I love to eat <code>food</code>”.</li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
-
 
 feed.me &lt;- function(___) {
   
-  output &lt;- paste0(&quot;I love to eat &quot;, ___)
+  output &lt;- paste0(&quot;Yum! I love to eat &quot;, ___)
   
-  return(___)
+  print(output)
 }</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Try your function by running <code>feed.me(&quot;apples&quot;)</code>, it should return <code>I love apples</code></p></li>
-<li><p>Write a function called <code>my.mean()</code> that takes a vector <code>x</code> as an argument, and returns the mean of the vector <code>x</code>. Don’t use the <code>mean()</code> function! Use <code>sum()</code> and <code>length()</code>!</p></li>
+<li><p>Try your function by running <code>feed.me(&quot;apples&quot;)</code>, it should return <code>Yum! I love to eat apples</code>.</p></li>
+<li><p>Now adjust your <code>feed.me()</code> function so that if the user specifies “avocados”, then the function returns “NOOOOO, I HATE AVACADOS!”</p></li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
 
+feed.me &lt;- function(___) {
+  
+  if(__ != &quot;avacados&quot;) {
+    
+  output &lt;- paste0(&quot;Yum! I love to eat &quot;, ___)
+  
+  }
+  
+  if( __ == __) {
+    
+  output &lt;- &quot;&quot;
+  
+  }
+  
+  print(output)
+}</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Write a function called <code>my.mean()</code> that takes a vector <code>x</code> as an argument, and returns the mean of the vector <code>x</code>. Don’t use the <code>mean()</code> function! Use <code>sum()</code> and <code>length()</code>!</li>
+</ol>
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
 
 my.mean &lt;- function(___) {
   
@@ -323,11 +344,10 @@ my.mean &lt;- function(___) {
   
 }</code></pre>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Try your <code>my.mean()</code> function to calculate the mean age of pirates in the <code>pirates</code> data frame (in the yarrr package) and compare your results to what you get from using the <code>mean()</code> function.</p></li>
+<li><p>Try your <code>my.mean()</code> function to calculate the mean weights of chicks in the <code>ChickWeight</code> data frame and compare your results to what you get from using the <code>mean()</code> function.</p></li>
 <li><p>Write a function called <code>how.many.na()</code> that takes a vector <code>x</code> as an argument, and returns the number of NA values found in the vector)</p></li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
-
 
 how.many.na &lt;- function(x) {
   
@@ -344,12 +364,12 @@ how.many.na &lt;- function(x) {
 <div id="create-your-own-apa-function" class="section level3">
 <h3>Create your own apa function!</h3>
 <ol start="11" style="list-style-type: decimal">
-<li>Write a function called <code>ttest.apa()</code> that takes a vector <code>x</code> as an argument and returns an apa style conclusion from a one-sample test of <code>x</code>.</li>
+<li>Now it’s time to create your own apa function! Using the following code, write a function called <code>ttest.apa()</code> that takes a numeric vector <code>x</code>, and scaler <code>H0</code> as arugments, and returns an apa style conclusion from a one-sample test of <code>x</code> against the null hypothesis that the true mean of x is <code>H0</code>.</li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUES!
 
 ttest.apa &lt;- function(x,       # A vector of data
-                      mu) {    # The mean under the null hypothesis
+                      H0) {    # The mean under the null hypothesis
   
    # Store the one-sample ttest in object a
   
@@ -385,11 +405,14 @@ ttest.apa &lt;- function(x,       # A vector of data
 </ol>
 <pre class="r"><code># Is the mean of these values significantly different from 10?
 x &lt;- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)</code></pre>
+<ol start="13" style="list-style-type: decimal">
+<li>Add another argument to <code>ttest.apa()</code> called <code>p.sig</code> that indicates how low a p-value needs to be to be deemed ‘significant’. Then, test your function on the data above, but use the argument <code>p.sig = .001</code>, which means that a p-value must be below 0.001 to be deemed ‘significant’.</li>
+</ol>
 </div>
 <div id="fixing-invalid-values" class="section level3">
 <h3>Fixing invalid values</h3>
-<ol start="13" style="list-style-type: decimal">
-<li>I have a dataset stored at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt</a>. This dataset represents participant’s responses to 100 general knowledge problems. For each question, participants were asked “How confident are you that you know the answer to this question?”. The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called <code>confidence_data</code>.</li>
+<ol start="14" style="list-style-type: decimal">
+<li>One nice application of loops is to sequentially look through columns (or rows) of a dataframe, and make changes. I have a dataset stored at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt</a>. This dataset represents participant’s responses to 100 general knowledge problems. For each question, participants were asked “How confident are you that you know the answer to this question?”. The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called <code>confidence_data</code>.</li>
 </ol>
 <p>The data should look like this</p>
 <table>
@@ -482,7 +505,7 @@ x &lt;- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)</code></pre>
 </tr>
 </tbody>
 </table>
-<ol start="14" style="list-style-type: decimal">
+<ol start="15" style="list-style-type: decimal">
 <li>Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:</li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -500,7 +523,7 @@ for(i in 1:ncol(__)) {
   message(paste0(&quot;In column &quot;, __, &quot;I found &quot;, __, &quot;values that were either below 0 or over 100&quot;))
 
 }</code></pre>
-<ol start="15" style="list-style-type: decimal">
+<ol start="16" style="list-style-type: decimal">
 <li>Now, use the following loop to not only count the number of invalid values, but also to <em>replace</em> the values with NAs</li>
 </ol>
 <pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -524,28 +547,30 @@ for(i in 1:ncol(__)) {
   __[, i] &lt;- data.i
   
 }</code></pre>
-<ol start="16" style="list-style-type: decimal">
+<ol start="17" style="list-style-type: decimal">
 <li>Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!</li>
 </ol>
 <div id="use-a-loop-to-read-and-write-data-files" class="section level4">
 <h4>Use a loop to read and write data files</h4>
-<ol start="17" style="list-style-type: decimal">
-<li>The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!</li>
+<ol start="18" style="list-style-type: decimal">
+<li>If you have many separate files you want to read into R, you can easily do this using a loop. But before we get to that, we’ll create 100 text files on your computer that, later on, you will read back into R. Of cousre, we will create these 100 text files using a loop! The following loop will create write 100 text files to your working directory. Run it and see what happens!</li>
 </ol>
-<pre class="r"><code># JUST RUN!
+<pre class="r"><code># JUST RUN! This will create 100 text files in your working directory
 
 for (i in 1:100) {
   
   # Create a random dataset from a hypothetical subject
-  data.temp &lt;- data.frame(subject = rep(i, 10),
+  data_temp &lt;- data.frame(subject = rep(i, 10),
                           trial = 1:10,
                           response = sample(1:7, size = 10, replace = TRUE))
   
   # Write the data to a text file
-  write.table(data.temp, file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), sep = &quot;\t&quot;)
+  write.table(data_temp, 
+              file = paste0(&quot;subject_&quot;, i, &quot;.txt&quot;), 
+              sep = &quot;\t&quot;)
   
 }</code></pre>
-<ol start="18" style="list-style-type: decimal">
+<ol start="19" style="list-style-type: decimal">
 <li>The following code will load each data file into your R session as 100 new objects called <code>subject_1</code>, <code>subject_2</code>, … <code>subject_100</code>. Run the code, then try looking at some of the objects such as <code>subject_40</code> and <code>subject_64</code>.</li>
 </ol>
 <pre class="r"><code># JUST RUN!
@@ -553,18 +578,19 @@ for (i in 1:100) {
 for (i in 1:100) {
   
   # Load the data from participant i to a temporary object x
-  x &lt;- read.table(file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), 
-                  header = TRUE, 
-                  sep = &quot;\t&quot;)
+  data_temp &lt;- read.table(file = paste0(&quot;subject_&quot;, i, &quot;.txt&quot;), 
+                          header = TRUE, 
+                          sep = &quot;\t&quot;)
   
   # Create a new object subject_i containing the data!
-  assign(x = paste0(&quot;subject_&quot;, i), value = x)
+  assign(x = paste0(&quot;subject_&quot;, i), 
+         value = data_temp)
 
 }</code></pre>
-<ol start="19" style="list-style-type: decimal">
-<li>The code above wrote all of the data to separate objects. But wouldn’t it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the <code>rbind()</code> function. Look at the following code, and then run it to create a new dataframe object called <code>all_data</code> which contains the data from all participants!</li>
+<ol start="20" style="list-style-type: decimal">
+<li>The code above wrote all of the data to separate objects. But wouldn’t it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the <code>rbind()</code> function. Look at the following code, replace __ with the correct value(s), and then run it to create a new dataframe object called <code>all_data</code> which contains the data from all participants!</li>
 </ol>
-<pre class="r"><code># JUST RUN!
+<pre class="r"><code># REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Set up all_data object
 all_data &lt;- NULL
@@ -572,21 +598,21 @@ all_data &lt;- NULL
 for (i in 1:100) {
   
   # Load the data from participant i to a temporary object x
-  x &lt;- read.table(file = paste0(&quot;data/subject_&quot;, i, &quot;.txt&quot;), 
-                  header = TRUE, 
-                  sep = &quot;\t&quot;)
+  data_temp &lt;- read.table(file = paste0(&quot;subject_&quot;, i, &quot;.txt&quot;), 
+                          header = TRUE, 
+                          sep = &quot;\t&quot;)
   
-  # Add x to all_data!
-  all_data &lt;- rbind(x, all_data)
+  # Add temprorary data to to all_data!
+  all_data &lt;- rbind(__, all_data)
 
 }</code></pre>
-<ol start="20" style="list-style-type: decimal">
+<ol start="21" style="list-style-type: decimal">
 <li>Adjust your code above so, for each run of the loop, it prints the message ‘Reading subject X’ (where X is the subject number).</li>
 </ol>
 </div>
 <div id="conduct-a-simulation" class="section level4">
 <h4>Conduct a simulation!</h4>
-<ol start="21" style="list-style-type: decimal">
+<ol start="22" style="list-style-type: decimal">
 <li>What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:</li>
 </ol>
 <ul>
@@ -613,14 +639,14 @@ result &lt;- t.test(___)$___
 p.values[___] &lt;- ___
 
 }</code></pre>
-<ol start="22" style="list-style-type: decimal">
+<ol start="23" style="list-style-type: decimal">
 <li>What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?</li>
 </ol>
 </div>
 </div>
 <div id="more-data-cleaning" class="section level3">
 <h3>More data cleaning</h3>
-<ol start="23" style="list-style-type: decimal">
+<ol start="24" style="list-style-type: decimal">
 <li>The following dataframe <code>survey</code> contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called <code>survey.corrected</code> that converts all invalid values to NA:</li>
 </ol>
 <pre class="r"><code>survey &lt;- data.frame(&quot;p&quot; = c(1, 2, 3, 4, 5),
@@ -630,7 +656,6 @@ p.values[___] &lt;- ___
                      &quot;q4&quot; = c(6, 3, 4, -2, 4),
                      &quot;q5&quot; = c(1, 1, 900, 1, 2))</code></pre>
 <pre class="r"><code># REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
-
 
 survey_corrected &lt;- survey   # Copy original survey
 
@@ -642,7 +667,7 @@ for(column.i in ____ ) {  # Loop over columns
   survey_corrected[,___] &lt;- ___ # Assign x back to survey.correced
   
 }</code></pre>
-<ol start="24" style="list-style-type: decimal">
+<ol start="25" style="list-style-type: decimal">
 <li>Check the values of <code>survey_corrected</code> to make sure it worked!</li>
 </ol>
 </div>

@@ -32,7 +32,7 @@ This assignment is based on the following readings:
 
 ```{r, echo = TRUE, eval = FALSE}
 
-# print integers from 1 to 100
+# Use a loop to print integers from 1 to 100
 
 for(i in 1:100) {
   
@@ -40,39 +40,56 @@ for(i in 1:100) {
   
 }
 
-# Define some number x
-x <- 2
+# Use a loop to add the integers from 1 to 100
 
-# Test if x is even
-even.test <- round(x / 2, 0) == (x / 2)
+sum_total <- 0
 
-# Print 'x is even' if even.test is true, otherwose, print 'x is not even!'
-if(even.test == TRUE) {
+for(i in 1:100) {
+
+  sum_total <- sum_total + i  
+
+}
+
+
+# Create a function showstat that returns a summary statistic from a vector
+
+showstat <- function(x, 
+                     what = "mean",
+                     na.rm = TRUE) {
   
-  print("x is even!")} else {
+  if(what == "mean") {output <- mean(x, na.rm = na.rm)}
+  if(what == "sd") {output <- sd(x, na.rm = na.rm)}
+  if(what == "median") {output <- median(x, na.rm = na.rm)}
+
+  if(what %in% c("mean", "sd", "median") == FALSE) {
     
-    print("x is not even!")}
+    stop(paste("Sorry I don't know what", what, "means. Please try 'mean', 'sd', or 'median'")
+  }
   
+  return(output)
+
+}
+
 
 # Create a function is.even that tests if an input is even or not
 
-is.even <- function(x,     # The number to test
-                    print.result = FALSE) {
+is.even <- function(x,                      # The number to test
+                    print.result = FALSE) { # Should the result be printed?
   
   # Test if x is even
 even.test <- round(x / 2, 0) == (x / 2)
 
-# Print 'x is even' if even.test is true, otherwose, print 'x is not even!'
+# Print 'x is even' if even.test is true, otherwise, print 'x is not even!'
 
 if(print.result) {
   
-if(even.test == TRUE) {
-  
-  message("x is even!")} else {
+  if(even.test == TRUE) {
     
-    message("x is not even!")}
-  
-}
+    message("x is even!")} else {
+      
+      message("x is NOT even!")}
+    
+  }
 
 return(even.test)
 
@@ -125,8 +142,6 @@ Using the following loop, create the vector `cumulative_scores` that count the c
 
 ```{r, echo = TRUE, eval = FALSE}
 # REPLACE __ WITH THE CORRECT VALUES!
-
-
 # Vector of original scores on the 10 questions
 original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
 
@@ -136,7 +151,11 @@ cumulative_scores <- rep(NA, 10)
 # Loop over each of the 10 questions
 for(i in __:__) {
   
-    cumulative_scores[__] <- sum(original_answers[1:__])
+  # Calculate the cumulative sum for the current question
+  cumsum_i <- sum(original_answers[1:__])
+  
+  # Add the value to the ith element in cumulative_scores
+  cumulative_scores[__] <- cumsum_i
   
 }
 
@@ -147,30 +166,51 @@ cumulative_scores
 
 4. R has a function called `cumsum()` that does exactly what your loop does! Try applying `cumsum()` to the original scores and see if you get the same answer as your loop.
 
-
 ## Custom Functions
 
-5. Write a function called `feed.me()` that takes a string `food` as an argument, and returns the sentence "I love to eat `food`".
+5. Write a function called `feed.me()` that takes a string `food` as an argument, and prints the sentence "I love to eat `food`".
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
 
-
 feed.me <- function(___) {
   
-  output <- paste0("I love to eat ", ___)
+  output <- paste0("Yum! I love to eat ", ___)
   
-  return(___)
+  print(output)
 }
 ```
 
-6. Try your function by running `feed.me("apples")`, it should return `I love apples`
+6. Try your function by running `feed.me("apples")`, it should return `Yum! I love to eat apples`.
+
+7. Now adjust your `feed.me()` function so that if the user specifies "avocados", then the function returns "NOOOOO, I HATE AVACADOS!"
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+feed.me <- function(___) {
+  
+  if(__ != "avacados") {
+    
+  output <- paste0("Yum! I love to eat ", ___)
+  
+  }
+  
+  if( __ == __) {
+    
+  output <- ""
+  
+  }
+  
+  print(output)
+}
+```
+
 
 7. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
-
 
 my.mean <- function(___) {
   
@@ -181,13 +221,12 @@ my.mean <- function(___) {
 }
 ```
 
-8. Try your `my.mean()` function to calculate the mean age of pirates in the `pirates` data frame (in the yarrr package) and compare your results to what you get from using the `mean()` function.
+8. Try your `my.mean()` function to calculate the mean weights of chicks in the `ChickWeight` data frame and compare your results to what you get from using the `mean()` function.
 
 9. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector)
 
 ```{r eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
-
 
 how.many.na <- function(x) {
   
@@ -204,13 +243,13 @@ how.many.na <- function(x) {
 
 ### Create your own apa function!
 
-11. Write a function called `ttest.apa()` that takes a vector `x` as an argument and returns an apa style conclusion from a one-sample test of `x`.
+11. Now it's time to create your own apa function! Using the following code, write a function called `ttest.apa()` that takes a numeric vector `x`, and scaler `H0` as arugments, and returns an apa style conclusion from a one-sample test of `x` against the null hypothesis that the true mean of x is `H0`.
 
 ```{r eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUES!
 
 ttest.apa <- function(x,       # A vector of data
-                      mu) {    # The mean under the null hypothesis
+                      H0) {    # The mean under the null hypothesis
   
    # Store the one-sample ttest in object a
   
@@ -250,9 +289,11 @@ ttest.apa <- function(x,       # A vector of data
 x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
 ```
 
+13. Add another argument to `ttest.apa()` called `p.sig` that indicates how low a p-value needs to be to be deemed 'significant'. Then, test your function on the data above, but use the argument `p.sig = .001`, which means that a p-value must be below 0.001 to be deemed 'significant'.
+
 ### Fixing invalid values
 
-13. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
+14. One nice application of loops is to sequentially look through columns (or rows) of a dataframe, and make changes. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
 
 The data should look like this
 
@@ -275,7 +316,7 @@ names(confidence_data) <- paste0("p", 1:10)
 write.table(x = confidence_data, file = "assignments/wpa/data/confidence_data.txt", sep = "\t")
 ```
 
-14. Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:
+15. Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -296,7 +337,7 @@ for(i in 1:ncol(__)) {
 
 ```
 
-15. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
+16. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
 
 ```{r, eval = FALSE, echo = TRUE}
 # REPLACE __ WITH THE CORRECT VALUE(S)!
@@ -323,30 +364,32 @@ for(i in 1:ncol(__)) {
 
 ```
 
-16. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
+17. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
 
 
 #### Use a loop to read and write data files
 
-17. The following loop will create write 100 text files to the data folder of your working directory (Note: It will only work if you have a data folder in your working directory!!!). Run it and see what happens!
+18. If you have many separate files you want to read into R, you can easily do this using a loop. But before we get to that, we'll create 100 text files on your computer that, later on, you will read back into R. Of cousre, we will create these 100 text files using a loop! The following loop will create write 100 text files to your working directory.  Run it and see what happens!
 
 ```{r, eval = FALSE}
-# JUST RUN!
+# JUST RUN! This will create 100 text files in your working directory
 
 for (i in 1:100) {
   
   # Create a random dataset from a hypothetical subject
-  data.temp <- data.frame(subject = rep(i, 10),
+  data_temp <- data.frame(subject = rep(i, 10),
                           trial = 1:10,
                           response = sample(1:7, size = 10, replace = TRUE))
   
   # Write the data to a text file
-  write.table(data.temp, file = paste0("data/subject_", i, ".txt"), sep = "\t")
+  write.table(data_temp, 
+              file = paste0("subject_", i, ".txt"), 
+              sep = "\t")
   
 }
 ```
 
-18. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+19. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
 
 ```{r}
 # JUST RUN!
@@ -354,20 +397,21 @@ for (i in 1:100) {
 for (i in 1:100) {
   
   # Load the data from participant i to a temporary object x
-  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
-                  header = TRUE, 
-                  sep = "\t")
+  data_temp <- read.table(file = paste0("subject_", i, ".txt"), 
+                          header = TRUE, 
+                          sep = "\t")
   
   # Create a new object subject_i containing the data!
-  assign(x = paste0("subject_", i), value = x)
+  assign(x = paste0("subject_", i), 
+         value = data_temp)
 
 }
 ```
 
-19. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+20. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, replace __ with the correct value(s), and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
 
-```{r}
-# JUST RUN!
+```{r, eval = FALSE}
+# REPLACE __ WITH THE CORRECT VALUE(S)!
 
 # Set up all_data object
 all_data <- NULL
@@ -375,22 +419,22 @@ all_data <- NULL
 for (i in 1:100) {
   
   # Load the data from participant i to a temporary object x
-  x <- read.table(file = paste0("data/subject_", i, ".txt"), 
-                  header = TRUE, 
-                  sep = "\t")
+  data_temp <- read.table(file = paste0("subject_", i, ".txt"), 
+                          header = TRUE, 
+                          sep = "\t")
   
-  # Add x to all_data!
-  all_data <- rbind(x, all_data)
+  # Add temprorary data to to all_data!
+  all_data <- rbind(__, all_data)
 
 }
 ```
 
-20. Adjust your code above so, for each run of the loop, it prints the message 'Reading subject X' (where X is the subject number).
+21. Adjust your code above so, for each run of the loop, it prints the message 'Reading subject X' (where X is the subject number).
 
 
 #### Conduct a simulation!
 
-21. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
+22. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
 
   - Create a vector called `p.values` with 1,000 NA values. 
   - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
@@ -418,12 +462,11 @@ p.values[___] <- ___
 }
 ```
   
-  
-22. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
+23. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
 
 ### More data cleaning
 
-23. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+24. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
 
 ```{r}
 survey <- data.frame("p" = c(1, 2, 3, 4, 5),
@@ -437,7 +480,6 @@ survey <- data.frame("p" = c(1, 2, 3, 4, 5),
 ```{r eval = FALSE}
 # REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
 
-
 survey_corrected <- survey   # Copy original survey
 
 for(column.i in ____ ) {  # Loop over columns
@@ -450,7 +492,7 @@ for(column.i in ____ ) {  # Loop over columns
 }
 ```
 
-24. Check the values of `survey_corrected` to make sure it worked!
+25. Check the values of `survey_corrected` to make sure it worked!
 
 ## Submit!
 
