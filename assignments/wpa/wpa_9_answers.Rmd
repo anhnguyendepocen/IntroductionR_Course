@@ -1,0 +1,841 @@
+---
+title: "WPA #9  -- Loops and Functions"
+output: html_document
+---
+
+## Readings
+
+This assignment is based on the following readings:
+
+- YaRrr: [16](https://bookdown.org/ndphillips/YaRrr/functions.html), [17](https://bookdown.org/ndphillips/YaRrr/loops.html) 
+
+## Assignment Goals
+
+- Create for loops
+- Use `if` statements within for loops
+- Create custom functions
+
+## Examples
+
+```{r, echo = TRUE, eval = FALSE}
+
+# Use a loop to print integers from 1 to 100
+
+for(i in 1:100) {
+  
+  print(i)
+  
+}
+
+# Use a loop to add the integers from 1 to 100
+
+sum_total <- 0
+
+for(i in 1:100) {
+
+  sum_total <- sum_total + i  
+
+}
+
+
+# Create a function showstat that returns a summary statistic from a vector
+
+showstat <- function(x, 
+                     what = "mean",
+                     na.rm = TRUE) {
+  
+  if(what == "mean") {output <- mean(x, na.rm = na.rm)}
+  if(what == "sd") {output <- sd(x, na.rm = na.rm)}
+  if(what == "median") {output <- median(x, na.rm = na.rm)}
+
+  if(what %in% c("mean", "sd", "median") == FALSE) {
+    
+    stop(paste("Sorry I don't know what", what, "means. Please try 'mean', 'sd', or 'median'")
+  }
+  
+  return(output)
+
+}
+
+
+# Create a function is.even that tests if an input is even or not
+
+is.even <- function(x,                      # The number to test
+                    print.result = FALSE) { # Should the result be printed?
+  
+  # Test if x is even
+even.test <- round(x / 2, 0) == (x / 2)
+
+# Print 'x is even' if even.test is true, otherwise, print 'x is not even!'
+
+if(print.result) {
+  
+  if(even.test == TRUE) {
+    
+    message("x is even!")} else {
+      
+      message("x is NOT even!")}
+    
+  }
+
+return(even.test)
+
+}
+
+# Try our new function!
+
+is.even(2)
+is.even(3)
+
+is.even(2, print.result = TRUE)
+is.even(3, print.result = TRUE)
+
+```
+
+
+1. Open your class R project. Open a new script and enter your name, date, and the wpa number at the top. Save the script in the `R` folder in your project working directory as `wpa_9_LastFirst.R`, where Last and First are your last and first names. 
+
+### Loops
+
+1. Write a loop that prints the integers from 1 to 50 to the console (note: `message()` works similarly to `print()`):
+
+```{r, eval = FALSE, echo = TRUE}
+for (i in __:__) {
+  
+  message(__)
+  
+}
+```
+
+```{r, eval = FALSE, echo = TRUE}
+for (i in 1:50) {
+  
+  message(i)
+  
+}
+```
+
+
+2. Now repeat the loop, but now print the square of every integer from 1 to 50. That is, it should print 1, 4, 9, 16, ...
+
+```{r, eval = FALSE, echo = TRUE}
+for (i in 1:50) {
+  
+  message(i ^ 2)
+  
+}
+```
+
+3. A participant in one of your studies answered 10 trivia questions. Her score on each question can range anywhere from 0 to 2. The vector 0, 1, 0, 1, 1, 2, 0, 1, 1, 2 represents her score on each of the 10 questions. You want to create a vector that shows the *cumulative* number of correct questions she answered. The following table shows what I mean
+
+| Question| original_score| **cumulative_score**|
+|:-----|------:|----:|
+|     1|0|    0|
+|     2|1|    1|
+|     3|0|    1|
+|   4|  1|    2|
+|   5|  1|   3|
+|   6|  2|    5|
+|   7|  0|    5|
+|   8|  1|   6|
+|   9|  1|   7|
+|   10|  2|   9|
+
+Using the following loop, create the vector `cumulative_scores` that count the cumulative sum of the original scores.
+
+```{r, echo = TRUE, eval = FALSE}
+# REPLACE __ WITH THE CORRECT VALUES!
+# Vector of original scores on the 10 questions
+original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
+
+# Create a vector of NAs where the cumulative scores will go
+cumulative_scores <- rep(NA, 10)
+
+# Loop over each of the 10 questions
+for(i in __:__) {
+  
+  # Calculate the cumulative sum for the current question
+  cumsum_i <- sum(original_scores[1:__])
+  
+  # Add the value to the ith element in cumulative_scores
+  cumulative_scores[__] <- cumsum_i
+  
+}
+
+# print the result!
+cumulative_scores
+
+```
+
+```{r, echo = TRUE, eval = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+# Vector of original scores on the 10 questions
+original_scores <- c(0, 1, 0, 1, 1, 2, 0, 1, 1, 2)
+
+# Create a vector of NAs where the cumulative scores will go
+cumulative_scores <- rep(NA, 10)
+
+# Loop over each of the 10 questions
+for(i in 1:10) {
+  
+  # Calculate the cumulative sum for the current question
+  cumsum_i <- sum(original_scores[1:i])
+  
+  # Add the value to the ith element in cumulative_scores
+  cumulative_scores[i] <- cumsum_i
+  
+}
+
+# print the result!
+cumulative_scores
+```
+
+4. R has a function called `cumsum()` that does exactly what your loop does! Try applying `cumsum()` to the original scores and see if you get the same answer as your loop.
+
+```{r}
+cumsum(original_scores)
+```
+
+<font color = "blue">Cool! They're the same!</font>
+
+## Custom Functions
+
+5. Write a function called `feed.me()` that takes a string `food` as an argument, and prints the sentence "I love to eat `food`".
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+feed.me <- function(___) {
+  
+  output <- paste0("Yum! I love to eat ", ___)
+  
+  print(output)
+}
+```
+
+```{r, eval = TRUE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+feed.me <- function(food) {
+  
+  output <- paste0("Yum! I love to eat ", food)
+  
+  print(output)
+}
+```
+
+6. Try your function by running `feed.me("apples")`, it should return `Yum! I love to eat apples`.
+
+```{r, eval = TRUE, echo = TRUE}
+feed.me("apples")
+```
+
+7. Now adjust your `feed.me()` function so that if the user specifies "avocados", then the function returns "NOOOOO, I HATE AVACADOS!"
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+feed.me <- function(___) {
+  
+  if(__ != "avacados") {
+    
+  output <- paste0("Yum! I love to eat ", ___)
+  
+  }
+  
+  if( __ == __) {
+    
+  output <- ""
+  
+  }
+  
+  print(output)
+}
+```
+
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+feed.me <- function(food) {
+  
+  if(food != "avacados") {
+    
+  output <- paste0("Yum! I love to eat ", food)
+  
+  }
+  
+  if( food == "avacados") {
+    
+  output <- "NOOOOO, I HATE AVACADOS!"
+  
+  }
+  
+  print(output)
+}
+```
+
+8. Write a function called `my.mean()` that takes a vector `x` as an argument, and returns the mean of the vector `x`. Don't use the `mean()` function! Use `sum()` and `length()`!
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+my.mean <- function(___) {
+  
+  result <- sum(___) / length(___)
+  
+  return(result)
+  
+}
+```
+
+```{r, eval = TRUE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+my.mean <- function(x) {
+  
+  result <- sum(x) / length(x)
+  
+  return(result)
+  
+}
+```
+
+9. Try your `my.mean()` function to calculate the mean weights of chicks in the `ChickWeight` data frame and compare your results to what you get from using the `mean()` function.
+
+```{r}
+my.mean(ChickWeight$weight)
+mean(ChickWeight$weight)
+```
+
+<font color = "blue">Cool! They're the same!</font>
+
+10. Write a function called `how.many.na()` that takes a vector `x` as an argument, and returns the number of NA values found in the vector)
+
+```{r eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+how.many.na <- function(x) {
+  
+  output <- sum(is.na(___))
+  
+  return(___)
+}
+```
+
+
+```{r eval = TRUE, echo = TRUE}
+how.many.na <- function(x) {
+  
+  output <- sum(is.na(x))
+  
+  return(output)
+}
+```
+
+
+11. Test your `how.many.na()` function to the vector `x = c(4, 7, 3, NA, NA, 1)`
+
+```{r}
+how.many.na(x = c(4, 7, 3, NA, NA, 1))
+```
+
+
+# Checkpoint!
+
+### Create your own apa function!
+
+12. Now it's time to create your own apa function! Using the following code, write a function called `ttest.apa()` that takes a numeric vector `x`, and scaler `H0` as arugments, and returns an apa style conclusion from a one-sample test of `x` against the null hypothesis that the true mean of x is `H0`.
+
+```{r eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUES!
+
+ttest.apa <- function(x,       # A vector of data
+                      mu) {    # The mean under the null hypothesis
+  
+   # Store the one-sample ttest in object a
+  
+  a <- t.test(x = ___,    # The vector of data
+              mu = ___)   # The mean under the null hypothesis
+  
+  df <- a$parameter     # Get the degrees of freedom
+  test.stat <- ___      # Get the test statistic
+  p.value <- ___        # Get the p-value
+  
+  # If the test is significant
+  if(p.value <= ___) {
+    
+    # Sentence to print for significant result
+    
+   print(paste0("The test is significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")"))
+  }
+  
+  # If the test is NOT significant...
+    if(p.value > ___) {
+     
+    # Sentence to print for significant result
+      
+    print(___)
+    
+  }
+}
+```
+
+
+```{r eval = TRUE, echo = TRUE}
+ttest.apa <- function(x,       # A vector of data
+                      mu) {    # The mean under the null hypothesis
+  
+   # Store the one-sample ttest in object a
+  
+  a <- t.test(x = x,    # The vector of data
+              mu = mu)   # The mean under the null hypothesis
+  
+  df <- a$parameter     # Get the degrees of freedom
+  test.stat <- a$statistic      # Get the test statistic
+  p.value <- a$p.value        # Get the p-value
+  
+  # If the test is significant
+  if(p.value <= 0.05) {
+    
+    # Sentence to print for significant result
+    
+   print(paste0("The test is significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")"))
+  }
+  
+  # If the test is NOT significant...
+    if(p.value > 0.05) {
+     
+    # Sentence to print for significant result
+      
+   print(paste0("The test is NOT significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")"))
+    
+  }
+}
+```
+
+<font color = "blue">Note that I made a few minor changes to the code. Specifically, I replaced the confusing H0 argument with mu. They're the same thing, but it was confusing before.</font>
+
+
+13. Test your `ttest.apa()` function to see if the following vector of values has a mean that is significantly different from 10. Then, do another test to see if it's significantly different from 5.
+
+```{r, echo = TRUE}
+# Is the mean of these values significantly different from 10?
+x <- c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0)
+```
+
+```{r}
+ttest.apa(x = c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0), 
+          mu = 5)
+```
+
+<font color = "blue">I probably should have chosen an example when the test WAS significant. For example, setting mu = 3 would give a p value of 0.026.</font>
+
+
+14. Add another argument to `ttest.apa()` called `p.sig` that indicates how low a p-value needs to be to be deemed 'significant'. Then, test your function on the data above, but use the argument `p.sig = .001`, which means that a p-value must be below 0.001 to be deemed 'significant'.
+
+```{r eval = TRUE, echo = TRUE}
+ttest.apa <- function(x,       # A vector of data
+                      mu,      # The mean under the null hypothesis
+                      p.sig) {   # Significance threshold 
+  
+   # Store the one-sample ttest in object a
+  
+  a <- t.test(x = x,    # The vector of data
+              mu = mu)   # The mean under the null hypothesis
+  
+  df <- a$parameter     # Get the degrees of freedom
+  test.stat <- a$statistic      # Get the test statistic
+  p.value <- a$p.value        # Get the p-value
+  
+  # If the test is significant
+  if(p.value <= p.sig) {
+    
+    # Sentence to print for significant result
+    
+   print(paste0("The test is significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")"))
+  }
+  
+  # If the test is NOT significant...
+    if(p.value > p.sig) {
+     
+    # Sentence to print for significant result
+      
+   print(paste0("The test is NOT significant! t(",
+                     df, ") = ", test.stat, 
+                   ", p = ", p.value, 
+                   " (H0 = ", mu, ")"))
+    
+  }
+}
+```
+
+```{r}
+ttest.apa(x = c(6, 8, 12, 6, 8, 3, 5, 3, 7, 0), mu = 5, p.sig = 0.001)
+```
+
+<font color = "blue">Again, this example would have been more interesting if we set mu = 3, as it would be significant at the 0.05 level, but not at the 0.01 level.</font>
+<font color = "blue">Also, if you don't like having so many digits for each statistical output, you can round them to, say 3 digits, by wrapping the statistics in the round() function. For example: round(p.value, 3).</font>
+
+
+### Fixing invalid values
+
+15. One nice application of loops is to sequentially look through columns (or rows) of a dataframe, and make changes. I have a dataset stored at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/outlier_data.txt. This dataset represents participant's responses to 100 general knowledge problems. For each question, participants were asked "How confident are you that you know the answer to this question?". The dataset contains responses from 10 participants (columns) on each of the 100 problems (rows). Load the data into R as a new object called `confidence_data`. 
+
+The data should look like this
+
+```{r, eval = TRUE, echo = FALSE}
+confidence_data <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/confidence_data.txt")
+
+knitr::kable(head(confidence_data))
+```
+
+
+```{r, eval = FALSE, echo = FALSE}
+set.seed(100)
+confidence_data <- as.data.frame(matrix(round(rnorm(1000, mean = 80, sd = 10), 0), nrow = 100, ncol = 10))
+
+confidence_data[sample(100, size = 20), 2] <- 1000
+
+confidence_data[sample(100, size = 5), 7] <- -5
+
+names(confidence_data) <- paste0("p", 1:10)
+write.table(x = confidence_data, file = "assignments/wpa/data/confidence_data.txt", sep = "\t")
+```
+
+
+```{r, echo = TRUE, eval = TRUE}
+confidence_data <- read.table("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/confidence_data.txt")
+```
+
+
+16. Because the responses are probabilities, none of the participants should have responses smaller than 0 or larger than 100 on any problem. Using the following loop, count the number of times where each participant gave an invalid value:
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUE(S)!
+
+# Loop over columns
+for(i in 1:ncol(__)) {
+  
+  # Get data from column i
+  data.i <- confidence_data[, i]
+  
+  # Count number of responses below 0 or above 100
+  count_invalid <- sum(data.i < __ | data.i > __)
+  
+  # Print message
+  message(paste0("In column ", __, "I found ", __, "values that were either below 0 or over 100"))
+
+}
+
+```
+
+```{r, eval = TRUE, echo = TRUE}
+# Loop over columns
+for(i in 1:ncol(confidence_data)) {
+  
+  # Get data from column i
+  data.i <- confidence_data[, i]
+  
+  # Count number of responses below 0 or above 100
+  count_invalid <- sum(data.i < 0 | data.i > 100)
+  
+  # Print message
+  message(paste0("In column ", i, " I found ", count_invalid, " values that were either below 0 or over 100"))
+
+}
+```
+
+
+17. Now, use the following loop to not only count the number of invalid values, but also to *replace* the values with NAs
+
+```{r, eval = FALSE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUE(S)!
+
+# Loop over columns
+for(i in 1:ncol(__)) {
+  
+  # Get data from column i
+  data.i <- confidence_data[,i]
+  
+  # Count number of responses below 0 or above 100
+  count_invalid <- sum(data.i < __ | data.i > __)
+  
+  # Print message
+  message(paste0("In column ", __, "I found ", __, "values that were either below 0 or over 100"))
+
+  # Replace values below 0 or above 100 with NA
+  data.i[data.i < __ | data.i > __] <- NA
+
+  # Assign data.i back to the ith column of the data
+  __[, i] <- data.i
+  
+}
+
+```
+
+
+```{r, eval = TRUE, echo = TRUE}
+
+# Loop over columns
+for(i in 1:ncol(confidence_data)) {
+  
+  # Get data from column i
+  data.i <- confidence_data[,i]
+  
+  # Count number of responses below 0 or above 100
+  count_invalid <- sum(data.i < 0 | data.i > 100)
+  
+  # Print message
+  message(paste0("In column ", i, "I found ", count_invalid, "values that were either below 0 or over 100"))
+
+  # Replace values below 0 or above 100 with NA
+  data.i[data.i < 0 | data.i > 100] <- NA
+
+  # Assign data.i back to the ith column of the data
+  confidence_data[, i] <- data.i
+  
+}
+
+```
+
+18. Test to see if your code worked! Try running the same loop again over the dataframe and see what you get!
+
+
+```{r}
+# Loop over columns
+for(i in 1:ncol(confidence_data)) {
+  
+  # Get data from column i
+  data.i <- confidence_data[,i]
+  
+  # Count number of responses below 0 or above 100
+  count_invalid <- sum(data.i < 0 | data.i > 100, na.rm = TRUE)   # Add na.rm = TRUE to ignore NA values!
+  
+  # Print message
+  message(paste0("In column ", i, "I found ", count_invalid, " values that were either below 0 or over 100"))
+
+  # Replace values below 0 or above 100 with NA
+  data.i[data.i < 0 | data.i > 100] <- NA
+
+  # Assign data.i back to the ith column of the data
+  confidence_data[, i] <- data.i
+  
+}
+
+```
+
+<font color = 'blue'>Great! No more invalid values! Note that I had to include the argument na.rm = TRUE when defining count_invalid, otherwise count_invalid would be NA if there are any missing values in the data!</font>
+
+#### Use a loop to read and write data files
+
+19. If you have many separate files you want to read into R, you can easily do this using a loop. But before we get to that, we'll create 100 text files on your computer that, later on, you will read back into R. Of cousre, we will create these 100 text files using a loop! The following loop will create write 100 text files to your working directory.  Run it and see what happens!
+
+```{r, eval = TRUE, echo = TRUE}
+# JUST RUN! This will create 100 text files in your working directory
+
+for (i in 1:100) {
+  
+  # Create a random dataset from a hypothetical subject
+  data_temp <- data.frame(subject = rep(i, 10),
+                          trial = 1:10,
+                          response = sample(1:7, size = 10, replace = TRUE))
+  
+  # Write the data to a text file
+  write.table(data_temp, 
+              file = paste0("subject_", i, ".txt"), 
+              sep = "\t")
+  
+}
+```
+
+20. The following code will load each data file into your R session as 100 new objects called `subject_1`, `subject_2`, ... `subject_100`. Run the code, then try looking at some of the objects such as `subject_40` and `subject_64`.
+
+```{r, eval = TRUE, echo = TRUE}
+# JUST RUN!
+
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  data_temp <- read.table(file = paste0("subject_", i, ".txt"), 
+                          header = TRUE, 
+                          sep = "\t")
+  
+  # Create a new object subject_i containing the data!
+  assign(x = paste0("subject_", i), 
+         value = data_temp)
+
+}
+```
+
+21. The code above wrote all of the data to separate objects. But wouldn't it be better if, instead, the code created one large dataframe containing the data from all participants? The following code chunk will do just that by using the `rbind()` function. Look at the following code, replace __ with the correct value(s), and then run it to create a new dataframe object called `all_data` which contains the data from all participants!
+
+```{r, eval = TRUE}
+# REPLACE __ WITH THE CORRECT VALUE(S)!
+
+# Set up all_data object
+all_data <- NULL
+
+for (i in 1:100) {
+  
+  # Load the data from participant i to a temporary object x
+  data_temp <- read.table(file = paste0("subject_", i, ".txt"), 
+                          header = TRUE, 
+                          sep = "\t")
+  
+  # Add temprorary data to to all_data!
+  all_data <- rbind(data_temp, all_data)
+
+}
+```
+
+22. Adjust your code above so, for each run of the loop, it prints the message 'Reading subject X' (where X is the subject number).
+
+```{r, eval = TRUE, echo = TRUE}
+# REPLACE __ WITH THE CORRECT VALUE(S)!
+
+# Set up all_data object
+all_data <- NULL
+
+for (i in 1:100) {
+  
+  message(paste("Reading subject",i))
+  
+  # Load the data from participant i to a temporary object x
+  data_temp <- read.table(file = paste0("subject_", i, ".txt"), 
+                          header = TRUE, 
+                          sep = "\t")
+  
+  # Add temprorary data to to all_data!
+  all_data <- rbind(data_temp, all_data)
+
+}
+```
+
+
+#### Conduct a simulation!
+
+23. What is the probability of getting a significant p-value if the null hypothesis is true? Test this by conducting the following simulation:
+
+  - Create a vector called `p.values` with 1,000 NA values. 
+  - Draw a sample of size 10 from a normal distribution with mean = 0 and standard deviation = 1.
+  - Do a one-sample t-test testing if the mean of the distribution is different from 0. Save the p-value from this test in the ith position of `p.values`.
+  - Repeat these steps with a loop to fill `p.values` with 1,000 p-values.
+
+```{r eval = FALSE}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+# Create a vector of 1000 NA values
+p.values <- rep(NA, ___)
+
+# Loop over all 1000 values
+for(i in ___) {
+
+ # Generate a random vector of data
+x <- rnorm(n = ___, mean = ___, sd = ___)
+
+# Calculate the te.test
+result <- t.test(___)$___
+
+# Store p-value from test in p.values
+p.values[___] <- ___
+
+}
+```
+  
+```{r eval = TRUE}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+# Create a vector of 1000 NA values
+p.values <- rep(NA, 1000)
+
+# Loop over all 1000 values
+for(i in 1:1000) {
+
+ # Generate a random vector of data
+x <- rnorm(n = 10, mean = 0, sd = 1)
+
+# Calculate the te.test
+result <- t.test(x)$p.value
+
+# Store p-value from test in p.values
+p.values[i] <- result
+
+}
+``` 
+  
+  
+24. What percentage of your 1,000 p values were less than 0.05? In other words, if the null hypothesis is true, what is the probability of getting a p-value less than 0.05?
+
+```{r}
+mean(p.values < 0.05)
+```
+
+<font color = 'blue'>My answer was pretty close to 0.05! So indeed, the probability of getting a significant result given that the null hypothesis is true is 0.05! You could also play around with the simulation by changing the number of samples (n), and the standard deviation (sd) to see if that has any effect.</font>
+
+
+### More data cleaning
+
+25. The following dataframe `survey` contains results from a survey of 5 participants. Each participant was asked 5 questions on a 1-10 likert scale. As you can see, many of the responses are not valid integers from 1-10. Using a loop, create a new dataframe called `survey.corrected` that converts all invalid values to NA:
+
+```{r}
+survey <- data.frame("p" = c(1, 2, 3, 4, 5),
+                     "q1" = c(5, 3, 6, 3, 5),
+                     "q2" = c(-1, 4, 3, 6, 11),
+                     "q3" = c(6, 22, 4, 6, -5),
+                     "q4" = c(6, 3, 4, -2, 4),
+                     "q5" = c(1, 1, 900, 1, 2))
+```
+
+```{r eval = FALSE}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+survey_corrected <- survey   # Copy original survey
+
+for(column.i in ____ ) {  # Loop over columns
+ 
+  x <- ____   # Copy original column vector
+  x[(x %in% ___) == FALSE] <- ___  # Replace any bad values
+  
+  survey_corrected[,___] <- ___ # Assign x back to survey.correced
+  
+}
+```
+
+```{r eval = TRUE}
+# REPLACE ALL VALUES OF __ WITH THE CORRECT VALUES!
+
+survey_corrected <- survey   # Copy original survey
+
+for(column.i in 1:ncol(survey)) {  # Loop over columns
+ 
+  x <- survey[, column.i]   # Copy original column vector
+  x[(x %in% 1:10) == FALSE] <- NA  # Replace any bad values
+  
+  survey_corrected[,column.i] <- x # Assign x back to survey.correced
+  
+}
+```
+
+26. Check the values of `survey_corrected` to make sure it worked!
+
+```{r}
+survey_corrected
+```
+
+## Submit!
+
+- Save and email your `wpa_9_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
