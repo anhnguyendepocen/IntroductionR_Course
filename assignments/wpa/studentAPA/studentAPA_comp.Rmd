@@ -78,7 +78,8 @@ The primary measures were three exam scores taken at the beginning, middle, and 
 
 All analyses were conducted using R [@R] using the papaja package [@aust2015papaja].
 
-Distributions of the three exam scores for the Mathematics and Portugese classes are presented in Figure 1.
+Distributions of the three exam scores for the Mathematics and Portugese classes are presented in Figure 1. Correlations between numeric predictors in the Math data are shown in Figure 2.
+
 ```{r fig1, fig.width = 6, fig.height = 4, fig.cap= "Distributions of class scores.", eval = TRUE}
 # Figure 1: Create histograms of distributions of exam scores
 
@@ -106,7 +107,7 @@ ggplot(data = student.all,
   theme_minimal()
 ```
 
-Correlations between numeric predictors in the Math data are shown in Figure 2:
+
 
 ```{r fig2, fig.width = 6, fig.height = 6, fig.cap= "Correlations of numeric variables in the math data.", eval = TRUE, out.width = "70%"}
 # Figure 2: Correlation plot
@@ -134,7 +135,7 @@ portugese.tbl <- student.por %>% group_by(sex, school) %>%
 
 # Print the table!
 # also be sure to include the results='asis' chunk option!
-papaja::apa_table(portugese.tbl, caption = "Mean Portugese exam scores")
+papaja::apa_table(portugese.tbl, caption = "Mean Portugese exam scores separated by sex and school")
 ```
 
 ```{r tbl2, results='asis'}
@@ -146,7 +147,7 @@ math.tbl <- student.math %>% group_by(sex, school) %>%
     "Exam 3" = round(mean(G3), 2)
   )
 
-papaja::apa_table(portugese.tbl, caption = "Mean Math exam scores")
+papaja::apa_table(portugese.tbl, caption = "Mean Math exam scores separated by sex and school.")
 ```
 
 
@@ -159,22 +160,18 @@ sex.math.ttest <- t.test(G1 ~ sex, data = student.math)
 ```
 
 
-Did men and women perform differently on the first exams in each class? To tese this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant (t(`r sex.por.ttest$parameter`) = `r sex.por.ttest$statistic`, p = `r sex.por.ttest$p.value`), showing that women performed better than men on the first Portugese exam.
+Did men and women perform differently on the first exams in each class? To test this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant `r papaja::apa_print(sex.por.ttest)$full_result`, showing that women performed better than men on the first Portugese exam,
 
-The t-test on Math exam 1 was non-significant (t(`r sex.por.ttest$parameter`) = `r sex.math.ttest$statistic`, p = `r sex.math.ttest$p.value`), showing no evidence for a difference between men and women on Math exam 1.
-
-
-
-```{r}
-# G1_aov <- aov(G1 ~ school + sex + absences, data = student.por)
-# 
-# apa_print(G1_aov)$table
+The t-test on Math exam 1 was non-significant `r papaja::apa_print(sex.math.ttest)$full_result`, showing no evidence for a difference between men and women on Math exam 1.
 
 
-npk_aov <- aov(yield ~ block + N * P * K, npk)
-   apa_print(npk_aov)
+```{r, results='asis'}
+G1_por_Anova <- car::Anova(mod = lm(G1 ~ school + sex + guardian,
+                                    data = student.por),
+                           type = "III")
+
+papaja::apa_table(apa_print(G1_por_Anova)$table, caption = "ANOVA on period 1 Portugese scores.")
 ```
-
 
 
 # Discussion

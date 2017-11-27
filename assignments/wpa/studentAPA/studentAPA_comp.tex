@@ -229,7 +229,7 @@ was 11.40 which increased to 11.91 by the last exam.
 \begin{table}[tbp]
 \begin{center}
 \begin{threeparttable}
-\caption{\label{tab:tbl1}Mean Portugese exam scores}
+\caption{\label{tab:tbl1}Mean Portugese exam scores separated by sex and school}
 \begin{tabular}{lllll}
 \toprule
 sex & \multicolumn{1}{c}{school} & \multicolumn{1}{c}{Exam 1} & \multicolumn{1}{c}{Exam 2} & \multicolumn{1}{c}{Exam 3}\\
@@ -247,7 +247,7 @@ M & MS & 9.79 & 10.09 & 9.95\\
 \begin{table}[tbp]
 \begin{center}
 \begin{threeparttable}
-\caption{\label{tab:tbl2}Mean Math exam scores}
+\caption{\label{tab:tbl2}Mean Math exam scores separated by sex and school.}
 \begin{tabular}{lllll}
 \toprule
 sex & \multicolumn{1}{c}{school} & \multicolumn{1}{c}{Exam 1} & \multicolumn{1}{c}{Exam 2} & \multicolumn{1}{c}{Exam 3}\\
@@ -263,103 +263,32 @@ M & MS & 9.79 & 10.09 & 9.95\\
 \end{table}
 
 Did men and women perform differently on the first exams in each class?
-To tese this, we conducted two separate two-sample t-tests on first exam
+To test this, we conducted two separate two-sample t-tests on first exam
 scores as a function of sex. The t-test on Portugese exam 1 was
-significant (t(589.90) = 2.69, p = 0.01), showing that women performed
-better than men on the first Portugese exam.
+significant \(\Delta M = -0.58\), 95\% CI \([0.16\), \(1.00]\),
+\(t(589.90) = 2.69\), \(p = .007\), showing that women performed better
+than men on the first Portugese exam,
 
-The t-test on Math exam 1 was non-significant (t(589.90) = -1.82, p =
-0.07), showing no evidence for a difference between men and women on
-Math exam 1.
+The t-test on Math exam 1 was non-significant \(\Delta M = 0.61\), 95\%
+CI \([-1.27\), \(0.05]\), \(t(383.79) = -1.82\), \(p = .069\), showing
+no evidence for a difference between men and women on Math exam 1.
 
-\begin{verbatim}
-## $estimate
-## $estimate$block
-## [1] "$\\eta^2_G = .649$"
-## 
-## $estimate$N
-## [1] "$\\eta^2_G = .505$"
-## 
-## $estimate$P
-## [1] "$\\eta^2_G = .043$"
-## 
-## $estimate$K
-## [1] "$\\eta^2_G = .339$"
-## 
-## $estimate$N_P
-## [1] "$\\eta^2_G = .103$"
-## 
-## $estimate$N_K
-## [1] "$\\eta^2_G = .152$"
-## 
-## $estimate$P_K
-## [1] "$\\eta^2_G = .003$"
-## 
-## 
-## $statistic
-## $statistic$block
-## [1] "$F(5, 12) = 4.45$, $\\mathrm{MSE} = 15.44$, $p = .016$"
-## 
-## $statistic$N
-## [1] "$F(1, 12) = 12.26$, $\\mathrm{MSE} = 15.44$, $p = .004$"
-## 
-## $statistic$P
-## [1] "$F(1, 12) = 0.54$, $\\mathrm{MSE} = 15.44$, $p = .475$"
-## 
-## $statistic$K
-## [1] "$F(1, 12) = 6.17$, $\\mathrm{MSE} = 15.44$, $p = .029$"
-## 
-## $statistic$N_P
-## [1] "$F(1, 12) = 1.38$, $\\mathrm{MSE} = 15.44$, $p = .263$"
-## 
-## $statistic$N_K
-## [1] "$F(1, 12) = 2.15$, $\\mathrm{MSE} = 15.44$, $p = .169$"
-## 
-## $statistic$P_K
-## [1] "$F(1, 12) = 0.03$, $\\mathrm{MSE} = 15.44$, $p = .863$"
-## 
-## 
-## $full_result
-## $full_result$block
-## [1] "$F(5, 12) = 4.45$, $\\mathrm{MSE} = 15.44$, $p = .016$, $\\eta^2_G = .649$"
-## 
-## $full_result$N
-## [1] "$F(1, 12) = 12.26$, $\\mathrm{MSE} = 15.44$, $p = .004$, $\\eta^2_G = .505$"
-## 
-## $full_result$P
-## [1] "$F(1, 12) = 0.54$, $\\mathrm{MSE} = 15.44$, $p = .475$, $\\eta^2_G = .043$"
-## 
-## $full_result$K
-## [1] "$F(1, 12) = 6.17$, $\\mathrm{MSE} = 15.44$, $p = .029$, $\\eta^2_G = .339$"
-## 
-## $full_result$N_P
-## [1] "$F(1, 12) = 1.38$, $\\mathrm{MSE} = 15.44$, $p = .263$, $\\eta^2_G = .103$"
-## 
-## $full_result$N_K
-## [1] "$F(1, 12) = 2.15$, $\\mathrm{MSE} = 15.44$, $p = .169$, $\\eta^2_G = .152$"
-## 
-## $full_result$P_K
-## [1] "$F(1, 12) = 0.03$, $\\mathrm{MSE} = 15.44$, $p = .863$, $\\eta^2_G = .003$"
-## 
-## 
-## $table
-##          Effect   $F$ $\\mathit{df}_1$ $\\mathit{df}_2$ $\\mathrm{MSE}$
-## 1         Block  4.45                5               12           15.44
-## 2             N 12.26                1               12           15.44
-## 3             P  0.54                1               12           15.44
-## 4             K  6.17                1               12           15.44
-## 5 N $\\times$ P  1.38                1               12           15.44
-## 6 N $\\times$ K  2.15                1               12           15.44
-## 7 P $\\times$ K  0.03                1               12           15.44
-##    $p$ $\\eta^2_G$
-## 1 .016        .649
-## 2 .004        .505
-## 3 .475        .043
-## 4 .029        .339
-## 5 .263        .103
-## 6 .169        .152
-## 7 .863        .003
-\end{verbatim}
+\begin{table}[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:unnamed-chunk-1}ANOVA on period 1 Portugese scores.}
+\begin{tabular}{lllllll}
+\toprule
+Effect & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$\mathit{df}_1$} & \multicolumn{1}{c}{$\mathit{df}_2$} & \multicolumn{1}{c}{$\mathrm{MSE}$} & \multicolumn{1}{c}{$p$} & \multicolumn{1}{c}{$\eta^2_G$}\\
+\midrule
+School & 70.78 & 1 & 644 & 6.62 & < .001 & .099\\
+Sex & 13.25 & 1 & 644 & 6.62 & < .001 & .020\\
+Guardian & 9.13 & 2 & 644 & 6.62 & < .001 & .028\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}
 
 \section{Discussion}\label{discussion}
 
