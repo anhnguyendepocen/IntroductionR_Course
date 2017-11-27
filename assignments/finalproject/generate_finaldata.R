@@ -38,7 +38,7 @@
 # ## DATA
 # The final dataset is in priming.txt. Here is a description of the columns of the data:
 #   
-#   id: A random id for the participants given in the order in which they completed the study.
+# id: A random id for the participants given in the order in which they completed the study.
 # sex: The sex of the participant (0 = male, 1 = female)
 # age: The age of the participant
 # race: The race of the participant
@@ -55,6 +55,7 @@
 final.data.fun <- function(my.seed = NULL,  # Randomization seed
                            cases.n = NULL,  # Number of cases
                            add.na = TRUE,   # Should missing values be added?
+                           include.names = FALSE, # Should column names be included?
                            write = FALSE) { # Should data be written to a text file?
   
   # If no randomization seed was specified, then create one
@@ -189,6 +190,13 @@ final.data.fun <- function(my.seed = NULL,  # Randomization seed
                          rt = rt.v,
                          interest = lik.v,
                          stringsAsFactors = FALSE)
+  
+  if(include.names == FALSE) {
+    
+    
+    names(final.df) <- paste0("V", 1:ncol(final.df))
+    
+  }
   
   # Write final dataframe to a file called priming_XXX.txt
   
