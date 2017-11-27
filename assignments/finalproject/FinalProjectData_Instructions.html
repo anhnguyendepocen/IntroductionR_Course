@@ -126,28 +126,97 @@ $(document).ready(function () {
 </div>
 
 
-<p>To get random data for your final project, you will</p>
+<p>This page shows you how to obtain a dataset for your final project. First, I’ll describe the experiment you’ll be analyzing, I’ll then tell you how to get the data file.</p>
+<div id="a-priming-experiment" class="section level1">
+<h1>A priming experiment</h1>
+<p>These data represent the result of an experiment on subliminal priming. A subliminal prime is a stimulus, like a word, that is displayed so quickly that it is not consciously perceived. The goal of the study is to see if and how subliminal primes affect behavior in a performance task.</p>
+<p>Here are the instructions participants were given.</p>
+<blockquote>
+<p>“In your task, you will briefly see X boxes on your screen displayed for 2 seconds. You need to remember the locations of these boxes. When the boxes disappear, your goal is to click on the screen X times in the location of the boxes. If all of your clicks are within the locations of the boxes that were presented, you will earn a bonus. If any of your clicks are not within the boxes, you will not earn a bonus.”</p>
+</blockquote>
+<p>After reading the instructions, participants were given a subliminal prime. That is, a word was briefly displayed on their screen for 100ms. This was fast enough that participants could not consciously see the word, but slow enough that they could be unconsciously perceived.</p>
+<p>After the subliminal prime was displayed, participants were asked to rate how confident they would be that they would click on all of the boxes on a scale from 1 to 100 with 1 being not confident at all, and 100 being extremely confident.</p>
+<p>When participants were ready, they clicked a button called “Show the boxes”. After clicking this button, participants were shown the locations of the X boxes for 2 seconds. The boxes then disappeared, and participants could then click on the screen to indicate where they thought the boxes were. When they were finished, they completed a brief survey.</p>
+<p>There were 3 main manipulations in the experiment.</p>
+<ul>
+<li><p>IV 1: The number of boxes presented to the participant. The more boxes presented, the more difficult the task was.</p></li>
+<li><p>IV 2: The word that participants were primed with. The most important word was “accurate” as this was expected to increase performance. Other words were used as controls.</p></li>
+<li><p>IV 3: The color of the subliminal word that was presented. While there is prior research showing that subliminal primes can affect behavior, no research has tested if the color of subliminal primes has an effect on their influence.</p></li>
+</ul>
+<p>Here are the main dependent variables in the experiment.</p>
+<ul>
+<li>DV 1: Did the participant accurately click on all of the box locations?</li>
+<li>DV 2: How confident was the participant that they would click on all of the box locations?</li>
+<li>DV 3: How long did it take for the participant to complete the task?</li>
+<li>DV 4: How interested was the participant in the task?</li>
+</ul>
+<div id="finalprojectdata_xxx.txt" class="section level2">
+<h2>FinalProjectData_XXX.txt</h2>
+<p>The final dataset is in a file called <code>FinalProjectData_XXX.txt</code> Here is a description of the columns of the data (<strong>Important!</strong>: The <code>FinalProjectData_XXX.txt</code> file may or may not already contain a header of column names. If it does not, you’ll need to create the column names yourself in R!)</p>
+<p>id: A random id for the participants given in the order in which they completed the study.</p>
+<p>sex: The sex of the participant (0 = male, 1 = female)</p>
+<p>age: The age of the participant</p>
+<p>race: The race of the participant</p>
+<p>color: The color of the word presented to the part</p>
+<p>word: The subliminal word presented to the participant</p>
+<p>education: The participants highest level of education</p>
+<p>boxes: How many boxes were presented to the participant?</p>
+<p>accuracy: Did the participant correctly click on each box? 0 = no, 1 = yes</p>
+<p>confidence: How confident was the participant that they would click on all of the boxes? 1 = not confident at all, 100 = very confident.</p>
+<p>rt: How long did it take the participant to click the boxes? Measured in milliseconds.</p>
+<p>interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.</p>
+</div>
+</div>
+<div id="generate-your-finalprojectdata_xxx.txt-file" class="section level1">
+<h1>Generate your <code>FinalProjectData_XXX.txt</code> file</h1>
+<p>To generate your <code>FinalProjectData_XXX.txt</code> file, go through the following steps.</p>
 <div id="step-1-look-at-the-generatefinalproject.r-file" class="section level3">
 <h3>Step 1: Look at the GenerateFinalProject.R file</h3>
-<p>Open a web browser and go to <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R</a>. As you’ll see, this page contains R code which defines a function called <code>final.data.fun()</code>. Look through the code and try to understand generally how it works.</p>
+<p>I have an R script called <code>GenerateFinalProject.R</code> online. This script contains a function called <code>GenerateFinalProject()</code>. When you evaluate this function, it will create a dataset, and save the result to a text file called <code>FinalProjectData_XXX.txt</code>.</p>
+<p>Before doing anything else, feel free to look at the <code>GenerateFinalProject.R</code> file to see how it works. To do so, open a web browser and go to <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R</a>. 99% of the code in this file was already introduced in the course, so you should generally be able to understand how it works.</p>
 </div>
 <div id="step-2-get-the-generatefinalproject-function" class="section level3">
 <h3>Step 2: Get the GenerateFinalProject() function</h3>
-<p>In R Studio, create a new R script. Then, run the following code. This code will evaluate all of the code in the <code>generate_finaldata.R</code> file in your current R session. After you do this, you should now have the <code>GenerateFinalProject()</code> function in your current R session.</p>
-<pre class="r"><code># Evaluate all of the generate_finaldata.R code in your current R session.
+<p>Now it’s time to actually get the <code>GenerateFinalProject()</code> function in your R session. In R Studio, create a new R script. You could copy all of the R code from the <code>GenerateFinalProject.R</code> file and then paste it in R. But there is an easier way. Instead, we’ll use the <code>source()</code> function, which will automatically read the R code from the web, and then evaluate it to create the <code>GenerateFinalProject()</code> function in your current R session:</p>
+<pre class="r"><code># Evaluate all of the GenerateFinalProject.R code in your current R session.
+# This will create the GenerateFinalProject() function.
 
 source(file = url(&quot;https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R&quot;))</code></pre>
 </div>
-<div id="step-3-use-generatefinaldata-to-create-your-data" class="section level3">
-<h3>Step 3: Use GenerateFinalData() to create your data</h3>
-<p>when you evaluate the <code>GenerateFinalProject()</code> function, it will generate the data, and save the result as a file called <code>priming_XXX.txt</code>, where XXX is your three digit <em>id</em>.</p>
-<p>The main argument to <code>GenerateFinalProject()</code> is <code>my.id</code>, which is a three digit id. When you specify a unique value of <code>my.id</code>, the dataset the function generates will always be the same.</p>
-<p>To make sure that every student has a different dataset, you should set the <code>my.id</code> argument to the last three digits of your university matriculation number (If you don’t have this number, ask me in class and I can look it up for you). If you don’t have a matriculation number, you can use the last three digits of your mobile phone number.</p>
-<p>For example, if your id was 123, you could run the following</p>
-<pre class="r"><code>GenerateFinalProject(my.id = 123)</code></pre>
-<pre><code>## Warning: closing unused connection 5 (https://raw.githubusercontent.com/
-## ndphillips/IntroductionR_Course/master/assignments/finalproject/
-## GenerateFinalProject.R)</code></pre>
+<div id="step-3-use-generatefinaldatamy.id-xxx-to-create-your-data" class="section level3">
+<h3>Step 3: Use GenerateFinalData(my.id = XXX) to create your data</h3>
+<p>Now that you have the <code>GenerateFinalProject()</code> function, you need to evaluate it to create your <code>FinalProjectData_XXX.txt</code> file.</p>
+<p>The main argument to <code>GenerateFinalProject()</code> is <code>my.id</code>, which is a three digit id unique to you. When you specify a unique value of <code>my.id</code>, the dataset the function generates will always be the same, and will be different from people using a different value of <code>my.id</code>.</p>
+<p>To make sure that every student has a different dataset, you should set the <code>my.id</code> argument to the <strong>last three digits of your university matriculation number</strong>. If you don’t have this number, ask me in class and I can look it up for you. If you don’t have a matriculation number, you can use the last three digits of your mobile phone number.</p>
+<p>For example, if my id was 123, I would run the following</p>
+<pre class="r"><code># Generate final data, and save as FinalProjectData_123.txt (where 123 is the last 3 digits of my student matriculation number, or my mobile phone number)
+GenerateFinalProject(my.id = 123)</code></pre>
+<p>When you evaluate this function, it will create a file called <code>FinalProjectData_123.txt</code> in my working directory (which for my computer is <code>/Users/nphillips/Dropbox/teaching/IntroductionR_Course/assignments/finalproject</code>). Now you have your data file!</p>
+</div>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>So, putting it all together, here is how I could create my <code>FinalProjectData_123.txt</code> file (again, when you create your data, use your own unique value of <code>my.id</code>!)</p>
+<pre class="r"><code># Evaluate all of the GenerateFinalProject.R code in your current R session.
+# This will create the GenerateFinalProject() function.
+
+source(file = url(&quot;https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R&quot;))
+
+# Generate final data, and save as FinalProjectData_123.txt (where 123 is the last 3 digits of my student matriculation number, or my mobile phone number)
+GenerateFinalProject(my.id = 123)
+
+# Read the data from FinalProjectData_123.txt back into R as a new object called FinalData
+FinalData &lt;- read.table(&quot;FinalProjectData_123.txt&quot;)
+
+# Look at the data and start analyzing!
+head(FinalData)</code></pre>
+<pre><code>##   V1 V2 V3       V4    V5       V6         V7 V8 V9 V10      V11 V12
+## 1  1  1 26 hispanic green   cannon         MS  1  1  74 633.5684   6
+## 2  2  1 28    white brown   cannon         MS  2  1  79 681.0655   6
+## 3  3  1 25    white green eyepatch         MS  3  0  48 717.6988   6
+## 4  4  1 27    black brown   cannon         MS  4  0  47 858.8350   6
+## 5  5  1 29    asian brown  glasses HighSchool  5  0  26 961.3343   4
+## 6  6  0 23    white green eyepatch HighSchool  1  0  75 694.7773   4</code></pre>
+</div>
 </div>
 
 

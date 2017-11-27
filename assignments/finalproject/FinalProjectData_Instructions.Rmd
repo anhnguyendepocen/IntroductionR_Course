@@ -1,46 +1,137 @@
 ---
-title: "Random data for final project instructions"
-author: "Nathaniel"
+title: "Creating random data for your final project"
+author: "Nathaniel Phillips (nathaniel.phillips@unibas.ch)"
 date: "11/27/2017"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
+This page shows you how to obtain a dataset for your final project. First, I'll describe the experiment you'll be analyzing, I'll then tell you how to get the data file.
 
-To get random data for your final project, you will
+# A priming experiment
 
+ These data represent the result of an experiment on subliminal priming. A subliminal prime is a stimulus, like a word,
+ that is displayed so quickly that it is not consciously perceived. The goal of the study is to see if and how subliminal primes affect behavior in a performance task.
+
+Here are the instructions participants were given.
+  
+>"In your task, you will briefly see X boxes on your screen displayed for 2 seconds. You need to remember the locations of these boxes. When the boxes disappear, your goal is to click on the screen X times in the location of the boxes. If all of your clicks are within the locations of the boxes that were presented, you will earn a bonus. If any of your clicks are not within the boxes, you will not earn a bonus."
+  
+After reading the instructions, participants were given a subliminal prime. That is, a word was briefly displayed on their screen for 100ms.  This was fast enough that participants could not consciously see the word, but slow enough that they could be unconsciously perceived.
+  
+After the subliminal prime was displayed, participants were asked to rate how confident they would be that they would click on all of the boxes on a scale from 1 to 100 with 1 being not confident at all, and 100 being extremely confident.
+
+When participants were ready, they clicked a button called "Show the boxes". After clicking this button, participants were shown the locations of the X boxes for 2 seconds. The boxes then disappeared, and participants could then click on the screen to indicate where they thought the boxes were. When they were finished, they completed a brief survey.
+
+There were 3 main manipulations in the experiment. 
+  
+- IV 1: The number of boxes presented to the participant. The more boxes presented, the more difficult the task was.
+
+- IV 2: The word that participants were primed with. The most important word was "accurate" as this was expected to increase performance. Other words were used as controls.
+
+- IV 3: The color of the subliminal word that was presented. While there is prior research showing that subliminal primes can affect behavior, no research has tested if the color of subliminal primes has an effect on their influence.
+
+Here are the main dependent variables in the experiment.
+  
+- DV 1: Did the participant accurately click on all of the box locations? 
+- DV 2: How confident was the participant that they would click on all of the box locations?
+- DV 3: How long did it take for the participant to complete the task?
+- DV 4: How interested was the participant in the task?
+ 
+## FinalProjectData_XXX.txt
+
+The final dataset is in a file called `FinalProjectData_XXX.txt` Here is a description of the columns of the data (**Important!**: The `FinalProjectData_XXX.txt` file may or may not already contain a header of column names. If it does not, you'll need to create the column names yourself in R!)
+  
+id: A random id for the participants given in the order in which they completed the study.
+
+sex: The sex of the participant (0 = male, 1 = female)
+
+age: The age of the participant
+
+race: The race of the participant
+
+color: The color of the word presented to the part
+
+word: The subliminal word presented to the participant
+
+education: The participants highest level of education
+
+boxes: How many boxes were presented to the participant? 
+
+accuracy: Did the participant correctly click on each box? 0 = no, 1 = yes
+
+confidence: How confident was the participant that they would click on all of the boxes? 1 = not confident at all, 100 = very confident.
+
+rt: How long did it take the participant to click the boxes? Measured in milliseconds.
+
+interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.
+
+
+# Generate your `FinalProjectData_XXX.txt` file
+
+To generate your `FinalProjectData_XXX.txt` file, go through the following steps.
 
 ### Step 1: Look at the GenerateFinalProject.R file
 
-Open a web browser and go to [https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R](https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R). As you'll see, this page contains R code which defines a function called `final.data.fun()`. Look through the code and try to understand generally how it works.
+I have an R script called `GenerateFinalProject.R` online. This script contains a function called `GenerateFinalProject()`. When you evaluate this function, it will create a dataset, and save the result to a text file called `FinalProjectData_XXX.txt`.
+
+Before doing anything else, feel free to look at the `GenerateFinalProject.R` file to see how it works. To do so, open a web browser and go to [https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R](https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R). 99\% of the code in this file was already introduced in the course, so you should generally be able to understand how it works.
 
 ### Step 2: Get the GenerateFinalProject() function
 
-In R Studio, create a new R script. Then, run the following code. This code will evaluate all of the code in the `generate_finaldata.R` file in your current R session. After you do this, you should now have the `GenerateFinalProject()` function in your current R session.
+Now it's time to actually get the `GenerateFinalProject()` function in your R session. In R Studio, create a new R script. You could copy all of the R code from the `GenerateFinalProject.R` file and then paste it in R. But there is an easier way. Instead, we'll use the `source()` function, which will automatically read the R code from the web, and then evaluate it to create the `GenerateFinalProject()` function in your current R session:
 
 ```{r}
-# Evaluate all of the generate_finaldata.R code in your current R session.
+# Evaluate all of the GenerateFinalProject.R code in your current R session.
+# This will create the GenerateFinalProject() function.
 
 source(file = url("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R"))
 ```
 
-### Step 3: Use GenerateFinalData() to create your data
+### Step 3: Use GenerateFinalData(my.id = XXX) to create your data
 
-when you evaluate the `GenerateFinalProject()` function, it will generate the data, and save the result as a file called `priming_XXX.txt`, where XXX is your three digit *id*.
+Now that you have the `GenerateFinalProject()` function, you need to evaluate it to create your `FinalProjectData_XXX.txt` file.
 
-The main argument to `GenerateFinalProject()` is `my.id`, which is a three digit id. When you specify a unique value of `my.id`, the dataset the function generates will always be the same.
+The main argument to `GenerateFinalProject()` is `my.id`, which is a three digit id unique to you. When you specify a unique value of `my.id`, the dataset the function generates will always be the same, and will be different from people using a different value of `my.id`.
 
-To make sure that every student has a different dataset, you should set the `my.id` argument to the last three digits of your university matriculation number (If you don't have this number, ask me in class and I can look it up for you). If you don't have a matriculation number, you can use the last three digits of your mobile phone number.
+To make sure that every student has a different dataset, you should set the `my.id` argument to the **last three digits of your university matriculation number**. If you don't have this number, ask me in class and I can look it up for you. If you don't have a matriculation number, you can use the last three digits of your mobile phone number.
+
+For example, if my id was 123, I would run the following
+
+```{r, echo = FALSE, include = FALSE}
+if(file.exists("FinalProjectData_123.txt")) {file.remove("FinalProjectData_123.txt")}
+```
 
 
-For example, if your id was 123, you could run the following
+```{r, message = FALSE, eval = FALSE}
+# Generate final data, and save as FinalProjectData_123.txt (where 123 is the last 3 digits of my student matriculation number, or my mobile phone number)
+GenerateFinalProject(my.id = 123)
+```
 
-```{r}
+When you evaluate this function, it will create a file called `FinalProjectData_123.txt` in my working directory (which for my computer is `/Users/nphillips/Dropbox/teaching/IntroductionR_Course/assignments/finalproject`). Now you have your data file!
 
+## Overview
+
+So, putting it all together, here is how I could create my `FinalProjectData_123.txt` file (again, when you create your data, use your own unique value of `my.id`!)
+
+
+```{r, message = FALSE}
+# Evaluate all of the GenerateFinalProject.R code in your current R session.
+# This will create the GenerateFinalProject() function.
+
+source(file = url("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R"))
+
+# Generate final data, and save as FinalProjectData_123.txt (where 123 is the last 3 digits of my student matriculation number, or my mobile phone number)
 GenerateFinalProject(my.id = 123)
 
+# Read the data from FinalProjectData_123.txt back into R as a new object called FinalData
+FinalData <- read.table("FinalProjectData_123.txt")
+
+# Look at the data and start analyzing!
+head(FinalData)
 ```
+
 

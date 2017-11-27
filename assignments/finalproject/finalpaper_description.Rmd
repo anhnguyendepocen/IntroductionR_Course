@@ -216,6 +216,7 @@ outliers <- sum(data$x > ___ | data$x < __)
 
 25. Report summary statistics of the *residuals* from your regression analysis in task 22. That is, on average, how far away are the model fits from the true values? What is the standard deviation of these residuals?
 
+
 ## FAQ
 
 Here are my answers to frequently asked questions
