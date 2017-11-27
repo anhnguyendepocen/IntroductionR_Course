@@ -52,21 +52,25 @@
 # interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.
 
 
-GenerateFinalProject <- function(my.seed = NULL,  # Randomization seed
-                           cases.n = NULL,  # Number of cases
-                           add.na = TRUE,   # Should missing values be added?
-                           include.names = FALSE, # Should column names be included?
-                           write = FALSE) { # Should data be written to a text file?
+GenerateFinalProject <- function(my.id = NULL,  # Randomization seed
+                                 write = FALSE,
+                                 cases.n = NULL,  # Number of cases
+                                 add.na = TRUE,   # Should missing values be added?
+                                 include.names = FALSE, # Should column names be included?
+                                 return.data = FALSE   # Should dataframe be returned by this function?
+ ) { # Should data be written to a text file?
   
   # If no randomization seed was specified, then create one
-  if(is.null(my.seed)) {
+  if(is.null(my.id)) {
     
-    my.seed <- sample(100:999, size = 1)
+    message("You did not specify your id with the my.id argument! By not doing this, the data will change every time you run this function.")
+    
+    my.id <- sample(100:999, size = 1)
     
     }
   
   # Set the seed
-  set.seed(my.seed)
+  set.seed(my.id)
   
   # Determine the number of cases
   if(is.null(cases.n)) {
@@ -203,12 +207,19 @@ GenerateFinalProject <- function(my.seed = NULL,  # Randomization seed
   if(write) {
     
     write.table(final.df, 
-                file = paste("priming_", my.seed, ".txt", sep = ""), 
+                file = paste("priming_", my.id, ".txt", sep = ""), 
                 sep = "\t")
+    
+    message(paste0("The data are now stored in a file called priming_", my.id, ".txt in your working directory (", getwd(), ")"))
     }
   
-  return(final.df)
   
+  if(return.data) {
+    
+  return(final.df)
+    
+  }
+    
 }
 
 
