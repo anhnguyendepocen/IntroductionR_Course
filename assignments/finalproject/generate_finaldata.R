@@ -52,25 +52,39 @@
 # interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.
 
 
-final.data.fun <- function(my.seed = NULL,
-                           cases.n = NULL,
-                           add.na = TRUE, 
-                           write = FALSE) {
+final.data.fun <- function(my.seed = NULL,  # Randomization seed
+                           cases.n = NULL,  # Number of cases
+                           add.na = TRUE,   # Should missing values be added?
+                           write = FALSE) { # Should data be written to a text file?
   
-  if(is.null(my.seed)) {my.seed <- sample(100:999, size = 1)}
+  # If no randomization seed was specified, then create one
+  if(is.null(my.seed)) {
+    
+    my.seed <- sample(100:999, size = 1)
+    
+    }
   
+  # Set the seed
   set.seed(my.seed)
   
-  if(is.null(cases.n)) {cases.n <- round(rnorm(1, mean = 500, sd = 50), 0)}
+  # Determine the number of cases
+  if(is.null(cases.n)) {
+    
+    cases.n <- round(rnorm(1, mean = 500, sd = 50), 0)
+    
+    }
   
   cond.A.n <- 2   # How many levels of condition B will there be in the experiment?
   cond.word.n <- 4   # How many levels of condition B will there be in the experiment?
   cond.education.n <- 4   # How many levels of condition B will there be in the experiment?
   
-  confidence.v.mean <- 100
-  confidence.v.sd <- 10
-  rt.v.mean <- 1000
-  rt.v.sd <- 50
+  # Determine parameters of dependent variables
+  confidence.v.mean <- rnorm(1, mean = 100, sd = 5)
+  confidence.v.sd <- rnorm(1, mean = 10, sd = 1)
+  rt.v.mean <- rnorm(1, mean = 1000, sd = 50)
+  rt.v.sd <- rnorm(1, mean = 50, sd = 5)
+  age.mean <- rnorm(1, mean = 25, sd = 2)
+  age.sd <- rnorm(1, mean = 2, sd = .5)
   
   # Population values of conditions A and B
   cond.A.pop <- c("green", "red", "blue", "orange", "yellow", "black", "brown", "white")
@@ -91,7 +105,7 @@ final.data.fun <- function(my.seed = NULL,
                    prob = c(.5, .2, .1, .1, .1))
   
   # Determine age
-  age.v <- round(rnorm(cases.n, mean = 25, sd = 2), 0)
+  age.v <- round(rnorm(cases.n, age.mean, sd = age.sd), 0)
   
   # Determine values of B
   education.v <- sample(cond.education.values, size = cases.n, replace = TRUE)
@@ -108,7 +122,12 @@ final.data.fun <- function(my.seed = NULL,
   # Determine accuracy.v as a function of boxsize
   
   accuracy.p <- 1 / (1 + exp(-(-boxn.v + age.v / 10)))
-  accuracy.v <- sapply(1:cases.n, FUN = function(x) {sample(c(0, 1), size = 1, replace = TRUE, prob = c(1 - accuracy.p[x], accuracy.p[x]))})
+  accuracy.v <- sapply(1:cases.n, FUN = function(x) {
+    
+    sample(c(0, 1), 
+           size = 1, 
+           replace = TRUE, 
+           prob = c(1 - accuracy.p[x], accuracy.p[x]))})
   
   # Determine confidence.v as a function of color.v and box.n
   
@@ -144,17 +163,18 @@ final.data.fun <- function(my.seed = NULL,
   
   if(add.na) {
   
-  accuracy.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  race.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  color.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  education.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  accuracy.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  confidence.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  rt.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
-  lik.v[sample(cases.n, size = sample(1:5, size = 1), replace = FALSE)] <- NA
+  accuracy.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  race.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  color.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  education.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  accuracy.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  confidence.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  rt.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
+  lik.v[sample(cases.n, size = sample(0:5, size = 1), replace = FALSE)] <- NA
   
   }
   
+  # Create the final dataframe
   
   final.df <- data.frame(id = 1:cases.n,
                          sex = sex.v,
@@ -170,9 +190,19 @@ final.data.fun <- function(my.seed = NULL,
                          interest = lik.v,
                          stringsAsFactors = FALSE)
   
-  if(write) {write.table(final.df, file = paste("finalproject/priming_", my.seed, ".txt", sep = ""), sep = "\t")}
+  # Write final dataframe to a file called priming_XXX.txt
+  
+  if(write) {
+    
+    write.table(final.df, 
+                file = paste("priming_", my.seed, ".txt", sep = ""), 
+                sep = "\t")
+    }
   
   return(final.df)
   
 }
+
+
+
 
