@@ -202,22 +202,22 @@ GenerateFinalProject <- function(my.id = NULL,  # Randomization seed
     
   }
   
-  # Write final dataframe to a file called priming_XXX.txt
+  # Write final dataframe to a file called FinalProjectData_XXX.txt
   
   if(write) {
     
     # If the file already exists, stop everything
-    if(file.exists(paste("priming_", my.id, ".txt", sep = ""))) {
+    if(file.exists(paste("FinalProjectData_", my.id, ".txt", sep = ""))) {
       
-      stop(paste("The file", paste("priming_", my.id, ".txt", sep = ""), "already exists in your working directory. If you want to create the file again, delete the existing file first and then try again."))
+      stop(paste("The file", paste("FinalProjectData_", my.id, ".txt", sep = ""), "already exists in your working directory. If you want to create the file again, delete the existing file first and then try again."))
     
       }
     
     write.table(final.df, 
-                file = paste("priming_", my.id, ".txt", sep = ""), 
+                file = paste("FinalProjectData_", my.id, ".txt", sep = ""), 
                 sep = "\t")
     
-    message(paste0("The data are now stored in a file called priming_", my.id, ".txt in your working directory (", getwd(), ")"))
+    message(paste0("The data are now stored in a file called FinalProjectData_", my.id, ".txt in your working directory (", getwd(), ")"))
     }
   
   
