@@ -52,7 +52,7 @@
 # interest: How interested was the participant in the task? 1 = not at all, 7 = very interested.
 
 
-final.data.fun <- function(my.seed = NULL,  # Randomization seed
+GenerateFinalProject <- function(my.seed = NULL,  # Randomization seed
                            cases.n = NULL,  # Number of cases
                            add.na = TRUE,   # Should missing values be added?
                            include.names = FALSE, # Should column names be included?
