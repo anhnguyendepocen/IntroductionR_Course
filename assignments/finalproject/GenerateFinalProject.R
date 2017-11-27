@@ -209,7 +209,7 @@ GenerateFinalProject <- function(my.id = NULL,  # Randomization seed
     # If the file already exists, stop everything
     if(file.exists(paste("FinalProjectData_", my.id, ".txt", sep = ""))) {
       
-      stop(paste("The file", paste("FinalProjectData_", my.id, ".txt", sep = ""), "already exists in your working directory. If you want to create the file again, delete the existing file first and then try again."))
+      stop(paste("PROBLEM! The file", paste("FinalProjectData_", my.id, ".txt", sep = ""), "already exists in your working directory. If you want to create the file again, delete the existing file first and then try again."))
     
       }
     
