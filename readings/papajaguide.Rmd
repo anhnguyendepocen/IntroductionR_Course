@@ -42,9 +42,9 @@ library(papaja)
 
 Now it's time to write your APA style document using papaja! It's best to start by opening a template. Here are two templates I've created: 
 
-1. A short APA style report: https://dl.dropboxusercontent.com/u/7618380/phillips2017apa.Rmd. Here is the bibliography file `phillips2017apa_references.bib`: https://dl.dropboxusercontent.com/u/7618380/phillips2017apa_references.bib
+1. A short APA style report: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/readings/phillips2017apa.Rmd. Here is the bibliography file `phillips2017apa_references.bib`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/readings/phillips2017apa_references.bib
 
-2. An APA style tutorial on papaja: https://dl.dropboxusercontent.com/u/7618380/apa_example.Rmd. Here is the bibliography file `r-references.bib`: https://dl.dropboxusercontent.com/u/7618380/r-references.bib
+2. An APA style tutorial on papaja: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/readings/apa_example.Rmd. Here is the bibliography file `r-references.bib`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/readings/r-references.bib
 
 You can also open the default APA template in Markdown by clicking the following in RStudio: File -- New File -- R Markdown... -- From Template -- APA Article (6th Edition)
 
@@ -116,7 +116,7 @@ Thankfully, papaja will take care of (almost) all of your APA formatting needs. 
 
 ## Add R chunks
 
-You add R chunks and inline code to a document using basic Markdown. Check out examples at https://dl.dropboxusercontent.com/u/7618380/phillips2017apa.Rmd and the Markdown guide at http://rpubs.com/YaRrr/markdownbasics.
+You add R chunks and inline code to a document using basic Markdown. Check out examples at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/readings/phillips2017apa.Rmd and the Markdown guide at http://rpubs.com/YaRrr/markdownbasics.
 
 ## Use papaja's helpful functions
 
