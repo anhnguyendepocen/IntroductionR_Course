@@ -86,14 +86,14 @@ Your `references.bib` file must contain all of your references in BibTeX format.
 
 Now you need to add this BibTeX reference to your `references.bib` file. To do this, just copy the BibTeX reference from Google Scholar, and paste it into your `references.bib` file. Then save the file! Now that the BibTeX entry is saved in your `references.bib` file, you can reference this article in your paper!
 
-```{r, echo = FALSE, out.width = "400px"}
-knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/scholarbib.png")
+```{r, echo = FALSE, out.width = "600px", fig.align = 'center'}
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/scholarbib.png?raw=true")
 ```
 
 Here is a screenshot of an example bibtex file. As you can see, it's just a collection of several BibTeX entries copied and pasted from google Scholar. You can see the original file here: https://dl.dropboxusercontent.com/u/7618380/r-references.bib.
 
-```{r, out.width = "400px", echo = FALSE}
-knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/bibtex_ss.png")
+```{r, out.width = "600px", echo = FALSE, fig.align = 'center'}
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/bibtex_ss.png?raw=true")
 ```
 
 ### Tell Markdown the name and location of your bibliography file!
