@@ -1,0 +1,46 @@
+---
+title: "Random data for final project instructions"
+author: "Nathaniel"
+date: "11/27/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+To get random data for your final project, you will
+
+
+### Step 1: Look at the GenerateFinalProject.R file
+
+Open a web browser and go to [https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R](https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R). As you'll see, this page contains R code which defines a function called `final.data.fun()`. Look through the code and try to understand generally how it works.
+
+### Step 2: Get the GenerateFinalProject() function
+
+In R Studio, create a new R script. Then, run the following code. This code will evaluate all of the code in the `generate_finaldata.R` file in your current R session. After you do this, you should now have the `GenerateFinalProject()` function in your current R session.
+
+```{r}
+# Evaluate all of the generate_finaldata.R code in your current R session.
+
+source(file = url("https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/finalproject/GenerateFinalProject.R"))
+```
+
+### Step 3: Use GenerateFinalData() to create your data
+
+when you evaluate the `GenerateFinalProject()` function, it will generate the data, and save the result as a file called `priming_XXX.txt`, where XXX is your three digit *id*.
+
+The main argument to `GenerateFinalProject()` is `my.id`, which is a three digit id. When you specify a unique value of `my.id`, the dataset the function generates will always be the same.
+
+To make sure that every student has a different dataset, you should set the `my.id` argument to the last three digits of your university matriculation number (If you don't have this number, ask me in class and I can look it up for you). If you don't have a matriculation number, you can use the last three digits of your mobile phone number.
+
+
+For example, if your id was 123, you could run the following
+
+```{r}
+
+GenerateFinalProject(my.id = 123)
+
+```
+

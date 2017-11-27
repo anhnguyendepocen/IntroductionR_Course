@@ -53,7 +53,7 @@
 
 
 GenerateFinalProject <- function(my.id = NULL,  # Randomization seed
-                                 write = FALSE,
+                                 write = TRUE,
                                  cases.n = NULL,  # Number of cases
                                  add.na = TRUE,   # Should missing values be added?
                                  include.names = FALSE, # Should column names be included?
@@ -205,6 +205,13 @@ GenerateFinalProject <- function(my.id = NULL,  # Randomization seed
   # Write final dataframe to a file called priming_XXX.txt
   
   if(write) {
+    
+    # If the file already exists, stop everything
+    if(file.exists(paste("priming_", my.id, ".txt", sep = ""))) {
+      
+      stop(paste("The file", paste("priming_", my.id, ".txt", sep = ""), "already exists in your working directory. If you want to create the file again, delete the existing file first and then try again."))
+    
+      }
     
     write.table(final.df, 
                 file = paste("priming_", my.id, ".txt", sep = ""), 
