@@ -31,29 +31,33 @@ bibliography:
 output: papaja::apa6_pdf
 ---
 
-```{r setup}
+```{r setup, include = FALSE}
+
 # Set default chunk options (can be overridden in later chunks)
 knitr::opts_chunk$set(echo = FALSE, 
                       eval = TRUE,
                       message = FALSE, 
                       fig.width = 4, 
-                      fig.height = 4)
-```
+                      fig.height = 4,
+                      fig.align = 'center',
+                      out.width = "100%")
 
-```{r}
-# Load libraries
+# Load packages
 library("papaja")
 library("knitr")
 library("yarrr")
-library("dplyr")
-```
+library("tidyverse")
 
-```{r}
 # Load data: studentmath.txt, studentpor.txt
 # Note: These data MUST be in a folder called data in your project directory!
 
-student.math <- read.table(file = "data/studentmath.txt", sep = "\t", header = TRUE)
-student.por <- read.table(file = "data/studentpor.txt", sep = "\t", header = TRUE)
+student.math <- read.table(file = "data/studentmath.txt", 
+                           sep = "\t", 
+                           header = TRUE)
+
+student.por <- read.table(file = "data/studentpor.txt", 
+                          sep = "\t", 
+                          header = TRUE)
 ```
 
 What is the relationship between student performance in language and mathematics tasks? This is an important question that has been studied extensively. For example, @abedi2001language found that students frequently feel anxiety in foreign language classes. XXX combined several studies on language achievement and found that language-minority students may need special treatment plans. Interestingly, language appears to be related to performance in mathematics [XXX]. In one study based on a survey of 1,174 8th grade students, XXX found that students who were English language learners (ELLs) scored lower on math tests than proficient speakers of English.
@@ -74,24 +78,55 @@ The primary measures were three exam scores taken at the beginning, middle, and 
 
 Distributions of the three exam scores for the Mathematics and Portugese classes are presented in Figure 1.
 
-```{r fig.width = 10, fig.height = 6, fig.cap= "XXX", eval = FALSE}
-# Create histograms of distributions of exam scores
-par(mfrow = c(2, 3))
+```{r fig1, fig.width = 6, fig.height = 4, fig.cap= "XXX", eval = TRUE}
+# Figure 1: Create histograms of distributions of exam scores
 
-with(student.por, hist(G1, main = "Portugese E1"))
-with(student.por, hist(G2, main = "Portugese E2"))
-with(student.por, hist(G3, main = "Portugese E3"))
+# Create long version of the portugese data
+student.por.long <- student.por %>% 
+  select(G1, G2, G3) %>% 
+  gather(grade, score) %>%
+  mutate(class = "Portugese")
 
-with(student.math, hist(G1, main = "Mathematics E1"))
-with(student.math, hist(G2, main = "Mathematics E2"))
-with(student.math, hist(G3, main = "Mathematics E3"))
+# Create long version of the math data
+student.math.long <- student.math %>% 
+  select(G1, G2, G3) %>% 
+  gather(grade, score) %>%
+  mutate(class = "Math")
+
+# Combine two long versions
+student.all <- rbind(student.por.long, student.math.long)
+
+# Create grid of histograms
+ggplot(data = student.all, 
+       aes(x = score)) +
+  facet_wrap(~ class + grade) +
+  geom_histogram(col = "black", fill = "white", bins = 15) +
+  scale_x_continuous(limits = c(0, 20)) +
+  theme_minimal()
 ```
+
+
+Correlations between numeric predictors in the Math data are shown in Figure X:
+
+```{r fig2, fig.width = 6, fig.height = 6, fig.cap= "XXX", eval = TRUE, out.width = "70%"}
+# Figure 2: Correlation plot
+
+# Get matrix of correlations
+math_cor <- cor(student.math[c("age", "studytime", "failures", "famrel", "freetime", "goout", "absences", "G1", "G2", "G3")])
+
+# Create correlation plot with ggpcorrplot
+ggcorrplot::ggcorrplot(math_cor, 
+                       method = "circle")
+
+```
+
 
 Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r 1+1` which increased to `r 1+1` by the last exam.
 
-```{r, eval = FALSE}
+```{r portable, eval = FALSE}
 # Create summary table of Portugese data
-portugese.tbl <- student.por %>% group_by(sex, school) %>%
+portugese.tbl <- student.por %>% 
+  group_by(sex, school) %>%
   summarise(
     "Exam 1" = round(mean(G1), 2),
     "Exam 2" = round(mean(G2), 2),
@@ -101,9 +136,10 @@ portugese.tbl <- student.por %>% group_by(sex, school) %>%
 papaja::apa_table(portugese.tbl, caption = "XXX")
 ```
 
-```{r, eval = FALSE}
+```{r mathtable, eval = FALSE}
 # Create summary table of Math data
-math.tbl <- student.math %>% group_by(sex, school) %>%
+math.tbl <- student.math %>% 
+  group_by(sex, school) %>%
   summarise(
     "Exam 1" = round(mean(G1), 2),
     "Exam 2" = round(mean(G2), 2),
@@ -114,12 +150,14 @@ papaja::apa_table(portugese.tbl, caption = "XXX")
 ```
 
 
-```{r}
+```{r ttests}
 # T-test of Exam 1 portugese grades between sexes
-sex.por.ttest <- t.test(G1 ~ sex, data = student.por)
+sex.por.ttest <- t.test(G1 ~ sex, 
+                        data = student.por)
 
 # T-test of Exam 1 math grades between sexes
-sex.math.ttest <- t.test(G1 ~ sex, data = student.math)
+sex.math.ttest <- t.test(G1 ~ sex, 
+                         data = student.math)
 ```
 
 
