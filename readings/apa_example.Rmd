@@ -1,0 +1,151 @@
+---
+title: "My APA Document"
+shorttitle: "APA"
+author: 
+  - name: Captain Phillips
+    affiliation: 1
+    corresponding: yes    # Define only one corresponding author
+    address: Missionsstrasse 62A 4053 Basel Switzerland
+    email: nathaniel.phillips@unibas.ch
+  - name: First Mate Harrington
+    affiliation: "1,2"
+affiliation:
+  - id: 1
+    institution: University of Basel
+  - id: 2
+    institution: University of Vancouver
+
+abstract: |
+  This is the abstract!
+  
+note: |  
+  The first author is at the Economic Psychology department at the University of Basel.
+  
+keywords: "apa, R, markdown"
+
+wordcount: X
+
+class: man
+lang: english
+figsintext: yes  # Should figures be in text?
+lineno: no     # Should line numbers be displayed?
+bibliography:
+  - r-references.bib  # What is the name of the bibliography file?
+
+output: papaja::apa6_pdf
+---
+
+```{r message = FALSE, warning = FALSE}
+library("papaja")
+apa_prepare_doc() # Prepare document for rendering
+```
+
+This is the first sentence of my APA style article. Of course, it should be something that captures the reader's attention while giving them an idea of what the article is about.
+
+## R Markdown
+
+papaja is a template for writing APA articles using R Markdown. R Markdown is a simple markup language that allows you to easily construct all kinds of documents, from reports, to web pages, to APA style documents. For a full overview of R Markdown, check out the lessons at http://rmarkdown.rstudio.com/lesson-1.html.
+
+## Creating a bibliography
+
+In order to cite articles, you need to have a separate bibliography file called `references.bib` (or you can call it something else as long as it has the .bib ending). To create a new .bib file in RStudio, click File -- New File -- Text File. This should open a new blank file in RStudio. Now save the file as `references.bib`.
+
+Your `references.bib` file must contain all of your references in BibTeX format. BibTeX format is just a way of defining an article's citation information (name, authors, year, journal etc.) in a standardized way. You need to add the BibTeX reference for *every* article you want to cite to your `references.bib` file. You can get BibTeX references easily from Google Scholar. To do this, go to scholar.google.com, and search for an article. When you find your article, click the "cite" button just under it. This will open up a citation window with many different citation styles. However, we don't want these, we want the BibTeX citation. To get this, click the BibTeX button. When you do, a new window will open with several lines of text starting with a header. For example, here is the BibTeX file for @kahneman1979prospect: https://goo.gl/HQwD15. Copy this text from Google Scholar, and paste it into your `references.bib` file. Then save the file! Now that the BibTeX entry is saved in your `references.bib` file, you can reference this article in your paper!
+
+## How to add citations
+
+To cite an article contained in your `bibliography.bib` file in your text, you need to know its title in your `references.bib` file. These titles are almost always in the format NameYearTitle and occur in the first line just after \@article{. Once you hvae a title, use the \@TITLE notation.  To cite a number of articles in parentheses, put \@TITLE in brackets. For example, in the following paragraph, I will cite a few papers using \@TITLE. 
+
+Prospect theory, originally developed by @kahneman1979prospect, has been used to explain many real-world decisions [e.g.; @camerer2004prospect; @list2004neoclassical]. 
+
+Once you cite an article using \@TITLE, the entire reference in APA style will automatically be added to the bibliography!
+
+For more tips on citations with R Markdown, check out http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
+
+To start a new section, like the Methods section, use the \# symbol
+
+## R Chunks
+
+One of the coolest aspects of R Markdown is that you can incorporate R code directly into the document! To do this, you need to create a new R chunk. This chunk will open a mini R session into your document. To create a chunk, click the green "Insert" button (then R chunk) just above this screen. Or, on MAC you can use the Command + Option + I hot key.
+
+In the chunk below, I'll read in a dataframe called `facebook`
+
+```{r}
+# Read in the facebook dataframe from an external link
+facebook <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/04/facebook.txt", 
+                       sep = "\t", 
+                       header = TRUE)
+```
+
+Now the data is available for me to use in the document! I'll show you in a minute..
+
+
+# Methods
+
+## Participants
+
+Now I'll use *mini-chunks* to incorporate R code into my sentences. A mini-chunk starts with tilde-r and ends with a closing tilde. For example, in the following sentence I'll use mini-chunks to calculate and print information about the participants in the study: 
+
+There were `r nrow(facebook)` participants in the study. The mean age was `r round(mean(facebook$age), 0)` and there were `r sum(facebook$sex == "f")` females.
+
+## Materials
+
+All responses were collected using an online survey.
+
+## Procedure
+
+Enter your procedure here!
+
+# Results
+
+Your results sections is where you'll really make use of r chunks. In the secions below, I'll make use of regular chunks and mini-chunks to report some results!
+
+A histogram of dateability scores is presented in Figure 1. The mean dateability score was `r round(mean(facebook$dateability), 0)`.
+
+```{r fig.cap = "Distribution of dateability scores", fig.width = 5, fig.height = 5}
+# Create a histogram of dateability scores
+hist(facebook$dateability, 
+     xlab = "Dateability",
+     main = "Distribution of all dateability scores")
+```
+
+Next we looked to see if there was a relationship between whether a person wore a shirt in their facebook photo or not on their dateability scores. A pirateplot showing distributions of scores split by sex and whether people wore a shirt or not is presented in Figure 2:
+
+```{r fig.cap = "Distribution of dateability scores by sex and shirt. The data clearly show that not wearing a shirt increases scores for women, but decreases scores for men.", fig.width = 8, fig.height = 6}
+library(yarrr)
+pirateplot(dateability ~ sex + shirtless, 
+           data = facebook)
+```
+
+The papaja package has many useful functions for creating tables in APA style. For example, the `apa_print()` function will convert an ANOVA object into an APA friendly format. You can then use the `apa_table()` function to convert the table to a format (LaTeX) that Markdown can then use to create the table in the document. Below, I'll use a chunk to create an ANOVA table:
+
+An ANOVA showed a significant interaction between sex and shirt wearing on scores (see Table 1)
+
+```{r}
+# This chunk will create table 1
+
+# Create the ANOVA
+sex.shirt.aov <- aov(dateability ~ sex * shirtless, 
+           data = facebook)
+
+# Format ANOVA table using apa_print()
+sex.shirt.aov.tbl <- papaja::apa_print(summary(sex.shirt.aov))$table
+
+# Print the table using apa_table()
+papaja::apa_table(sex.shirt.aov.tbl, caption = "ANOVA on dateability ratings")
+```
+
+
+
+# Discussion
+
+Papaja and R Markdown are awesome!!
+
+To add the full references section, just include \#References at the bottom of your document
+
+# References
+
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{8pt}

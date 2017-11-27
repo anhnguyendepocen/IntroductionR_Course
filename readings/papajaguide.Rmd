@@ -49,17 +49,17 @@ Now it's time to write your APA style document using papaja! It's best to start 
 You can also open the default APA template in Markdown by clicking the following in RStudio: File -- New File -- R Markdown... -- From Template -- APA Article (6th Edition)
 
 ```{r, out.width = "400px", echo = FALSE}
-knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/papaja_ss1.png")
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/papaja_ss1.png?raw=true")
 ```
 
 ```{r, out.width = "400px", echo = FALSE}
-knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/papaja_ss2.png")
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/papaja_ss2.png?raw=true")
 ```
 
 When you click ok, you should see a new document like this open
 
 ```{r, out.width = "400px", echo = FALSE}
-knitr::include_graphics("https://dl.dropboxusercontent.com/u/7618380/papaja_ss3.png")
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/papaja_ss3.png?raw=true")
 ```
 
 ## Update the main info
