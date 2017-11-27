@@ -20,9 +20,9 @@ You can obtain a dataset from one of the following three methods:
 
 If you have data for a Bachelor's or Master's thesis, you are very welcome to use that. I don't care if you have analyzed it in the past.
 
-*Method 2: Ask me for a randomly generated dataset*
+*Method 2: Get a randomly generated dataset*
 
-Send me an email with the subject "Please send me a dataset for my final paper!". I will email a randomly generated dataset to you.
+Look at [this tutorial](https://ndphillips.github.io/IntroductionR_Course/assignments/finalproject/FinalProjectData_Instructions.html) for instructions on getting a randomly generated dataset about the effects of priming on decision making.
 
 *Method 3: Find a real dataset online*
 

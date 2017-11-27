@@ -13,6 +13,11 @@ This page shows you how to obtain a dataset for your final project. First, I'll 
 
 # A priming experiment
 
+```{r, echo = FALSE, fig.cap="Description of the priming experiment"}
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/finalproject/finalproject_ss.png?raw=true")
+```
+
+
 These data represent the result of an experiment on subliminal priming. A subliminal prime is a stimulus, like a word, that is displayed so quickly that it is not consciously perceived. The goal of the study is to see if and how subliminal primes affect behavior in a performance task.
 
 Here are the instructions participants were given.
@@ -25,9 +30,6 @@ After the subliminal prime was displayed, participants were asked to rate how co
 
 When participants were ready, they clicked a button called "Show the boxes". After clicking this button, participants were shown the locations of the X boxes for 2 seconds. The boxes then disappeared, and participants could then click on the screen to indicate where they thought the boxes were. When they were finished, they completed a brief survey.
 
-```{r, echo = FALSE, fig.cap="Description of the priming experiment"}
-knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/finalproject/finalproject_ss.png?raw=true")
-```
 
 There were 3 main manipulations in the experiment. 
   
