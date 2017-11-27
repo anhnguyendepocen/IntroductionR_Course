@@ -64,7 +64,7 @@ devtools::install_github("crsh/papaja")
 
 Download the two data files using a web browser and save them as two separate text files called `studentmath.txt` and `studentpor.txt`. Save them to the `data` folder of your project directory! (or you can do it within R using a combination of with `read.table()` and `write.table()`).
 
-2. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data). Using `read.table()` load this two data files into R as two objects, one called `student_m`, and one called `student_p`. Then, save the data as text files called `student_m.txt` and `student_p.txt` in your data folder:
+2. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data). Using `read.table()` load this two data files into R as two objects, one called `student_m`, and one called `student_p`. Then, save the data as text files called `studentmath.txt` and `studentpor.txt` in your data folder:
 
 ```{r, echo = FALSE, eval = TRUE}
 student.math <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016/11/studentmath.txt",
@@ -76,14 +76,11 @@ student.por <- read.table("http://nathanieldphillips.com/wp-content/uploads/2016
                       header = TRUE)
 ```
 
-
-
-
 4. Using a web-browser, download the following two files and save them to your project working directory -- that is, next to the `studentAPA.Rproj` file. **Not** in the `data` or `R` folders.
 
-- `studentAPA.Rmd`: https://dl.dropboxusercontent.com/u/7618380/studentAPA.Rmd
+- `studentAPA.Rmd`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA.Rmd
 
-- `studentAPA.bib`: https://dl.dropboxusercontent.com/u/7618380/studentAPA.bib
+- `studentAPA.bib`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA.bib
 
 
 ### STOP!!!
