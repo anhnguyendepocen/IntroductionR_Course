@@ -1,0 +1,145 @@
+---
+title: "Performance of students in Math and Porgugese"
+shorttitle: "education"
+author: 
+  - name: Nathaniel Phillips
+    affiliation: 1
+    corresponding: yes    
+    address: Missionsstrasse 62A 4053 Basel Switzerland
+    email: nathaniel.phillips@unibas.ch
+affiliation:
+  - id: 1
+    institution: University of Basel
+
+abstract: |
+  This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). 
+  
+note: |  
+  These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
+  
+keywords: "apa, R, markdown"
+
+wordcount: X
+
+class: man
+lang: english
+figsintext: yes  # Should figures be in text?
+lineno: no     # Should line numbers be displayed?
+bibliography:
+  - studentAPA.bib  # What is the name of the bibliography file?
+
+output: papaja::apa6_pdf
+---
+
+```{r setup}
+# Set default chunk options (can be overridden in later chunks)
+knitr::opts_chunk$set(echo = FALSE, 
+                      eval = TRUE,
+                      message = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4)
+```
+
+```{r}
+# Load libraries
+library("papaja")
+library("knitr")
+library("yarrr")
+library("dplyr")
+```
+
+```{r}
+# Load data: studentmath.txt, studentpor.txt
+# Note: These data MUST be in a folder called data in your project directory!
+
+student.math <- read.table(file = "data/studentmath.txt", sep = "\t", header = TRUE)
+student.por <- read.table(file = "data/studentpor.txt", sep = "\t", header = TRUE)
+```
+
+What is the relationship between student performance in language and mathematics tasks? This is an important question that has been studied extensively. For example, @horwitz1986foreign found that students frequently feel anxiety in foreign language classes. @collier1992synthesis combined several studies on language achievement and found that language-minority students may need special treatment plans. Interestingly, language appears to be related to performance in mathematics [@abedi2001language]. In one study based on a survey of 1,174 8th grade students, @abedi2001language found that students who were English language learners (ELLs) scored lower on math tests than proficient speakers of English.
+
+The purpose of the present research was to see if previous results replicate in a new sample of language and mathematics learners. To test this, we analysed data of student performance in Mathematics and Portugese classes.
+
+# Methods
+
+## Participants
+
+Data were collected from the UCI machine learning repository at http://archive.ics.uci.edu/ml/datasets/Student+Performance. Data from `r  nrow(student.math)` students in a Mathematics class, and `r nrow(student.por)` students in a Portugese class were collected.
+
+## Procedure
+
+The primary measures were three exam scores taken at the beginning, middle, and end of each class. 
+
+# Results
+
+All analyses were conducted using R [@R] using the papaja package [@aust2015papaja].
+
+Distributions of the three exam scores for the Mathematics and Portugese classes are presented in Figure 1.
+
+```{r fig.width = 10, fig.height = 6, fig.cap="Distributions of exam scores for Mathematics and Porgugese exams 1, 2 and 3."}
+# Create histograms of distributions of exam scores
+par(mfrow = c(2, 3))
+
+with(student.por, hist(G1, main = "Portugese E1"))
+with(student.por, hist(G2, main = "Portugese E2"))
+with(student.por, hist(G3, main = "Portugese E3"))
+
+with(student.math, hist(G1, main = "Mathematics E1"))
+with(student.math, hist(G2, main = "Mathematics E2"))
+with(student.math, hist(G3, main = "Mathematics E3"))
+```
+
+Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r round(mean(student.por$G1), 2)` which increased to `r round(mean(student.por$G3), 2)` by the last exam.
+
+```{r, results='asis'}
+# Create summary table of Portugese data
+portugese.tbl <- student.por %>% group_by(sex, school) %>%
+  summarise(
+    "Exam 1" = round(mean(G1), 2),
+    "Exam 2" = round(mean(G2), 2),
+    "Exam 3" = round(mean(G3), 2)
+  )
+
+# Print the table!
+# also be sure to include the results='asis' chunk option!
+papaja::apa_table(portugese.tbl, caption = "Mean Portugese exam scores")
+```
+
+```{r, results='asis'}
+# Create summary table of Math data
+math.tbl <- student.math %>% group_by(sex, school) %>%
+  summarise(
+    "Exam 1" = round(mean(G1), 2),
+    "Exam 2" = round(mean(G2), 2),
+    "Exam 3" = round(mean(G3), 2)
+  )
+
+papaja::apa_table(portugese.tbl, caption = "Mean Math exam scores")
+```
+
+
+```{r}
+# T-test of Exam 1 portugese grades between sexes
+sex.por.ttest <- t.test(G1 ~ sex, data = student.por)
+
+# T-test of Exam 1 math grades between sexes
+sex.math.ttest <- t.test(G1 ~ sex, data = student.math)
+```
+
+
+Did men and women perform differently on the first exams in each class? To tese this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant (t(`r sex.por.ttest$parameter`) = `r sex.por.ttest$statistic`, p = `r sex.por.ttest$p.value`), showing that women performed better than men on the first Portugese exam.
+
+The t-test on Math exam 1 was non-significant (t(`r sex.por.ttest$parameter`) = `r sex.math.ttest$statistic`, p = `r sex.math.ttest$p.value`), showing no evidence for a difference between men and women on Math exam 1.
+
+
+# Discussion
+
+Understanding the relationship between language and math performance is important for understanding learning. Our results are generally in line with @abedi2001language who found a relationship between language and mathematics performance.
+
+
+# References
+
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{8pt}
