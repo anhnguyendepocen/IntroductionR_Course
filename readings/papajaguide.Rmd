@@ -21,7 +21,7 @@ In order to create PDF documents from papaja, you need to have a TeX distributio
 - Windows: MikTeX https://miktex.org/
 - Mac: MacTeX: http://www.tug.org/mactex/
 
-**Note**: Be sure to restart RStudio after installing TeX to make sure RStudio knows it's there (now).
+**Note**: Be sure to restart RStudio after installing TeX to make sure RStudio knows it's there.
 
 ## Install papaja
 
@@ -86,13 +86,13 @@ Your `references.bib` file must contain all of your references in BibTeX format.
 
 Now you need to add this BibTeX reference to your `references.bib` file. To do this, just copy the BibTeX reference from Google Scholar, and paste it into your `references.bib` file. Then save the file! Now that the BibTeX entry is saved in your `references.bib` file, you can reference this article in your paper!
 
-```{r, echo = FALSE, out.width = "600px", fig.align = 'center'}
+```{r, echo = FALSE, out.width = "700px", fig.align = 'center'}
 knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/scholarbib.png?raw=true")
 ```
 
 Here is a screenshot of an example bibtex file. As you can see, it's just a collection of several BibTeX entries copied and pasted from google Scholar. You can see the original file here: https://dl.dropboxusercontent.com/u/7618380/r-references.bib.
 
-```{r, out.width = "600px", echo = FALSE, fig.align = 'center'}
+```{r, out.width = "700px", echo = FALSE, fig.align = 'center'}
 knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/bibtex_ss.png?raw=true")
 ```
 

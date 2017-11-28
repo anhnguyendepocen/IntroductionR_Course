@@ -32,11 +32,8 @@ This assignment is based on the following readings:
 ## Examples
 
 ```{r, echo = TRUE, eval = FALSE}
-
 library(papaja)   #Load the yarrr package for the pirates dataframe
 library(knitr)
-
-
 ```
 
 

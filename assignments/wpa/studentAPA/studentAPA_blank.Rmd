@@ -1,23 +1,23 @@
 ---
-title: "Performance of students in Math and Porgugese"
-shorttitle: "education"
+title: "XX"
+shorttitle: "XX"
 author: 
-  - name: Nathaniel Phillips
+  - name: XX
     affiliation: 1
     corresponding: yes    
-    address: Missionsstrasse 62A 4053 Basel Switzerland
-    email: nathaniel.phillips@unibas.ch
+    address: XX
+    email: XX
 affiliation:
   - id: 1
-    institution: University of Basel
+    institution: XX
 
 abstract: |
-  This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). 
+  XX
   
 note: |  
-  These data come from the UCI Machine Learning database at http://archive.ics.uci.edu/ml/datasets/Student+Performance#
+  TXX
   
-keywords: "apa, R, markdown"
+keywords: "XX, XX, XX"
 
 wordcount: X
 
@@ -45,7 +45,6 @@ knitr::opts_chunk$set(echo = FALSE,
 # Load packages
 library("papaja")
 library("knitr")
-library("yarrr")
 library("tidyverse")
 
 # Load data: studentmath.txt, studentpor.txt
@@ -60,7 +59,7 @@ student.por <- read.table(file = "data/studentpor.txt",
                           header = TRUE)
 ```
 
-What is the relationship between student performance in language and mathematics tasks? This is an important question that has been studied extensively. For example, @horwitz1986foreign found that students frequently feel anxiety in foreign language classes. @collier1992synthesis combined several studies on language achievement and found that language-minority students may need special treatment plans. Interestingly, language appears to be related to performance in mathematics [@abedi2001language]. In one study based on a survey of 1,174 8th grade students, @abedi2001language found that students who were English language learners (ELLs) scored lower on math tests than proficient speakers of English.
+What is the relationship between student performance in language and mathematics tasks? This is an important question that has been studied extensively. For example, @horwitz1986foreign found that students frequently feel anxiety in foreign language classes. XXX combined several studies on language achievement and found that language-minority students may need special treatment plans. Interestingly, language appears to be related to performance in mathematics [XXX]. In one study based on a survey of 1,174 8th grade students, XXX found that students who were English language learners (ELLs) scored lower on math tests than proficient speakers of English.
 
 The purpose of the present research was to see if previous results replicate in a new sample of language and mathematics learners. To test this, we analysed data of student performance in Mathematics and Portugese classes.
 
@@ -68,7 +67,7 @@ The purpose of the present research was to see if previous results replicate in 
 
 ## Participants
 
-Data were collected from the UCI machine learning repository at http://archive.ics.uci.edu/ml/datasets/Student+Performance. Data from `r  nrow(student.math)` students in a Mathematics class, and `r nrow(student.por)` students in a Portugese class were collected.
+Data were collected from the UCI machine learning repository at http://archive.ics.uci.edu/ml/datasets/Student+Performance. Data from `r  1+1` students in a Mathematics class, and `r 1+1` students in a Portugese class were collected.
 
 ## Procedure
 
@@ -76,11 +75,11 @@ The primary measures were three exam scores taken at the beginning, middle, and 
 
 # Results
 
-All analyses were conducted using R [@R] using the papaja package [@aust2015papaja].
+All analyses were conducted using R [@R] and compiled using the papaja package [@aust2015papaja].
 
 Distributions of the three exam scores for the Mathematics and Portugese classes are presented in Figure 1. Correlations between numeric predictors in the Math data are shown in Figure 2.
 
-```{r fig1, fig.width = 6, fig.height = 4, fig.cap= "Distributions of class scores.", eval = TRUE}
+```{r fig1, fig.width = 6, fig.height = 4, fig.cap= "XXX", eval = FALSE}
 # Figure 1: Create histograms of distributions of exam scores
 
 # Create long version of the portugese data
@@ -109,7 +108,7 @@ ggplot(data = student.all,
 
 
 
-```{r fig2, fig.width = 6, fig.height = 6, fig.cap= "Correlations of numeric variables in the math data. Non-significant correlations at the p < .05 level are indicated with crosses.", eval = TRUE, out.width = "70%"}
+```{r fig2, fig.width = 6, fig.height = 6, fig.cap= "XXX", eval = FALSE, out.width = "70%"}
 # Figure 2: Correlation plot
 
 # Get matrix of correlations
@@ -128,9 +127,9 @@ ggcorrplot::ggcorrplot(math_cor,
 ```
 
 
-Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r round(mean(student.por$G1), 2)` which increased to `r round(mean(student.por$G3), 2)` by the last exam.
+Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r round(mean(student.por$G1), 2)` which increased to `r 1+1` by the last exam.
 
-```{r tbl1, results='asis'}
+```{r tbl1, results='asis', eval = FALSE}
 # Create summary table of Portugese data
 portugese.tbl <- student.por %>% group_by(sex, school) %>%
   summarise(
@@ -141,10 +140,11 @@ portugese.tbl <- student.por %>% group_by(sex, school) %>%
 
 # Print the table!
 # also be sure to include the results='asis' chunk option!
-papaja::apa_table(portugese.tbl, caption = "Mean Portugese exam scores separated by sex and school")
+papaja::apa_table(portugese.tbl, 
+                  caption = "XXX")
 ```
 
-```{r tbl2, results='asis'}
+```{r tbl2, results='asis', eval = FALSE}
 # Create summary table of Math data
 math.tbl <- student.math %>% group_by(sex, school) %>%
   summarise(
@@ -153,25 +153,25 @@ math.tbl <- student.math %>% group_by(sex, school) %>%
     "Exam 3" = round(mean(G3), 2)
   )
 
-papaja::apa_table(portugese.tbl, caption = "Mean Math exam scores separated by sex and school.")
+papaja::apa_table(math.tbl, 
+                  caption = "XXX")
 ```
 
-
-```{r ttests}
+```{r ttests, eval = TRUE}
 # T-test of Exam 1 portugese grades between sexes
 sex.por.ttest <- t.test(G1 ~ sex, data = student.por)
 
 # T-test of Exam 1 math grades between sexes
-sex.math.ttest <- t.test(G1 ~ sex, data = student.math)
+
 ```
 
 
 Did men and women perform differently on the first exams in each class? To test this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant `r papaja::apa_print(sex.por.ttest)$full_result`, showing that women performed better than men on the first Portugese exam,
 
-The t-test on Math exam 1 was non-significant `r papaja::apa_print(sex.math.ttest)$full_result`, showing no evidence for a difference between men and women on Math exam 1.
+The t-test on Math exam 1 was non-significant `r 1+1`, showing no evidence for a difference between men and women on Math exam 1.
 
 
-```{r, results='asis'}
+```{r, results='asis', eval = FALSE}
 G1_por_Anova <- car::Anova(mod = lm(G1 ~ school + sex + guardian,
                                     data = student.por),
                            type = "III")
