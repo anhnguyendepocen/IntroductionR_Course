@@ -21,7 +21,10 @@ student_p <- read.table("https://raw.githubusercontent.com/ndphillips/Introducti
 
 This assignment is based on the following readings:
 
-- YaRrr: [15](https://bookdown.org/ndphillips/YaRrr/regression.html)
+- [Markdown Video](https://www.youtube.com/watch?v=7qTvOZfK6Cw)
+- [Markdown Guide](http://www.rpubs.com/YaRrr/markdownbasics)
+- [RStudio Lessons](http://rmarkdown.rstudio.com/lesson-1.html)
+- [papaja Guide](https://ndphillips.github.io/IntroductionR_Course/readings/papajaguide.html)
 
 ## Assignment Goals
 
@@ -39,7 +42,7 @@ library(knitr)
 
 ### Get started
 
-A. In order to render PDF files, you need to have LaTeX installed, follow the instructions at the [papaja guide](http://www.rpubs.com/YaRrr/papaja_guide) to install LaTeX on your computer.
+A. In order to render PDF files, you need to have LaTeX installed, follow the instructions at the [papaja guide](https://ndphillips.github.io/IntroductionR_Course/readings/papajaguide.html) to install LaTeX on your computer.
 
 B. Once you have installed LaTeX, install the `papaja` package from GitHub using the following code:
 
@@ -75,14 +78,14 @@ student.por <- read.table("https://raw.githubusercontent.com/ndphillips/Introduc
 
 4. Using a web-browser, download the following two files and save them to your project working directory -- that is, next to the `studentAPA.Rproj` file. **Not** in the `data` or `R` folders.
 
-- `studentAPA.Rmd`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA.Rmd
+- `studentAPA_blank.Rmd`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA/studentAPA_blank.Rmd
 
-- `studentAPA.bib`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA.bib
+- `studentAPA.bib`: https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/studentAPA/studentAPA.bib
 
 
 ### STOP!!!
 
-By now you should have a file structure on your computer that looks like the following screenshot
+By now you should have a file structure on your computer that looks like the following screenshot (except your .Rmd file will have the name `studentAPA_blank.Rmd`)
 
 ```{r}
 knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/images/studentAPA_files_ss.png?raw=true")
@@ -98,9 +101,11 @@ knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob
 
 <font color = "red">If you don't have this folder structure and/or you don't have the appropriate project open in RStudio, the rest of the document won't work!</font>
 
-5. Your goal is to create this APA document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true) by adding elements to the `studentAPA.Rmd` document. In a web browser, go to the link above to download the studentAPA_comp.pdf file and see how it looks.
+5. Your goal is to create this APA document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true) by adding elements to the `studentAPA_blank.Rmd` document. In a web browser, go to the link above to download the studentAPA_comp.pdf file and see how it looks.
 
-6. Open `studentAPA.Rmd` and `studentAPA.bib` in RStudio. In `studentAPA.Rmd`, replace the X values in the main fields at the top of the document (name, paper title, short-title, affiliation) with the appropriate names and titles.
+### Adding titles and knitting for the first time
+
+6. Open `studentAPA_blank.Rmd` and `studentAPA.bib` in RStudio. In `studentAPA_blank.Rmd`, replace the X values in the main fields at the top of the document (name, paper title, short-title, affiliation) with the appropriate names and titles.
 
 7. Now *Knit* your document to see the current version of the PDF output! You can do this by clicking the "Knit" button at the top of your window or by using the Command + Shift + K shortcut (on Mac).
 
@@ -114,7 +119,7 @@ knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob
 
 - Abedi, J., & Lord, C. (2001). The language factor in mathematics tests. Applied Measurement in Education, 14(3), 219-234.
 
-9. Now it's time to cite your new references. I've included one citation already in the `studentAPA.Rmd` document in the format \@abedi2001language. Now cite the additional papers in your `studentAPA.bib` file by replacing the XXX values with the appropriate citations. **Knit your document to see the result**
+9. Now it's time to cite your new references. I've included one citation already in the `studentAPA_blank.Rmd` document in the format \@abedi2001language. Now cite the additional papers in your `studentAPA.bib` file by replacing the XXX values with the appropriate citations. **Knit your document to see the result**
 
 ### Load data
 
@@ -124,33 +129,32 @@ knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob
 
 ### Add plots
 
-12. In the Results section, I've included a chunk called fig1 that creates Figure 1, a series of histograms. Update the caption to the plot in the chunk options. Then change `eval = FALSE` to `eval = TRUE` to tell Markdown to run the chunk. **Knit your document to see the result** You should now see the histograms in your document.
+12. In the Results section, I've included a chunk called fig1 that creates Figure 1, a series of histograms. Update the caption to the plot in the chunk options. Then change `eval = FALSE` to `eval = TRUE` to tell Markdown to run the chunk. **Knit your document to see the result**, You should now see the histograms in your document!
 
-13. Below the Figure 1 chunk, there are some inline chunks that calculate the mean grades for exam 1 and exam 3 of the Portuguese data. Update these chunks with `round(mean(student.por$G1), 2)` and `round(mean(student.por$G3), 2)` to calculate the correct values. **Knit your document to see the result**
+13. There is another chunk called `fig2` that plots the correlations between numeric predictors in the math data. Turn on the chunk by setting `eval = TRUE`, update the caption. **Knit your document to see the result** 
 
-14. There is another chunk called `fig2` that 
+### Add statistics
 
+14. Below the Figure 1 chunk, there are some inline chunks that calculate the mean grades for exam 1 and exam 3 of the Portuguese data. Update these chunks with the correct code to calculate the mean G3 scores for the math and portugese datasets. **Knit your document to see the result**
 
-### Ad statistics
+15. The next two chunks create tables of summary statistics for the Math and Portuguese data. Update the captions in these chunks. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** You should now see the tables in your document.
 
-14. The next two chunks create tables of summary statistics for the Math and Portuguese data. Update the captions in these chunks. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options. **Knit your document to see the result** You should now see the tables in your document.
+16. The next chunk conducts and saves t-tests for both the math and Portuguese data. The code for the Portuguese test `sex.por.ttest` is already completed, but the code to create a similar test for the math data is missing. Add the code for the math test to create the object `sex.math.ttest`. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options.
 
-15. The next chunk conducts and saves t-tests for both the math and Portuguese data. The code for the Portuguese test is already completed. Fix the code for the math test. Then, change `eval = FALSE` to `eval = TRUE` in the chunk options.
-
-16. The next lines use inline code to refer to the results of your t-test objects. Replace the `1+1` values with values from your t-test!. (Hint: use `sex.por.ttest$parameter` to get the degrees of freedom, `sex.por.ttest$statistic` to get the test statistic, and `sex.por.ttest$p.value` to get the p-value for the Portuguese test).  **Knit your document to see the result**
+17. The next lines use inline code to refer to the results of your t-test objects. Replace the `1+1` values with  `papaja::apa_print(sex.por.ttest)$full_result` and `papaja::apa_print(sex.math.ttest)$full_result` **Knit your document to see the result**
 
 ## Add new analyses!
 
-17. Add a scatterplot showing the relationship between G1 and G3 for the math data as a new Figure. **Knit your document to see the result**
+18. Add a scatterplot showing the relationship between G1 and G3 for the math data as a new Figure 3. **Knit your document to see the result**
 
-18. In addition to your scatterplot, conduct the appropriate correlation test using `cor.test()` in a separate chunk. Save the result as `math.cor.test`
+19. In addition to your scatterplot, conduct the appropriate correlation test using `cor.test()` in a separate chunk. Save the result as `math.cor.test`
 
-19. Now report the results of your correlation test in your text. You can easily do this using the `apa_print()` function from `papaja`. Look at the help menu for `apa_print()`. Then use the function to report the results of the correlation test by running `apa_print(math.cor.test)`. **Knit your document to see the result**
+20. Now report the results of your correlation test in your text. You can easily do this using the `apa_print()` function from `papaja`. Look at the help menu for `apa_print()`. Then use the function to report the results of the correlation test by running `apa_print(math.cor.test)`. **Knit your document to see the result**
 
 
 
 ## Submit!
 
-- Save and email your `wpa_8_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
+- Save and email your `wpa_10_LastFirst.R` file to me at nathaniel.phillips@unibas.ch.
 - Go to [https://goo.gl/forms/b9dcRH6Ud3pDagOr1](https://goo.gl/forms/b9dcRH6Ud3pDagOr1) to confirm your assignment submission.
 

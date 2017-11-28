@@ -126,8 +126,7 @@ ggcorrplot::ggcorrplot(math_cor,
 
 ```
 
-
-Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r round(mean(student.por$G1), 2)` which increased to `r 1+1` by the last exam.
+Descriptive statistics of grades separated by sex and school are presented in Tables 1 and 2. Grades tended to increase over the course of the semester. For example, the mean grade in the first Portugese exam was `r 1+1` which increased to `r 1+1` by the last exam.
 
 ```{r tbl1, results='asis', eval = FALSE}
 # Create summary table of Portugese data
@@ -166,7 +165,7 @@ sex.por.ttest <- t.test(G1 ~ sex, data = student.por)
 ```
 
 
-Did men and women perform differently on the first exams in each class? To test this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant `r papaja::apa_print(sex.por.ttest)$full_result`, showing that women performed better than men on the first Portugese exam,
+Did men and women perform differently on the first exams in each class? To test this, we conducted two separate two-sample t-tests on first exam scores as a function of sex. The t-test on Portugese exam 1 was significant `r 1+1`, showing that women performed better than men on the first Portugese exam,
 
 The t-test on Math exam 1 was non-significant `r 1+1`, showing no evidence for a difference between men and women on Math exam 1.
 
