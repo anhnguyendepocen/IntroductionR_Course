@@ -21,7 +21,7 @@ knitr::include_graphics("http://cdn22.beszamel.smcloud.net/t/thumbs/660/441/1/re
 ```
 
 ```{r, echo = FALSE}
-knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/readings/apa_ss.png?raw=true")
+knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/images/apa_ss.png?raw=true")
 ```
 
 
