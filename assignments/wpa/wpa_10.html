@@ -223,12 +223,19 @@ tattoos_aov_apa$full_result$sex
 
 # ANOVA table
 tattoos_aov_apa$table</code></pre>
+<div id="install-latex-and-papaja" class="section level3">
+<h3>Install LaTeX and papaja</h3>
+<p>A. In order to render PDF files, you need to have LaTeX installed. Go to one of the following links and follow the instructions to install LaTeX your computer. The files are quite large (2 gigabytes I think), so on a slow connection it may take a while…</p>
+<p>Windows: MikTeX <a href="https://miktex.org/" class="uri">https://miktex.org/</a> Mac: MacTeX: <a href="http://www.tug.org/mactex/" class="uri">http://www.tug.org/mactex/</a></p>
+<p>Afer you’ve installed LaTeX, restart your computer (otherwise RStudio won’t know that you’ve installed LaTeX)</p>
+<p>B. Once you have installed LaTeX, install the <code>papaja</code> package from GitHub using the <code>install_github()</code> function from the <code>devtools</code> package. If you don’t have the <code>devtools</code> package, you’ll need to install that first.</p>
+<pre class="r"><code># install.packages(&quot;devtools&quot;) # Only if you don't have the devtools package yet
+
+devtools::install_github(&quot;crsh/papaja&quot;, 
+                         build_vignettes = TRUE) # Install papaja from GitHub</code></pre>
+</div>
 <div id="get-started" class="section level3">
 <h3>Get started</h3>
-<p>A. In order to render PDF files, you need to have LaTeX installed, follow the instructions at the <a href="https://ndphillips.github.io/IntroductionR_Course/readings/papajaguide.html">papaja guide</a> to install LaTeX on your computer.</p>
-<p>B. Once you have installed LaTeX, install the <code>papaja</code> package from GitHub using the following code:</p>
-<pre class="r"><code># install.packages(&quot;devtools&quot;) # Only if you don't have the devtools package yet
-devtools::install_github(&quot;crsh/papaja&quot;, build_vignettes = TRUE) # Install papaja from GitHub</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>Create a new R project called <code>studentAPA.RProj</code>.</p></li>
 <li><p>Navigate to the project directory (the one you just put <code>studentAPA.RProj</code> in). Create two new folders <code>R</code> and <code>data</code> in your project directory.</p></li>

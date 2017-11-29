@@ -33,7 +33,7 @@ This assignment is based on the following readings:
 
 ## Assignment Goals
 
-- Create an APA style document using R markdown and the papaja package
+- Create the following APA style document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true) using R markdown and the papaja package
 - Automatically create APA style statistical conclusions from R objects using `papaja::apa_print()`
 - Cite articles using `.bib` files and appropirate bibtex citations.
 - Use in-line 'minichunks' to incporate R output directly into your text.
@@ -123,16 +123,25 @@ tattoos_aov_apa$table
 ```
 
 
-### Get started
+### Install LaTeX and papaja
 
-A. In order to render PDF files, you need to have LaTeX installed, follow the instructions at the [papaja guide](https://ndphillips.github.io/IntroductionR_Course/readings/papajaguide.html) to install LaTeX on your computer.
+A. In order to render PDF files, you need to have LaTeX installed. Go to one of the following links and follow the instructions to install LaTeX your computer. The files are quite large (2 gigabytes I think), so on a slow connection it may take a while...
 
-B. Once you have installed LaTeX, install the `papaja` package from GitHub using the following code:
+Windows: MikTeX https://miktex.org/
+Mac: MacTeX: http://www.tug.org/mactex/
+
+Afer you've installed LaTeX, restart your computer (otherwise RStudio won't know that you've installed LaTeX)
+
+B. Once you have installed LaTeX, install the `papaja` package from GitHub using the `install_github()` function from the `devtools` package. If you don't have the `devtools` package, you'll need to install that first.
 
 ```{r eval = FALSE}
 # install.packages("devtools") # Only if you don't have the devtools package yet
-devtools::install_github("crsh/papaja", build_vignettes = TRUE) # Install papaja from GitHub
+
+devtools::install_github("crsh/papaja", 
+                         build_vignettes = TRUE) # Install papaja from GitHub
 ```
+
+### Get started
 
 1. Create a new R project called `studentAPA.RProj`.
 
