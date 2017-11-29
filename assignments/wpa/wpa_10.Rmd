@@ -211,7 +211,7 @@ knitr::include_graphics("https://github.com/ndphillips/IntroductionR_Course/blob
 
 <font color = "red">If you don't have this folder structure and/or you don't have the appropriate project open in RStudio, the rest of the document won't work!</font>
 
-9. Your goal is to create the following APA document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true) by adding elements to the `studentAPA.Rmd` document. In a web browser, go to the link above to download the `studentAPA_comp.pdf` file and see how it looks.
+9. Your goal is to create the following APA document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA/studentAPA_comp.pdf?raw=true) by adding elements to the `studentAPA.Rmd` document. In a web browser, go to the link above to download the `studentAPA_comp.pdf` file and see how it looks.
 
 ### Adding titles and knitting for the first time
 
