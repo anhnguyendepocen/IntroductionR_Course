@@ -141,7 +141,8 @@ portugese.tbl <- student.por %>% group_by(sex, school) %>%
 
 # Print the table!
 # also be sure to include the results='asis' chunk option!
-papaja::apa_table(portugese.tbl, caption = "Mean Portugese exam scores separated by sex and school")
+papaja::apa_table(portugese.tbl, 
+                  caption = "Mean Portugese exam scores separated by sex and school")
 ```
 
 ```{r tbl2, results='asis'}
@@ -153,16 +154,19 @@ math.tbl <- student.math %>% group_by(sex, school) %>%
     "Exam 3" = round(mean(G3), 2)
   )
 
-papaja::apa_table(portugese.tbl, caption = "Mean Math exam scores separated by sex and school.")
+papaja::apa_table(portugese.tbl, 
+                  caption = "Mean Math exam scores separated by sex and school.")
 ```
 
 
 ```{r ttests}
 # T-test of Exam 1 portugese grades between sexes
-sex.por.ttest <- t.test(G1 ~ sex, data = student.por)
+sex.por.ttest <- t.test(G1 ~ sex, 
+                        data = student.por)
 
 # T-test of Exam 1 math grades between sexes
-sex.math.ttest <- t.test(G1 ~ sex, data = student.math)
+sex.math.ttest <- t.test(G1 ~ sex, 
+                         data = student.math)
 ```
 
 
@@ -173,10 +177,10 @@ The t-test on Math exam 1 was non-significant `r papaja::apa_print(sex.math.ttes
 
 ```{r, results='asis'}
 G1_por_Anova <- car::Anova(mod = lm(G1 ~ school + sex + guardian,
-                                    data = student.por),
-                           type = "III")
+                                    data = student.por))
 
-papaja::apa_table(apa_print(G1_por_Anova)$table, caption = "ANOVA on period 1 Portugese scores.")
+papaja::apa_table(apa_print(G1_por_Anova)$table, 
+                  caption = "ANOVA on period 1 Portugese scores.")
 ```
 
 
