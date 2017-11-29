@@ -156,8 +156,6 @@ library(papaja)
 
 # Knit the document using the Command + Shift + K shortcut (or by clicking the &quot;knit&quot; button at the top of your source editor)
 
-# Use papaja's apa_print() function to generate full apa syle results from common test objects
-
 library(yarrr) # To get the pirates dataframe
 
 # ---------------------
@@ -223,7 +221,17 @@ tattoos_aov_apa
 tattoos_aov_apa$full_result$sex
 
 # ANOVA table
-tattoos_aov_apa$table</code></pre>
+tattoos_aov_apa$table
+
+
+# ---------------------
+# Show a APA style table of data
+# ------------------
+
+# Convert a dataframe to an APA formatted LaTeX table
+
+apa_table(pirates[1:10, c(&quot;id&quot;, &quot;sex&quot;, &quot;age&quot;, &quot;tattoos&quot;, &quot;tchests&quot;)],
+          caption = &quot;First few rows of the pirates dataframe&quot;)</code></pre>
 <div id="install-latex-and-papaja" class="section level3">
 <h3>Install LaTeX and papaja</h3>
 <p>A. In order to render PDF files, you need to have LaTeX installed. Go to one of the following links and follow the instructions to install LaTeX your computer. The files are quite large (2 gigabytes I think), so on a slow connection it may take a while…</p>

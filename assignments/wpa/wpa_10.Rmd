@@ -55,8 +55,6 @@ library(papaja)
 
 # Knit the document using the Command + Shift + K shortcut (or by clicking the "knit" button at the top of your source editor)
 
-# Use papaja's apa_print() function to generate full apa syle results from common test objects
-
 library(yarrr) # To get the pirates dataframe
 
 # ---------------------
@@ -123,6 +121,17 @@ tattoos_aov_apa$full_result$sex
 
 # ANOVA table
 tattoos_aov_apa$table
+
+
+# ---------------------
+# Show a APA style table of data
+# ------------------
+
+# Convert a dataframe to an APA formatted LaTeX table
+
+apa_table(pirates[1:10, c("id", "sex", "age", "tattoos", "tchests")],
+          caption = "First few rows of the pirates dataframe")
+
 ```
 
 
