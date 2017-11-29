@@ -2,11 +2,11 @@
 title: "Performance of students in Math and Porgugese"
 shorttitle: "education"
 author: 
-  - name: Nathaniel Phillips
+  - name: Captain Jack Sparrow
     affiliation: 1
     corresponding: yes    
     address: Missionsstrasse 62A 4053 Basel Switzerland
-    email: nathaniel.phillips@unibas.ch
+    email: captainjack@pmail.com
 affiliation:
   - id: 1
     institution: University of Basel
