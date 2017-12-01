@@ -36,7 +36,7 @@ This assignment is based on the following readings:
 
 ## Assignment Goals
 
-- Create the following APA style document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true) using R markdown and the papaja package
+- Create the following APA style document (https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA/studentAPA_comp.pdf?raw=true) using R markdown and the papaja package
 - Automatically create APA style statistical conclusions from R objects using `papaja::apa_print()`
 - Cite articles using `.bib` files and appropirate bibtex citations.
 - Use in-line 'minichunks' to incporate R output directly into your text.
@@ -159,7 +159,7 @@ devtools::install_github("crsh/papaja",
 
 2. Navigate to the project directory (the one you just put `studentAPA.RProj` in). Create two new folders `R` and `data` in your project directory.
 
-3. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data). Using `read.table()` load this two data files into R as two objects, one called `student.math`, and one called `student.por`. Then, save the data as text files called `studentmath.txt` and `studentpor.txt` in your data folder:
+3. The two data files you ned for this assignment are located at https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt (the math data) and https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt (the portugese data), we need to get these files into your data folder. To do this, open a new script. Then run the following code to save the data as text files called `studentmath.txt` and `studentpor.txt` in your data folder:
 
 ```{r, echo = TRUE, eval = FALSE}
 # Load the two datasets into R

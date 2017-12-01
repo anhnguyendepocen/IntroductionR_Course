@@ -137,7 +137,7 @@ $(document).ready(function () {
 <div id="assignment-goals" class="section level2">
 <h2>Assignment Goals</h2>
 <ul>
-<li>Create the following APA style document (<a href="https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true" class="uri">https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA_comp.pdf?raw=true</a>) using R markdown and the papaja package</li>
+<li>Create the following APA style document (<a href="https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA/studentAPA_comp.pdf?raw=true" class="uri">https://github.com/ndphillips/IntroductionR_Course/blob/master/assignments/wpa/studentAPA/studentAPA_comp.pdf?raw=true</a>) using R markdown and the papaja package</li>
 <li>Automatically create APA style statistical conclusions from R objects using <code>papaja::apa_print()</code></li>
 <li>Cite articles using <code>.bib</code> files and appropirate bibtex citations.</li>
 <li>Use in-line ‘minichunks’ to incporate R output directly into your text.</li>
@@ -248,7 +248,7 @@ devtools::install_github(&quot;crsh/papaja&quot;,
 <ol style="list-style-type: decimal">
 <li><p>Create a new R project called <code>studentAPA.RProj</code>.</p></li>
 <li><p>Navigate to the project directory (the one you just put <code>studentAPA.RProj</code> in). Create two new folders <code>R</code> and <code>data</code> in your project directory.</p></li>
-<li><p>The two data files you ned for this assignment are located at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt</a> (the math data) and <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt</a> (the portugese data). Using <code>read.table()</code> load this two data files into R as two objects, one called <code>student.math</code>, and one called <code>student.por</code>. Then, save the data as text files called <code>studentmath.txt</code> and <code>studentpor.txt</code> in your data folder:</p></li>
+<li><p>The two data files you ned for this assignment are located at <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentmath.txt</a> (the math data) and <a href="https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt" class="uri">https://raw.githubusercontent.com/ndphillips/IntroductionR_Course/master/assignments/wpa/data/studentpor.txt</a> (the portugese data), we need to get these files into your data folder. To do this, open a new script. Then run the following code to save the data as text files called <code>studentmath.txt</code> and <code>studentpor.txt</code> in your data folder:</p></li>
 </ol>
 <pre class="r"><code># Load the two datasets into R
 
