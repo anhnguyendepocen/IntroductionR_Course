@@ -34,7 +34,7 @@ if (window.hljs) {
   hljs.configure({languages: []});
   hljs.initHighlightingOnLoad();
   if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
 }
 </script>
@@ -278,7 +278,7 @@ t.test(weight ~ Diet,
 <li><p>Calculate at least one chi-square test with <code>chisq.test()</code>. Write your results in APA format.</p></li>
 <li><p>Calculate at least one one-way ANOVA analysis with <code>aov()</code> (or another ANOVA function such as <code>Anova()</code>) with 1 independent variable. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than 4 paired comparisons in your analysis, you don’t need to describe every paired difference, just explain the most important ones.</p></li>
 <li><p>Calculate at least one multiple-variable ANOVA analysis with 2 or more independent variables. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than than 4 paired comparisons in your analysis, you don’t need to describe every paired difference, just explain the most important ones.</p></li>
-<li><p>Repeat your ANOVA from task 20, but now include interaction terms. Write your results in APA format. Do you find an interaction?</p></li>
+<li><p>Repeat your ANOVA from the previous task (22), but now include interaction terms. Write your results in APA format. Do you find an interaction?</p></li>
 <li><p>Calculate at least one regression analysis with <code>lm()</code> or <code>glm()</code>. Write your results in APA format.</p></li>
 <li><p>Report summary statistics of the <em>residuals</em> from your regression analysis in task 22. That is, on average, how far away are the model fits from the true values? What is the standard deviation of these residuals?</p></li>
 </ol>

@@ -210,7 +210,7 @@ outliers <- sum(data$x > ___ | data$x < __)
 
 22. Calculate at least one multiple-variable ANOVA analysis with 2 or more independent variables. Calculate post-hoc tests for any significant effects. Write your results in APA format. If there are more than than 4 paired comparisons in your analysis, you don't need to describe every paired difference, just explain the most important ones.
 
-23. Repeat your ANOVA from task 20, but now include interaction terms. Write your results in APA format. Do you find an interaction?
+23. Repeat your ANOVA from the previous task (22), but now include interaction terms. Write your results in APA format. Do you find an interaction?
 
 24. Calculate at least one regression analysis with `lm()` or `glm()`. Write your results in APA format.
 
